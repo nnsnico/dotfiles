@@ -122,7 +122,7 @@ syntax on
 " Tab系
 " 不可視文字を可視化
 set list
-set listchars=tab:»-,trail:-,eol:↩︎,space:_
+set listchars=tab:»-,trail:-,eol:↩︎,
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）

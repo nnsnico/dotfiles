@@ -30,6 +30,7 @@ alias home='cd ~'
 alias e='exit'
 alias emu='cd /usr/local/share/android-sdk/tools/'
 alias cask='brew cask'
+alias nswitch='~/.switch_proxy'
 
 # 補完機能設定
 autoload -U compinit
