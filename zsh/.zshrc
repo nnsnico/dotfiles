@@ -1,11 +1,6 @@
 # Created by newuser for 5.1.1
 
 # export
-## proxy
-#export proxy=http://a1502433:o5r2j1m4@wwwproxy.kanazawa-it.ac.jp:8080
-#export http_proxy=$proxy
-#export https_proxy=$proxy
-
 ## Java
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 
@@ -30,7 +25,7 @@ alias home='cd ~'
 alias e='exit'
 alias emu='cd /usr/local/share/android-sdk/tools/'
 alias cask='brew cask'
-alias nswitch='~/.switch_proxy'
+alias ns='source ~/switch_proxy.sh'
 
 # 補完機能設定
 autoload -U compinit

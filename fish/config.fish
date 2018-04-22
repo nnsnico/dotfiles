@@ -36,8 +36,8 @@ alias emu='cd /usr/local/share/android-sdk/tools/' # Need `android-sdk`
 alias debug='adb shell input keyevent 82'
 alias cat='ccat' # Need `ccat`
 alias cask='brew cask' # Need `brew cask`
-alias nswitch='source ~/switch_proxy.fish'
+alias ns='source ~/switch_proxy.fish'
 
 # execute switch_proxy
-nswitch
+ns
 
