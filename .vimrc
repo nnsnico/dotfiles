@@ -2,6 +2,7 @@
 " ln -s ~/dotfiles/.vimrc ~/
 " and, Install `Vundle` into ~/.vim/bundle/
 " $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" `:PluginInstall` on vim
 
 " Vundle Scripts-----------------------------
 set nocompatible
@@ -22,8 +23,9 @@ Plugin 'ujihisa/unite-colorscheme'
 Plugin 'tpope/vim-fugitive'
 " Search in Directory
 Plugin 'ctrlpvim/ctrlp.vim'
+
 " ColorScheme on Vim
-Plugin 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes' 
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
 " Auto close parentheses
@@ -136,11 +138,12 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 autocmd vimenter * NERDTree
 " 隠しファイルをデフォルトで表示
 let NERDTreeShowHidden = 1
+let NERDTreeShowBookmarks = 1
 " Ctrl + tでディレクトリツリー表示
 map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
-map <C-l> gt
-map <C-h> gT
+noremap <C-l> gt
+noremap <C-h> gT
 " 拡張子のハイライト表示
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
