@@ -1,62 +1,54 @@
 " Installation
 " ln -s ~/dotfiles/.vimrc ~/
-" and, Install `NeoBundle` into ~/.vim/bundle/
+" and, Install `Vundle` into ~/.vim/bundle/
+" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-"NeoBundle Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+" Vundle Scripts-----------------------------
+set nocompatible
+filetype off
 
-" Required:
-set runtimepath+=/Users/nns/.vim/bundle/neobundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Required:
-call neobundle#begin(expand('/Users/nns/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Snippet
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
 " Select on Vim
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
+Plugin 'Shougo/unite.vim'
+Plugin 'ujihisa/unite-colorscheme'
 " Use Git on Vim
-NeoBundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " Search in Directory
-NeoBundle 'ctrlpvim/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " ColorScheme on Vim
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'sjl/badwolf'
-NeoBundle 'w0ng/vim-hybrid'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'sjl/badwolf'
+Plugin 'w0ng/vim-hybrid'
 " Auto close parentheses
-NeoBundle 'cohama/lexima.vim'
+Plugin 'cohama/lexima.vim'
 " Mutil Cursor ctrl + v
-NeoBundle 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 " ColorScheme on Vim mode
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Show project tree
-NeoBundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+Plugin 'Shougo/vimshell', { 'rev' : '3787e5' }
 
 "aawefaefk Required:
-call neobundle#end()
+call vundle#end()
 
 " Required:
 filetype plugin indent on
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+"End Vundle Scripts-------------------------
 
 " color scheme
-colorscheme hybrid
+colorscheme badwolf
 set background=dark
 
 " setting
@@ -84,6 +76,8 @@ inoremap <Right> <Nop>
 inoremap <C-l> <C-g>U<Right>
 " Space + Enterで空行を追加
 noremap <Space><CR> o<ESC>
+" コマンドラインモードをセミコロンで
+nnoremap ; :
 
 " 見た目系
 " 行番号を表示
