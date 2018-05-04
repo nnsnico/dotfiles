@@ -37,6 +37,10 @@ alias debug='adb shell input keyevent 82'
 alias cat='ccat' # Need `ccat`
 alias cask='brew cask' # Need `brew cask`
 alias ns='source ~/switch_proxy.fish'
+alias gs='git status'
+alias gb='git branch'
+alias gc='git checkout'
+alias gp='git pull'
 
 # execute switch_proxy
 ns
