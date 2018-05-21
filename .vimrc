@@ -87,6 +87,9 @@ noremap <Space><CR> o<ESC>
 nnoremap ; :
 
 " 見た目系
+" シンタックスカラー
+syntax on
+set term=xterm-256color
 " 行番号を表示
 set number
 " 現在の行を強調表示
@@ -107,11 +110,8 @@ set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
 " カーソルの表示をモードで変更する
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-" シンタックスカラー
-set term=xterm-256color
-syntax on
+let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
+let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
 
 " Tab系
 " 不可視文字を可視化
