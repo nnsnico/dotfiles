@@ -41,10 +41,12 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Show project tree
 Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
 
 " You can specify revision/branch/tag.
 Plugin 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Enable devicon on nerdtree
+Plugin 'ryanoasis/vim-devicons'
 
 "aawefaefk Required:
 call vundle#end()
