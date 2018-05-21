@@ -139,13 +139,12 @@ set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " NERDTree系
-" 起動時にディレクトリーツリー表示
-autocmd vimenter * NERDTree
+" ファイル指定の有無によって起動時にtreeを表示するかを切り替える
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " 隠しファイルをデフォルトで表示
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
-" NERDTreeにアイコンを表示
-let g:WebDevIconUnicodeDecoraterFolderNodes = 1
 " Ctrl + tでディレクトリツリー表示
 map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
