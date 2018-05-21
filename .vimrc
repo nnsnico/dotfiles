@@ -25,11 +25,13 @@ Plugin 'ujihisa/unite-colorscheme'
 Plugin 'tpope/vim-fugitive'
 " Search in Directory
 Plugin 'ctrlpvim/ctrlp.vim'
-
 " ColorScheme on Vim
 Plugin 'flazz/vim-colorschemes' 
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
+" Color Highlight ts
+Plugin 'leafgarland/typescript-vim'
+Plugin 'ianks/vim-tsx'
 " Auto close parentheses
 Plugin 'cohama/lexima.vim'
 " Mutil Cursor ctrl + v
