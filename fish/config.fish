@@ -3,6 +3,9 @@
 # and Install fisherman
 # then, Install all by_`fisher up; and fisher .` of fisherman
 
+# vi mode
+fish_vi_key_bindings
+
 ## Java
 set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8")
 
