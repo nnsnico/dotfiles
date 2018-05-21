@@ -5,6 +5,8 @@
 " `:PluginInstall` on vim
 
 " Vundle Scripts-----------------------------
+set shell=/bin/bash
+
 set nocompatible
 filetype off
 
