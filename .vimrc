@@ -39,6 +39,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Show project tree
 Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
 
 " You can specify revision/branch/tag.
 Plugin 'Shougo/vimshell', { 'rev' : '3787e5' }
@@ -141,6 +142,8 @@ autocmd vimenter * NERDTree
 " 隠しファイルをデフォルトで表示
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
+" NERDTreeにアイコンを表示
+let g:WebDevIconUnicodeDecoraterFolderNodes = 1
 " Ctrl + tでディレクトリツリー表示
 map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
