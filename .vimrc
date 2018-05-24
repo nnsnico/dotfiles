@@ -5,6 +5,7 @@
 " `:PluginInstall` on vim
 
 " Vundle Scripts-----------------------------
+" You can comment it out if you use bash
 set shell=/bin/bash
 
 set nocompatible
@@ -29,9 +30,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes' 
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
-" Color Highlight ts
+" Color Highlight
 Plugin 'leafgarland/typescript-vim'
 Plugin 'ianks/vim-tsx'
+Plugin 'dag/vim-fish'
 " Auto close parentheses
 Plugin 'cohama/lexima.vim'
 " Mutil Cursor ctrl + v
@@ -152,7 +154,7 @@ map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
 noremap <C-l> gt
 noremap <C-h> gT
-" 拡張子のハイライト表示
+" 拡張子のハイライト表示(nerdtree-devicon未使用時)
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
