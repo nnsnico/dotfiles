@@ -45,6 +45,7 @@ alias gb='git branch'
 alias gc='git checkout'
 alias gp='git pull'
 alias v='/usr/local/bin/vim'
+alias vi='/usr/local/bin/vim'
 
 # execute switch_proxy
 ns
