@@ -74,6 +74,8 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
+" バックスペースで削除
+set backspace=indent,eol,start
 " 矢印キーを無効にする
 noremap <Up> <Nop>
 noremap <Down> <Nop>
