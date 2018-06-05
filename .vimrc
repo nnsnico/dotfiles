@@ -1,62 +1,84 @@
 " Installation
-" ln -s ~/dotfiles/.vimrc ~/
-" and, Install `Vundle` into ~/.vim/bundle/
-" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" `:PluginInstall` on vim
+" 1. ln -s ~/dotfiles/.vimrc ~/
+" 2. and, Install `dein.vim` into ~/.vim/bundles/
+" 3. `:call dein#install()` on vim
 
-" Vundle Scripts-----------------------------
-" You can comment it out if you use bash
+"dein Scripts-----------------------------
 set shell=/bin/bash
 
-set nocompatible
-filetype off
+if &compatible
+  set nocompatible               " Be iMproved
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Required:
+set runtimepath+=/Users/nns/.vim/bundle/repos/github.com/Shougo/dein.vim
 
-Plugin 'VundleVim/Vundle.vim'
+" Required:
+if dein#load_state('/Users/nns/.vim/bundle')
+  call dein#begin('/Users/nns/.vim/bundle')
 
-" Snippet
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-" Select on Vim
-Plugin 'Shougo/unite.vim'
-Plugin 'ujihisa/unite-colorscheme'
-" Use Git on Vim
-Plugin 'tpope/vim-fugitive'
-" Search in Directory
-Plugin 'ctrlpvim/ctrlp.vim'
-" ColorScheme on Vim
-Plugin 'flazz/vim-colorschemes' 
-Plugin 'sjl/badwolf'
-Plugin 'w0ng/vim-hybrid'
-" Color Highlight
-Plugin 'leafgarland/typescript-vim'
-Plugin 'ianks/vim-tsx'
-Plugin 'dag/vim-fish'
-" Auto close parentheses
-Plugin 'cohama/lexima.vim'
-" Mutil Cursor ctrl + v
-Plugin 'terryma/vim-multiple-cursors'
-" ColorScheme on Vim mode
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Show project tree
-Plugin 'scrooloose/nerdtree'
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/nns/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
-" You can specify revision/branch/tag.
-Plugin 'Shougo/vimshell', { 'rev' : '3787e5' }
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
 
-" Enable devicon on nerdtree
-Plugin 'ryanoasis/vim-devicons'
+  " Snippet
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  " Select on Vim
+  call dein#add('Shougo/unite.vim')
+  call dein#add('ujihisa/unite-colorscheme')
+  " Use Git on Vim
+  call dein#add('tpope/vim-fugitive')
+  " Search in Directory
+  call dein#add('ctrlpvim/ctrlp.vim')
+  " ColorScheme on Vim
+  call dein#add('flazz/vim-colorschemes')
+  call dein#add('sjl/badwolf')
+  call dein#add('w0ng/vim-hybrid')
+  " Color Highlight
+  call dein#add('leafgarland/typescript-vim')
+  call dein#add('ianks/vim-tsx')
+  call dein#add('dag/vim-fish')
+  " Auto close parentheses
+  call dein#add('cohama/lexima.vim')
+  " Auto close something selection range
+  call dein#add('tpope/vim-surround')
+  " Mutil Cursor ctrl + v
+  call dein#add('terryma/vim-multiple-cursors')
+  " ColorScheme on Vim mode
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  " Show project tree
+  call dein#add('scrooloose/nerdtree')
 
-"aawefaefk Required:
-call vundle#end()
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
+
+  " Enable devicon on nerdtree
+  call dein#add('ryanoasis/vim-devicons')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-"End Vundle Scripts-------------------------
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
 
 " color scheme
 colorscheme badwolf
