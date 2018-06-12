@@ -10,7 +10,7 @@ fish_vi_key_bindings
 set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8")
 
 ## Android
-set -x ANDROID_HOME /usr/local/share/android-sdk
+set -x ANDROID_HOME /usr/local/Caskroom/android-sdk
 set -x HOMEBREW_GITHUB_API 7f26821f55886f6bd7bcba6d47e85c24937c8ee1 
 
 ## Flutter
@@ -29,7 +29,7 @@ if [ -f '/Users/nns/google-cloud-sdk/path.fish.inc' ]
 end
 
 ## Root path
-set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $OPENSSL_HOME/bin $PATH
+set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/4333796/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $OPENSSL_HOME/bin $PATH
 
 ## alias
 alias e='exit'
