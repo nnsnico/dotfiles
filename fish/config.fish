@@ -6,6 +6,11 @@
 # vi mode
 fish_vi_key_bindings
 
+# greeting message
+function fish_greeting
+  echo "Hello, $USER!!"
+end
+
 ## Java
 set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8")
 
