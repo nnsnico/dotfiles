@@ -85,11 +85,12 @@ colorscheme badwolf
 set background=dark
 
 " setting
-"文字コードをUFT-8に設定
+"文字コードをUTF-8に設定
 set fenc=utf-8
 " バックアップファイルとスワップファイルを作らない
 set nobackup
 set noswapfile
+set nowrap
 " 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " バッファが編集中でもその他のファイルを開けるように
