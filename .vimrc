@@ -43,6 +43,7 @@ if dein#load_state('/Users/nns/.vim/bundle')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('ianks/vim-tsx')
   call dein#add('dag/vim-fish')
+  call dein#add('neovimhaskell/haskell-vim')
   " Auto close parentheses
   call dein#add('cohama/lexima.vim')
   " Auto close something selection range
