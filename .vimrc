@@ -39,7 +39,7 @@ if dein#load_state('/Users/nns/.vim/bundle')
   call dein#add('flazz/vim-colorschemes')
   call dein#add('sjl/badwolf')
   call dein#add('w0ng/vim-hybrid')
-  " Color Highlight
+  " syntax color
   call dein#add('leafgarland/typescript-vim')
   call dein#add('ianks/vim-tsx')
   call dein#add('dag/vim-fish')

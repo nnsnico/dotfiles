@@ -1,7 +1,7 @@
 ## Installation
 # ln -s ~/dotfiles/fish/config.fish ~/.config/fish/
 # and Install fisherman
-# then, Install all by_`fisher up; and fisher .` of fisherman
+# then, Install all by `fisher up; and fisher .` of fisherman
 
 # vi mode
 fish_vi_key_bindings
