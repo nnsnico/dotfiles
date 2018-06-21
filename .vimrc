@@ -82,7 +82,7 @@ endif
 "End dein Scripts-------------------------
 
 " color scheme
-colorscheme badwolf
+colorscheme hybrid
 set background=dark
 
 " setting
