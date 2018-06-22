@@ -100,6 +100,8 @@ set hidden
 set showcmd
 " バックスペースで削除
 set backspace=indent,eol,start
+" ヤンクでコピーした内容をOSレベルのクリップボードで保存する
+set clipboard+=unnamed
 " 矢印キーを無効にする
 noremap <Up> <Nop>
 noremap <Down> <Nop>
