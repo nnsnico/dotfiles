@@ -51,6 +51,10 @@ alias gc='git checkout'
 alias gp='git pull'
 alias v='/usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
+alias git='hub'
+alias see='hub browse'
+alias issue='hub browse -- issues'
+alias pl='hub pull-request'
 
 # execute switch_proxy
 ns

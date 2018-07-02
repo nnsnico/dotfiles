@@ -40,4 +40,8 @@ alias emu='cd /usr/local/share/android-sdk/tools/'
 alias cat='ccat'
 alias ns='source ~/switch_proxy.sh'
 alias b='brew'
+alias git='hub'
+alias see='hub browse'
+alias issue='hub browse -- issues'
+alias pl='hub pull-request'
 
