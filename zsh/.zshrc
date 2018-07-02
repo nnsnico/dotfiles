@@ -13,6 +13,7 @@ source $ZPLUG_HOME/init.zsh
 
 ## Add to plugins
 zplug "sorin-ionescu/prezto"
+zplug "peco/peco"
 zplug "zsh-users/zsh-completions"
 
 ## Java
@@ -20,7 +21,8 @@ export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Command
 
 ## Android
 export ANDROID_HOME="/usr/local/share/android-sdk"
-export HOMEBREW_GITHUB_API_TOKEN="7f26821f55886f6bd7bcba6d47e85c24937c8ee1"
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export HOMEBREW_GITHUB_API_TOKEN="33e1c36f109ce40959724cccc8ecd5ea611118d3"
 
 ## flutter
 export FLUTTER_HOME="/Users/nns/flutter"

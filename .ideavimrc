@@ -51,3 +51,5 @@ nnoremap <Space>go :<C-u>action OverrideMethods<CR>
 " ctrl + {hl}で左右に移動 
 imap <C-l> <Right>
 imap <C-h> <Left>
+" セミコロンをコロンとして解釈
+nnoremap ; :

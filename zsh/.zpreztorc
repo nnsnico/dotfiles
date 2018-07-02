@@ -34,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'history' \
   'homebrew' \
+  'osx' \
   'prompt' \
   'spectrum' \
   'terminal' \
@@ -99,7 +100,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 #
 
 # Set the keyword used by `mand` to open man pages in Dash.app
-# zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
+zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
 
 #
 # Pacman

@@ -16,7 +16,7 @@ set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Command
 
 ## Android
 set -x ANDROID_HOME /usr/local/Caskroom/android-sdk
-set -x HOMEBREW_GITHUB_API 7f26821f55886f6bd7bcba6d47e85c24937c8ee1 
+set -x HOMEBREW_GITHUB_API 33e1c36f109ce40959724cccc8ecd5ea611118d3 
 
 ## Flutter
 set -x FLUTTER_HOME /Users/nns/flutter
