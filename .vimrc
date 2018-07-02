@@ -2,6 +2,10 @@
 " 1. ln -s ~/dotfiles/.vimrc ~/
 " 2. and, Install `dein.vim` into ~/.vim/bundles/
 " 3. `:call dein#install()` on vim
+"
+" (Option) Using NeoVim 
+" 1. ln -s ~/.vim ~/.config/nvim/
+" 2. ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 "dein Scripts-----------------------------
 set shell=/bin/bash
@@ -121,7 +125,6 @@ nnoremap ; :
 " 見た目系
 " シンタックスカラー
 syntax on
-set term=xterm-256color
 " 行番号を表示
 set number
 " 現在の行を強調表示
