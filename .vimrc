@@ -29,6 +29,8 @@ if dein#load_state('/Users/nns/.vim/bundle')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
+  " auto format
+  call dein#add('Chiel92/vim-autoformat')
   " Snippet
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -48,6 +50,7 @@ if dein#load_state('/Users/nns/.vim/bundle')
   call dein#add('ianks/vim-tsx')
   call dein#add('dag/vim-fish')
   call dein#add('neovimhaskell/haskell-vim')
+  call dein#add('elmcast/elm-vim')
   " Auto close parentheses
   call dein#add('cohama/lexima.vim')
   " Auto close something selection range
@@ -204,4 +207,9 @@ call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
 call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
 call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
+
+" Scalafmt系
+noremap <F5> :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']
 
