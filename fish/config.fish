@@ -15,16 +15,19 @@ end
 set -x JAVA_HOME (/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8")
 
 ## Android
-set -x ANDROID_HOME /usr/local/Caskroom/android-sdk
-set -x HOMEBREW_GITHUB_API 33e1c36f109ce40959724cccc8ecd5ea611118d3 
+set -x ANDROID_HOME /usr/local/share/android-sdk
+set -x HOMEBREW_GITHUB_API 69a78586be8f9595bf7643b78f977d923bac1230
 
 ## Flutter
 set -x FLUTTER_HOME /Users/nns/flutter
 
+## .NET
+set -x DOTNET_HOME /usr/local/share/dotnet
+
 ## OpenSSL@1.1
 set -x OPENSSL_HOME /usr/local/opt/openssl@1.1
 
-# The next line updates PATH for the Google Cloud SDK.
+## Google Cloud SDK.
 if [ -f '/Users/nns/google-cloud-sdk/path.fish.inc' ]
   if type source > /dev/null
     source '/Users/nns/google-cloud-sdk/path.fish.inc'
@@ -34,7 +37,7 @@ if [ -f '/Users/nns/google-cloud-sdk/path.fish.inc' ]
 end
 
 ## Root path
-set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/4333796/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $OPENSSL_HOME/bin $PATH
+set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/4333796/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $DOTNET_HOME/ $OPENSSL_HOME/bin $PATH
 
 ## alias
 alias e='exit'

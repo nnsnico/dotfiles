@@ -22,13 +22,19 @@ export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Command
 ## Android
 export ANDROID_HOME="/usr/local/share/android-sdk"
 export ANDROID_SDK_ROOT=$ANDROID_HOME
-export HOMEBREW_GITHUB_API_TOKEN="33e1c36f109ce40959724cccc8ecd5ea611118d3"
+export HOMEBREW_GITHUB_API_TOKEN="69a78586be8f9595bf7643b78f977d923bac1230"
 
 ## flutter
 export FLUTTER_HOME="/Users/nns/flutter"
 
+## .NET
+export DOTNET_HOME="/usr/local/share/dotnet"
+
+## Tizen
+export TIZEN_HOME="/Users/nns/tizen-studio"
+
 ## Root Path
-export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$PATH
+export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$DOTNET_HOME/:$TIZEN_HOME/tools/ide/bin:$TIZEN_HOME/tools:$PATH
 
 # alias
 alias v='/usr/local/bin/vim'
