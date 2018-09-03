@@ -94,7 +94,9 @@ set background=dark
 
 " setting
 "文字コードをUTF-8に設定
-set fenc=utf-8
+set enc=utf-8
+set fencs=utf-8
+set ffs=unix,dos,mac
 " バックアップファイルとスワップファイルを作らない
 set nobackup
 set noswapfile
@@ -156,7 +158,7 @@ let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
 " Tab系
 " 不可視文字を可視化
 set list
-set listchars=tab:»-,trail:-,eol:↩︎,
+set listchars=tab:»-,trail:-,eol:↩
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
