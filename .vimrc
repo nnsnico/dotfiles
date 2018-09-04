@@ -1,11 +1,6 @@
 " Installation
-" 1. ln -s ~/dotfiles/.vimrc ~/
-" 2. and, Install `dein.vim` into ~/.vim/bundles/
-" 3. `:call dein#install()` on vim
-"
-" (Option) Using NeoVim 
-" 1. ln -s ~/.vim ~/.config/nvim/
-" 2. ln -s ~/.vimrc ~/.config/nvim/init.vim
+" exec installer script(/install/vim_installer.sh)
+
 
 "dein Scripts-----------------------------
 set shell=/bin/bash
@@ -15,19 +10,22 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/nns/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/nns/.vim/bundle')
-  call dein#begin('/Users/nns/.vim/bundle')
+if dein#load_state('~/.vim/bundles')
+  call dein#begin('~/.vim/bundles')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/nns/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
   " auto format
   call dein#add('Chiel92/vim-autoformat')
@@ -66,11 +64,8 @@ if dein#load_state('/Users/nns/.vim/bundle')
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
 
-  " Enable devicon on nerdtree
+  " (Optional) Enable devicon on nerdtree
   call dein#add('ryanoasis/vim-devicons')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
   " Required:
   call dein#end()
@@ -91,6 +86,8 @@ endif
 " color scheme
 colorscheme hybrid
 set background=dark
+" Linux使用時にカラーが反映されないときに適用する
+set t_Co=256
 
 " setting
 "文字コードをUTF-8に設定
@@ -151,9 +148,11 @@ set ambiwidth=double
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
-" カーソルの表示をモードで変更する
-let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
-let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
+" カーソルの表示をモードで変更する(iTerm限定)
+if has('mac')
+  let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
+endif
 
 " Tab系
 " 不可視文字を可視化
