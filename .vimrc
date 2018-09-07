@@ -1,5 +1,9 @@
 " Installation
 " exec installer script(/install/vim_installer.sh)
+"
+" Optional
+" Please install `nerd fonts` if you show mini icon in nerdtree
+" https://github.com/ryanoasis/nerd-fonts
 
 
 "dein Scripts-----------------------------
@@ -58,13 +62,14 @@ if dein#load_state('~/.vim/bundles')
   " ColorScheme on Vim mode
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  " Show project tree
+  " Show directory tree
   call dein#add('scrooloose/nerdtree')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
 
   " (Optional) Enable devicon on nerdtree
+  " When you not install `nerd fonts`, comment out this line
   call dein#add('ryanoasis/vim-devicons')
 
   " Required:
@@ -86,8 +91,6 @@ endif
 " color scheme
 colorscheme hybrid
 set background=dark
-" Linux使用時にカラーが反映されないときに適用する
-set t_Co=256
 
 " setting
 "文字コードをUTF-8に設定
