@@ -4,6 +4,7 @@
 " Optional
 " Please install `nerd fonts` if you show mini icon in nerdtree
 " https://github.com/ryanoasis/nerd-fonts
+"
 
 
 "dein Scripts-----------------------------
@@ -30,6 +31,12 @@ if dein#load_state('~/.vim/bundles')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
+
+  " Insert Auto date
+  call dein#add('vim-scripts/autodate.vim')
 
   " auto format
   call dein#add('Chiel92/vim-autoformat')
@@ -65,9 +72,6 @@ if dein#load_state('~/.vim/bundles')
   " Show directory tree
   call dein#add('scrooloose/nerdtree')
 
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
-
   " (Optional) Enable devicon on nerdtree
   " When you not install `nerd fonts`, comment out this line
   call dein#add('ryanoasis/vim-devicons')
@@ -93,6 +97,8 @@ colorscheme hybrid
 set background=dark
 
 " setting
+" default shell
+set sh=zsh
 "文字コードをUTF-8に設定
 set enc=utf-8
 set fencs=utf-8
@@ -112,20 +118,20 @@ set backspace=indent,eol,start
 " ヤンクでコピーした内容をOSレベルのクリップボードで保存する
 set clipboard+=unnamed
 " 矢印キーを無効にする
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
+imap <Up> <Nop>
+imap <Down> <Nop>
+imap <Left> <Nop>
+imap <Right> <Nop>
 " ctrl + l で右に移動する
-inoremap <C-l> <C-g>U<Right>
+imap <C-l> <C-g>U<Right>
 " Space + Enterで空行を追加
-noremap <Space><CR> o<ESC>
+nmap <Space><CR> o<ESC>
 " コマンドラインモードをセミコロンで
-nnoremap ; :
+nn ; :
 
 " 見た目系
 " シンタックスカラー
@@ -149,8 +155,8 @@ set wildmode=list:longest
 " 文字がかぶるのを修正する
 set ambiwidth=double
 " 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
+nn j gj
+nn k gk
 " カーソルの表示をモードで変更する(iTerm限定)
 if has('mac')
   let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
@@ -192,8 +198,8 @@ let NERDTreeShowBookmarks = 1
 " Ctrl + tでディレクトリツリー表示
 map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
-noremap <C-l> gt
-noremap <C-h> gT
+nmap <C-l> gt
+nmap <C-h> gT
 " 拡張子のハイライト表示(nerdtree-devicon未使用時)
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -213,7 +219,10 @@ call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
 
 " Scalafmt系
-noremap <F5> :Autoformat<CR>
+nmap <F5> :Autoformat<CR>
 let g:formatdef_scalafmt = "'scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
 
+" autodate系
+" フォーマット
+let autodate_format="%Y/%m/%d %A"
