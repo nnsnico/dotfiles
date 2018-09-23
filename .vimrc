@@ -29,6 +29,9 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
+  " HTML snippets
+  call dein#add('mattn/emmet-vim')
+
   " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
 
@@ -40,9 +43,8 @@ if dein#load_state('~/.vim/bundles')
 
   " auto format
   call dein#add('Chiel92/vim-autoformat')
-  " Snippet
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
+  " editor config
+  call dein#add('editorconfig/editorconfig-vim')
   " Select on Vim
   call dein#add('Shougo/unite.vim')
   call dein#add('ujihisa/unite-colorscheme')
@@ -60,6 +62,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('dag/vim-fish')
   call dein#add('neovimhaskell/haskell-vim')
   call dein#add('elmcast/elm-vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
   " Auto close parentheses
   call dein#add('cohama/lexima.vim')
   " Auto close something selection range
@@ -226,3 +230,6 @@ let g:formatters_scala = ['scalafmt']
 " autodate系
 " フォーマット
 let autodate_format="%Y/%m/%d %A"
+
+" Emmet系
+let g:user_emmet_leader_key='<C-Y>'
