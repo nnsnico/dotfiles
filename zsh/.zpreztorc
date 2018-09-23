@@ -37,8 +37,9 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'prompt' \
   'spectrum' \
+  'syntax-highlighting' \
   'terminal' \
-  'utility'
+  'utility' 
 
 #
 # Autosuggestions
