@@ -204,6 +204,10 @@ map <C-t> :NERDTreeToggle<CR>
 " ctrl + h & lでタブの移動
 nmap <C-l> gt
 nmap <C-h> gT
+" ssで垂直方向に画面分割
+nmap ss :split<CR>
+" svで水平方向に画面分割
+nmap sv :vsplit<CR>
 " 拡張子のハイライト表示(nerdtree-devicon未使用時)
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
