@@ -52,5 +52,6 @@ alias see='hub browse'
 alias issue='hub browse -- issues'
 alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
+alias pcd='cd $(ls -a | peco)'
 
 ns
