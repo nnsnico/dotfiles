@@ -76,6 +76,9 @@ if dein#load_state('~/.vim/bundles')
   " Show directory tree
   call dein#add('scrooloose/nerdtree')
 
+  " Asynchronous linter
+  call dein#add('w0rp/ale')
+
   " (Optional) Enable devicon on nerdtree
   " When you not install `nerd fonts`, comment out this line
   call dein#add('ryanoasis/vim-devicons')
