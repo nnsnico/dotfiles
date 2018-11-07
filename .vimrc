@@ -25,9 +25,21 @@ if dein#load_state('~/.vim/bundles')
   " Required:
   call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
 
+  " completation
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  let g:deoplete#enable_at_startup = 1
+  call dein#add('eagletmt/neco-ghc')
+
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
+
+  " Asyncronous something
+  call dein#add('Shougo/vimproc')
 
   " HTML snippets
   call dein#add('mattn/emmet-vim')
@@ -57,6 +69,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('sjl/badwolf')
   call dein#add('w0ng/vim-hybrid')
   " syntax color
+  call dein#add('derekwyatt/vim-scala')
   call dein#add('leafgarland/typescript-vim')
   call dein#add('ianks/vim-tsx')
   call dein#add('dag/vim-fish')
@@ -64,6 +77,9 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('elmcast/elm-vim')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
+  " Support markdown preview
+  call dein#add('kannokanno/previm')
+  call dein#add('tyru/open-browser.vim')
   " Auto close parentheses
   call dein#add('cohama/lexima.vim')
   " Auto close something selection range
@@ -243,3 +259,4 @@ let autodate_format="%Y/%m/%d %A %H:%M:%S"
 
 " Emmet系
 let g:user_emmet_leader_key='<C-Y>'
+
