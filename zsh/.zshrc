@@ -30,9 +30,6 @@ export FLUTTER_HOME="/Users/nns/flutter"
 ## .NET
 export DOTNET_HOME="/usr/local/share/dotnet"
 
-## Tizen
-export TIZEN_HOME="/Users/nns/tizen-studio"
-
 ## Root Path
 export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$DOTNET_HOME/:$TIZEN_HOME/tools/ide/bin:$TIZEN_HOME/tools:$PATH
 
