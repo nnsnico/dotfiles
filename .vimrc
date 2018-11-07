@@ -239,7 +239,7 @@ let g:autoformat_remove_trailing_spaces = 0
 
 " autodate系
 " フォーマット
-let autodate_format="%Y/%m/%d %A"
+let autodate_format="%Y/%m/%d %A %H:%M:%S"
 
 " Emmet系
 let g:user_emmet_leader_key='<C-Y>'
