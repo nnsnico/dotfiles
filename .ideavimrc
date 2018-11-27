@@ -36,20 +36,24 @@ set softtabstop=2
 set virtualedit=onemore
 " Surround Vim適用
 set surround
+" multiple cursor
+set multiple-cursor
 "x キー削除でデフォルトレジスタに入れない
-nnoremap x "_x
-vnoremap x "_x
+nmap x "_x
+vmap x "_x
+" Enter + Spaceで空行追加
+nmap <Space><CR> o<ESC>
 " ヤンクでクリップボードにコピー
-noremap "+y "*y
-noremap "+Y "*Y
-noremap "+p "*p
-noremap "+P "*P
-noremap <C-S-c> "*y
-noremap <C-S-v> "*P
+map "+y "*y
+map "+Y "*Y
+map "+p "*p
+map "+P "*P
+map <C-S-c> "*y
+map <C-S-v> "*P
 " space + goでオーバーライドメソッドにジャンプ
-nnoremap <Space>go :<C-u>action OverrideMethods<CR>
+nmap <Space>go :<C-u>action OverrideMethods<CR>
 " ctrl + {hl}で左右に移動 
 imap <C-l> <Right>
 imap <C-h> <Left>
 " セミコロンをコロンとして解釈
-nnoremap ; :
+nmap ; :
