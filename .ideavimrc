@@ -38,9 +38,6 @@ set virtualedit=onemore
 set surround
 " multiple cursor
 set multiple-cursor
-"x キー削除でデフォルトレジスタに入れない
-nmap x "_x
-vmap x "_x
 " Enter + Spaceで空行追加
 nmap <Space><CR> o<ESC>
 " ヤンクでクリップボードにコピー
