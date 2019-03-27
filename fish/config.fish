@@ -37,7 +37,7 @@ if [ -f '/Users/nns/google-cloud-sdk/path.fish.inc' ]
 end
 
 ## Root path
-set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/4333796/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $DOTNET_HOME/ $OPENSSL_HOME/bin $PATH
+set -x PATH $HOME/.nodebrew/current/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools JAVA_HOME/bin $FLUTTER_HOME/bin $DOTNET_HOME/ $OPENSSL_HOME/bin $PATH
 
 ## alias
 alias e='exit'
