@@ -247,7 +247,7 @@ call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
 
 " Scalafmt系
-nmap <C-a> :Autoformat<CR>
+nmap <C-l> :Autoformat<CR>
 let g:formatdef_scalafmt = "'scalafmt --stdin 2>/dev/null'"
 let g:formatters_scala = ['scalafmt']
 let g:autoformat_autoindent = 0
