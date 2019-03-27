@@ -77,6 +77,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('elmcast/elm-vim')
   call dein#add('pangloss/vim-javascript')
   call dein#add('mxw/vim-jsx')
+  call dein#add('cespare/vim-toml')
   " Support markdown preview
   call dein#add('kannokanno/previm')
   call dein#add('tyru/open-browser.vim')
