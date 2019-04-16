@@ -118,7 +118,7 @@ endif
 "End dein Scripts-------------------------
 
 " color scheme
-colorscheme hybrid
+colorscheme focuspoint
 set background=dark
 
 " setting
