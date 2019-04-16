@@ -68,6 +68,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('flazz/vim-colorschemes')
   call dein#add('sjl/badwolf')
   call dein#add('w0ng/vim-hybrid')
+  call dein#add('chase/focuspoint-vim')
   " syntax color
   call dein#add('derekwyatt/vim-scala')
   call dein#add('leafgarland/typescript-vim')
