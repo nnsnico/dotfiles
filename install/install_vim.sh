@@ -6,7 +6,7 @@ ln -s ~/dotfiles/.vimrc ~/
 
 # 2. get 'dein.vim' installer, and install in '~/.vim/bundles'
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_vim_installer.sh
-sh ./dein_vim_installer.sh ~/.vim/bundles
+sh ./dein_vim_installer.sh ~/.cache/dein
 rm -f dein_vim_installer.sh
 
 # 3. install vim plugins

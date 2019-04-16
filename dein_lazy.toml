@@ -1,0 +1,50 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = 'scala'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
+[[plugins]]
+repo = 'ianks/vim-tsx'
+on_ft = 'typescript'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'conf'
+
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'elmcast/elm-vim'
+on_ft = 'elm'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+hook_add = '''
+  let g:user_emmet_leader_key='<C-Y>'
+'''
+
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = ['markdown', 'md' ]
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = ['markdown', 'md' ]

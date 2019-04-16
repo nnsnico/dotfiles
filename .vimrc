@@ -8,116 +8,41 @@
 
 
 "dein Scripts-----------------------------
+
 set shell=/bin/bash
 
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
+augroup MyAutoCmd
+  autocmd!
+augroup END
 
-" Required:
-if dein#load_state('~/.vim/bundles')
-  call dein#begin('~/.vim/bundles')
+" dein settings
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir . "," . &runtimepath
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
-
-  " completation
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  let g:deoplete#enable_at_startup = 1
-  call dein#add('eagletmt/neco-ghc')
-
-  " Add or remove your plugins here:
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-
-  " Asyncronous something
-  call dein#add('Shougo/vimproc')
-
-  " HTML snippets
-  call dein#add('mattn/emmet-vim')
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': '01203d4c9' })
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/vimshell', { 'rev' : '3787e5' })
-
-  " Insert Auto date
-  call dein#add('vim-scripts/autodate.vim')
-
-  " auto format
-  call dein#add('Chiel92/vim-autoformat')
-  " editor config
-  call dein#add('editorconfig/editorconfig-vim')
-  " Select on Vim
-  call dein#add('Shougo/unite.vim')
-  call dein#add('ujihisa/unite-colorscheme')
-  " Use Git on Vim
-  call dein#add('tpope/vim-fugitive')
-  " Search in Directory
-  call dein#add('ctrlpvim/ctrlp.vim')
-  " ColorScheme on Vim
-  call dein#add('flazz/vim-colorschemes')
-  call dein#add('sjl/badwolf')
-  call dein#add('w0ng/vim-hybrid')
-  call dein#add('chase/focuspoint-vim')
-  " syntax color
-  call dein#add('derekwyatt/vim-scala')
-  call dein#add('leafgarland/typescript-vim')
-  call dein#add('ianks/vim-tsx')
-  call dein#add('dag/vim-fish')
-  call dein#add('neovimhaskell/haskell-vim')
-  call dein#add('elmcast/elm-vim')
-  call dein#add('pangloss/vim-javascript')
-  call dein#add('mxw/vim-jsx')
-  call dein#add('cespare/vim-toml')
-  " Support markdown preview
-  call dein#add('kannokanno/previm')
-  call dein#add('tyru/open-browser.vim')
-  " Auto close parentheses
-  call dein#add('cohama/lexima.vim')
-  " Auto close something selection range
-  call dein#add('tpope/vim-surround')
-  " Mutil Cursor ctrl + v
-  call dein#add('terryma/vim-multiple-cursors')
-  " ColorScheme on Vim mode
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  " Show directory tree
-  call dein#add('scrooloose/nerdtree')
-  " comment out shortcut
-  call dein#add('tpope/vim-commentary')
-
-  " Asynchronous linter
-  call dein#add('w0rp/ale')
-
-  " (Optional) Enable devicon on nerdtree
-  " When you not install `nerd fonts`, comment out this line
-  call dein#add('ryanoasis/vim-devicons')
-
-  " Required:
+let s:toml_file = '~/dotfiles/dein.toml'
+let s:toml_file_lazy = '~/dotfiles/dein_lazy.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file , {'lazy': 0})
+  call dein#load_toml(s:toml_file_lazy, {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
+if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
 
-"End dein Scripts-------------------------
+"end Scripts-----------------------------
 
 " color scheme
 colorscheme focuspoint
@@ -215,52 +140,5 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" NERDTree系
-" ファイル指定の有無によって起動時にtreeを表示するかを切り替える
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" 隠しファイルをデフォルトで表示
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
-" Ctrl + tでディレクトリツリー表示
-map <C-t> :NERDTreeToggle<CR>
-" ctrl + h & lでタブの移動
-nmap <C-l> gt
-nmap <C-h> gT
-" ssで垂直方向に画面分割
-nmap gs :split<CR>
-" svで水平方向に画面分割
-nmap gv :vsplit<CR>
-" 拡張子のハイライト表示(nerdtree-devicon未使用時)
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
-call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
-call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
-call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
-
-" Scalafmt系
-nmap <C-l> :Autoformat<CR>
-let g:formatdef_scalafmt = "'scalafmt --stdin 2>/dev/null'"
-let g:formatters_scala = ['scalafmt']
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
-" autodate系
-" フォーマット
-let autodate_format="%Y/%m/%d %A %H:%M:%S"
-
-" Emmet系
-let g:user_emmet_leader_key='<C-Y>'
-

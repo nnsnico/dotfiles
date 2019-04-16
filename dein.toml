@@ -1,0 +1,100 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if has('win32')
+    let cmd = 'tools\\update-dll-mingw'
+  elseif has('win32unix') " for Cygwin
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+  map <C-t> :NERDTreeToggle<CR>
+  nmap <C-l> gt
+  nmap <C-h> gT
+  nmap gs :split<CR>
+  nmap gv :vsplit<CR>
+
+  function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  endfunction
+  call NERDTreeHighlightFile('py',     'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('md',     'blue',    'none', '#3366FF', '#151515')
+  call NERDTreeHighlightFile('yml',    'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('config', 'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('conf',   'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('json',   'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('html',   'yellow',  'none', 'yellow',  '#151515')
+  call NERDTreeHighlightFile('styl',   'cyan',    'none', 'cyan',    '#151515')
+  call NERDTreeHighlightFile('css',    'cyan',    'none', 'cyan',    '#151515')
+  call NERDTreeHighlightFile('rb',     'Red',     'none', 'red',     '#151515')
+  call NERDTreeHighlightFile('js',     'Red',     'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'chase/focuspoint-vim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'vim-scripts/autodate.vim'
+hook_add = '''
+  let autodate_format="%Y/%m/%d %A %H:%M:%S"
+'''
+
+[[plugins]]
+repo = 'Chiel92/vim-autoformat'
+hook_add = '''
+  nmap <C-l> :Autoformat<CR>
+  let g:formatdef_scalafmt = "'scalafmt --stdin 2>/dev/null'"
+  let g:formatters_scala = ['scalafmt']
+  let g:autoformat_autoindent = 0
+  let g:autoformat_retab = 0
+  let g:autoformat_remove_trailing_spaces = 0
+'''
