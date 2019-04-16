@@ -93,6 +93,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('vim-airline/vim-airline-themes')
   " Show directory tree
   call dein#add('scrooloose/nerdtree')
+  " comment out shortcut
+  call dein#add('tpope/vim-commentary')
 
   " Asynchronous linter
   call dein#add('w0rp/ale')
