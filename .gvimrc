@@ -4,4 +4,4 @@ set ffs=unix,dos,mac
 
 set t_Co=256
 
-set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Plus\ Font\ Awesome\ Plus\ Octicons\ Plus\ Pomicons\ Plus\ Font\ Logos\ (Font\ Linux)\ Plus\ Material\ Design\ Icons:h12
+set guifont=HackNerdFontCompleteM-Regular:h12
