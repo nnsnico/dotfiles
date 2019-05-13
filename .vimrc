@@ -45,7 +45,7 @@ endif
 "end Scripts-----------------------------
 
 " color scheme
-colorscheme focuspoint
+colorscheme ayu
 set background=dark
 
 " setting

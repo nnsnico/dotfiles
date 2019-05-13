@@ -8,6 +8,12 @@ on_event = 'InsertCharPre'
 on_ft = 'snippet'
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
   if has('win32')
@@ -21,6 +27,19 @@ hook_post_update = '''
   endif
   let g:dein#plugin.build = cmd
 '''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -56,6 +75,13 @@ hook_add = '''
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
+repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+  set termguicolors
+  let g:ayucolor="dark"
+'''
+
+[[plugins]]
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
@@ -69,6 +95,10 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'let g:indent_guides_enable_on_vim_startup = 1'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
