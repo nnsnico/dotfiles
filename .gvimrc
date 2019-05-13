@@ -4,4 +4,4 @@ set ffs=unix,dos,mac
 
 set t_Co=256
 
-set guifont=HackNerdFontCompleteM-Regular:h12
+set guifont=HackNerdFontCompleteM-Regular:h13
