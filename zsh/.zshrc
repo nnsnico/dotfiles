@@ -46,7 +46,6 @@ alias la='ls -alG'
 alias ll='ls -lG'
 alias emu='cd /usr/local/share/android-sdk/tools/'
 alias cat='ccat'
-alias ns='source ~/switch_proxy.sh'
 alias b='brew'
 alias stk='stack build && stack exec'
 alias git='hub'
@@ -56,4 +55,3 @@ alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
 
-ns
