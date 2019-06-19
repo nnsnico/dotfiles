@@ -31,6 +31,13 @@ repo = 'neovimhaskell/haskell-vim'
 on_ft = 'haskell'
 
 [[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+hook_add = '''
+  let g:rustfmt_autosave = 1
+'''
+
+[[plugins]]
 repo = 'elmcast/elm-vim'
 on_ft = 'elm'
 
