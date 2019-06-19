@@ -6,6 +6,21 @@ if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
   source "${HOME}/.zprezto/init.zsh"
 fi
 
+# powerlevel settings
+## add newline
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+## disable right prompt
+POWERLEVEL9K_DISABLE_RPROMPT=true
+## customize left prompt
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context newline dir vcs newline vi_mode status)
+## colorscheme
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='darkolivegreen1'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='green1'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='dodgerblue1'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+
 # export
 ## zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
