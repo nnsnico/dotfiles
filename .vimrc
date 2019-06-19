@@ -45,7 +45,7 @@ endif
 "end Scripts-----------------------------
 
 " color scheme
-colorscheme ayu
+colorscheme seoul256
 set background=dark
 
 " setting

@@ -75,11 +75,8 @@ hook_add = '''
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'ayu-theme/ayu-vim'
-hook_add = '''
-  set termguicolors
-  let g:ayucolor="dark"
-'''
+repo = 'junegunn/seoul256.vim'
+hook_add = 'let g:seoul256_background = 233'
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
@@ -96,6 +93,9 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
