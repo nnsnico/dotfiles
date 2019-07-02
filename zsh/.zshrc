@@ -36,6 +36,11 @@ POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 
 # export
+## Brew-Cask(optional)
+## If Acceess permission of root dir is denied
+## by your pc, export this PATH.
+# export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
 ## zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
