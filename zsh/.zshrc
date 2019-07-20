@@ -49,6 +49,7 @@ source $ZPLUG_HOME/init.zsh
 zplug "sorin-ionescu/prezto"
 zplug "peco/peco"
 zplug "zsh-users/zsh-completions"
+zplug "zdharma/fast-syntax-highlighting"
 
 ## Java
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
