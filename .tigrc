@@ -6,6 +6,8 @@ set log-view    = line-number:yes,interval=1 text
 set blob-view   = line-number:yes,interval=1 text
 set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
+set split-view-height = 80%
+
 # git
 ## Fetch branch by `f` (default: :toggle file-name / :toggle commit-title-refs)
 bind generic F      ?git fetch %(remote)
