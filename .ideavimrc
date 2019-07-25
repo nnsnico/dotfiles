@@ -51,6 +51,8 @@ map <C-S-v> "*P
 nmap <Space>go :<C-u>action OverrideMethods<CR>
 " spage + dで定義ウィンドウの表示
 nmap <Space>d :<C-u>action QuickImplementations<CR>
+" spage + bで定義へジャンプ
+nmap <Space>b :<C-u>action GotoDeclaration<CR>
 " ctrl + {hl}で左右に移動 
 imap <C-l> <Right>
 imap <C-h> <Left>
