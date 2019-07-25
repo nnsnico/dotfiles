@@ -89,4 +89,5 @@ alias issue='hub browse -- issues'
 alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
+alias nikka='brew update && brew upgrade && brew cleanup && vim +":call dein#update()" +:q'
 
