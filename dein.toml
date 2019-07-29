@@ -39,9 +39,6 @@ repo = 'roxma/nvim-yarp'
 repo = 'roxma/vim-hug-neovim-rpc'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-
-[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   autocmd StdinReadPre * let s:std_in=1
