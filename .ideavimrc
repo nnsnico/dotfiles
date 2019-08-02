@@ -1,60 +1,69 @@
-" 検索するときに大文字小文字を区別しない
+" Not distinction uppercase and lowercase when search
 set ignorecase
-" 検索時に大文字を含んでいたら大/小を区別
 set smartcase
-" インクリメンタル検索 (検索ワードの最初の文字を入力した時点で検索が開始)
+" incremental serach
 set incsearch
-" 検索対象をハイライト
+" Show highlight when search
 set hlsearch
-" 対応する括弧やブレースを表示
+" Jump match pane
 set showmatch matchtime=1
-" メッセージ表示欄を2行確保
+" Show command message on 2 line
 set cmdheight=2
-" ステータス行を常に表示
+" Show status line
 set laststatus=2
-" ウィンドウの右下に入力中のコマンドを表示
+" Show input command
 set showcmd
-" 省略されずに表示
+" Not omit line
 set display=lastline
-" 行末のスペースを可視化
+" Visualize tab and trail
 set listchars=tab:^\ ,trail:~
-" ヤンクでクリップボードにコピー
+" Copying clipboard by Yank 
 set clipboard+=unnamed
-" 対応する括弧を強調表示
+" Show match pane
 set showmatch
-" Escの2回押しでハイライト消去
+" Erase search highlight by Esc + Esc Esc
 nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-" 行をまたいで移動
+" Move line overwrite
 set whichwrap=b,s,h,l,<,>,[,],~
-" インデント方法の変更
+" Change how to indent
 set cinoptions+=:0
-" インデント幅
+" Indent width
 set shiftwidth=2
-" タブキー押下時に挿入される文字幅を指定
+" Specify char width when press Tab key
 set softtabstop=2
-" 行末の1文字先までカーソルを移動できるように
+" Move one more char from line end
 set virtualedit=onemore
 " Surround Vim適用
 set surround
-" multiple cursor
+" Multiple cursor
 set multiple-cursor
+" Commentary
+set commentary
 " Enter + Spaceで空行追加
 nmap <Space><CR> o<ESC>
-" ヤンクでクリップボードにコピー
+" Copy in clipboard by yank
 map "+y "*y
 map "+Y "*Y
 map "+p "*p
 map "+P "*P
 map <C-S-c> "*y
 map <C-S-v> "*P
-" space + goでオーバーライドメソッドにジャンプ
-nmap <Space>go :<C-u>action OverrideMethods<CR>
-" spage + dで定義ウィンドウの表示
+" Show override methods by `space + o`
+nmap <Space>o :<C-u>action OverrideMethods<CR>
+" Show definition window by `spage + d`
 nmap <Space>d :<C-u>action QuickImplementations<CR>
-" spage + bで定義へジャンプ
+" Jump override methods by `space + i`
+nmap <Space>i :<C-u>action GotoImplementation<CR>
+" Jump definition by `spage + b`
 nmap <Space>b :<C-u>action GotoDeclaration<CR>
-" ctrl + {hl}で左右に移動 
+" Reformat code by `space + r`
+nmap <Space>r :<C-u>action ReformatCode<CR>
+" Move to Next(Right) tab by `t + t`
+nmap tt :<C-u>action NextTab<CR>
+" Move to Previous(Left) tab by `t + T`
+nmap tT :<C-u>action PreviousTab<CR>
+" Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
-" セミコロンをコロンとして解釈
+" Map `:` to `;`
 nmap ; :
