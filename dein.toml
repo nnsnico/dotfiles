@@ -106,6 +106,14 @@ repo = 'w0rp/ale'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  nmap <Space>hp <Plug>GitGutterPreviewHunk
+  nmap <Space>ha <Plug>GitGutterStageHunk
+  nmap <Space>hr <Plug>GitGutterUndoHunk
+'''
+
+[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = 'let g:indent_guides_enable_on_vim_startup = 1'
 
