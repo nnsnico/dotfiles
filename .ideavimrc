@@ -33,11 +33,11 @@ set shiftwidth=2
 set softtabstop=2
 " Move one more char from line end
 set virtualedit=onemore
-" Surround Vim適用
+" Apply `Surround Vim`
 set surround
-" Multiple cursor
+" Apply `Multiple Cursor`
 set multiple-cursor
-" Commentary
+" Apply `Commentary`
 set commentary
 " Enter + Spaceで空行追加
 nmap <Space><CR> o<ESC>
@@ -62,6 +62,8 @@ nmap <Space>r :<C-u>action ReformatCode<CR>
 nmap tt :<C-u>action NextTab<CR>
 " Move to Previous(Left) tab by `t + T`
 nmap tT :<C-u>action PreviousTab<CR>
+" Toggle wrap lines
+nmap tw :<C-u>action EditorToggleUseSoftWraps<CR>
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
