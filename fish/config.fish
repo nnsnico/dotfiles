@@ -4,7 +4,7 @@
 # then, Install all by `fisher up; and fisher .` of fisherman
 
 # vi mode
-fish_vi_key_bindings
+set -U fish_key_bindings fish_vi_key_bindings
 
 # greeting message
 function fish_greeting
@@ -58,7 +58,4 @@ alias git='hub'
 alias see='hub browse'
 alias issue='hub browse -- issues'
 alias pl='hub pull-request'
-
-# execute switch_proxy
-ns
 
