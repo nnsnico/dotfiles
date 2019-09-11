@@ -33,6 +33,16 @@ repo = 'Shougo/deoplete.nvim'
 hook_add = 'let g:deoplete#enable_at_startup = 1'
 
 [[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+  nnoremap zf :Files<CR>
+  nnoremap zg :GFiles?<CR>
+'''
+
+[[plugins]]
+repo = '/usr/local/opt/fzf'
+
+[[plugins]]
 repo = 'roxma/nvim-yarp'
 
 [[plugins]]
@@ -69,6 +79,23 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+hook_add = '''
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+'''
+
+[[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
@@ -101,6 +128,17 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merge = 0
+rev = 'release'
+hook_add = '''
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
