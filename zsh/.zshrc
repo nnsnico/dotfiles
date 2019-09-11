@@ -90,6 +90,6 @@ alias issue='hub browse -- issues'
 alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
-alias fzf='fzf --height=60%'
+alias fzf='fzf --border --layout=reverse --height=60%'
 alias nikka='brew update && brew upgrade && brew cleanup && zplug update && vim +":call dein#update()" +:q'
 
