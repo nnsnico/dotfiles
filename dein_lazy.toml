@@ -48,7 +48,7 @@ on_ft = 'typescript'
 
 [[plugins]]
 repo = 'dag/vim-fish'
-on_ft = 'conf'
+on_ft = 'fish'
 
 [[plugins]]
 repo = 'neovimhaskell/haskell-vim'
