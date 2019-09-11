@@ -75,6 +75,7 @@ export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-t
 
 # alias
 alias v='/usr/local/bin/vim'
+alias nv='/usr/local/bin/nvim'
 alias e='exit'
 alias l='ls -ltrG'
 alias la='ls -alG'
@@ -89,5 +90,6 @@ alias issue='hub browse -- issues'
 alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
+alias fzf='fzf --height=60%'
 alias nikka='brew update && brew upgrade && brew cleanup && zplug update && vim +":call dein#update()" +:q'
 
