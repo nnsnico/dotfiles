@@ -45,7 +45,15 @@ endif
 "end Scripts-----------------------------
 
 " color scheme
-colorscheme seoul256
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+colorscheme hybrid_reverse
 set background=dark
 
 " setting
