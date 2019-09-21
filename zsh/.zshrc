@@ -41,6 +41,10 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 ## by your pc, export this PATH.
 # export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
+## FZF
+export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+export FZF_DEFAULT_OPTS='--border --layout=reverse --height=60%'
+
 ## zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -90,6 +94,5 @@ alias issue='hub browse -- issues'
 alias pl='hub pull-request'
 alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
-alias fzf='fzf --border --layout=reverse --height=60%'
 alias nikka='brew update && brew upgrade && brew cleanup && zplug update && vim +":call dein#update()" +:q'
 
