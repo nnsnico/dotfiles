@@ -26,7 +26,7 @@ let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if !isdirectory(s:dein_repo_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
-let &runtimepath = s:dein_repo_dir . "," . &runtimepath
+let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
 
 let s:toml_file = '~/dotfiles/dein.toml'
 let s:toml_file_lazy = '~/dotfiles/dein_lazy.toml'
@@ -58,11 +58,12 @@ set background=dark
 
 " setting
 " default shell
-set sh=zsh
+set shell=zsh
 "文字コードをUTF-8に設定
-set enc=utf-8
-set fencs=utf-8
-set ffs=unix,dos,mac
+set encoding=utf-8
+scriptencoding utf-8
+set fileencodings=utf-8
+set fileformats=unix,dos,mac
 " バックアップファイルとスワップファイルを作らない
 set nobackup
 set noswapfile
