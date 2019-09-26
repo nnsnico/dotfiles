@@ -82,6 +82,7 @@ hook_add = '''
   map <C-t> :NERDTreeToggle<CR>
   nmap <C-l> gt
   nmap <C-h> gT
+  nnoremap <C-m> :NERDTreeFind<CR>
   nmap gs :split<CR>
   nmap gv :vsplit<CR>
 
