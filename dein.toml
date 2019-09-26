@@ -60,8 +60,7 @@ hook_add = '''
 
       call nvim_open_win(buf, v:true, opts)
     endfunction
-  end
-
+  endif
 '''
 
 [[plugins]]
@@ -111,10 +110,6 @@ let g:NERDTreeIndicatorMapCustom = {
 repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
-repo = 'junegunn/seoul256.vim'
-hook_add = 'let g:seoul256_background = 233'
-
-[[plugins]]
 repo = 'ayu-theme/ayu-vim'
 hook_add = '''
   set termguicolors
@@ -161,9 +156,9 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-  nmap <Space>hp <Plug>GitGutterPreviewHunk
-  nmap <Space>ha <Plug>GitGutterStageHunk
-  nmap <Space>hr <Plug>GitGutterUndoHunk
+  nmap <Space>hp <Plug>(GitGutterPreviewHunk)
+  nmap <Space>ha <Plug>(GitGutterStageHunk)
+  nmap <Space>hr <Plug>(GitGutterUndoHunk)
 '''
 
 [[plugins]]
