@@ -159,6 +159,9 @@ hook_add = '''
   nmap <Space>hp <Plug>(GitGutterPreviewHunk)
   nmap <Space>ha <Plug>(GitGutterStageHunk)
   nmap <Space>hr <Plug>(GitGutterUndoHunk)
+  if has('nvim')
+    let g:gitgutter_highlight_linenrs = 1
+  endif
 '''
 
 [[plugins]]
