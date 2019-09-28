@@ -159,6 +159,9 @@ hook_add = '''
   nmap <Space>hp <Plug>(GitGutterPreviewHunk)
   nmap <Space>ha <Plug>(GitGutterStageHunk)
   nmap <Space>hr <Plug>(GitGutterUndoHunk)
+
+  let g:gitgutter_sign_removed = '-'
+  let g:gitgutter_sign_removed_first_line = '-'
   if has('nvim')
     let g:gitgutter_highlight_linenrs = 1
   endif
