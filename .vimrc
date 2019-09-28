@@ -87,6 +87,14 @@ imap <Up> <Nop>
 imap <Down> <Nop>
 imap <Left> <Nop>
 imap <Right> <Nop>
+" Enable vi-arrow in command line mode by <ctrl> + (h|j|k|l)
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
 " ctrl + l で右に移動する
 imap <C-l> <C-g>U<Right>
 " Space + Enterで空行を追加
@@ -112,7 +120,7 @@ set showmatch
 " ステータスラインを常に表示
 set laststatus=2
 " コマンドラインの補完
-set wildmode=list:longest
+set wildmode=list:longest,full
 " 文字がかぶるのを修正する
 set ambiwidth=double
 " 折り返し時に表示行単位での移動できるようにする
