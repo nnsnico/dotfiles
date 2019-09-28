@@ -53,7 +53,7 @@ if has('termguicolors')
   set termguicolors
 endif
 
-colorscheme hybrid_reverse
+colorscheme deep-space
 set background=dark
 
 " setting

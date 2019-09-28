@@ -117,7 +117,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kristijanhusak/vim-hybrid-material'
+repo = 'tyrannicaltoucan/vim-deep-space'
 
 [[plugins]]
 repo = 'luochen1990/rainbow'
