@@ -159,3 +159,9 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
+
+" highlight comment
+augroup mygroup
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+  autocmd BufNewFile,BufRead *.conf set filetype=conf
+augroup end
