@@ -49,6 +49,11 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
+if has('nvim')
+  set pumblend=30
+  set winblend=20
+endif
+
 if has('termguicolors')
   set termguicolors
 endif
