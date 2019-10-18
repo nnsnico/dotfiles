@@ -134,7 +134,15 @@ repo = 'chase/focuspoint-vim'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-hook_add = 'let g:airline_powerline_fonts = 1'
+hook_add = '''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+
+let g:airline_section_b = '(´ワ｀ )'
+let g:airline_section_c = '%t'
+let g:airline_section_z = '%L lines %p%%'
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
