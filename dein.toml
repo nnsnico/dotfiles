@@ -120,6 +120,9 @@ hook_add = '''
 repo = 'tyrannicaltoucan/vim-deep-space'
 
 [[plugins]]
+repo = 'romainl/Apprentice'
+
+[[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = 'let g:rainbow_active = 1'
 

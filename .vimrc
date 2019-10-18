@@ -58,7 +58,7 @@ if has('termguicolors')
   set termguicolors
 endif
 
-colorscheme deep-space
+colorscheme apprentice
 set background=dark
 
 " setting
@@ -77,8 +77,12 @@ set nowrap
 set autoread
 " バッファが編集中でもその他のファイルを開けるように
 set hidden
+" apply indent auto when paste text
+set autoindent
 " 入力中のコマンドをステータスに表示する
 set showcmd
+" cmdline height
+set cmdheight=2
 " バックスペースで削除
 set backspace=indent,eol,start
 " ヤンクでコピーした内容をOSレベルのクリップボードで保存する
@@ -104,8 +108,6 @@ cnoremap <C-d> <Del>
 imap <C-l> <C-g>U<Right>
 " Space + Enterで空行を追加
 nmap <Space><CR> o<ESC>
-" コマンドラインモードをセミコロンで
-nn ; :
 
 " 見た目系
 " シンタックスカラー
