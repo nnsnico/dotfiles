@@ -13,6 +13,9 @@ set split-view-height = 80%
 bind generic F      ?git fetch %(remote)
 bind main    F      ?git fetch %(remote)
 
+## Add commit option `v`
+bind status  C      !git commit -v
+
 ## `:toggle file-name / :toggle commit-title-refs` by `Alt-f`
 bind generic <Esc>f :toggle file-name
 bind main    <Esc>f :toggle commit-title-refs
