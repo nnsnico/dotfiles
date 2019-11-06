@@ -55,6 +55,9 @@
     (progn
       (global-display-line-numbers-mode)))
 
+;; highlight line
+(global-hl-line-mode t)
+
 ;; hide menu bar
 (menu-bar-mode -1)
 
