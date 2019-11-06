@@ -1,3 +1,18 @@
+;;  Package-Requires: ((dash "2.16.0"))
+;; package manager
+
+;; init package manager
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
 ;; default
 
 (set-locale-environment nil)
@@ -6,6 +21,18 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+
+;; load material theme
+(load-theme 'material t)
+
+;; load autocomplete
+(ac-config-default)
+
+;; load rainbow delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; syntax highlight of dash
+(eval-after-load 'dash '(dash-enable-font-lock))
 
 ;; enable clipboard on osx
 (defun copy-from-osx()
@@ -24,22 +51,21 @@
 (display-time)
 
 ;; show line num
-(require 'linum)
-(global-linum-mode 1)
+(if (version<= "26.0.50" emacs-version)
+    (progn
+      (global-display-line-numbers-mode)))
 
 ;; hide menu bar
-(menu-bar-mode 0)
+(menu-bar-mode -1)
 
 ;; highlight paren
 (show-paren-mode 1)
 
-;; no show menu if launch
-(if (eq window-system 'x)
-    (menu-bar-mode 1) (menu-bar-mode 0))
-(menu-bar-mode nil)
+;; no show toolbar
+(when (display-graphic-p)
+  (tool-bar-mode -1))
 
 ;; keymap
-
 (when (eq system-type 'darwin)
   ;; map `command` to `super`
   (setq mac-command-modifier 'super))
@@ -67,3 +93,9 @@
 
 ;; ignore search case
 (setq case-fold-search t)
+
+(custom-set-variables
+ '(package-selected-packages
+   (quote
+    (markdown-mode  auto-complete dash material-theme popup rainbow-delimiters))))
+(custom-set-faces)
