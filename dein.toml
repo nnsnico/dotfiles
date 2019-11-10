@@ -210,3 +210,22 @@ hook_add = '''
   let g:autoformat_retab = 0
   let g:autoformat_remove_trailing_spaces = 0
 '''
+
+[[plugins]]
+repo = 'glacambre/firenvim'
+hook_post_update = '''
+  let g:firenvim_config = {
+      \ 'localSettings': {
+          \ '.*': {
+              \ 'selector': '',
+              \ 'priority': 0,
+          \ },
+          \ 'github\.com': {
+              \ 'selector': 'textarea',
+              \ 'priority': 1,
+          \ },
+      \ }
+  \ }
+
+  call firenvim#install(0)
+'''
