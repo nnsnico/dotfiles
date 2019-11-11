@@ -35,9 +35,10 @@ hook_add = 'let g:deoplete#enable_at_startup = 0'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-  nnoremap zf :Files<CR>
-  nnoremap zg :GFiles?<CR>
-  nnoremap zh :History<CR>
+  nnoremap <silent> zf :Files<CR>
+  nnoremap <silent> zg :GFiles?<CR>
+  nnoremap <silent> zh :History<CR>
+  nnoremap <silent> zb :Buffers<CR>
 
   if has('nvim')
     let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -78,12 +79,12 @@ hook_add = '''
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-  map <C-t> :NERDTreeToggle<CR>
+  map <silent> <C-t> :NERDTreeToggle<CR>
   nmap <C-l> gt
   nmap <C-h> gT
-  nnoremap <C-k> :NERDTreeFind<CR>
-  nmap gs :split<CR>
-  nmap gv :vsplit<CR>
+  nnoremap <silent> <C-k> :NERDTreeFind<CR>
+  nmap <silent> gs :split<CR>
+  nmap <silent> gv :vsplit<CR>
 '''
 
 [[plugins]]
