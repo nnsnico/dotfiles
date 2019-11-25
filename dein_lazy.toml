@@ -78,16 +78,26 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'racer-rust/vim-racer'
-on_ft = 'rust'
+repo = 'neoclide/coc.nvim'
+on_ft = ['vim', 'eruby', 'markdown', 'haskell', 'lhs', 'hs', 'scala', 'rust', 'purescript', 'elm']
+merged = 0
+rev = 'release'
 hook_add = '''
   set hidden
-  let g:racer_cmd = "/Users/y_toyama/.cargo/bin/racer"
-  let g:racer_experimental_completer = 1
-  let g:racer_insert_paren = 1
   set updatetime=300
   set shortmess+=c
   set signcolumn=yes
+
+  nnoremap <silent> F :call CocAction('format')<CR>
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  function! s:show_documentation()
+    if &filetype == 'vim'
+      execute 'h ' . expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
 
   nmap <silent> gd <Plug>(coc-definition)
   nmap <silent> gy <Plug>(coc-type-definition)

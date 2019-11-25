@@ -152,17 +152,6 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'w0rp/ale'
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-merge = 0
-rev = 'release'
-hook_add = '''
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-'''
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
