@@ -163,6 +163,7 @@ hook_add = '''
 
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_removed_first_line = '-'
+  let g:gitgutter_preview_win_floating = 1
   if has('nvim')
     let g:gitgutter_highlight_linenrs = 1
   endif
