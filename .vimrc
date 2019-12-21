@@ -149,6 +149,7 @@ set expandtab
 set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
+set shiftround
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別して検索する
@@ -169,6 +170,7 @@ let NERDTreeShowBookmarks = 1
 
 " highlight comment
 augroup mygroup
+  autocmd!
   autocmd FileType json syntax match Comment +\/\/.\+$+
   autocmd BufNewFile,BufRead *.conf set filetype=conf
 augroup end
