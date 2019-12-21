@@ -185,4 +185,6 @@ function! OnUIEnter(event)
   endif
 endfunction
 
-autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+if has('nvim')
+  autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+endif
