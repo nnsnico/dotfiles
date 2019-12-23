@@ -40,6 +40,12 @@ hook_add = '''
   nnoremap <silent> zh :History<CR>
   nnoremap <silent> zb :Buffers<CR>
 
+  " customize to open in horizontal
+  let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-h': 'split',
+    \ 'ctrl-v': 'vsplit' }
+
   if has('nvim')
     let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
@@ -161,6 +167,7 @@ hook_add = '''
   nmap <Space>ha <Plug>(GitGutterStageHunk)
   nmap <Space>hr <Plug>(GitGutterUndoHunk)
 
+  let g:gitgutter_preview_win_floating = 1
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_removed_first_line = '-'
   let g:gitgutter_preview_win_floating = 1
@@ -192,6 +199,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'skanehira/translate.vim'
+
+[[plugins]]
 repo = 'glacambre/firenvim'
 hook_post_update = '''
   let g:firenvim_config = {
@@ -207,5 +217,5 @@ hook_post_update = '''
       \ }
   \ }
 
-  call firenvim#install(0)
+  function('firenvim#install')
 '''

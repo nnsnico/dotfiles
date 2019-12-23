@@ -133,6 +133,8 @@ set showmatch
 set laststatus=2
 " completion command line
 set wildmode=list:longest,full
+" height command line
+set cmdheight=2
 " support special symbol
 set ambiwidth=double
 " support straddling line when enable wrapping line
@@ -174,7 +176,15 @@ set wrapscan
 " highlight
 set hlsearch
 " cancel highlight double push <ESC>
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
+nmap <silent><Esc><Esc> :nohlsearch<CR><Esc>
+
+" (Optional) move from terminal on neovim
+if has('nvim')
+  tnoremap <C-w>h <C-\><C-n><C-w>h
+  tnoremap <C-w>j <C-\><C-n><C-w>j
+  tnoremap <C-w>k <C-\><C-n><C-w>k
+  tnoremap <C-w>l <C-\><C-n><C-w>l
+endif
 
 " END SEARCH -----------------------------
 
@@ -188,16 +198,22 @@ augroup mygroup
   autocmd BufNewFile,BufRead *.conf set filetype=conf
 augroup end
 
-function! OnUIEnter(event)
-  let l:ui = nvim_get_chan_info(a:event.chan)
-  if has_key(l:ui, 'client') && has_key(l:ui.client, 'name')
-    if l:ui.client.name ==# 'Firenvim'
-      set laststatus=0
-      set guifont=HackNerdFontCompleteM-Regular:h9
+if has('nvim')
+  function! OnUIEnter(event)
+    let l:ui = nvim_get_chan_info(a:event.chan)
+    if has_key(l:ui, 'client') && has_key(l:ui.client, 'name')
+      if l:ui.client.name ==# 'Firenvim'
+        set laststatus=0
+        set guifont=HackNerdFontCompleteM-Regular:h9
+      endif
     endif
-  endif
-endfunction
+  endfunction
+endif
 
 if has('nvim')
   autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+endif
+
+if exists('g:vv')
+  VVset fontfamily="HackNerdFontComplete-Regular"
 endif
