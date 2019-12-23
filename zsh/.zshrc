@@ -54,6 +54,24 @@ export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=6
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+## Network
+function handleproxy() {
+  local ssid=`/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F': ' '/ SSID/ {print $2}'`
+  echo "current netowrk ssid: $ssid"
+  if [ $ssid = 'aoyamafan' ]; then
+    echo 'proxy is set'
+    local name=`cat ./yabaiyatsu.txt | awk -F ': ' '/id/ {print $2}'`
+    local pass=`cat ./yabaiyatsu.txt | awk -F ': ' '/password/ {print $2}'`
+    export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+    export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+  elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
+    unset http_proxy
+    unset https_proxy
+  fi
+}
+
+handleproxy
+
 ## Add to plugins
 zplug "sorin-ionescu/prezto"
 zplug "peco/peco"
