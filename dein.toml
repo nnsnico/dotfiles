@@ -163,6 +163,7 @@ hook_add = '''
 
   let g:gitgutter_sign_removed = '-'
   let g:gitgutter_sign_removed_first_line = '-'
+  let g:gitgutter_preview_win_floating = 1
   if has('nvim')
     let g:gitgutter_highlight_linenrs = 1
   endif
@@ -188,17 +189,6 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'vim-scripts/autodate.vim'
 hook_add = '''
   let autodate_format="%Y/%m/%d %A %H:%M:%S"
-'''
-
-[[plugins]]
-repo = 'Chiel92/vim-autoformat'
-hook_add = '''
-  nmap <C-l> :Autoformat<CR>
-  let g:formatdef_scalafmt = "'scalafmt --stdin 2>/dev/null'"
-  let g:formatters_scala = ['scalafmt']
-  let g:autoformat_autoindent = 0
-  let g:autoformat_retab = 0
-  let g:autoformat_remove_trailing_spaces = 0
 '''
 
 [[plugins]]

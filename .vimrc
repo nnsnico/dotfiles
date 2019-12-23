@@ -44,7 +44,8 @@ endif
 
 "end Scripts-----------------------------
 
-" color scheme
+" COLOR SCHEME -----------------------------
+
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -61,37 +62,40 @@ endif
 colorscheme apprentice
 set background=dark
 
-" setting
+" END COLOR SCHEME -----------------------------
+
+" BASIC -----------------------------
+
 " default shell
 set shell=zsh
-"文字コードをUTF-8に設定
+" character encoding
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
-" バックアップファイルとスワップファイルを作らない
+" not make backup and swapfile
 set nobackup
 set noswapfile
 set nowrap
-" 編集中のファイルが変更されたら自動で読み直す
+" auto read when the file being edited is changed
 set autoread
-" バッファが編集中でもその他のファイルを開けるように
+" able to edit other file while editing buffer
 set hidden
 " apply indent auto when paste text
 set autoindent
-" 入力中のコマンドをステータスに表示する
+" show inputting command on status line
 set showcmd
 " cmdline height
 set cmdheight=2
-" バックスペースで削除
+" remove on backspace
 set backspace=indent,eol,start
-" ヤンクでコピーした内容をOSレベルのクリップボードで保存する
+" copy to system at the same time as yank 
 set clipboard+=unnamed
-" 矢印キーを無効にする
-nmap <Up> <Nop>
-nmap <Down> <Nop>
-nmap <Left> <Nop>
-nmap <Right> <Nop>
+" disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 imap <Up> <Nop>
 imap <Down> <Nop>
 imap <Left> <Nop>
@@ -104,71 +108,82 @@ cnoremap <C-p> <Up>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
-" ctrl + l で右に移動する
-imap <C-l> <C-g>U<Right>
-" Space + Enterで空行を追加
+" add new line <Space><CR> 
 nmap <Space><CR> o<ESC>
 
-" 見た目系
-" シンタックスカラー
+" END BASIC -----------------------------
+
+" VISUAL -----------------------------
+
+" enable syntax color
 syntax on
-" 行番号を表示
+" show line number
 set number
-" 現在の行を強調表示
+" highlight current line
 set cursorline
-" 行末の1文字先までカーソルを移動できるように
+" able to edit end of line one more
 set virtualedit=onemore
-" インデントはスマートインデント
+" enable smart indent
 set smartindent
-" ビープ音を可視化
+" visualize bell (flash display)
 set visualbell
-" 括弧入力時の対応する括弧を表示
+" show match paren 
 set showmatch
-" ステータスラインを常に表示
+" always show status line
 set laststatus=2
-" コマンドラインの補完
+" completion command line
 set wildmode=list:longest,full
-" 文字がかぶるのを修正する
+" support special symbol
 set ambiwidth=double
-" 折り返し時に表示行単位での移動できるようにする
-nn j gj
-nn k gk
-" カーソルの表示をモードで変更する(iTerm限定)
+" support straddling line when enable wrapping line
+nnoremap j gj
+nnoremap k gk
+" change shape of cursor each mode (support iTerm only)
 if has('mac')
   let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
   let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
 endif
 
-" Tab系
-" 不可視文字を可視化
+" END VISUAL -----------------------------
+
+" TAB -----------------------------
+
+" visualize invisible characters
 set list
 set listchars=tab:»-,trail:-,eol:↩
-" Tab文字を半角スペースにする
+" replace tab to space
 set expandtab
-" 行頭以外のTab文字の表示幅（スペースいくつ分）
+" tab size
 set tabstop=2
-" 行頭でのTab文字の表示幅
 set shiftwidth=2
+" stop tab until shiftwidth size
+set shiftround
 
-" 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別して検索する
+" END TAB -----------------------------
+
+" SEARCH -----------------------------
+
+" ignore lowercase and uppercase
 set noignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
+" search by distinguishing if uppercase are included
 set smartcase
-" 検索文字列入力時に順次対象文字列にヒットさせる
+" incremental search
 set incsearch
-" 検索時に最後まで行ったら最初に戻る
+" wrap scanning
 set wrapscan
-" 検索語をハイライト表示
+" highlight
 set hlsearch
-" ESC連打でハイライト解除
+" cancel highlight double push <ESC>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" END SEARCH -----------------------------
 
 let NERDTreeShowHidden = 1
 let NERDTreeShowBookmarks = 1
 
 " highlight comment
 augroup mygroup
+  autocmd!
   autocmd FileType json syntax match Comment +\/\/.\+$+
   autocmd BufNewFile,BufRead *.conf set filetype=conf
 augroup end
@@ -183,4 +198,6 @@ function! OnUIEnter(event)
   endif
 endfunction
 
-autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+if has('nvim')
+  autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+endif
