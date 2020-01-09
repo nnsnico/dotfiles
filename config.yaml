@@ -1,4 +1,5 @@
 # configure vim/erb/markdown langserver
+---
 language:
   vim:
     lint-command: 'vint -'

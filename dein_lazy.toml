@@ -79,7 +79,20 @@ hook_add = '''
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-on_ft = ['vim', 'eruby', 'markdown', 'haskell', 'lhs', 'hs', 'scala', 'rust', 'purescript', 'elm']
+on_ft = [
+  'vim',
+  'eruby',
+  'markdown',
+  'haskell',
+  'lhs',
+  'hs',
+  'scala',
+  'rust',
+  'purescript',
+  'elm',
+  'javascript',
+  'typescript'
+]
 merged = 0
 rev = 'release'
 hook_add = '''
@@ -87,6 +100,11 @@ hook_add = '''
   set updatetime=300
   set shortmess+=c
   set signcolumn=yes
+
+  nmap <silent> [e <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]e <Plug>(coc-diagnostic-next)
+
+  nmap <leader>ac <Plug>(coc-codeaction)
 
   nnoremap <silent> F :call CocAction('format')<CR>
   nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -104,6 +122,12 @@ hook_add = '''
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
 
+  nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+  nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+  nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+  nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+  nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+  nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 '''
 
 [[plugins]]
