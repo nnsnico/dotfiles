@@ -22,7 +22,7 @@
     },
     "efm": {
       "command": "efm-langserver",
-      "args": ["-e", "/Users/nns/.config/efm-langserver/config.yaml"],
+      "args": ["-e", "~/dotfiles/vim/config.yaml"],
       "filetypes": ["vim", "eruby", "markdown"]
     },
     "rust": {

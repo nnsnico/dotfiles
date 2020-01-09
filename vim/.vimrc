@@ -28,8 +28,8 @@ if !isdirectory(s:dein_repo_dir)
 endif
 let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
 
-let s:toml_file = '~/dotfiles/dein.toml'
-let s:toml_file_lazy = '~/dotfiles/dein_lazy.toml'
+let s:toml_file = '~/dotfiles/vim/dein.toml'
+let s:toml_file_lazy = '~/dotfiles/vim/dein_lazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_file , {'lazy': 0})
