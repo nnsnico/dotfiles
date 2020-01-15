@@ -67,5 +67,3 @@ nmap tw :<C-u>action EditorToggleUseSoftWraps<CR>
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
-" Map `:` to `;`
-nmap ; :

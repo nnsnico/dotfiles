@@ -36,7 +36,7 @@
       "filetypes": ["purescript"],
       "rootPatterns": ["bower.json", "psc-package.json", "spago.dhall"]
     },
-    "elmLS": { 
+    "elmLS": {
       "command": "elm-language-server",
       "filetypes": ["elm"],
       "rootPatterns": ["elm.json"],
