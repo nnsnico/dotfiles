@@ -104,6 +104,8 @@ hook_add = '''
   nmap <silent> [e <Plug>(coc-diagnostic-prev)
   nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
   nmap <leader>ac <Plug>(coc-codeaction)
 
   nnoremap <silent> F :call CocAction('format')<CR>
@@ -128,6 +130,9 @@ hook_add = '''
   nnoremap <silent> <space>j  :<C-u>CocNext<CR>
   nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 '''
 
 [[plugins]]

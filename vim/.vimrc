@@ -89,7 +89,7 @@ set showcmd
 set cmdheight=2
 " remove on backspace
 set backspace=indent,eol,start
-" copy to system at the same time as yank 
+" copy to system at the same time as yank
 set clipboard+=unnamed
 " disable arrow keys
 noremap <Up> <Nop>
@@ -108,8 +108,13 @@ cnoremap <C-p> <Up>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
-" add new line <Space><CR> 
+" add new line <Space><CR>
 nmap <Space><CR> o<ESC>
+" auto completion of paren
+inoremap { {}<Left>
+inoremap {<cr> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<cr> ()<Left><CR><ESC><S-o>
 
 " END BASIC -----------------------------
 
@@ -127,7 +132,7 @@ set virtualedit=onemore
 set smartindent
 " visualize bell (flash display)
 set visualbell
-" show match paren 
+" show match paren
 set showmatch
 " always show status line
 set laststatus=2
