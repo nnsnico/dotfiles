@@ -110,11 +110,6 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
 " add new line <Space><CR>
 nmap <Space><CR> o<ESC>
-" auto completion of paren
-inoremap { {}<Left>
-inoremap {<cr> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<cr> ()<Left><CR><ESC><S-o>
 
 " END BASIC -----------------------------
 

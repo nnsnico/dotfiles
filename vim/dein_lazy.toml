@@ -78,6 +78,17 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
+on_ft = 'markdown'
+hook_add = '''
+  nnoremap <silent> <space>@ :Tabularize<CR>
+'''
+
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 on_ft = [
   'vim',
