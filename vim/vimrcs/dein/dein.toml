@@ -82,6 +82,9 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
+  let g:NERDTreeShowHidden = 1
+  let g:NERDTreeShowBookmarks = 1
+
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -134,6 +137,9 @@ repo = 'tyrannicaltoucan/vim-deep-space'
 
 [[plugins]]
 repo = 'romainl/Apprentice'
+
+[[plugins]]
+repo = 'fabi1cazenave/kalahari.vim'
 
 [[plugins]]
 repo = 'luochen1990/rainbow'
