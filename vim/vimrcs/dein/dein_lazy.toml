@@ -158,6 +158,14 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'skanehira/preview-markdown.vim'
+on_ft = 'markdown'
+hook_add = '''
+  let g:preview_markdown_vertical = 1
+  let g:preview_markdown_auto_update = 1
+'''
+
+[[plugins]]
 repo = 'kannokanno/previm'
 on_ft = ['markdown', 'md' ]
 
