@@ -156,6 +156,7 @@ repo = 'vim-airline/vim-airline'
 hook_add = '''
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#left_sep = "\uE0B8"
+  let g:airline#extensions#tabline#left_alt_sep = "\uE0B9"
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
   let g:airline_left_sep = "\uE0B8"
@@ -164,13 +165,27 @@ hook_add = '''
   " show filename only (defualt relative path)
   let g:airline_section_c = '%t'
   let g:airline_section_z = '%L lines %p%%'
+
+  " for coc-nvim
+  function! StatusDiagnostic() abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+      call add(msgs, "\uF1E2" . info['error'])
+    endif
+    if get(info, 'warning', 0)
+      call add(msgs, "\uE230" . info['warning'])
+    endif
+    return join(msgs, ''). '' . get(g:, 'coc_status', '')
+  endfunction
+
+  let g:airline#extensions#coc#enabled = 1
+  let g:airline_section_warning = "%{StatusDiagnostic()}"
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
-repo = 'w0rp/ale'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
