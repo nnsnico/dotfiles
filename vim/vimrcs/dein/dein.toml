@@ -158,6 +158,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_powerline_fonts = 1
 
+let g:airline_left_sep = "\uE0B8"
+let g:airline_right_sep = "\uE0BE"
 let g:airline_section_b = '(´ワ｀ )'
 let g:airline_section_c = '%t'
 let g:airline_section_z = '%L lines %p%%'
