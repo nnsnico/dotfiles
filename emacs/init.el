@@ -1,5 +1,5 @@
 ;;  Package-Requires: ((dash "2.16.0"))
-;; package manager
+;; --------------------------- package manager --------------------------------------
 
 ;; init package manager
 (require 'package)
@@ -13,14 +13,20 @@
 (eval-when-compile
   (require 'use-package))
 
-;; default
+;; ------------------------- locale and encoding ------------------------------------
 
+;; locale environment
 (set-locale-environment nil)
+;; language
 (set-language-environment "Japanese")
+;; terminal encoding
 (set-terminal-coding-system 'utf-8)
+;; keyboard encoding
 (set-keyboard-coding-system 'utf-8)
+;; buffer file encoding
 (set-buffer-file-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
+
+;; ----------------------------- package config -------------------------------------
 
 ;; load material theme
 (load-theme 'material t)
@@ -34,6 +40,57 @@
 ;; syntax highlight of dash
 (eval-after-load 'dash '(dash-enable-font-lock))
 
+;; neotree
+(use-package neotree
+  :after
+  projectile
+  :commands
+  (neo-tree-show neotree-hide neotree-dir neotree-find)
+  :custom
+  (neo-theme 'nerd2)
+  :bind
+  ("<f8>" . 'neotree-projectile-toggle)
+  :preface
+  (defun neotree-projectile-toggle ()
+    (interactive)
+    (let ((porject-dir
+	   (ignore-errors
+	     (projectile-project-root)
+	     ))
+	  (file-name (buffer-file-name))
+	  (neo-smart-open t))
+      (if (and (fboundp 'neo-global--window-exists-p)
+	       (neo-global--window-exists-p))
+	  (neotree-hide)
+	(progn
+	  (neotree-show)
+	  (if project-dir
+	      (neotree-dir project-dir))
+	  (if file-name
+	      (neotree-find file-name)))))))
+
+;; which-key
+(use-package which-key
+  :diminish
+  which-key-mode
+  :hook
+  (after-init . which-key-mode))
+
+;; select packages
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("d1c7f2db070c96aa674f1d61403b4da1fff2154163e9be76ce51824ed5ca709c" default)))
+n '(package-selected-packages
+   (quote
+    (neotree which-key org-bullets org markdown-mode auto-complete dash material-theme popup rainbow-delimiters))))
+
+;; ------------------------------- os config (mac) ----------------------------------
+
 ;; enable clipboard on osx
 (defun copy-from-osx()
   (shell-command-to-string "pbpaste"))
@@ -46,6 +103,8 @@
 
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
+
+;; -------------------------------- display config ----------------------------------
 
 ;; show display time
 (display-time)
@@ -68,12 +127,16 @@
 (when (display-graphic-p)
   (tool-bar-mode -1))
 
+;; -------------------------------- keymap config ------------------------------------
+
 ;; keymap
 (when (eq system-type 'darwin)
   ;; map `command` to `super`
   (setq mac-command-modifier 'super))
 
-;; enable clipboard
+;; -------------------------------- other config -------------------------------------
+
+;; enable macos clipboard
 (setq x-select-enable-clipboard t)
 
 ;; remove a line contains new line
@@ -96,9 +159,9 @@
 
 ;; ignore search case
 (setq case-fold-search t)
-
-(custom-set-variables
- '(package-selected-packages
-   (quote
-    (markdown-mode  auto-complete dash material-theme popup rainbow-delimiters))))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
