@@ -33,6 +33,11 @@ set backspace=indent,eol,start
 " copy to system at the same time as yank
 set clipboard+=unnamed
 
+" timeout length while waiting next keymapping
+set timeoutlen=3000
+" timeout length while waiting next keycode
+set ttimeoutlen=50
+
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
