@@ -13,7 +13,7 @@ if has('nvim')
   set winblend=20
 endif
 
-" terminal gui colors
+" enable true colors
 if has('termguicolors')
   set termguicolors
 endif

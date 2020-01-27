@@ -1,5 +1,5 @@
 " ignore lowercase and uppercase
-set noignorecase
+set ignorecase
 
 " search by distinguishing if uppercase are included
 set smartcase
