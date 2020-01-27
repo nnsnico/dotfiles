@@ -22,8 +22,8 @@
     },
     "efm": {
       "command": "efm-langserver",
-      "args": ["-e", "~/dotfiles/vim/config.yaml"],
-      "filetypes": ["vim", "eruby", "markdown"]
+      "args": ["-c", "~/dotfiles/vim/packageconfig/config.yaml"],
+      "filetypes": ["vim", "eruby", "markdown", "yaml"]
     },
     "rust": {
       "command": "ra_lsp_server",

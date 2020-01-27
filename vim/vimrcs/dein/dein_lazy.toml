@@ -94,6 +94,7 @@ on_ft = [
   'vim',
   'eruby',
   'markdown',
+  'yaml',
   'haskell',
   'lhs',
   'hs',
