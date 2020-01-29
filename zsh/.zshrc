@@ -6,6 +6,31 @@ if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
   source "${HOME}/.zprezto/init.zsh"
 fi
 
+
+## Network
+ssid=`/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F': ' '/ SSID/ {print $2}'`
+function handleproxy() {
+  echo "[network] current ssid: $ssid"
+  if [ $ssid = 'aoyamafan' ]; then
+    echo '[network] proxy is set'
+    local name=`cat ~/dotfiles/yabaiyatsu.txt | awk -F ': ' '/id/ {print $2}'`
+    local pass=`cat ~/dotfiles/yabaiyatsu.txt | awk -F ': ' '/password/ {print $2}'`
+    export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+    export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98C"'
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="grey19"
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="greenyellow"
+  elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
+    unset http_proxy
+    unset https_proxy
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98D"'
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="white"
+    POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
+  fi
+}
+
+handleproxy
+
 # powerlevel settings
 ## support awesome font
 POWERLEVEL9K_MODE='nerdfont-complete'
@@ -15,7 +40,8 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 ## disable right prompt
 POWERLEVEL9K_DISABLE_RPROMPT=true
 ## customize left prompt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context newline dir vcs newline vi_mode status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context newline dir vcs newline custom_proxy_sign vi_mode status)
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B4'
 ## colorscheme
 ### context
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='grey19'
@@ -26,8 +52,8 @@ POWERLEVEL9K_DIR_HOME_BACKGROUND='lightgoldenrod1'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='grey19'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='skyblue1'
 ### vi_mode
-POWERLEVEL9K_VI_INSERT_MODE_STRING=' INSERT'
-POWERLEVEL9K_VI_COMMAND_MODE_STRING=' NORMAL'
+POWERLEVEL9K_VI_INSERT_MODE_STRING="\uE62B INSERT"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="\uE62B NORMAL"
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='green1'
 POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='dodgerblue1'
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='grey19'
@@ -54,29 +80,13 @@ export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=6
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-## Network
-function handleproxy() {
-  local ssid=`/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F': ' '/ SSID/ {print $2}'`
-  echo "current netowrk ssid: $ssid"
-  if [ $ssid = 'aoyamafan' ]; then
-    echo 'proxy is set'
-    local name=`cat ./yabaiyatsu.txt | awk -F ': ' '/id/ {print $2}'`
-    local pass=`cat ./yabaiyatsu.txt | awk -F ': ' '/password/ {print $2}'`
-    export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-    export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-  elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
-    unset http_proxy
-    unset https_proxy
-  fi
-}
-
-handleproxy
-
 ## Add to plugins
 zplug "sorin-ionescu/prezto"
 zplug "peco/peco"
 zplug "zsh-users/zsh-completions"
 zplug "zdharma/fast-syntax-highlighting"
+
+zplug load
 
 ## Java
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
