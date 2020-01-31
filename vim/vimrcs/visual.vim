@@ -56,9 +56,6 @@ set wildmode=list:longest,full
 " height command line
 set cmdheight=2
 
-" support special symbol
-set ambiwidth=double
-
 " change shape of cursor each mode (support vim only)
 if has('mac')
   let &t_SI = "\<Esc>]1337;CursorShape=1\x7"

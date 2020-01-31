@@ -7,6 +7,9 @@ scriptencoding utf-8
 set fileencodings=utf-8
 set fileformats=unix,dos,mac
 
+" support special symbol
+set ambiwidth=double
+
 " not make backup and swapfile
 set nobackup
 set noswapfile
