@@ -71,8 +71,10 @@ set listchars=tab:»-,trail:-,eol:↩
 set expandtab
 
 " tab size
-set tabstop=2
-set shiftwidth=2
+set tabstop=2 " how many spaces to highlight as tab
+set shiftwidth=2 " tab size when enter a line
+set softtabstop=2 " tab size when press <tab>
+set smarttab " convert to tab space until `shiftwidth` size of a current line
 
 " stop tab until shiftwidth size
 set shiftround
