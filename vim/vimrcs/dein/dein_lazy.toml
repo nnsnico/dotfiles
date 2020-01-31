@@ -35,6 +35,78 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'liuchengxu/vim-clap'
+if = '''! has('nvim')'''
+hook_add = '''
+  let g:clap_theme = 'material_design_dark'
+  let g:clap_current_selection_sign = {
+    \ 'text': "\uF0A4",
+    \ 'texthl': "WarningMsg",
+    \ 'linehl': "ClapCurrentSelection"
+    \ }
+
+  let height = &lines / 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+  let g:clap_layout = {
+    \ 'relative': 'editor',
+    \ }
+  let g:clap_open_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
+
+  nnoremap <silent> zf :Clap files<CR>
+  nnoremap <silent> zb :Clap buffers<CR>
+  nnoremap <silent> zl :Clap blines<CR>
+  nnoremap <silent> zg :Clap git_diff_files<CR>
+  nnoremap <silent> zr :Clap grep<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+if = '''has('nvim')'''
+hook_add = '''
+  nnoremap <silent> zf :Files<CR>
+  nnoremap <silent> zg :GFiles?<CR>
+  nnoremap <silent> zh :History<CR>
+  nnoremap <silent> zb :Buffers<CR>
+
+  " customize to open in horizontal
+  let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-h': 'split',
+    \ 'ctrl-v': 'vsplit' }
+
+  if has('nvim')
+    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+    function! FloatingFZF()
+      let buf = nvim_create_buf(v:false, v:true)
+      call setbufvar(buf, '&signcolumn', 'no')
+
+      let height = &lines / 3
+      let width = float2nr(&columns - (&columns * 2 / 10))
+      let col = float2nr((&columns - width) / 2)
+
+      let opts = {
+            \ 'relative': 'editor',
+            \ 'row': 1,
+            \ 'col': col,
+            \ 'width': width,
+            \ 'height': height
+            \ }
+
+      call nvim_open_win(buf, v:true, opts)
+    endfunction
+  endif
+'''
+
+[[plugins]]
+repo = '/usr/local/opt/fzf'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
