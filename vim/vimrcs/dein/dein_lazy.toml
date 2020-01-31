@@ -157,7 +157,7 @@ on_ft = 'markdown'
 repo = 'godlygeek/tabular'
 on_ft = 'markdown'
 hook_add = '''
-  nnoremap <silent> <space>@ :Tabularize<CR>
+  nnoremap <silent> <space>@ :Tabularize /\|<CR>
 '''
 
 [[plugins]]
