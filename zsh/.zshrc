@@ -14,7 +14,12 @@ function handleproxy() {
     autoload -Uz catch
     autoload -Uz throw
     local airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'
-    ssid= [ -f $airport ] && `airport -I | awk -F': ' '/ SSID/ {print $2}'` || throw 'AirportNotFound'
+    local ssid=''
+    if [ -f $airport ]; then
+      ssid=`$airport -I | awk -F': ' '/ SSID/ {print $2}'`
+    else
+      throw 'AirportNotFound'
+    fi
     echo "[network] current ssid: $ssid"
       if [ $ssid = 'aoyamafan' ]; then
         echo '[network] proxy is set'
@@ -34,8 +39,8 @@ function handleproxy() {
           POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
       fi
   } always {
-    echo 'Error occurred while setting proxy'
     if catch '*'; then
+      echo 'Error occurred while setting proxy'
       case $CAUGHT in
         (AirportNotFound)
           echo 'Airport command is not found'
