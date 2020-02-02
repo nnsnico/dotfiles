@@ -88,6 +88,9 @@ zplug "zdharma/fast-syntax-highlighting"
 
 zplug load
 
+## OpenSSL@1.1
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
 ## Java
 export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
 
