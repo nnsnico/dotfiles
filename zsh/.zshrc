@@ -6,27 +6,46 @@ if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
   source "${HOME}/.zprezto/init.zsh"
 fi
 
-
 ## Network
-ssid=`/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -I | awk -F': ' '/ SSID/ {print $2}'`
+
+### Handling proxy (support mac only)
 function handleproxy() {
-  echo "[network] current ssid: $ssid"
-  if [ $ssid = 'aoyamafan' ]; then
-    echo '[network] proxy is set'
-    local name=`cat ~/dotfiles/yabaiyatsu.txt | awk -F ': ' '/id/ {print $2}'`
-    local pass=`cat ~/dotfiles/yabaiyatsu.txt | awk -F ': ' '/password/ {print $2}'`
-    export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-    export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98C"'
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="grey19"
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="greenyellow"
-  elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
-    unset http_proxy
-    unset https_proxy
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98D"'
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="white"
-    POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
-  fi
+  {
+    autoload -Uz catch
+    autoload -Uz throw
+    local airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'
+    ssid= [ -f $airport ] && `airport -I | awk -F': ' '/ SSID/ {print $2}'` || throw 'AirportNotFound'
+    echo "[network] current ssid: $ssid"
+      if [ $ssid = 'aoyamafan' ]; then
+        echo '[network] proxy is set'
+          local decryptpath='/home/nnsnico/dotfiles'
+          local name=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/id/ {print $2}'`
+          local pass=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/password/ {print $2}'`
+          export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+          export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "󿦌"'
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="grey19"
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="greenyellow"
+      elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
+          unset http_proxy
+          unset https_proxy
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "󿦍"'
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="white"
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
+      fi
+  } always {
+    echo 'Error occurred while setting proxy'
+    if catch '*'; then
+      case $CAUGHT in
+        (AirportNotFound)
+          echo 'Airport command is not found'
+          ;;
+        (*)
+          echo 'Unexpected Error'
+          ;;
+      esac
+    fi
+  }
 }
 
 handleproxy
