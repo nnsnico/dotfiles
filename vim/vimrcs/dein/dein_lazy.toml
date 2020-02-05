@@ -58,6 +58,10 @@ hook_add = '''
     \ 'ctrl-v': 'vsplit'
     \ }
 
+  " open nerdtree if no specified arguments
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
+
   nnoremap <silent> zf :Clap files --hidden<CR>
   nnoremap <silent> zb :Clap buffers<CR>
   nnoremap <silent> zl :Clap blines<CR>
