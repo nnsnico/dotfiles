@@ -37,6 +37,7 @@ hook_source = '''
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
 if = '''! has('nvim')'''
+build = ':Clap install-binary'
 hook_add = '''
   let g:clap_theme = 'material_design_dark'
   let g:clap_current_selection_sign = {
@@ -57,7 +58,7 @@ hook_add = '''
     \ 'ctrl-v': 'vsplit'
     \ }
 
-  nnoremap <silent> zf :Clap files<CR>
+  nnoremap <silent> zf :Clap files --hidden<CR>
   nnoremap <silent> zb :Clap buffers<CR>
   nnoremap <silent> zl :Clap blines<CR>
   nnoremap <silent> zg :Clap git_diff_files<CR>
