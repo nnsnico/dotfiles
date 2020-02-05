@@ -58,18 +58,28 @@ repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
 hook_add = '''
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+  " 'Modified'  :pencil
+  " 'Staged'    :file plus
+  " 'Untracked' :fa-binoculars
+  " 'Renamed'   :mdi-rename_box
+  " 'Unmerged'  :oct-zap
+  " 'Deleted'   :mdi-delete_empty
+  " 'Dirty'     :mdi-sync
+  " 'Clean'     :oct-check
+  " 'Ignored'   :mdi-ghost
+  " "Unknown"   :fa-question_circle
+  let g:NERDTreeIndicatorMapCustom = {
+      \ "Modified"  : "\uFB4E", 
+      \ "Staged"    : "\uFC50", 
+      \ "Untracked" : "\uF708", 
+      \ "Renamed"   : "\uF954", 
+      \ "Unmerged"  : "\u26A1", 
+      \ "Deleted"   : "\uFBCA", 
+      \ "Dirty"     : "\uF9E5", 
+      \ "Clean"     : "\uF42E", 
+      \ 'Ignored'   : "\uF79F", 
+      \ "Unknown"   : "\uF4A3"  
+      \ }
 '''
 
 [[plugins]]
