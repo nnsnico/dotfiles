@@ -3,6 +3,17 @@
 
 # 1. add vim synbolic link
 ln -s ~/dotfiles/vim/.vimrc ~/
+
+# make vim dir
+if [ ! -d "$HOME/.vim" ]; then
+  mkdir $HOME/.vim
+fi
+
+# make neovim dir
+if [ ! -d "$HOME/.config/nvim" ]; then
+  mkdir $HOME/.config/nvim
+fi
+
 ln -s ~/dotfiles/vim/packageconfig/coc-settings.json ~/.vim/coc-settings.json
 ln -s ~/dotfiles/vim/.gvimrc ~/
 ln -s ~/dotfiles/vim/.ideavimrc ~/
