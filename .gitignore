@@ -1,5 +1,11 @@
+// macos
 .DS_Store
+
+// zsh completion cache
 zsh/.zcompdump
 zsh/.zcompdump.zwc
+zsh/.zcompcache/*
+
+// zsh history
 zsh/.zsh_history
 zsh/.zhistory
