@@ -28,13 +28,13 @@ function handleproxy() {
           local pass=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/password/ {print $2}'`
           export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
           export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "󿦌"'
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98C"'
           POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="grey19"
           POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="greenyellow"
       elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
           unset http_proxy
           unset https_proxy
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "󿦍"'
+          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98D"'
           POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="white"
           POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
       fi

@@ -183,6 +183,7 @@ on_ft = [
   'lhs',
   'hs',
   'scala',
+  'sbt',
   'rust',
   'purescript',
   'elm',
