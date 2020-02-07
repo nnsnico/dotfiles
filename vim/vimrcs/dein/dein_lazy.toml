@@ -62,6 +62,13 @@ hook_add = '''
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
 
+  " custom commands likes `fzf.vim`
+  command! Files Clap files --hidden
+  command! Colors Clap colors
+  command! Grep Clap grep
+  command! Git Clap GFiles
+  command! Buffers Clap buffers
+
   nnoremap <silent> zf :Clap files --hidden<CR>
   nnoremap <silent> zb :Clap buffers<CR>
   nnoremap <silent> zl :Clap blines<CR>
