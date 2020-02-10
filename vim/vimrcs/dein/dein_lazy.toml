@@ -66,14 +66,16 @@ hook_add = '''
   command! Files Clap files --hidden
   command! Colors Clap colors
   command! Grep Clap grep
-  command! Git Clap GFiles
+  command! GFiles Clap git_diff_files
   command! Buffers Clap buffers
+  command! Windows Clap windows
 
-  nnoremap <silent> zf :Clap files --hidden<CR>
-  nnoremap <silent> zb :Clap buffers<CR>
+  nnoremap <silent> zf :Files<CR>
+  nnoremap <silent> zb :Buffers<CR>
   nnoremap <silent> zl :Clap blines<CR>
-  nnoremap <silent> zg :Clap git_diff_files<CR>
-  nnoremap <silent> zr :Clap grep<CR>
+  nnoremap <silent> zg :GFiles<CR>
+  nnoremap <silent> zr :Grep<CR>
+  nnoremap <silent> zw :Windows<CR>
 '''
 
 [[plugins]]
