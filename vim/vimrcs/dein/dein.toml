@@ -2,6 +2,12 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
@@ -30,7 +36,9 @@ hook_post_update = '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-hook_add = 'let g:deoplete#enable_at_startup = 0'
+hook_add = '''
+let g:deoplete#enable_at_startup = 0
+'''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
@@ -100,27 +108,27 @@ repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
 hook_add = '''
-  " 'Modified'  :pencil
-  " 'Staged'    :file plus
-  " 'Untracked' :fa-binoculars
-  " 'Renamed'   :mdi-rename_box
-  " 'Unmerged'  :oct-zap
-  " 'Deleted'   :mdi-delete_empty
-  " 'Dirty'     :mdi-sync
-  " 'Clean'     :oct-check
-  " 'Ignored'   :mdi-ghost
-  " "Unknown"   :fa-question_circle
+  " 'Modified'  :pencil:
+  " 'Staged'    :file plus:
+  " 'Untracked' :fa-binoculars:
+  " 'Renamed'   :mdi-rename_box:
+  " 'Unmerged'  :oct-zap:
+  " 'Deleted'   :mdi-delete_empty:
+  " 'Dirty'     :mdi-sync:
+  " 'Clean'     :oct-check:
+  " 'Ignored'   :mdi-ghost:
+  " 'Unknown'   :fa-question_circle:
   let g:NERDTreeIndicatorMapCustom = {
-      \ "Modified"  : "\uFB4E", 
-      \ "Staged"    : "\uFC50", 
-      \ "Untracked" : "\uF708", 
-      \ "Renamed"   : "\uF954", 
-      \ "Unmerged"  : "\u26A1", 
-      \ "Deleted"   : "\uFBCA", 
-      \ "Dirty"     : "\uF9E5", 
-      \ "Clean"     : "\uF42E", 
+      \ 'Modified'  : "\uFB4E", 
+      \ 'Staged'    : "\uFC50", 
+      \ 'Untracked' : "\uF708", 
+      \ 'Renamed'   : "\uF954", 
+      \ 'Unmerged'  : "\u26A1", 
+      \ 'Deleted'   : "\uFBCA", 
+      \ 'Dirty'     : "\uF9E5", 
+      \ 'Clean'     : "\uF42E", 
       \ 'Ignored'   : "\uF79F", 
-      \ "Unknown"   : "\uF4A3"  
+      \ 'Unknown'   : "\uF4A3"  
       \ }
 '''
 
@@ -151,7 +159,9 @@ repo = 'fabi1cazenave/kalahari.vim'
 
 [[plugins]]
 repo = 'luochen1990/rainbow'
-hook_add = 'let g:rainbow_active = 1'
+hook_add = '''
+let g:rainbow_active = 1
+'''
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
@@ -218,7 +228,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
-hook_add = 'let g:indent_guides_enable_on_vim_startup = 1'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup = 1
+'''
 
 [[plugins]]
 repo = 'yuttie/comfortable-motion.vim'
