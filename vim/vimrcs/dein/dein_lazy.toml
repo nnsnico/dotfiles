@@ -165,7 +165,7 @@ hook_add = '''
 
   nmap <leader>ac <Plug>(coc-codeaction)
 
-  nnoremap <silent> F :call CocAction('format')<CR>
+  nnoremap <silent> <space>f :call CocAction('format')<CR>
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
   function! s:show_documentation()
