@@ -96,6 +96,11 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 ## by your pc, export this PATH.
 # export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
+## imgcat(iTerm(macos) only)
+if [[ $OSTYPE =~ "darwin*" ]]; then
+  export ITERM="$HOME/dotfiles/iterm2"
+fi
+
 ## FZF
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
