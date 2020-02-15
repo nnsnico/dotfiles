@@ -1,82 +1,4 @@
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-    \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-    \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-    \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-    \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-    \ denite#do_map('toggle_select').'j'
-  endfunction
-'''
-hook_source = '''
-  if has('nvim')
-    let height = &lines / 3
-    let width = float2nr(&columns - (&columns * 2 / 10))
-    let col = float2nr((&columns - width) / 2)
-
-    call denite#custom#option('default', {
-      \ 'split': 'floating',
-      \ 'winwidth': width,
-      \ 'winheight': height,
-      \ 'wincol': col,
-      \ 'winrow': 1,
-      \ 'prompt': "$ ",
-      \ })
-  endif
-'''
-
-[[plugins]]
-repo = 'liuchengxu/vim-clap'
-if = '''! has('nvim')'''
-build = ':Clap install-binary'
-hook_add = '''
-  let g:clap_theme = 'material_design_dark'
-  let g:clap_current_selection_sign = {
-    \ 'text': "\uF0A4",
-    \ 'texthl': "WarningMsg",
-    \ 'linehl': "ClapCurrentSelection"
-    \ }
-
-  let height = &lines / 3
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-  let g:clap_layout = {
-    \ 'relative': 'editor',
-    \ }
-  let g:clap_open_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-x': 'split',
-    \ 'ctrl-v': 'vsplit'
-    \ }
-
-  " open nerdtree if no specified arguments
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
-
-  " custom commands likes `fzf.vim`
-  command! Files Clap files --hidden
-  command! Colors Clap colors
-  command! Grep Clap grep
-  command! GFiles Clap git_diff_files
-  command! Buffers Clap buffers
-  command! Windows Clap windows
-
-  nnoremap <silent> zf :Files<CR>
-  nnoremap <silent> zb :Buffers<CR>
-  nnoremap <silent> zl :Clap blines<CR>
-  nnoremap <silent> zg :GFiles<CR>
-  nnoremap <silent> zr :Grep<CR>
-  nnoremap <silent> zw :Windows<CR>
-'''
+# ------------------------------ language plugins ------------------------------
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -119,17 +41,6 @@ repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
 hook_add = '''
   let g:rustfmt_autosave = 1
-'''
-
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
-
-[[plugins]]
-repo = 'godlygeek/tabular'
-on_ft = 'markdown'
-hook_add = '''
-  nnoremap <silent> <space>@ :Tabularize /\|<CR>
 '''
 
 [[plugins]]
@@ -203,12 +114,17 @@ hook_add = '''
   let g:user_emmet_leader_key='<C-Y>'
 '''
 
+# ------------------------------ markdown utility ------------------------------
+
 [[plugins]]
-repo = 'skanehira/preview-markdown.vim'
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'godlygeek/tabular'
 on_ft = 'markdown'
 hook_add = '''
-  let g:preview_markdown_vertical = 1
-  let g:preview_markdown_auto_update = 1
+  nnoremap <silent> <space>@ :Tabularize /\|<CR>
 '''
 
 [[plugins]]
@@ -218,3 +134,11 @@ on_ft = ['markdown', 'md' ]
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 on_ft = ['markdown', 'md' ]
+
+[[plugins]]
+repo = 'skanehira/preview-markdown.vim'
+on_ft = 'markdown'
+hook_add = '''
+  let g:preview_markdown_vertical = 1
+  let g:preview_markdown_auto_update = 1
+'''

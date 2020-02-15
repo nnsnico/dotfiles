@@ -1,3 +1,4 @@
+# ------------------------------- basic plugins -------------------------------
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -35,16 +36,18 @@ hook_post_update = '''
 '''
 
 [[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
 let g:deoplete#enable_at_startup = 0
 '''
 
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
+# -------------------------------- fuzzy finder --------------------------------
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
@@ -86,7 +89,60 @@ hook_add = '''
 '''
 
 [[plugins]]
+if = '''has('nvim')'''
 repo = '/usr/local/opt/fzf'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 0
+'''
+
+[[plugins]]
+repo = 'liuchengxu/vim-clap'
+if = '''! has('nvim')'''
+build = ':Clap install-binary'
+hook_add = '''
+  let g:clap_theme = 'material_design_dark'
+  let g:clap_current_selection_sign = {
+    \ 'text': "\uF0A4",
+    \ 'texthl': "WarningMsg",
+    \ 'linehl': "ClapCurrentSelection"
+    \ }
+
+  let height = &lines / 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+  let g:clap_layout = {
+    \ 'relative': 'editor',
+    \ }
+  let g:clap_open_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit'
+    \ }
+
+  " open nerdtree if no specified arguments
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
+
+  " custom commands likes `fzf.vim`
+  command! Files Clap files --hidden
+  command! Colors Clap colors
+  command! Grep Clap grep
+  command! GFiles Clap git_diff_files
+  command! Buffers Clap buffers
+  command! Windows Clap windows
+
+  nnoremap <silent> zf :Files<CR>
+  nnoremap <silent> zb :Buffers<CR>
+  nnoremap <silent> zl :Clap blines<CR>
+  nnoremap <silent> zg :GFiles<CR>
+  nnoremap <silent> zr :Grep<CR>
+  nnoremap <silent> zw :Windows<CR>
+'''
+
+# ------------------------------ nerdtree plugins ------------------------------
 
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -135,27 +191,13 @@ hook_add = '''
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
+# ---------------------------- manipulation utility ----------------------------
+
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
 repo = 'severin-lemaignan/vim-minimap'
-
-[[plugins]]
-repo = 'ayu-theme/ayu-vim'
-hook_add = '''
-  set termguicolors
-  let ayucolor="dark"
-'''
-
-[[plugins]]
-repo = 'tyrannicaltoucan/vim-deep-space'
-
-[[plugins]]
-repo = 'romainl/Apprentice'
-
-[[plugins]]
-repo = 'fabi1cazenave/kalahari.vim'
 
 [[plugins]]
 repo = 'luochen1990/rainbow'
@@ -167,7 +209,25 @@ let g:rainbow_active = 1
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
-repo = 'chase/focuspoint-vim'
+repo = 'yuttie/comfortable-motion.vim'
+hook_add = '''
+  let g:comfortable_motion_friction = 200.0
+  let g:comfortable_motion_air_drag = 0.0
+'''
+
+[[plugins]]
+repo = 'tpope/vim-speeddating'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+
+# ------------------------------- visual utility -------------------------------
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -181,7 +241,6 @@ hook_add = '''
 
   let g:airline_left_sep = "\uE0B8"
   let g:airline_right_sep = "\uE0BE"
-  let g:airline_section_b = '(´ワ｀ )'
   " show filename only (defualt relative path)
   let g:airline_section_c = '%t'
   let g:airline_section_z = '%L lines %p%%'
@@ -208,6 +267,35 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+let g:indent_guides_enable_on_vim_startup = 1
+'''
+
+# -------------------------------- color scheme --------------------------------
+
+[[plugins]]
+repo = 'ayu-theme/ayu-vim'
+hook_add = '''
+  set termguicolors
+  let ayucolor="dark"
+'''
+
+[[plugins]]
+repo = 'tyrannicaltoucan/vim-deep-space'
+
+[[plugins]]
+repo = 'romainl/Apprentice'
+
+[[plugins]]
+repo = 'fabi1cazenave/kalahari.vim'
+
+[[plugins]]
+repo = 'chase/focuspoint-vim'
+
+# ------------------------------------ VCS ------------------------------------
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
@@ -227,25 +315,12 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'iberianpig/tig-explorer.vim'
 hook_add = '''
-let g:indent_guides_enable_on_vim_startup = 1
+  nnoremap <C-o> :TigOpenProjectRootDir<CR>
 '''
 
-[[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-
-[[plugins]]
-repo = 'tpope/vim-speeddating'
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'terryma/vim-multiple-cursors'
+# ------------------------------- other plugins -------------------------------
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
