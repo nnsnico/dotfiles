@@ -41,6 +41,8 @@ set timeoutlen=3000
 " timeout length while waiting next keycode
 set ttimeoutlen=50
 
+set modeline
+
 " disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
