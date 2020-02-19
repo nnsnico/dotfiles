@@ -300,6 +300,8 @@ hook_add = '''
   nmap <Space>hp <Plug>(GitGutterPreviewHunk)
   nmap <Space>ha <Plug>(GitGutterStageHunk)
   nmap <Space>hr <Plug>(GitGutterUndoHunk)
+  nnoremap <silent> ]c :GitGutterNextHunk<CR>zz
+  nnoremap <silent> [c :GitGutterPrevHunk<CR>zz
 
   let g:gitgutter_preview_win_floating = 1
   let g:gitgutter_sign_removed = '-'
