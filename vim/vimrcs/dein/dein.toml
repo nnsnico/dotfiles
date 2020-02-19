@@ -151,11 +151,7 @@ hook_add = '''
   let g:NERDTreeShowBookmarks = 0
 
   map <silent> <C-t> :NERDTreeToggle<CR>
-  nmap <C-l> gt
-  nmap <C-h> gT
   nnoremap <silent> <C-k> :NERDTreeFind<CR>
-  nmap <silent> gs :split<CR>
-  nmap <silent> gv :vsplit<CR>
 '''
 
 [[plugins]]
