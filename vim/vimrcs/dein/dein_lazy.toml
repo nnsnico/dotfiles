@@ -46,20 +46,21 @@ hook_add = '''
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 on_ft = [
-  'vim',
-  'eruby',
-  'markdown',
-  'yaml',
-  'haskell',
-  'lhs',
-  'hs',
-  'scala',
-  'sbt',
-  'rust',
-  'purescript',
   'elm',
+  'eruby',
+  'haskell',
+  'hs',
   'javascript',
-  'typescript'
+  'lhs',
+  'markdown',
+  'purescript',
+  'python',
+  'rust',
+  'sbt',
+  'scala',
+  'typescript',
+  'vim',
+  'yaml'
 ]
 merged = 0
 rev = 'release'
