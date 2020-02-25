@@ -96,9 +96,13 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 ## by your pc, export this PATH.
 # export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
-## imgcat(iTerm(macos) only)
+## support macos only
 if [[ $OSTYPE =~ "darwin*" ]]; then
-  export ITERM="$HOME/dotfiles/iterm2"
+  ## imgcat
+  export ITERM="$HOME/dotfiles/macos/iterm2"
+  ## VimR
+  export VIMR_HOME="$HOME/dotfiles/macos/vimr"
+  export PATH=$PATH:$ITERM:$VIMR_HOME
 fi
 
 ## FZF
@@ -106,7 +110,7 @@ export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -prin
 export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
 
 ## zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
 ## Add to plugins
