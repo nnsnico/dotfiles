@@ -29,6 +29,9 @@ set autoindent
 " show inputting command on status line
 set showcmd
 
+" popup menu height
+set pumheight=10
+
 " cmdline height
 set cmdheight=2
 
@@ -39,12 +42,14 @@ set backspace=indent,eol,start
 set clipboard+=unnamed
 
 " timeout length while waiting next keymapping
-set timeoutlen=3000
+set timeoutlen=1000
 " timeout length while waiting next keycode
-set ttimeoutlen=50
+set ttimeoutlen=10
 
 " scroll offset
 set scrolloff=3
+set sidescrolloff=3
+set sidescroll=1
 
 " enable modeline
 set modeline
