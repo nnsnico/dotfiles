@@ -27,7 +27,7 @@ if has('nvim')
 endif
 
 " enable syntax color
-syntax on
+syntax enable
 
 " show line number
 set number
@@ -55,6 +55,10 @@ set wildmode=list:longest,full
 
 " height command line
 set cmdheight=2
+
+" visualize invisible characters
+set list
+set listchars=tab:»-,trail:-,eol:↩
 
 " change shape of cursor each mode (support vim only)
 if has('mac')

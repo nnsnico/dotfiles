@@ -1,3 +1,5 @@
+" ------------------------------- Basic Settings -------------------------------
+
 " default shell
 set shell=zsh
 
@@ -41,7 +43,13 @@ set timeoutlen=3000
 " timeout length while waiting next keycode
 set ttimeoutlen=50
 
+" scroll offset
+set scrolloff=3
+
+" enable modeline
 set modeline
+
+" ---------------------------------- Keymaps ----------------------------------
 
 " disable arrow keys
 noremap <Up> <Nop>
@@ -73,9 +81,11 @@ nmap <C-h> gT
 " add new line <Space><CR>
 nmap <Space><CR> o<ESC>
 
-" visualize invisible characters
-set list
-set listchars=tab:»-,trail:-,eol:↩
+" support straddling line when enable wrapping line
+nnoremap j gj
+nnoremap k gk
+
+" ------------------------------------ Tab ------------------------------------
 
 " replace tab to space
 set expandtab
@@ -88,7 +98,3 @@ set smarttab " convert to tab space until `shiftwidth` size of a current line
 
 " stop tab until shiftwidth size
 set shiftround
-
-" support straddling line when enable wrapping line
-nnoremap j gj
-nnoremap k gk
