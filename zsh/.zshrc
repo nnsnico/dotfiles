@@ -109,17 +109,27 @@ fi
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
 
-## zplug
-export ZPLUG_HOME=$HOME/.zplug
-source $ZPLUG_HOME/init.zsh
+## zinit
+### Added by Zinit's installer
+if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/dotfiles/zsh/.zinit" && command chmod g-rwX "$HOME/dotfiles/zsh/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-## Add to plugins
-zplug "sorin-ionescu/prezto"
-zplug "peco/peco"
-zplug "zsh-users/zsh-completions"
-zplug "zdharma/fast-syntax-highlighting"
-
-zplug load
+zplugin wait lucid for \
+  "sorin-ionescu/prezto"
+zplugin wait lucid for \
+  "peco/peco"
+zplugin wait lucid for \
+  "zdharma/fast-syntax-highlighting"
+zplugin wait lucid atload"zicompinit; zicdreplay" blockf for \
+  zsh-users/zsh-completions
 
 ## OpenSSL@1.1
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"

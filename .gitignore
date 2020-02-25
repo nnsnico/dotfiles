@@ -9,3 +9,6 @@ zsh/.zcompcache/*
 // zsh history
 zsh/.zsh_history
 zsh/.zhistory
+
+// zplugin
+zsh/.zinit
