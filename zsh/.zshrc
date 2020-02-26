@@ -1,10 +1,5 @@
 # Created by nns
 
-# initial zplug
-## Source Prezto
-if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
-  source "${HOME}/.zprezto/init.zsh"
-fi
 
 ## Network
 
@@ -122,14 +117,19 @@ source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplugin wait lucid for \
+zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/" for \
   "sorin-ionescu/prezto"
-zplugin wait lucid for \
+zinit wait lucid for \
   "peco/peco"
-zplugin wait lucid for \
+zinit wait lucid for \
   "zdharma/fast-syntax-highlighting"
-zplugin wait lucid atload"zicompinit; zicdreplay" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions
+
+### Source Prezto
+if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
+  source "${HOME}/.zprezto/init.zsh"
+fi
 
 ## OpenSSL@1.1
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
