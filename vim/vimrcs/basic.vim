@@ -54,6 +54,12 @@ set sidescroll=1
 " enable modeline
 set modeline
 
+" split below when :split
+set splitbelow
+
+" split right when :vsplit
+set splitright
+
 " ---------------------------------- Keymaps ----------------------------------
 
 " disable arrow keys
