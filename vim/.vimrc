@@ -13,3 +13,4 @@ source ~/dotfiles/vim/vimrcs/visual.vim
 source ~/dotfiles/vim/vimrcs/search.vim
 source ~/dotfiles/vim/vimrcs/autocmd.vim
 source ~/dotfiles/vim/vimrcs/other.vim
+source ~/dotfiles/vim/vimrcs/functions/trailing_spaces.vim
