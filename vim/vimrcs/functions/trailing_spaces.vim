@@ -26,6 +26,12 @@ endfunction
 command! -nargs=? TrailingSpaces call s:trailing_spaces_one_line(<f-args>)
 command! TrailingSpacesAll call s:trailing_spaces_all_line()
 
+augroup HighlightTrailingSpaces
+    autocmd!
+    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+    autocmd VimEnter,WinEnter * match TrailingSpaces /\v(\s+$)|(　)/
+augroup END
+
 nnoremap <silent> <space>t :<C-u>TrailingSpacesAll<CR>
 
 " vim: set ts=4 sw=4 sts=4 et :
