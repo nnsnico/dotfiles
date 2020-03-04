@@ -1,7 +1,34 @@
 # Created by nns
 
+# ----------------------------------- zinit -----------------------------------
+### Added by Zinit's installer
+if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/dotfiles/zsh/.zinit" && command chmod g-rwX "$HOME/dotfiles/zsh/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-## Network
+zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
+  "sorin-ionescu/prezto"
+zinit wait lucid for \
+  "peco/peco"
+zinit wait lucid for \
+  "zdharma/fast-syntax-highlighting"
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+  zsh-users/zsh-completions
+
+# ---------------------------------- Prezto ------------------------------------
+if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
+  source "${HOME}/.zprezto/init.zsh"
+fi
+
+
+# ------------------------------- POWERLEVEL10K --------------------------------
 
 ### Handling proxy (support mac only)
 function handleproxy() {
@@ -85,7 +112,8 @@ POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='orchid1'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='grey19'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 
-# export
+# --------------------------- ENVIRONMENT VARIABLES ---------------------------
+
 ## Brew-Cask(optional)
 ## If Acceess permission of root dir is denied
 ## by your pc, export this PATH.
@@ -104,32 +132,6 @@ fi
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
 
-## zinit
-### Added by Zinit's installer
-if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/dotfiles/zsh/.zinit" && command chmod g-rwX "$HOME/dotfiles/zsh/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
-fi
-source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
-  "sorin-ionescu/prezto"
-zinit wait lucid for \
-  "peco/peco"
-zinit wait lucid for \
-  "zdharma/fast-syntax-highlighting"
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-  zsh-users/zsh-completions
-
-### Source Prezto
-if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
-  source "${HOME}/.zprezto/init.zsh"
-fi
 
 ## OpenSSL@1.1
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
@@ -156,7 +158,8 @@ export TERM="xterm-256color"
 ## Root Path
 export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$DOTNET_HOME/:$TEX_HOME/:$(go env GOPATH)/bin:$PATH
 
-# alias
+# ----------------------------------- ALIAS -----------------------------------
+
 alias v='/usr/local/bin/vim'
 alias nv='/usr/local/bin/nvim'
 alias e='exit'
