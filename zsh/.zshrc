@@ -1,6 +1,7 @@
 # Created by nns
 
 # ----------------------------------- zinit -----------------------------------
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
@@ -23,10 +24,10 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions
 
 # ---------------------------------- Prezto ------------------------------------
+
 if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
   source "${HOME}/.zprezto/init.zsh"
 fi
-
 
 # ------------------------------- POWERLEVEL10K --------------------------------
 
