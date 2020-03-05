@@ -68,10 +68,10 @@
 # ----------------------------------- window -----------------------------------
 
 # focus window
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
+ctrl + cmd - h : yabai -m window --focus west
+ctrl + cmd - j : yabai -m window --focus south
+ctrl + cmd - k : yabai -m window --focus north
+ctrl + cmd - l : yabai -m window --focus east
 
 # move managed window
 shift + cmd - h : yabai -m window --warp west
@@ -80,18 +80,18 @@ shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
 
 # toggle window zoom
-cmd - d : yabai -m window --toggle zoom-parent
-cmd - f : yabai -m window --toggle zoom-fullscreen
+ctrl + cmd - d : yabai -m window --toggle zoom-parent
+ctrl + cmd - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-cmd - e : yabai -m window --toggle split
+ctrl + cmd - e : yabai -m window --toggle split
 
 # float / unfloat window and center on screen
-cmd - t : yabai -m window --toggle float;\
+ctrl + cmd - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle sticky(+float), topmost, border and picture-in-picture
-cmd - s : yabai -m window --toggle sticky;\
+ctrl + cmd - s : yabai -m window --toggle sticky;\
           yabai -m window --toggle topmost;\
           yabai -m window --toggle border;\
           yabai -m window --toggle pip
@@ -103,13 +103,13 @@ shift + cmd - n : yabai -m window --space next; yabai -m space --focus next
 shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
 
 # focus space
-cmd - n : yabai -m space --focus next
-cmd - p : yabai -m space --focus prev
+ctrl + cmd - n : yabai -m space --focus next
+ctrl + cmd - p : yabai -m space --focus prev
 
 # ---------------------------------- display ----------------------------------
 
-cmd - u : yabai -m display --focus prev
-cmd - o : yabai -m display --focus next
+ctrl + cmd - u : yabai -m display --focus prev
+ctrl + cmd - o : yabai -m display --focus next
 
 # ----------------------------------- other -----------------------------------
 
