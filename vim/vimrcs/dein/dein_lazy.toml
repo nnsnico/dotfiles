@@ -115,6 +115,10 @@ hook_add = '''
   let g:user_emmet_leader_key='<C-Y>'
 '''
 
+[[plugins]]
+repo = 'zinit-zsh/zinit-vim-syntax'
+on_ft = 'zsh'
+
 # ------------------------------ markdown utility ------------------------------
 
 [[plugins]]
