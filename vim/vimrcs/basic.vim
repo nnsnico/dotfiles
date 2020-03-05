@@ -46,6 +46,9 @@ set timeoutlen=1000
 " timeout length while waiting next keycode
 set ttimeoutlen=10
 
+" time while highlight match paren
+set matchtime=1
+
 " scroll offset
 set scrolloff=3
 set sidescrolloff=3
