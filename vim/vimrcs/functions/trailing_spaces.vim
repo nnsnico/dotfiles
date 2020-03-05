@@ -12,7 +12,7 @@ function! s:trailing_spaces_one_line(...) abort
         let pos = '.'
     endif
     let line = getline(pos)
-    let trailed_line = substitute(line, '\s\+$', '', '')
+    let trailed_line = substitute(line, '\(\(\s\+$\)\|\(　\+\)\)', '', '')
     call setline(pos, trailed_line)
 endfunction
 
