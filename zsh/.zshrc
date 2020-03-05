@@ -46,7 +46,7 @@ function handleproxy() {
     echo "[network] current ssid: $ssid"
       if [ $ssid = 'aoyamafan' ]; then
         echo '[network] proxy is set'
-          local decryptpath='/home/nnsnico/dotfiles'
+          local decryptpath="$HOME/dotfiles"
           local name=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/id/ {print $2}'`
           local pass=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/password/ {print $2}'`
           export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
