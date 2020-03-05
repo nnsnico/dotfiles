@@ -60,6 +60,9 @@ set cmdheight=2
 set list
 set listchars=tab:»-,trail:-,eol:↩
 
+" show a column line
+set colorcolumn=80
+
 " change shape of cursor each mode (support vim only)
 if has('mac')
   let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
