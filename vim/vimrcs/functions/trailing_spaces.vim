@@ -12,7 +12,7 @@ function! s:trailing_spaces_one_line(...) abort
         let pos = '.'
     endif
     let line = getline(pos)
-    let trailed_line = substitute(line, '\(\(\s\+$\)\|\(　\+\)\)', '', '')
+    let trailed_line = substitute(line, '\(\s\|　\)\+$', '', '')
     call setline(pos, trailed_line)
 endfunction
 
@@ -28,8 +28,8 @@ command! TrailingSpacesAll call s:trailing_spaces_all_line()
 
 augroup HighlightTrailingSpaces
     autocmd!
-    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
-    autocmd VimEnter,WinEnter * match TrailingSpaces /\v(\s+$)|(　)/
+    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
+    autocmd VimEnter,WinEnter * match TrailingSpaces /\v((\s|　)+$)|(　)/
 augroup END
 
 nnoremap <silent> <space>t :<C-u>TrailingSpacesAll<CR>
