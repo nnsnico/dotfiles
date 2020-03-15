@@ -47,6 +47,9 @@ hook_add = '''
 let g:deoplete#enable_at_startup = 0
 '''
 
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+
 # -------------------------------- fuzzy finder --------------------------------
 
 [[plugins]]
