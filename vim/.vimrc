@@ -14,3 +14,5 @@ source ~/dotfiles/vim/vimrcs/search.vim
 source ~/dotfiles/vim/vimrcs/autocmd.vim
 source ~/dotfiles/vim/vimrcs/other.vim
 source ~/dotfiles/vim/vimrcs/functions/trailing_spaces.vim
+source ~/dotfiles/vim/vimrcs/functions/convert_md5.vim
+source ~/dotfiles/vim/vimrcs/functions/convert_date_util.vim
