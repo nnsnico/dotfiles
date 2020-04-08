@@ -312,3 +312,10 @@ hook_add = '''
 repo = 'skanehira/translate.vim'
 
 [[plugins]]
+repo = 'nnsnico/sepcomment.vim'
+hook_add = '''
+  let g:sepcomment#length = 78
+'''
+
+[[plugins]]
+repo = 'junegunn/goyo.vim'
