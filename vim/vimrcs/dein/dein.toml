@@ -312,20 +312,3 @@ hook_add = '''
 repo = 'skanehira/translate.vim'
 
 [[plugins]]
-repo = 'glacambre/firenvim'
-hook_post_update = '''
-  let g:firenvim_config = {
-      \ 'localSettings': {
-          \ '.*': {
-              \ 'selector': '',
-              \ 'priority': 0,
-          \ },
-          \ 'github\.com': {
-              \ 'selector': 'textarea',
-              \ 'priority': 1,
-          \ },
-      \ }
-  \ }
-
-  function('firenvim#install')
-'''
