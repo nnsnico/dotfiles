@@ -1,4 +1,14 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "jsonc",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "diagnostic.errorSign": "\uF1E2",
+  "diagnostic.warningSign": "\uE230",
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",
@@ -26,29 +36,18 @@
     "typeParameter": "\uf728",
     "default": "\uf29c"
   },
-  "diagnostic.errorSign": "\uF1E2",
-  "diagnostic.warningSign": "\uE230",
-  "coc.preferences.formatOnType": true,
   "languageserver": {
     "haskell": {
       "command": "hie-wrapper",
-      "rootPatterns": [
-        "stack.yaml",
-        "cabal.config",
-        "package.yaml"
-      ],
-      "filetypes": [
-        "hs",
-        "lhs",
-        "haskell"
-      ],
+      "rootPatterns": ["stack.yaml", "cabal.config", "package.yaml"],
+      "filetypes": ["hs", "lhs", "haskell"],
       "initializationOptions": {
         "languageServerHaskell": {
           "hlintOn": true,
           "maxNumberOfproblems": "100",
           "useHieWrapper": true
         }
-      },
+      }
     },
     "efm": {
       "command": "efm-langserver",
@@ -71,12 +70,11 @@
       "command": "elm-language-server",
       "filetypes": ["elm"],
       "rootPatterns": ["elm.json"],
-      "initializationOptions": {
-      }
+      "initializationOptions": {}
     },
     "kotlin": {
       "command": "~/.cache/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
       "filetypes": ["kotlin"]
     }
-  },
+  }
 }
