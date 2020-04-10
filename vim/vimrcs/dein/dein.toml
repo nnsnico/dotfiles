@@ -304,6 +304,12 @@ hook_add = '''
   nnoremap <C-o> :TigOpenProjectRootDir<CR>
 '''
 
+[[plugins]]
+repo = 'APZelos/blamer.nvim'
+hook_add = '''
+  nnoremap <Space>b :<C-u>BlamerToggle<CR>
+'''
+
 # ------------------------------- other plugins -------------------------------
 
 [[plugins]]
