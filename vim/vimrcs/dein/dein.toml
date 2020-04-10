@@ -202,6 +202,13 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
 
+[[plugins]]
+repo = 'pechorin/any-jump.vim'
+hook_add = '''
+  let g:any_jump_list_numbers = 1
+  let g:any_jump_grouping_enabled = 1
+'''
+
 # ------------------------------- visual utility -------------------------------
 
 [[plugins]]
