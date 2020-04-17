@@ -249,9 +249,10 @@ hook_add = '''
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
 hook_add = '''
-let g:indent_guides_enable_on_vim_startup = 1
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+  let g:indentLine_setColors = 0
 '''
 
 # -------------------------------- color scheme --------------------------------
