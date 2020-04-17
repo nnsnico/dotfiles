@@ -155,6 +155,8 @@ hook_add = '''
 
   map <silent> <C-t> :NERDTreeToggle<CR>
   nnoremap <silent> <C-k> :NERDTreeFind<CR>
+  nnoremap <silent> <C-w>t :<C-u>NERDTreeFocus<CR>
+  nnoremap <silent> <C-w><C-t> :<C-u>NERDTreeFocus<CR>
 '''
 
 [[plugins]]
