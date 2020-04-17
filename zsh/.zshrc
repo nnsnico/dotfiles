@@ -143,7 +143,6 @@ export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Command
 ## Android
 export ANDROID_HOME="/usr/local/share/android-sdk"
 export ANDROID_SDK_ROOT=$ANDROID_HOME
-export HOMEBREW_GITHUB_API_TOKEN="69a78586be8f9595bf7643b78f977d923bac1230"
 
 ## flutter
 export FLUTTER_HOME="/Users/nns/flutter"
