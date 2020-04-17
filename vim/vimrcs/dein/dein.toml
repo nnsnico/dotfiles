@@ -201,6 +201,9 @@ repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'terryma/vim-multiple-cursors'
+hook_add = '''
+  let g:multi_cursor_select_all_word_key = '<C-q>'
+'''
 
 [[plugins]]
 repo = 'pechorin/any-jump.vim'
