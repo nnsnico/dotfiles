@@ -13,6 +13,6 @@ source ~/dotfiles/vim/vimrcs/visual.vim
 source ~/dotfiles/vim/vimrcs/search.vim
 source ~/dotfiles/vim/vimrcs/autocmd.vim
 source ~/dotfiles/vim/vimrcs/other.vim
-source ~/dotfiles/vim/vimrcs/functions/triming_spaces.vim
+source ~/dotfiles/vim/vimrcs/functions/trimming_spaces.vim
 source ~/dotfiles/vim/vimrcs/functions/convert_md5.vim
 source ~/dotfiles/vim/vimrcs/functions/convert_date_util.vim

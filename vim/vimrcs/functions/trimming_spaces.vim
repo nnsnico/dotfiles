@@ -1,11 +1,11 @@
 " simple trim white spaces
 
-if exists('g:loaded_triming_spaces')
+if exists('g:loaded_trimming_spaces')
     finish
 endif
-let g:loaded_triming_spaces = 1
+let g:loaded_trimming_spaces = 1
 
-function! s:triming_spaces_one_line(trim_flag, ...) abort
+function! s:trimming_spaces_one_line(trim_flag, ...) abort
     if a:trim_flag == 'start'
         let trim_regex = '\v(^(\s|　)+)'
     elseif a:trim_flag == 'end'
@@ -26,16 +26,16 @@ endfunction
 function! s:trailing_spaces_all_line() abort
     let line_num = range(0, line('$'))
     for line in line_num
-        call s:triming_spaces_one_line('end', line)
+        call s:trimming_spaces_one_line('end', line)
     endfor
 endfunction
 
 function! s:join_line_without_spaces() abort
-    call s:triming_spaces_one_line('start', line('.') + 1)
+    call s:trimming_spaces_one_line('start', line('.') + 1)
     normal! gJ
 endfunction
 
-command! -nargs=+ TrimSpaces call s:triming_spaces_one_line(<f-args>)
+command! -nargs=+ TrimSpaces call s:trimming_spaces_one_line(<f-args>)
 command! TrailingSpacesAll call s:trailing_spaces_all_line()
 command! JoinLineWithoutSpaces call s:join_line_without_spaces()
 
