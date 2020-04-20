@@ -33,11 +33,11 @@ endfunction
 function! s:join_line_without_spaces() abort
     call s:trimming_spaces_one_line('start', line('.') + 1)
     normal! gJ
+    silent! call repeat#set("\<Plug>JoinLineWithoutSpaces", v:count1)
 endfunction
 
 command! -nargs=+ TrimSpaces call s:trimming_spaces_one_line(<f-args>)
 command! TrailingSpacesAll call s:trailing_spaces_all_line()
-command! JoinLineWithoutSpaces call s:join_line_without_spaces()
 
 augroup HighlightTrailingSpaces
     autocmd!
@@ -45,7 +45,8 @@ augroup HighlightTrailingSpaces
     autocmd VimEnter,WinEnter * match TrailingSpaces /\v((\s|　)+$)|(　)/
 augroup END
 
-nnoremap <silent> gJ :<C-u>JoinLineWithoutSpaces<CR>
+nnoremap <silent> <Plug>JoinLineWithoutSpaces :<C-u>call <SID>join_line_without_spaces()<CR>
+nmap gJ <Plug>JoinLineWithoutSpaces
 nnoremap <silent> <space>t :<C-u>TrailingSpacesAll<CR>
 
 " vim: set ts=4 sw=4 sts=4 et :
