@@ -10,7 +10,7 @@ set fileencodings=utf-8
 set fileformats=unix,dos,mac
 
 " set filetype
-filetype on
+filetype plugin on
 
 " support special symbol
 set ambiwidth=double
