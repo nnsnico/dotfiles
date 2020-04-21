@@ -51,7 +51,12 @@ set showmatch
 set laststatus=2
 
 " completion command line
-set wildmode=list:longest,full
+if has('nvim')
+  cnoremap <expr> <C-p> pumvisible() ? "<C-p>" : "<Up>"
+  cnoremap <expr> <C-n> pumvisible() ? "<C-n>" : "<Down>"
+else
+  set wildmode=list:longest,full
+endif
 
 " height command line
 set cmdheight=2
