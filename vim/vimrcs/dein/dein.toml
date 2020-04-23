@@ -143,6 +143,8 @@ hook_add = '''
   nnoremap <silent> zg :GFiles<CR>
   nnoremap <silent> zr :Grep<CR>
   nnoremap <silent> zw :Windows<CR>
+  nnoremap <silent> zv :Clap grep ++query=<cword><CR>
+  vnoremap <silent> zv :Clap grep ++query=@visual<CR>
 '''
 
 # ------------------------------ nerdtree plugins ------------------------------
