@@ -50,6 +50,9 @@ set showmatch
 " always show status line
 set laststatus=2
 
+" not shown mode
+set noshowmode
+
 " completion command line
 if has('nvim')
   cnoremap <expr> <C-p> pumvisible() ? "<C-p>" : "<Up>"
