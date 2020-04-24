@@ -100,7 +100,6 @@ let g:deoplete#enable_at_startup = 0
 
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
-if = '''! has('nvim')'''
 build = ':Clap install-binary'
 hook_add = '''
   let g:clap_theme = 'material_design_dark'
