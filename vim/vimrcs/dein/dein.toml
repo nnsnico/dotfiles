@@ -130,21 +130,25 @@ hook_add = '''
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
 
   " custom commands likes `fzf.vim`
-  command! Files Clap files --hidden
-  command! Colors Clap colors
-  command! Grep Clap grep
-  command! GFiles Clap git_diff_files
-  command! Buffers Clap buffers
-  command! Windows Clap windows
+  nnoremap <silent> <Plug>Files :<C-u>Clap files --hidden<CR>
+  nnoremap <silent> <Plug>Buffers :<C-u>Clap buffers<CR>
+  nnoremap <silent> <Plug>BLine :<C-u>Clap blines<CR>
+  nnoremap <silent> <Plug>GFiles :<C-u>Clap git_diff_files<CR>
+  nnoremap <silent> <Plug>Grep :<C-u>Clap grep<CR>
+  nnoremap <silent> <Plug>GrepWord :<C-u>Clap grep ++query=<cword><CR>
+  vnoremap <silent> <Plug>GrepSelect :<C-u>Clap grep ++query=@visual<CR>
+  nnoremap <silent> <Plug>Windows :<C-u>Clap windows<CR>
+  nnoremap <silent> <Plug>Colors :<C-u>Clap colors<CR>
 
-  nnoremap <silent> zf :Files<CR>
-  nnoremap <silent> zb :Buffers<CR>
-  nnoremap <silent> zl :Clap blines<CR>
-  nnoremap <silent> zg :GFiles<CR>
-  nnoremap <silent> zr :Grep<CR>
-  nnoremap <silent> zw :Windows<CR>
-  nnoremap <silent> zv :Clap grep ++query=<cword><CR>
-  vnoremap <silent> zv :Clap grep ++query=@visual<CR>
+  nmap <silent> zf <Plug>Files
+  nmap <silent> zb <Plug>Buffers
+  nmap <silent> zl <Plug>BLine
+  nmap <silent> zg <Plug>GFiles
+  nmap <silent> zr <Plug>Grep
+  nmap <silent> zv <Plug>GrepWord
+  vmap <silent> zv <Plug>GrepSelect
+  nmap <silent> zw <Plug>Windows
+  nmap <silent> zc <Plug>Colors
 '''
 
 # ------------------------------ nerdtree plugins ------------------------------
