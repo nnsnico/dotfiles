@@ -71,7 +71,6 @@ on_ft = [
 merged = 0
 rev = 'release'
 hook_add = '''
-  set hidden
   set updatetime=300
   set shortmess+=c
   set signcolumn=yes
