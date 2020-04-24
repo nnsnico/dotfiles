@@ -55,12 +55,8 @@ repo = 'vim-jp/vital.vim'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 if = '''has('nvim')'''
+depends = ['fzf']
 hook_add = '''
-  nnoremap <silent> zf :Files<CR>
-  nnoremap <silent> zg :GFiles?<CR>
-  nnoremap <silent> zh :History<CR>
-  nnoremap <silent> zb :Buffers<CR>
-
   " customize to open in horizontal
   let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
@@ -92,8 +88,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-if = '''has('nvim')'''
-repo = '/usr/local/opt/fzf'
+repo = 'junegunn/fzf'
+lazy = 1
+hook_done_update = ':<C-u>call fzf#install()<CR>'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
