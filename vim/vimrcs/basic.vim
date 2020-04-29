@@ -69,14 +69,14 @@ set splitright
 " ---------------------------------- Keymaps ----------------------------------
 
 " disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
+noremap <Up>    <Nop>
+noremap <Down>  <Nop>
+noremap <Left>  <Nop>
 noremap <Right> <Nop>
-imap <Up> <Nop>
-imap <Down> <Nop>
-imap <Left> <Nop>
-imap <Right> <Nop>
+imap    <Up>    <Nop>
+imap    <Down>  <Nop>
+imap    <Left>  <Nop>
+imap    <Right> <Nop>
 
 " Enable moving cursor likes emacs in command line mode
 cnoremap <C-b> <Left>
@@ -88,15 +88,15 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
 
 " splict window
-nmap <silent> gs :split<CR>
-nmap <silent> gv :vsplit<CR>
+nnoremap <silent> gs :<C-u>split<CR>
+nnoremap <silent> gv :<C-u>vsplit<CR>
 
 " move tab
-nmap <C-l> gt
-nmap <C-h> gT
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 
 " add new line <Space><CR>
-nmap <Space><CR> o<ESC>
+nnoremap <Space><CR> o<ESC>
 
 " support straddling line when enable wrapping line
 nnoremap j gj

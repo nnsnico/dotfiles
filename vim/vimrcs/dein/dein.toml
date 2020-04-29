@@ -44,7 +44,7 @@ repo = 'roxma/vim-hug-neovim-rpc'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
-let g:deoplete#enable_at_startup = 0
+  let g:deoplete#enable_at_startup = 0
 '''
 
 [[plugins]]
@@ -61,7 +61,8 @@ hook_add = '''
   let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-h': 'split',
-    \ 'ctrl-v': 'vsplit' }
+    \ 'ctrl-v': 'vsplit'
+    \ }
 
   if has('nvim')
     let g:fzf_layout = { 'window': 'call FloatingFZF()' }
@@ -90,12 +91,14 @@ hook_add = '''
 [[plugins]]
 repo = 'junegunn/fzf'
 lazy = 1
-hook_done_update = ':<C-u>call fzf#install()<CR>'
+hook_done_update = '''
+:<C-u>call fzf#install()<CR>
+'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
-let g:deoplete#enable_at_startup = 0
+  let g:deoplete#enable_at_startup = 0
 '''
 
 [[plugins]]
@@ -123,28 +126,30 @@ hook_add = '''
 
   " open nerdtree if no specified arguments
   autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | :Clap files --hidden | endif
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in")
+    \ | :Clap files --hidden
+    \ | endif
 
   " custom commands likes `fzf.vim`
-  nnoremap <silent> <Plug>Files :<C-u>Clap files --hidden<CR>
-  nnoremap <silent> <Plug>Buffers :<C-u>Clap buffers<CR>
-  nnoremap <silent> <Plug>BLine :<C-u>Clap blines<CR>
-  nnoremap <silent> <Plug>GFiles :<C-u>Clap git_diff_files<CR>
-  nnoremap <silent> <Plug>Grep :<C-u>Clap grep<CR>
-  nnoremap <silent> <Plug>GrepWord :<C-u>Clap grep ++query=<cword><CR>
-  vnoremap <silent> <Plug>GrepSelect :<C-u>Clap grep ++query=@visual<CR>
-  nnoremap <silent> <Plug>Windows :<C-u>Clap windows<CR>
-  nnoremap <silent> <Plug>Colors :<C-u>Clap colors<CR>
+  nnoremap <silent> <Plug>ClapFiles      :<C-u>Clap files --hidden<CR>
+  nnoremap <silent> <Plug>ClapBuffers    :<C-u>Clap buffers<CR>
+  nnoremap <silent> <Plug>ClapBLine      :<C-u>Clap blines<CR>
+  nnoremap <silent> <Plug>ClapGFiles     :<C-u>Clap git_diff_files<CR>
+  nnoremap <silent> <Plug>ClapGrep       :<C-u>Clap grep<CR>
+  nnoremap <silent> <Plug>ClapGrepWord   :<C-u>Clap grep ++query=<cword><CR>
+  vnoremap <silent> <Plug>ClapGrepSelect :<C-u>Clap grep ++query=@visual<CR>
+  nnoremap <silent> <Plug>ClapWindows    :<C-u>Clap windows<CR>
+  nnoremap <silent> <Plug>ClapColors     :<C-u>Clap colors<CR>
 
-  nmap <silent> zf <Plug>Files
-  nmap <silent> zb <Plug>Buffers
-  nmap <silent> zl <Plug>BLine
-  nmap <silent> zg <Plug>GFiles
-  nmap <silent> zr <Plug>Grep
-  nmap <silent> zv <Plug>GrepWord
-  vmap <silent> zv <Plug>GrepSelect
-  nmap <silent> zw <Plug>Windows
-  nmap <silent> zc <Plug>Colors
+  nmap <silent> zf <Plug>ClapFiles
+  nmap <silent> zb <Plug>ClapBuffers
+  nmap <silent> zl <Plug>ClapBLine
+  nmap <silent> zg <Plug>ClapGFiles
+  nmap <silent> zr <Plug>ClapGrep
+  nmap <silent> zv <Plug>ClapGrepWord
+  vmap <silent> zv <Plug>ClapGrepSelect
+  nmap <silent> zw <Plug>ClapWindows
+  nmap <silent> zc <Plug>ClapColors
 '''
 
 # ------------------------------ nerdtree plugins ------------------------------
@@ -152,12 +157,12 @@ hook_add = '''
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-  let g:NERDTreeShowHidden = 1
+  let g:NERDTreeShowHidden    = 1
   let g:NERDTreeShowBookmarks = 0
 
-  map <silent> <C-t> :NERDTreeToggle<CR>
-  nnoremap <silent> <C-k> :NERDTreeFind<CR>
-  nnoremap <silent> <C-w>t :<C-u>NERDTreeFocus<CR>
+  noremap  <silent> <C-t>      :<C-u>NERDTreeToggle<CR>
+  nnoremap <silent> <C-k>      :<C-u>NERDTreeFind<CR>
+  nnoremap <silent> <C-w>t     :<C-u>NERDTreeFocus<CR>
   nnoremap <silent> <C-w><C-t> :<C-u>NERDTreeFocus<CR>
 '''
 
@@ -181,7 +186,7 @@ repo = 'severin-lemaignan/vim-minimap'
 [[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
-let g:rainbow_active = 1
+  let g:rainbow_active = 1
 '''
 
 [[plugins]]
@@ -212,7 +217,7 @@ hook_add = '''
 [[plugins]]
 repo = 'pechorin/any-jump.vim'
 hook_add = '''
-  let g:any_jump_list_numbers = 1
+  let g:any_jump_list_numbers     = 1
   let g:any_jump_grouping_enabled = 1
 '''
 
@@ -228,25 +233,31 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  let g:airline_theme='bubblegum'
+  " let g:airline_theme='bubblegum'
 
-  let g:airline_extensions = ['tabline', 'coc', 'hunks', 'whitespace', 'fugitiveline']
-
-  let g:airline#extensions#coc#error_symbol = "\uF1E2"
-  let g:airline#extensions#coc#warning_symbol = "\uE230"
-  let g:airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-  let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-
-  let g:airline#extensions#tabline#left_sep = "\uE0B8"
-  let g:airline#extensions#tabline#left_alt_sep = "\uE0B9"
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-  let g:airline_left_sep = "\uE0B8"
+  let g:airline_left_sep  = "\uE0B8"
   let g:airline_right_sep = "\uE0BE"
 
   " show filename only (defualt relative path)
   let g:airline_section_c = '%t'
   let g:airline_section_z = '%L lines %p%%'
+
+  let g:airline_extensions = [
+    \ 'tabline',
+    \ 'coc',
+    \ 'hunks',
+    \ 'whitespace',
+    \ 'fugitiveline'
+    \ ]
+
+  let g:airline#extensions#coc#error_symbol    = "\uF1E2"
+  let g:airline#extensions#coc#warning_symbol  = "\uE230"
+  let g:airline#extensions#coc#stl_format_err  = '%E{[%e(#%fe)]}'
+  let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+
+  let g:airline#extensions#tabline#left_sep     = "\uE0B8"
+  let g:airline#extensions#tabline#left_alt_sep = "\uE0B9"
+  let g:airline#extensions#tabline#formatter    = 'unique_tail_improved'
 '''
 
 [[plugins]]
@@ -265,7 +276,7 @@ hook_add = '''
 repo = 'ayu-theme/ayu-vim'
 hook_add = '''
   set termguicolors
-  let ayucolor="dark"
+  let ayucolor = "dark"
 '''
 
 [[plugins]]
@@ -280,6 +291,12 @@ repo = 'fabi1cazenave/kalahari.vim'
 [[plugins]]
 repo = 'chase/focuspoint-vim'
 
+[[plugins]]
+repo = 'rakr/vim-one'
+hook_add = '''
+  let g:one_allow_italics = 1
+'''
+
 # ------------------------------------ VCS ------------------------------------
 
 [[plugins]]
@@ -288,16 +305,16 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
-  nmap <Space>hp <Plug>(GitGutterPreviewHunk)
-  nmap <Space>ha <Plug>(GitGutterStageHunk)
-  nmap <Space>hr <Plug>(GitGutterUndoHunk)
-  nnoremap <silent> ]c :GitGutterNextHunk<CR>zz
-  nnoremap <silent> [c :GitGutterPrevHunk<CR>zz
+  nmap     <silent> <Space>hp <Plug>(GitGutterPreviewHunk)
+  nmap     <silent> <Space>ha <Plug>(GitGutterStageHunk)
+  nmap     <silent> <Space>hr <Plug>(GitGutterUndoHunk)
+  nnoremap <silent> ]c        :<C-u>GitGutterNextHunk<CR>zz
+  nnoremap <silent> [c        :<C-u>GitGutterPrevHunk<CR>zz
 
-  let g:gitgutter_preview_win_floating = 1
-  let g:gitgutter_sign_removed = '-'
+  let g:gitgutter_preview_win_floating    = 1
+  let g:gitgutter_sign_removed            = '-'
   let g:gitgutter_sign_removed_first_line = '-'
-  let g:gitgutter_preview_win_floating = 1
+
   if has('nvim')
     let g:gitgutter_highlight_linenrs = 1
   endif
@@ -312,7 +329,8 @@ hook_add = '''
 [[plugins]]
 repo = 'APZelos/blamer.nvim'
 hook_add = '''
-  nnoremap <Space>b :<C-u>BlamerToggle<CR>
+  let g:blamer_delay = 100
+  nnoremap <silent><Space>b :<C-u>BlamerToggle<CR>
 '''
 
 # ------------------------------- other plugins -------------------------------
