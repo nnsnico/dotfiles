@@ -55,6 +55,7 @@ set noshowmode
 
 " completion command line
 if has('nvim')
+  set wildmode=longest,full
   cnoremap <expr> <C-p> pumvisible() ? "<C-p>" : "<Up>"
   cnoremap <expr> <C-n> pumvisible() ? "<C-n>" : "<Down>"
 else

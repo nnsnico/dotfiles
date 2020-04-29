@@ -13,5 +13,9 @@ set wrapscan
 " highlight
 set hlsearch
 
+" set very magic
+nnoremap / /\v
+nnoremap ? ?\v
+
 " cancel highlight double push <ESC>
-nmap <silent> <Esc><Esc> :nohlsearch<CR><Esc>
+nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
