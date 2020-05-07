@@ -4,7 +4,9 @@ let s:extensions = [
   \ 'coc-rls',
   \ 'coc-metals',
   \ 'coc-json',
-  \ 'coc-prettier'
+  \ 'coc-prettier',
+  \ 'coc-tsserver',
+  \ 'coc-python'
   \ ]
 
 for ex in s:extensions
