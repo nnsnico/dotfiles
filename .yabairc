@@ -20,7 +20,7 @@ yabai -m config mouse_action1           move
 yabai -m config mouse_action2           resize
 
 # general space settings
-yabai -m config external_bar            main:30:25
+yabai -m config external_bar            all:30:25
 yabai -m config layout                  bsp
 yabai -m config left_padding            5
 yabai -m config right_padding           5
