@@ -204,6 +204,9 @@ repo = 'tpope/vim-speeddating'
 
 [[plugins]]
 repo = 'tpope/vim-repeat'
+hook_add = '''
+  call repeat#set("<Space><CR>", v:count1)
+'''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
