@@ -83,6 +83,47 @@ hook_add = '''
     endif
   endfunction
 
+  " scrollable in popup menu
+  " @see https://vi.stackexchange.com/questions/21924/how-can-i-hide-and-scroll-popup-window-in-coc-nvim-in-vim
+  if has('nvim')
+    nnoremap <silent><expr> <C-j> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-j>"
+    nnoremap <silent><expr> <C-k> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-k>"
+  else
+    nnoremap <silent><expr> <C-j> <SID>scroll_cursor_popup(1) ? "\<Esc>" : "\<C-d>"
+    nnoremap <silent><expr> <C-k> <SID>scroll_cursor_popup(0) ? "\<Esc>" : "\<C-u>"
+
+    function! s:find_cursor_popup(...) abort
+      let radius = get(a:000, 0, 2)
+      let srow   = screenrow()
+      let scol   = screencol()
+
+      " it's necessary to test entire rect, as some popup might be quite small
+      for r in range(srow - radius, srow + radius)
+        for c in range(scol - radius, scol + radius)
+          let winid = popup_locate(r, c)
+          if winid != 0
+            return winid
+          endif
+        endfor
+      endfor
+
+      return 0
+    endfunction
+
+    function! s:scroll_cursor_popup(down) abort
+      let winid = s:find_cursor_popup()
+      if winid == 0
+        return 0
+      endif
+
+      let pp = popup_getpos(winid)
+      call popup_setoptions( winid,
+            \ {'firstline' : pp.firstline + ( a:down ? 1 : -1 ) } )
+
+      return 1
+    endfunction
+  endif
+
   nmap     <silent>       [e         <Plug>(coc-diagnostic-prev)
   nmap     <silent>       ]e         <Plug>(coc-diagnostic-next)
   nmap     <silent>       <leader>ac <Plug>(coc-codeaction)
