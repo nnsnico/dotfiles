@@ -15,9 +15,11 @@ on_event = 'InsertCharPre'
 on_ft = 'snippet'
 
 [[plugins]]
+lazy = 1
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
+lazy = 1
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -355,6 +357,7 @@ hook_add = '''
 '''
 
 [[plugins]]
+if = '''! has('nvim')'''
 repo = 'skanehira/translate.vim'
 
 [[plugins]]
