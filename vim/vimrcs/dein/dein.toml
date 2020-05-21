@@ -163,7 +163,7 @@ hook_add = '''
   let g:NERDTreeShowBookmarks = 0
 
   noremap  <silent> <C-t>      :<C-u>NERDTreeToggle<CR>
-  nnoremap <silent> <C-k>      :<C-u>NERDTreeFind<CR>
+  nnoremap <silent> <C-p>      :<C-u>NERDTreeFind<CR>
   nnoremap <silent> <C-w>t     :<C-u>NERDTreeFocus<CR>
   nnoremap <silent> <C-w><C-t> :<C-u>NERDTreeFocus<CR>
 '''
