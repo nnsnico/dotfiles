@@ -98,12 +98,6 @@ hook_done_update = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  let g:deoplete#enable_at_startup = 0
-'''
-
-[[plugins]]
 repo = 'liuchengxu/vim-clap'
 build = ':Clap install-binary'
 hook_add = '''
