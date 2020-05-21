@@ -4,26 +4,15 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-
-[[plugins]]
 lazy = 1
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-lazy = 1
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
+lazy = 1
 hook_post_update = '''
   if has('win32')
     let cmd = 'tools\\update-dll-mingw'
@@ -39,15 +28,11 @@ hook_post_update = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+lazy = 1
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  let g:deoplete#enable_at_startup = 0
-'''
+lazy = 1
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -177,9 +162,6 @@ repo = 'ryanoasis/vim-devicons'
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'severin-lemaignan/vim-minimap'
-
-[[plugins]]
 repo = 'luochen1990/rainbow'
 hook_add = '''
   let g:rainbow_active = 1
@@ -286,16 +268,10 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyrannicaltoucan/vim-deep-space'
-
-[[plugins]]
 repo = 'romainl/Apprentice'
 
 [[plugins]]
 repo = 'fabi1cazenave/kalahari.vim'
-
-[[plugins]]
-repo = 'chase/focuspoint-vim'
 
 [[plugins]]
 repo = 'rakr/vim-one'
