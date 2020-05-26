@@ -6,7 +6,7 @@ endif
 let g:convert_date_util = 1
 
 function! s:convert_unix_to_utc(...) abort
-    let V = vital#of('vital')
+    let V = vital#vital#new()
     let DateTime = V.import('DateTime')
     let converted_date = DateTime.from_unix_time(a:1)
     let converted_str = converted_date.to_string()
@@ -17,7 +17,7 @@ endfunction
 
 function! s:convert_to_unix_from_date(...) abort
     if len(a:000) == 6
-        let V = vital#of('vital')
+        let V = vital#vital#new()
         let DateTime = V.import('DateTime')
         let converted_date = DateTime.from_date(a:1, a:2, a:3, a:4, a:5, a:6, '+09:00')
         let converted_unix_time = converted_date.unix_time()

@@ -6,7 +6,7 @@ endif
 let g:convert_md5 = 1
 
 function! s:convert_to_md5_hash(...) abort
-    let V = vital#of('vital')
+    let V = vital#vital#new()
     let Md5 = V.import('Hash.MD5')
     let converted_str = Md5.sum(a:1)
     " copy to clipboard
