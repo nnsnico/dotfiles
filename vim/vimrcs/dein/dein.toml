@@ -341,3 +341,6 @@ repo = 'junegunn/goyo.vim'
 
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+
+[[plugins]]
+repo = 'gyim/vim-boxdraw'
