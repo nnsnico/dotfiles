@@ -101,6 +101,8 @@ nnoremap <Space><CR> o<ESC>
 " support straddling line when enable wrapping line
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " ------------------------------------ Tab ------------------------------------
 
