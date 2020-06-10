@@ -178,13 +178,6 @@ hook_add = '''
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
-repo = 'yuttie/comfortable-motion.vim'
-hook_add = '''
-  let g:comfortable_motion_friction = 200.0
-  let g:comfortable_motion_air_drag = 0.0
-'''
-
-[[plugins]]
 repo = 'tpope/vim-speeddating'
 
 [[plugins]]
