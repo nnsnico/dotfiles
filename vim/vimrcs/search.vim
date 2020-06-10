@@ -17,5 +17,9 @@ set hlsearch
 nnoremap / /\v
 nnoremap ? ?\v
 
+" search in word
+nnoremap <Space>/ /\<\><Left><Left>
+nnoremap <Space>? ?\<\><Left><Left>
+
 " cancel highlight double push <ESC>
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
