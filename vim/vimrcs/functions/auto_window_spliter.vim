@@ -19,7 +19,6 @@ function! s:auto_split_str(args) abort
     let cmd = [s:calc_splitable()]
 
     if !empty(a:args)
-        echomsg join(a:args)
         call extend(cmd, a:args)
     endif
 
