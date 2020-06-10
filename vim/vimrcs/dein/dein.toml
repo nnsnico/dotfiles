@@ -324,6 +324,17 @@ if = '''! has('nvim')'''
 repo = 'skanehira/translate.vim'
 
 [[plugins]]
+if = '''has('nvim')'''
+repo = 'voldikss/vim-translator'
+hook_add = '''
+  let g:translator_target_lang = 'ja'
+  let g:translator_source_lang = 'en'
+
+  nmap <silent> <Leader>t <Plug>Translate
+  vmap <silent> <Leader>t <Plug>TranslateV
+'''
+
+[[plugins]]
 repo = 'nnsnico/sepcomment.vim'
 hook_add = '''
   let g:sepcomment#length = 78
