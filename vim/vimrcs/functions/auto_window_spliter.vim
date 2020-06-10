@@ -6,8 +6,12 @@ endif
 let g:auto_window_spliter = 1
 
 function! s:auto_split_for_coc(cursor, name) abort
-    let splitable = s:calc_splitable()
-    execute(splitable . a:name)
+    if a:name == @%
+        execute('edit ' . a:name)
+    else
+        let splitable = s:calc_splitable()
+        execute(splitable . a:name)
+    endif
     execute(a:cursor)
 endfunction
 
