@@ -8,6 +8,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "coc.preferences.jumpCommand": "CocAutoSplit",
   "diagnostic.errorSign": "\uF1E2",
   "diagnostic.warningSign": "\uE230",
   "suggest.completionItemKindLabels": {
