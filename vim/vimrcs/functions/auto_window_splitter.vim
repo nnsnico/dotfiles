@@ -1,22 +1,22 @@
 " Split window to longer side(height or width)
 
-if exists('g:auto_window_spliter')
+if exists('g:auto_window_splitter')
     finish
 endif
-let g:auto_window_spliter = 1
+let g:auto_window_splitter = 1
 
 function! s:auto_split_for_coc(cursor, name) abort
     if a:name == @%
         execute('edit ' . a:name)
     else
-        let splitable = s:calc_splitable()
-        execute(splitable . a:name)
+        let splittable = s:calc_splittable()
+        execute(splittable . a:name)
     endif
     execute(a:cursor)
 endfunction
 
 function! s:auto_split_str(args) abort
-    let cmd = [s:calc_splitable()]
+    let cmd = [s:calc_splittable()]
 
     if !empty(a:args)
         call extend(cmd, a:args)
@@ -26,11 +26,11 @@ function! s:auto_split_str(args) abort
 endfunction
 
 function! s:auto_split(...) abort
-    let spliter = s:auto_split_str(a:000)
-    execute(spliter)
+    let splitter = s:auto_split_str(a:000)
+    execute(splitter)
 endfunction
 
-function! s:calc_splitable() abort
+function! s:calc_splittable() abort
     " Getting actual visible window size is not supoprted
     let current_width_ratio = winwidth(0) / str2float(&columns)
     let current_height_ratio = winheight(0) / str2float(&lines)
