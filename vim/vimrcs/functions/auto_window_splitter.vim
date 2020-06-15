@@ -5,14 +5,30 @@ if exists('g:auto_window_splitter')
 endif
 let g:auto_window_splitter = 1
 
-function! s:auto_split_for_coc(cursor, name) abort
-    if a:name == @%
-        execute('edit ' . a:name)
+function! s:auto_split_for_coc(cursor, jumpfile) abort
+    if a:jumpfile == @%
+        execute('edit ' . a:jumpfile)
+        execute(a:cursor)
     else
-        let splittable = s:calc_splittable()
-        execute(splittable . a:name)
+        let winlist = map(range(2, winnr('$')), { _, val -> [bufwinid(bufname(winbufnr(val))), bufname(winbufnr(val))] })
+        if !empty(winlist)
+            for [id, wname] in winlist
+                echomsg a:jumpfile
+                if wname == expand(a:jumpfile)
+                    call win_gotoid(str2nr(id))
+                    execute(a:cursor)
+                    return
+                endif
+            endfor
+            let splittable = s:calc_splittable()
+            execute(splittable . a:jumpfile)
+            execute(a:cursor)
+        else
+            let splittable = s:calc_splittable()
+            execute(splittable . a:jumpfile)
+            execute(a:cursor)
+        endif
     endif
-    execute(a:cursor)
 endfunction
 
 function! s:auto_split_str(args) abort
