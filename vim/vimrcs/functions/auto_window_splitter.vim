@@ -10,19 +10,28 @@ function! s:auto_split_for_coc(cursor, jumpfile) abort
         execute('edit ' . a:jumpfile)
         execute(a:cursor)
     else
-        let winlist = map(range(2, winnr('$')), { _, val -> [bufwinid(bufname(winbufnr(val))), bufname(winbufnr(val))] })
-        if !empty(winlist)
-            for [id, wname] in winlist
-                echomsg a:jumpfile
-                if wname == expand(a:jumpfile)
-                    call win_gotoid(str2nr(id))
-                    execute(a:cursor)
-                    return
-                endif
+        let V = vital#vital#new()
+        let Dict = V.import('Data.Dict')
+        " make window buffer list other than current that
+        " [[123, 'hoge'], [456, 'fuga']] -> { 123: 'hoge', 456: 'fuga' }
+        let winlist =
+            \ Dict.from_list(
+            \     map(
+            \         range(1, winnr('$')),
+            \         { _, val ->
+            \             [bufwinid(bufname(winbufnr(val))), bufname(winbufnr(val))]
+            \         }
+            \     )
+            \ )
+        let jumpablelist = filter(winlist, { _, val -> val == a:jumpfile && val != @% })
+
+        if !empty(jumpablelist)
+            for [id, wname] in items(jumpablelist)
+                call win_gotoid(str2nr(id))
+                execute(a:cursor)
+                " exit block as soon as jumped to file
+                return
             endfor
-            let splittable = s:calc_splittable()
-            execute(splittable . a:jumpfile)
-            execute(a:cursor)
         else
             let splittable = s:calc_splittable()
             execute(splittable . a:jumpfile)
