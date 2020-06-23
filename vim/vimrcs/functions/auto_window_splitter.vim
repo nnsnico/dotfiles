@@ -6,7 +6,9 @@ endif
 let g:auto_window_splitter = 1
 
 function! s:auto_split_for_coc(cursor, jumpfile) abort
-    if a:jumpfile == @%
+    echomsg 'cursor: ' . a:cursor
+    echomsg 'jumpfile: ' . a:jumpfile
+    if expand(a:jumpfile) == @%
         execute('edit ' . a:jumpfile)
         execute(a:cursor)
     else
@@ -23,7 +25,7 @@ function! s:auto_split_for_coc(cursor, jumpfile) abort
             \         }
             \     )
             \ )
-        let jumpablelist = filter(winlist, { _, val -> val == a:jumpfile && val != @% })
+        let jumpablelist = filter(winlist, { _, val -> val == expand(a:jumpfile) && val != @% })
 
         if !empty(jumpablelist)
             for [id, wname] in items(jumpablelist)
@@ -73,6 +75,6 @@ command! AutoSplitStr call s:auto_split_str()
 " example: coc.preferences.jumpCommand: CocAutoSplit
 command! -nargs=+ CocAutoSplit call s:auto_split_for_coc(<f-args>)
 
-nnoremap <silent> <Leader>w :<C-u>call <SID>auto_split()<CR>
+nnoremap <silent> <Space>w :<C-u>call <SID>auto_split()<CR>
 
 " vim: set ts=4 sw=4 sts=4 et :
