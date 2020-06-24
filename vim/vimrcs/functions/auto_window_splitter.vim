@@ -6,8 +6,6 @@ endif
 let g:auto_window_splitter = 1
 
 function! s:auto_split_for_coc(cursor, jumpfile) abort
-    echomsg 'cursor: ' . a:cursor
-    echomsg 'jumpfile: ' . a:jumpfile
     if expand(a:jumpfile) == @%
         execute('edit ' . a:jumpfile)
         execute(a:cursor)
