@@ -104,6 +104,9 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" maximize window
+nnoremap <Space>f :<C-u>resize \| vertical resize<CR>
+
 " ------------------------------------ Tab ------------------------------------
 
 " replace tab to space
