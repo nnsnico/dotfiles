@@ -105,7 +105,7 @@ vnoremap j gj
 vnoremap k gk
 
 " maximize window
-nnoremap <Space>f :<C-u>resize \| vertical resize<CR>
+nnoremap <silent><Space>m :<C-u>resize \| vertical resize<CR>
 
 " ------------------------------------ Tab ------------------------------------
 
