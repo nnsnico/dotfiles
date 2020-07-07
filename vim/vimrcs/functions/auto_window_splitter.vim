@@ -5,10 +5,9 @@ if exists('g:auto_window_splitter')
 endif
 let g:auto_window_splitter = 1
 
-function! s:auto_split_for_coc(cursor, jumpfile) abort
+function! s:auto_split_for_coc(jumpfile) abort
     if expand(a:jumpfile) == @%
-        execute('edit ' . a:jumpfile)
-        execute(a:cursor)
+        exec 'edit ' . a:jumpfile
     else
         let V = vital#vital#new()
         let Dict = V.import('Data.Dict')
@@ -28,14 +27,11 @@ function! s:auto_split_for_coc(cursor, jumpfile) abort
         if !empty(jumpablelist)
             for [id, wname] in items(jumpablelist)
                 call win_gotoid(str2nr(id))
-                execute(a:cursor)
-                " exit block as soon as jumped to file
                 return
             endfor
         else
             let splittable = s:calc_splittable()
-            execute(splittable . a:jumpfile)
-            execute(a:cursor)
+            exec splittable . a:jumpfile
         endif
     endif
 endfunction
@@ -71,7 +67,7 @@ command! -nargs=* AutoSplit call s:auto_split(<f-args>)
 command! AutoSplitStr call s:auto_split_str()
 " For coc-nvim. try to put in coc-settings.json
 " example: coc.preferences.jumpCommand: CocAutoSplit
-command! -nargs=+ CocAutoSplit call s:auto_split_for_coc(<f-args>)
+command! -nargs=1 CocAutoSplit call s:auto_split_for_coc(<f-args>)
 
 nnoremap <silent> <Space>w :<C-u>call <SID>auto_split()<CR>
 
