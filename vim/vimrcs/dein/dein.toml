@@ -209,6 +209,12 @@ hook_add = '''
   nmap ga <Plug>(EasyAlign)
 '''
 
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+  map <Leader> <Plug>(easymotion-prefix)
+'''
+
 # ------------------------------- visual utility -------------------------------
 
 [[plugins]]
