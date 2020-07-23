@@ -179,6 +179,14 @@ hook_add = '''
 [[plugins]]
 repo = 'kannokanno/previm'
 on_ft = ['markdown', 'md' ]
+hook_add = '''
+  " for wsl
+  if has('windows')
+    let user = 'yuji\ toyama'
+    let g:previm_open_cmd = '/mnt/c/Users/' . user . '/AppData/Local/Vivaldi/Application/vivaldi.exe'
+    let g:previm_wsl_mode = 1
+  endif
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
