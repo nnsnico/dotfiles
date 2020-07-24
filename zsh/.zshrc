@@ -1,5 +1,13 @@
 # Created by nns
 
+# ----------------------------------- OTHERS -----------------------------------
+
+distribution=$(cat /etc/*-release | awk -F '=' '{if($1=="DISTRIB_DESCRIPTION"){print $2}}' | sed -r "s/\"(.+)\"/\1/")
+# one liner command that show intalled package list by apt
+if [[ $distribution =~ "Ubuntu*" ]]; then
+    alias apt-installed-list="sudo dpkg -l | tail +6 | awk '{printf(\"%s%%%s%%\",\$2,\$3);for(i=5;i<=NF;++i){if(i!=NF){printf(\"%s \",\$i)}else{printf(\"%s\\n\",\$i)}}}' | column -s '%' -t"
+fi
+
 # ----------------------------------- zinit -----------------------------------
 
 ### Added by Zinit's installer
