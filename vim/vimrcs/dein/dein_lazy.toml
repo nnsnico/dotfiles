@@ -15,10 +15,6 @@ repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 
 [[plugins]]
-repo = 'scalameta/metals'
-on_ft = 'scala'
-
-[[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 
