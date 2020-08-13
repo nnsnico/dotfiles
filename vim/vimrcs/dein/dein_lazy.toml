@@ -154,7 +154,9 @@ hook_add = '''
 repo = 'zinit-zsh/zinit-vim-syntax'
 on_ft = 'zsh'
 
-# ------------------------------ markdown utility ------------------------------
+# ------------------------------ document utility ------------------------------
+
+# Markdown
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
@@ -169,12 +171,12 @@ hook_add = '''
 repo = 'godlygeek/tabular'
 on_ft = 'markdown'
 hook_add = '''
-  nnoremap <silent><Space>@ :Tabularize /\|<CR>
+  nnoremap <silent><Space>@ :TableFormat<CR>
 '''
 
 [[plugins]]
 repo = 'kannokanno/previm'
-on_ft = ['markdown', 'md' ]
+on_ft = ['markdown', 'rst' ]
 hook_add = '''
   " for wsl
   let uname = substitute(system('uname'), '\n', '', '')
@@ -190,7 +192,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
-on_ft = ['markdown', 'md' ]
+on_ft = ['markdown', 'rst' ]
 
 [[plugins]]
 repo = 'skanehira/preview-markdown.vim'
@@ -198,4 +200,13 @@ on_ft = 'markdown'
 hook_add = '''
   let g:preview_markdown_vertical    = 1
   let g:preview_markdown_auto_update = 1
+'''
+
+# reStructured code
+
+[[plugins]]
+repo = 'gu-fan/riv.vim'
+on_ft = 'rst'
+hook_add = '''
+  let g:riv_disable_folding = 1
 '''
