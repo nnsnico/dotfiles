@@ -1,5 +1,5 @@
 " colorscheme
-colorscheme kalahari
+colorscheme oceanic_material
 set background=dark
 
 " true color on terminal (support neovim only)
