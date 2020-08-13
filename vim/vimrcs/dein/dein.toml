@@ -215,6 +215,9 @@ hook_add = '''
   map <Leader> <Plug>(easymotion-prefix)
 '''
 
+[[plugins]]
+repo = 'psliwka/vim-smoothie'
+
 # ------------------------------- visual utility -------------------------------
 
 [[plugins]]
@@ -276,6 +279,16 @@ repo = 'fabi1cazenave/kalahari.vim'
 repo = 'rakr/vim-one'
 hook_add = '''
   let g:one_allow_italics = 1
+'''
+
+[[plugins]]
+repo = 'hardcoreplayers/oceanic-material'
+hook_add = '''
+  let g:oceanic_material_allow_bold      = 1
+  let g:oceanic_material_allow_italic    = 1
+  let g:oceanic_material_allow_underline = 1
+  let g:oceanic_material_allow_undercurl = 1
+  let g:oceanic_material_allow_reverse   = 1
 '''
 
 # ------------------------------------ VCS ------------------------------------
