@@ -225,11 +225,12 @@ repo = 'vim-airline/vim-airline'
 hook_add = '''
   " let g:airline_theme='bubblegum'
 
-  let g:airline_left_sep  = "\uE0B8"
-
   if has('nvim')
+    " should add a space after Unicode
+    let g:airline_left_sep  = "\uE0B8 "
     let g:airline_right_sep = "\uE0BE "
   else
+    let g:airline_left_sep  = "\uE0B8"
     let g:airline_right_sep = "\uE0BE"
   endif
 
