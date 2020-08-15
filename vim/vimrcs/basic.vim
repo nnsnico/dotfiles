@@ -13,7 +13,11 @@ set fileformats=unix,dos,mac
 filetype plugin on
 
 " support special symbol
-set ambiwidth=double
+if has('nvim')
+  set ambiwidth=single
+else
+  set ambiwidth=double
+endif
 
 " not make backup and swapfile
 set nobackup

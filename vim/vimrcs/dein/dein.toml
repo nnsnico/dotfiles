@@ -226,7 +226,12 @@ hook_add = '''
   " let g:airline_theme='bubblegum'
 
   let g:airline_left_sep  = "\uE0B8"
-  let g:airline_right_sep = "\uE0BE"
+
+  if has('nvim')
+    let g:airline_right_sep = "\uE0BE "
+  else
+    let g:airline_right_sep = "\uE0BE"
+  endif
 
   " show filename only (defualt relative path)
   let g:airline_section_c = '%t'
