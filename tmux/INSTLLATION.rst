@@ -1,12 +1,16 @@
 Installation
 ============
 
-#. Install tmux-powerline_ following installation guide
+#. Install powerline_
+
+   #. ``pip3 install powerline-status``
+
+   #. ``cp -r $(pip3 show powerline-status | grep Location | awk '{print $2}')/powerline/config_file ~/.config/powerline``
 
 #. Add symbolic link
 
    - ``ln -s ~/dotfiles/tmux/.tmux.conf``
 
-   - ``ln -s ~/dotfiles/tmux/.tmux-powerline``
+   - ``ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json``
 
-.. _tmux-powerline: https://github.com/erikw/tmux-powerline
+.. _powerline: https://github.com/powerline/powerline
