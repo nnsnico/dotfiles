@@ -223,21 +223,6 @@ repo = 'psliwka/vim-smoothie'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  " let g:airline_theme='bubblegum'
-
-  if has('nvim')
-    " should add a space after Unicode
-    let g:airline_left_sep  = "\uE0B8 "
-    let g:airline_right_sep = "\uE0BE "
-  else
-    let g:airline_left_sep  = "\uE0B8"
-    let g:airline_right_sep = "\uE0BE"
-  endif
-
-  " show filename only (defualt relative path)
-  let g:airline_section_c = '%t'
-  let g:airline_section_z = '%L lines %p%%'
-
   let g:airline_extensions = [
     \ 'tabline',
     \ 'coc',
@@ -246,18 +231,35 @@ hook_add = '''
     \ 'fugitiveline'
     \ ]
 
-  let g:airline#extensions#coc#error_symbol    = "\uF1E2"
-  let g:airline#extensions#coc#warning_symbol  = "\uE230"
+  let nerdfont_settings = {
+    " statusbar powerline
+    \ 'g:airline_left_sep' : '\uE0B8',
+    \ 'g:airline_right_sep' : '\uE0BE',
+    " coc-symbol
+    \ 'g:airline#extensions#coc#error_symbol' : '\uF1E2',
+    \ 'g:airline#extensions#coc#warning_symbol' : '\uE230',
+    " tab powerline
+    \ 'g:airline#extensions#tabline#left_sep' : '\uE0B8',
+    \ 'g:airline#extensions#tabline#left_alt_sep' : '\uE0B9'
+    \ }
+
+  if has('nvim')
+    " if nvim it should add a space after Unicode
+    let nerdfont_settings = map(nerdfont_settings, {_, val -> val . ' '})
+  endif
+
+  " set devicons
+  for [var, icon] in items(nerdfont_settings)
+    exec 'let ' . var . ' = ' . '"' . icon . '"'
+  endfor
+
+  " show filename only (defualt: relative path)
+  let g:airline_section_c = '%t'
+  let g:airline_section_z = 'lines: max/%L %p%%'
+
   let g:airline#extensions#coc#stl_format_err  = '%E{[%e(#%fe)]}'
   let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 
-  if has('nvim')
-    let g:airline#extensions#tabline#left_sep     = "\uE0B8 "
-    let g:airline#extensions#tabline#left_alt_sep = "\uE0B9 "
-  else
-    let g:airline#extensions#tabline#left_sep     = "\uE0B8"
-    let g:airline#extensions#tabline#left_alt_sep = "\uE0B9"
-  endif
   let g:airline#extensions#tabline#formatter    = 'unique_tail_improved'
 '''
 
