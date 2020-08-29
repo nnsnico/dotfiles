@@ -165,8 +165,6 @@ export DOTNET_HOME="/usr/local/share/dotnet"
 ## Tex
 export TEX_HOME="/Library/TeX/texbin"
 
-export TERM="xterm-256color"
-
 ## Root Path
 export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$DOTNET_HOME/:$TEX_HOME/:$(go env GOPATH)/bin:$PATH
 
