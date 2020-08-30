@@ -16,6 +16,11 @@ endif
 " enable true colors
 if has('termguicolors')
   set termguicolors
+  " for tmux
+  if !has('nvim')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
 endif
 
 " move from terminal on neovim
