@@ -73,7 +73,7 @@ ctrl + cmd - j : yabai -m window --focus south
 ctrl + cmd - k : yabai -m window --focus north
 ctrl + cmd - l : yabai -m window --focus east
 
-# move managed window
+# move to next space
 shift + cmd - h : yabai -m window --warp west
 shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
@@ -96,6 +96,14 @@ ctrl + cmd - s : yabai -m window --toggle sticky;\
           yabai -m window --toggle border;\
           yabai -m window --toggle pip
 
+# ----------------------------------- stack -----------------------------------
+
+# move stack
+ctrl + cmd - 0x2F : yabai -m window --focus stack.next  # 0x2F == . (dot)
+ctrl + cmd - m    : yabai -m window --focus stack.prev
+# add to stack with next action
+ctrl + cmd - a    : yabai -m window --insert stack
+
 # ----------------------------------- space -----------------------------------
 
 # send window to desktop and follow focus
@@ -112,6 +120,4 @@ ctrl + cmd - u : yabai -m display --focus prev
 ctrl + cmd - o : yabai -m display --focus next
 
 # ----------------------------------- other -----------------------------------
-
-shift + cmd - s : open -a "System Preferences"
 
