@@ -99,8 +99,8 @@ ctrl + cmd - s : yabai -m window --toggle sticky;\
 # ----------------------------------- stack -----------------------------------
 
 # move stack
-ctrl + cmd - 0x2F : yabai -m window --focus stack.next  # 0x2F == . (dot)
-ctrl + cmd - m    : yabai -m window --focus stack.prev
+ctrl + cmd - 0x2F : yabai -m window --focus stack.next || yabai -m window --focus stack.first  # 0x2F == . (dot)
+ctrl + cmd - m    : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 # add to stack with next action
 ctrl + cmd - a    : yabai -m window --insert stack
 
