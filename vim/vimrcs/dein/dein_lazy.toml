@@ -13,6 +13,10 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
+hook_add = '''
+  " enable sorting groups
+  let g:scala_sort_across_groups = 1
+'''
 
 [[plugins]]
 repo = 'pangloss/vim-javascript'
