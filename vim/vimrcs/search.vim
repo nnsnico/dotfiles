@@ -23,3 +23,6 @@ nnoremap <Space>? ?\<\><Left><Left>
 
 " cancel highlight double push <ESC>
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
+
+" search on selected word
+vnoremap * y/\V<C-r>=escape(@",'/\')<CR><CR>
