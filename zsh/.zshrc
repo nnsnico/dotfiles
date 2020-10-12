@@ -188,3 +188,10 @@ alias peco='peco --initial-matcher Regexp'
 alias pcd='cd $(ls -a | peco)'
 alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all && vim +":call dein#update()" +:q'
 
+# ------------------------------------ tmux ------------------------------------
+
+if [ $SHLVL = 1 ]; then
+  tmux new-session -d -s mySession -n myWindow
+  tmux attach -t mySession:myWindow
+fi
+
