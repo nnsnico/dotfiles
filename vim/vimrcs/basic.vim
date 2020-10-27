@@ -70,6 +70,9 @@ set splitbelow
 " split right when :vsplit
 set splitright
 
+" toggle paste mode
+set pastetoggle=<C-y>
+
 " ---------------------------------- Keymaps ----------------------------------
 
 " disable arrow keys
