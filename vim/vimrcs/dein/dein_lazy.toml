@@ -149,7 +149,11 @@ on_ft = 'elm'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = 'html'
+on_ft = [
+  'html',
+  'javascript',
+  'typescript',
+]
 hook_add = '''
   let g:user_emmet_leader_key = '<C-y>'
 '''
