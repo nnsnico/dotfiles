@@ -70,9 +70,6 @@ set splitbelow
 " split right when :vsplit
 set splitright
 
-" toggle paste mode
-set pastetoggle=<C-y>
-
 " ---------------------------------- Keymaps ----------------------------------
 
 " disable arrow keys
@@ -113,6 +110,10 @@ vnoremap k gk
 
 " maximize window
 nnoremap <silent><Space>m :<C-u>resize \| vertical resize<CR>
+
+" toggle paste mode
+" set pastetoggle=<leader>p
+nnoremap <Leader>p :<C-u>set invpaste paste?<CR>
 
 " ------------------------------------ Tab ------------------------------------
 
