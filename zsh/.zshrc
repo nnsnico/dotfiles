@@ -9,6 +9,18 @@ if [[ $OSTYPE =~ "linux*" ]]; then
   # one liner command that show intalled package list by apt
   if [[ $distribution =~ "Ubuntu*" ]]; then
       alias apt-installed-list="sudo dpkg -l | tail +6 | awk '{printf(\"%s%%%s%%\",\$2,\$3);for(i=5;i<=NF;++i){if(i!=NF){printf(\"%s \",\$i)}else{printf(\"%s\\n\",\$i)}}}' | column -s '%' -t"
+  if [[ $(uname -r) =~ "microsoft*" ]]; then
+    # support `open` command in WSL
+    function open() {
+      if [ $# -eq 0 ]; then
+        cmd.exe /c start " " .
+      elif [ $# -eq 1 ]; then
+        local WSLPATH=$(wslpath -w $1)
+        cmd.exe /c start " " "$WSLPATH"
+      else
+        echo "ERROR: Too many arguments"
+      fi
+    }
   fi
 fi
 
