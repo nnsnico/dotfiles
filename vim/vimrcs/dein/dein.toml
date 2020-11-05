@@ -227,6 +227,7 @@ hook_add = '''
     \ 'tabline',
     \ 'coc',
     \ 'hunks',
+    \ 'branch',
     \ 'whitespace',
     \ 'fugitiveline'
     \ ]
