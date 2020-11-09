@@ -70,7 +70,9 @@ $ ln -s ~/dotfiles/zsh/.init/plugins/sorin-ionescu---prezto ~/
 
     1. `ln -s ~/dotfiles/tmux/.tmux.conf`
 
-    1. `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json`
+    1. (Windows(Windows Terminal or Alacritty)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json`
+
+    1. (MacOS(iTerm2)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline_terminus.json`
 
 <!--
 vim: ts=4 sts=4 sw=4 et :
