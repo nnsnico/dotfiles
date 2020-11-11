@@ -1,44 +1,86 @@
+" ------------------------------ general options ------------------------------
+
+"""""""""
+" BASIC "
+"""""""""
+
 " Not distinction uppercase and lowercase when search
 set ignorecase
 set smartcase
+
 " incremental serach
 set incsearch
+
 " Show highlight when search
 set hlsearch
+
 " Jump match pane
 set showmatch matchtime=1
+
 " Show command message on 2 line
 set cmdheight=2
+
 " Show status line
 set laststatus=2
+
 " Show input command
 set showcmd
+
 " Not omit line
 set display=lastline
+
 " Visualize tab and trail
 set listchars=tab:^\ ,trail:~
-" Copying clipboard by Yank 
+
+" Copying clipboard by Yank
 set clipboard+=unnamed
+
 " Show match pane
 set showmatch
-" Erase search highlight by Esc + Esc Esc
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+
 " Move line overwrite
 set whichwrap=b,s,h,l,<,>,[,],~
+
 " Change how to indent
 set cinoptions+=:0
+
 " Indent width
 set shiftwidth=2
+
 " Specify char width when press Tab key
 set softtabstop=2
+
 " Move one more char from line end
 set virtualedit=onemore
+
+" Set powerfull code joiner
+set ideajoin
+
+"""""""""""
+" PLUGINS "
+"""""""""""
+
 " Apply `Surround Vim`
 set surround
+
 " Apply `Multiple Cursor`
-set multiple-cursor
+set multiple-cursors
+
 " Apply `Commentary`
 set commentary
+
+" Apply highlighted yank
+set highlightedyank
+
+" Apply Easy-Motion
+let mapleader=","
+set easymotion
+
+" ---------------------------------- Keymaps ----------------------------------
+
+" Erase search highlight by Esc + Esc Esc
+nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
+
 " Enter + Spaceで空行追加
 nmap <Space><CR> o<ESC>
 " Copy in clipboard by yank
@@ -48,22 +90,19 @@ map "+p "*p
 map "+P "*P
 map <C-S-c> "*y
 map <C-S-v> "*P
-" Show override methods by `space + o`
-nmap <Space>o :<C-u>action OverrideMethods<CR>
-" Show definition window by `spage + d`
-nmap <Space>d :<C-u>action QuickImplementations<CR>
-" Jump override methods by `space + i`
-nmap <Space>i :<C-u>action GotoImplementation<CR>
-" Jump definition by `spage + b`
-nmap <Space>b :<C-u>action GotoDeclaration<CR>
-" Reformat code by `space + r`
-nmap <Space>r :<C-u>action ReformatCode<CR>
+
+" Goto Implementation class
+nmap gi :<C-u>action GotoImplementation<CR>
+
 " Move to Next(Right) tab by `t + t`
 nmap tt :<C-u>action NextTab<CR>
+
 " Move to Previous(Left) tab by `t + T`
 nmap tT :<C-u>action PreviousTab<CR>
+
 " Toggle wrap lines
 nmap tw :<C-u>action EditorToggleUseSoftWraps<CR>
+
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
