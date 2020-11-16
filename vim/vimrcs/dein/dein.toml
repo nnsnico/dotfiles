@@ -1,6 +1,9 @@
 # ------------------------------- basic plugins -------------------------------
 [[plugins]]
 repo = 'Shougo/dein.vim'
+hook_add = '''
+  let g:dein#install_github_api_token = system('cat ' . expand('~/dotfiles/yabai_yatsu.txt') . " | awk -F ': ' '/github_api/ {print $2}'")
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
