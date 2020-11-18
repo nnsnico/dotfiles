@@ -19,3 +19,10 @@ augroup mygroup
   endif
 augroup end
 
+augroup CocConfigGroup
+  autocmd!
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+  " set filetype `jsonc` in tsconfig.json only
+  autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
+augroup end
+

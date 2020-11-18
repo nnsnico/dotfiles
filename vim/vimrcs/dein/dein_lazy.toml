@@ -79,6 +79,8 @@ hook_add = '''
   set shortmess+=c
   set signcolumn=yes
 
+  autocmd CursorHold *.scala silent call CocActionAsync('highlight')
+
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h ' . expand('<cword>')
@@ -137,6 +139,7 @@ hook_add = '''
   nmap     <silent>       gr         <Plug>(coc-references)
   nnoremap <silent>       K          :call <SID>show_documentation()<CR>
   nnoremap <silent>       <Space>f   :call CocAction('format')<CR>
+  nnoremap <silent>       <Space>i   :CocCommand editor.action.organizeImport<CR>
   nnoremap <silent>       <Space>a   :<C-u>CocList diagnostics<CR>
   nnoremap <silent>       <Space>o   :<C-u>CocList outline<CR>
   nnoremap <silent>       <Space>s   :<C-u>CocList -I symbols<CR>
