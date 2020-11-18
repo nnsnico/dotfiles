@@ -7,6 +7,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'neoclide/jsonc.vim'
+on_ft = 'jsonc'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
