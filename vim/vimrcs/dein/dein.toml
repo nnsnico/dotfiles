@@ -284,9 +284,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'romainl/Apprentice'
-
-[[plugins]]
 repo = 'fabi1cazenave/kalahari.vim'
 
 [[plugins]]
