@@ -10,6 +10,7 @@ if [[ $OSTYPE =~ "linux*" ]]; then
   if [[ $distribution =~ "Ubuntu*" ]]; then
       alias apt-installed-list="sudo dpkg -l | tail +6 | awk '{printf(\"%s%%%s%%\",\$2,\$3);for(i=5;i<=NF;++i){if(i!=NF){printf(\"%s \",\$i)}else{printf(\"%s\\n\",\$i)}}}' | column -s '%' -t"
   fi
+  # for WSL
   if [[ $(uname -r) =~ "microsoft*" ]]; then
     # support `open` command in WSL
     function open() {
@@ -183,14 +184,22 @@ export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-t
 
 # ----------------------------------- ALIAS -----------------------------------
 
-alias v='/usr/local/bin/vim'
-alias nv='/usr/local/bin/nvim'
+function select_ls() {
+  if type "exa" > /dev/null 2>&1; then
+    exa $@
+  else
+    ls $@
+  fi
+}
+
+alias v='$(which vim)'
+alias nv='$(which nvim)'
 alias e='exit'
-alias ls='exa'
+alias ls='select_ls'
 alias l='ls'
-alias la='ls -alh --git --time-style=iso'
-alias lla='ls -alh --git --time-style=long-iso'
-alias ll='ls -lh --time-style=iso'
+alias la='exa -alh --git --time-style=iso || ls -al'
+alias lla='exa -alh --git --time-style=long-iso || ls -al'
+alias ll='exa -lh --time-style=iso || ls -l'
 alias emu='cd /usr/local/share/android-sdk/tools/'
 alias b='brew'
 alias stk='stack build && stack exec'
