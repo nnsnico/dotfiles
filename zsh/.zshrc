@@ -205,7 +205,7 @@ alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all &
 # ------------------------------------ tmux ------------------------------------
 
 if [ $SHLVL = 1 ]; then
-  tmux new-session -d -s mySession -n myWindow
-  tmux attach -t mySession:myWindow
+  tmux new-session -d -s mySession -n development
+  tmux attach -t mySession:development
 fi
 
