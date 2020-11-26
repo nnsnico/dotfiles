@@ -109,7 +109,7 @@ hook_add = '''
     \ }
 
   " open nerdtree if no specified arguments
-  autocmd StdinReadPre * let s:std_in=1
+  autocmd StdinReadPre * let s:std_in = 1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in")
     \ | :Clap files --hidden
     \ | endif
@@ -124,16 +124,18 @@ hook_add = '''
   vnoremap <silent> <Plug>ClapGrepSelect :<C-u>Clap grep ++query=@visual<CR>
   nnoremap <silent> <Plug>ClapWindows    :<C-u>Clap windows<CR>
   nnoremap <silent> <Plug>ClapColors     :<C-u>Clap colors<CR>
+  nnoremap <silent> <Plug>ClapCommand    :<C-u>Clap command<CR>
 
-  nmap <silent> zf <Plug>ClapFiles
-  nmap <silent> zb <Plug>ClapBuffers
-  nmap <silent> zl <Plug>ClapBLine
-  nmap <silent> zg <Plug>ClapGFiles
-  nmap <silent> zr <Plug>ClapGrep
-  nmap <silent> zv <Plug>ClapGrepWord
-  vmap <silent> zv <Plug>ClapGrepSelect
-  nmap <silent> zw <Plug>ClapWindows
-  nmap <silent> zc <Plug>ClapColors
+  nmap <silent> zf         <Plug>ClapFiles
+  nmap <silent> zb         <Plug>ClapBuffers
+  nmap <silent> zl         <Plug>ClapBLine
+  nmap <silent> zg         <Plug>ClapGFiles
+  nmap <silent> zr         <Plug>ClapGrep
+  nmap <silent> zv         <Plug>ClapGrepWord
+  vmap <silent> zv         <Plug>ClapGrepSelect
+  nmap <silent> zw         <Plug>ClapWindows
+  nmap <silent> zc         <Plug>ClapColors
+  nmap <silent> <Leader>zc <Plug>ClapCommand
 '''
 
 # ------------------------------ nerdtree plugins ------------------------------
