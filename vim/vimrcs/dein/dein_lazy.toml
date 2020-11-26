@@ -83,8 +83,8 @@ hook_add = '''
 
   " scrollable in popup menu
   if has('nvim')
-    nnoremap <silent><expr> <C-j> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-j>"
-    nnoremap <silent><expr> <C-k> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-k>"
+    nnoremap <silent><expr> <C-j> coc#float#has_float() ? coc#float#scroll(1) : "\<C-j>"
+    nnoremap <silent><expr> <C-k> coc#float#has_float() ? coc#float#scroll(0) : "\<C-k>"
   else
     nnoremap <silent><expr> <C-j> <SID>scroll_cursor_popup(1) ? "\<Esc>" : "\<C-d>"
     nnoremap <silent><expr> <C-k> <SID>scroll_cursor_popup(0) ? "\<Esc>" : "\<C-u>"
