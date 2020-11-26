@@ -6,7 +6,8 @@ let s:extensions = [
   \ 'coc-json',
   \ 'coc-prettier',
   \ 'coc-tsserver',
-  \ 'coc-python'
+  \ 'coc-python',
+  \ 'coc-vimlsp'
   \ ]
 
 for ex in s:extensions

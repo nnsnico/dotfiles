@@ -81,16 +81,7 @@ hook_add = '''
 
   autocmd CursorHold *.scala silent call CocActionAsync('highlight')
 
-  function! s:show_documentation()
-    if &filetype == 'vim'
-      execute 'h ' . expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
-
   " scrollable in popup menu
-  " @see https://vi.stackexchange.com/questions/21924/how-can-i-hide-and-scroll-popup-window-in-coc-nvim-in-vim
   if has('nvim')
     nnoremap <silent><expr> <C-j> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-j>"
     nnoremap <silent><expr> <C-k> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-k>"
@@ -137,7 +128,7 @@ hook_add = '''
   nmap     <silent>       gy         <Plug>(coc-type-definition)
   nmap     <silent>       gi         <Plug>(coc-implementation)
   nmap     <silent>       gr         <Plug>(coc-references)
-  nnoremap <silent>       K          :call <SID>show_documentation()<CR>
+  nnoremap <silent>       K          :call CocAction('doHover')<CR>
   nnoremap <silent>       <Space>f   :call CocAction('format')<CR>
   nnoremap <silent>       <Space>i   :CocCommand editor.action.organizeImport<CR>
   nnoremap <silent>       <Space>a   :<C-u>CocList diagnostics<CR>

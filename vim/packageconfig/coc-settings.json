@@ -54,12 +54,6 @@
         }
       }
     },
-    "efm": {
-      "command": "efm-langserver",
-      // NOTE: the path must be absolute path
-      "args": ["-c", "/Users/y_toyama/dotfiles/vim/packageconfig/config.yaml"],
-      "filetypes": ["vim", "eruby", "markdown", "yaml"]
-    },
     "purescript": {
       "command": "purescript-language-server",
       "args": ["--stdio"],
