@@ -142,6 +142,33 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'voldikss/vim-skylight'
+on_ft = [
+  'elm',
+  'eruby',
+  'haskell',
+  'hs',
+  'javascript',
+  'lhs',
+  'markdown',
+  'purescript',
+  'python',
+  'rust',
+  'sbt',
+  'scala',
+  'typescript',
+  'vim',
+  'yaml'
+]
+hook_add = '''
+  nnoremap <silent>       P     :<C-u>SkylightPreview<CR>
+  " Scroll Down
+  nmap     <silent><expr> <C-f> skylight#float#has_scroll() ? skylight#float#scroll(1) : '<Plug>(SmoothieForwards)'
+  " Scroll Up
+  nmap     <silent><expr> <C-b> skylight#float#has_scroll() ? skylight#float#scroll(0) : '<Plug>(SmoothieBackwards)'
+'''
+
+[[plugins]]
 repo = 'elmcast/elm-vim'
 on_ft = 'elm'
 
