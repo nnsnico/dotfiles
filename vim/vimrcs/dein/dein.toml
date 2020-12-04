@@ -258,7 +258,7 @@ hook_add = '''
 
   " show filename only (defualt: relative path)
   let g:airline_section_c = '%t'
-  let g:airline_section_z = 'lines: %l/%L(%p%%)'
+  let g:airline_section_z = 'max-lines: %L(%p%%)'
 
   let g:airline#extensions#coc#stl_format_err  = '%E{[%e(#%fe)]}'
   let g:airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
