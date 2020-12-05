@@ -1,16 +1,6 @@
-" colorscheme
-colorscheme oceanic_material
-set background=dark
-
 " true color on terminal (support neovim only)
 if has('nvim')
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-" transparent color on floating window and popup window (support neovim only)
-if has('nvim')
-  set pumblend=30
-  set winblend=20
 endif
 
 " enable true colors
@@ -21,6 +11,16 @@ if has('termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   endif
+endif
+
+" colorscheme
+set background=dark
+colorscheme oceanic_material
+
+" transparent color on floating window and popup window (support neovim only)
+if has('nvim')
+  set pumblend=20
+  set winblend=10
 endif
 
 " move from terminal on neovim
