@@ -46,6 +46,26 @@ set cmdheight=2
 set backspace=indent,eol,start
 
 " copy to system at the same time as yank
+" for WSL2, use `atotto/gocopy.exe` (neovim only)
+let uname = substitute(system('uname'), '\n', '', '')
+if uname == 'Linux'
+  let lines = readfile('/proc/version')
+  if lines[0] =~ 'microsoft'
+    let user = 'yuji\ toyama'
+    let g:clipboard = {
+      \   'name': 'wslClipboard',
+      \   'copy': {
+      \     '+': 'gocopy.exe',
+      \     '*': 'gocopy.exe',
+      \   },
+      \   'paste': {
+      \     '+': 'gopaste.exe',
+      \     '*': 'gopaste.exe',
+      \   },
+      \   'cache_enabled': 1,
+      \ }
+  endif
+endif
 set clipboard+=unnamed
 
 " timeout length while waiting next keymapping
