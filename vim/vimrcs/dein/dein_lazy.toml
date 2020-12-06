@@ -31,12 +31,8 @@ repo = 'maxmellon/vim-jsx-pretty'
 on_ft = 'javascriptreact'
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
-
-[[plugins]]
-repo = 'ianks/vim-tsx'
-on_ft = 'typescript'
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript', 'typescriptreact']
 
 [[plugins]]
 repo = 'dag/vim-fish'
