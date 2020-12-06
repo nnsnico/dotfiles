@@ -27,8 +27,8 @@ repo = 'pangloss/vim-javascript'
 on_ft = 'javascript'
 
 [[plugins]]
-repo = 'mxw/vim-jsx'
-on_ft = 'javascript'
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = 'javascriptreact'
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
