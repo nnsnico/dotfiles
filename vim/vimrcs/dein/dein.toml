@@ -340,6 +340,18 @@ hook_add = '''
   nnoremap <silent><Space>b :<C-u>BlamerToggle<CR>
 '''
 
+[[plugins]]
+repo = 'rhysd/git-messenger.vim'
+lazy = 1
+on_cmd = 'GitMessenger'
+on_map = '<Plug>(git-messenger'
+hook_add = '''
+  nmap <silent><Leader>b <Plug>(git-messenger)
+'''
+
+[[plugins]]
+repo = 'knsh14/vim-github-link'
+
 # ------------------------------- other plugins -------------------------------
 
 [[plugins]]
