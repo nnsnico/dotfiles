@@ -111,6 +111,11 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Del>
 
+" ex command alias
+command! -nargs=0 W :w
+command! -nargs=0 WQA :wqa
+command! -nargs=0 QA :qa
+
 " splict window
 nnoremap <silent> gs :<C-u>split<CR>
 nnoremap <silent> gv :<C-u>vsplit<CR>
