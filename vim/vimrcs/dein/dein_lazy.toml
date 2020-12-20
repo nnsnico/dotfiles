@@ -57,6 +57,8 @@ on_ft = [
   'haskell',
   'hs',
   'javascript',
+  'javascriptreact',
+  'json',
   'lhs',
   'markdown',
   'purescript',
@@ -65,6 +67,7 @@ on_ft = [
   'sbt',
   'scala',
   'typescript',
+  'typescriptreact',
   'vim',
   'yaml'
 ]
@@ -139,12 +142,15 @@ hook_add = '''
 
 [[plugins]]
 repo = 'voldikss/vim-skylight'
+if = '''has('nvim')''' # only nvim >= 0.4.3
 on_ft = [
   'elm',
   'eruby',
   'haskell',
   'hs',
   'javascript',
+  'javascriptreact',
+  'json',
   'lhs',
   'markdown',
   'purescript',
@@ -153,11 +159,13 @@ on_ft = [
   'sbt',
   'scala',
   'typescript',
+  'typescriptreact',
   'vim',
   'yaml'
 ]
 hook_add = '''
-  nnoremap <silent>       P     :<C-u>SkylightPreview<CR>
+  " preview by tag (support only coc.nvim)
+  nnoremap <silent>       gP     :<C-u>Skylight tag<CR>
   " Scroll Down
   nmap     <silent><expr> <C-f> skylight#float#has_scroll() ? skylight#float#scroll(1) : '<Plug>(SmoothieForwards)'
   " Scroll Up
