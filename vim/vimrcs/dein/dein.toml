@@ -40,6 +40,10 @@ lazy = 1
 [[plugins]]
 repo = 'vim-jp/vital.vim'
 
+[[plugins]]
+repo = 'antoinemadec/FixCursorHold.nvim'
+if = '''has('nvim')'''
+
 # -------------------------------- fuzzy finder --------------------------------
 
 [[plugins]]
@@ -87,6 +91,7 @@ hook_done_update = '''
 
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
+depends = ["vim-devicons"]
 build = ':Clap install-binary'
 hook_add = '''
   let g:clap_theme = 'material_design_dark'
@@ -138,28 +143,78 @@ hook_add = '''
   nmap <silent> <Leader>zc <Plug>ClapCommand
 '''
 
-# ------------------------------ nerdtree plugins ------------------------------
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  let g:NERDTreeShowHidden    = 1
-  let g:NERDTreeShowBookmarks = 0
-
-  noremap  <silent> <C-t>      :<C-u>NERDTreeToggle<CR>
-  nnoremap <silent> <C-p>      :<C-u>NERDTreeFind<CR>
-  nnoremap <silent> <C-w>t     :<C-u>NERDTreeFocus<CR>
-  nnoremap <silent> <C-w><C-t> :<C-u>NERDTreeFocus<CR>
-'''
-
-[[plugins]]
-repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-[[plugins]]
-repo = 'Xuyuanp/nerdtree-git-plugin'
+# ------------------------------- filer plugins --------------------------------
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+lazy = 1
+
+# required pynvim (check by :checkhealth)
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ["defx-icons", "defx-git"]
+hook_add = '''
+  autocmd FileType defx set nonumber
+  autocmd BufWritePost * call defx#redraw()
+
+  nnoremap <silent> <C-t>
+        \ :<C-u>Defx
+        \ -search=`expand('%:p')`
+        \ -toggle
+        \ -columns=space:indent:mark:icons:git:filename:type
+        \ -split=vertical
+        \ -winwidth=30
+        \ -direction=topleft
+        \ -ignored-files=""<CR>
+
+  function! s:handleBinaryDrop() abort
+    if defx#is_binary()
+      defx#do_action('drop')
+    endif
+  endfunction
+
+  autocmd FileType defx call s:defx_my_settings()
+  function! s:defx_my_settings() abort
+    nnoremap <silent><buffer><expr> o
+          \ !defx#is_directory() ?
+          \ defx#do_action('drop') :
+          \ defx#do_action('open_tree', 'toggle')
+    nnoremap <silent><buffer><expr> q
+          \ defx#do_action('quit')
+    nnoremap <silent><buffer><expr> x
+          \ defx#do_action('close_tree')
+    nnoremap <silent><buffer><expr> s
+          \ defx#do_action('drop', 'split')
+    nnoremap <silent><buffer><expr> i
+          \ defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> K
+          \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> M
+          \ defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> c
+          \ defx#do_action('copy')
+    nnoremap <silent><buffer><expr> m
+          \ defx#do_action('move')
+    nnoremap <silent><buffer><expr> p
+          \ defx#do_action('paste')
+    nnoremap <silent><buffer><expr> d
+          \ defx#do_action('remove')
+    nnoremap <silent><buffer><expr> r
+          \ defx#do_action('rename')
+    nnoremap <silent><buffer><expr> go
+          \ defx#do_action('preview')
+    nnoremap <silent><buffer><expr> yy
+          \ defx#do_action('yank_path')
+  endfunction
+'''
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+lazy = 1
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+lazy = 1
 
 # ---------------------------- manipulation utility ----------------------------
 
