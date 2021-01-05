@@ -36,13 +36,25 @@ function! s:join_line_without_spaces() abort
     silent! call repeat#set("\<Plug>JoinLineWithoutSpaces", v:count1)
 endfunction
 
+function! s:is_defx() abort
+    if &filetype ==# "defx"
+        return 1
+    else
+        return 0
+    endif
+endfunction
+
 command! -nargs=+ TrimSpaces call s:trimming_spaces_one_line(<f-args>)
 command! TrailingSpacesAll call s:trailing_spaces_all_line()
 
+highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
+
 augroup HighlightTrailingSpaces
     autocmd!
-    autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
-    autocmd VimEnter,WinEnter * match TrailingSpaces /\v((\s|　)+$)|(　)/
+    autocmd ColorScheme * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
+    autocmd BufRead,BufNew,FileType * if s:is_defx() | match TrailingSpaces /^^/ | else | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertLeave * if !s:is_defx() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertEnter * if !s:is_defx() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
 augroup END
 
 nnoremap <silent> <Plug>JoinLineWithoutSpaces :<C-u>call <SID>join_line_without_spaces()<CR>
