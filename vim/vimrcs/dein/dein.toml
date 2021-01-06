@@ -163,7 +163,7 @@ hook_add = '''
         \ -toggle
         \ -columns=space:indent:mark:icons:git:filename:type
         \ -split=vertical
-        \ -winwidth=30
+        \ -winwidth=46
         \ -direction=topleft
         \ -ignored-files=""<CR>
 
