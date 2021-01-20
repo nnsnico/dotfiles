@@ -31,11 +31,11 @@ hook_post_update = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-lazy = 1
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-lazy = 1
+if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -415,7 +415,7 @@ repo = 'editorconfig/editorconfig-vim'
 [[plugins]]
 repo = 'vim-scripts/autodate.vim'
 hook_add = '''
-  let autodate_format="%Y/%m/%d %A %H:%M:%S"
+  let g:autodate_format="%Y/%m/%d %A %H:%M:%S"
 '''
 
 [[plugins]]
