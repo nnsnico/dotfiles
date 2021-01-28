@@ -18,7 +18,7 @@ if [[ $OSTYPE =~ "linux*" ]]; then
         cmd.exe /c start " " .
       elif [ $# -eq 1 ]; then
         local WSLPATH=$(wslpath -w $1)
-        /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH"
+        /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH" > /dev/null 2>&1
       else
         echo "ERROR: Too many arguments"
       fi
