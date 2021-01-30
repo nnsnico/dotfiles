@@ -43,11 +43,8 @@ autoload -Uz _zinit
 zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
   "sorin-ionescu/prezto"
 zinit wait lucid for \
-  "peco/peco"
-zinit wait lucid for \
+  "peco/peco" \
   "zdharma/fast-syntax-highlighting"
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-  zsh-users/zsh-completions
 
 # ---------------------------------- Prezto ------------------------------------
 
@@ -213,8 +210,12 @@ alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all &
 
 # ------------------------------------ tmux ------------------------------------
 
+# attach tmux when launching terminal
 if [ $SHLVL = 1 ]; then
-  tmux new-session -d -s mySession -n development
+  tmux new-session -d -s mySession -n development && \
+  tmux new-window -d -n development.2 && \
+  tmux new-window -d -n ssh && \
+  tmux new-window -d -n openvpn
   tmux attach -t mySession:development
 fi
 
