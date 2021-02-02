@@ -47,7 +47,8 @@ zinit wait lucid for \
   "zdharma/fast-syntax-highlighting"
 # install binary from github release
 zinit wait lucid from"gh-r" as"program" for \
-  "junegunn/fzf" \
+  "junegunn/fzf"
+zinit wait lucid from"gh-r" as"program" mv"tig* -> tig" atclone"cd tig; ./configure; make; make install" atpull"%atclone" pick"tig/src/tig" for \
   "jonas/tig"
 # install ripgrep binary with completion
 zinit wait lucid from"gh-r" mv"ripgrep* -> ripgrep" for \
