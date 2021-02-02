@@ -55,6 +55,8 @@ zinit wait lucid from"gh-r" mv"ripgrep* -> ripgrep" for \
   as"program" pick"ripgrep/rg" "BurntSushi/ripgrep" \
   as"completion" pick"ripgrep/complete/_rg" atload"zicompinit; zicdreplay" "BurntSushi/ripgrep"
 # use completion for `git switch`
+zinit wait silent lucid atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" atpull"%atclone" for \
+  "https://github.com/git/git/blob/master/contrib/completion/git-completion.bash"
 zinit wait lucid as"completion" atload"zicompinit; zicdreplay" mv"git-completion.zsh -> _git" for \
   "https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh"
 
