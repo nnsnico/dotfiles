@@ -15,12 +15,18 @@ if [[ $OSTYPE =~ "linux*" ]]; then
     # support `open` command in WSL
     function open() {
       if [ $# -eq 0 ]; then
-        /mnt/c/Windows/System32/cmd.exe /c start " " . > /dev/null 2>&1
-      elif [ $# -eq 1 ]; then
-        local WSLPATH=$(wslpath -w $1)
+        local WSLPATH=$(wslpath -w .)
         /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH" > /dev/null 2>&1
       else
-        echo "ERROR: Too many arguments"
+        for dir in $@
+        do
+          local WSLPATH=$(wslpath -w $dir 2> /dev/null)
+          if [ -n "$WSLPATH" ]; then
+            /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH" > /dev/null 2>&1
+          else
+            print -P "%F{160}Path not found: $dir"
+          fi
+        done
       fi
     }
   fi
