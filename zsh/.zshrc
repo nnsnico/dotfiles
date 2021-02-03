@@ -15,7 +15,7 @@ if [[ $OSTYPE =~ "linux*" ]]; then
     # support `open` command in WSL
     function open() {
       if [ $# -eq 0 ]; then
-        cmd.exe /c start " " .
+        /mnt/c/Windows/System32/cmd.exe /c start " " . > /dev/null 2>&1
       elif [ $# -eq 1 ]; then
         local WSLPATH=$(wslpath -w $1)
         /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH" > /dev/null 2>&1
