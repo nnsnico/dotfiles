@@ -114,6 +114,9 @@ shift + cmd - p : yabai -m window --space prev; yabai -m space --focus prev
 ctrl + cmd - n : yabai -m space --focus next
 ctrl + cmd - p : yabai -m space --focus prev
 
+# auto format windows
+ctrl + cmd - i : yabai -m space --balance
+
 # ---------------------------------- display ----------------------------------
 
 ctrl + cmd - u : yabai -m display --focus prev
