@@ -1,5 +1,19 @@
 #!/usr/bin/env sh
 
+# depends: stackline(also HammerSpoon)
+#   stackline installation:
+#     1. installa HammerSpoon
+#     2. clone stackline in ~/.hammerspoon
+#     3. type to ~/.hammerspoon/init.lua like below
+#       ```
+#       local stackline = require "stackline.stackline.stackline"
+#       stackline:init()
+#       ```
+#     4. change jq path
+#       ```
+#       $ eval "hs -c \"stackline.config:set('paths.jq', '$(which jq)')\""
+#       ```
+
 # global settings
 yabai -m config mouse_follows_focus     on
 yabai -m config mouse_modifier          fn
