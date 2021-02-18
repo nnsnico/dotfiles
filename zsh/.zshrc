@@ -56,6 +56,8 @@ zinit wait lucid from"gh-r" as"program" for \
   "junegunn/fzf"
 zinit wait lucid from"gh-r" as"program" mv"tig* -> tig" atclone"cd tig; ./configure; make; make install" atpull"%atclone" pick"tig/src/tig" for \
   "jonas/tig"
+zinit wait lucid from"gh-r" as"program" mv"jq* -> jq" for \
+  "stedolan/jq"
 # install ripgrep binary with completion
 zinit wait lucid from"gh-r" mv"ripgrep* -> ripgrep" for \
   as"program" pick"ripgrep/rg" "BurntSushi/ripgrep" \
