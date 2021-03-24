@@ -77,7 +77,6 @@ set commentary
 set highlightedyank
 
 " Apply Easy-Motion
-let mapleader=","
 set easymotion
 
 " ---------------------------------- Keymaps ----------------------------------
@@ -110,3 +109,11 @@ nmap tw <Action>(EditorToggleUseSoftWraps)
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
+
+" Reformat code
+map <Space>f <Action>(ReformatCode)
+map <Space>i <Action>(OptimizeImports)
+
+" Run actions
+map <Leader>r <Action>(Run)
+map <Leader>R <Action>(Rerun)
