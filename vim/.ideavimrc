@@ -60,6 +60,10 @@ set ideajoin
 " PLUGINS "
 """""""""""
 
+set NERDTree
+" TODO: Projectツリーにフォーカス中はToggle出来ないのでそれが実装されたら
+" map <C-t> <Action>(NERDTreeToggle)
+
 " Apply `Surround Vim`
 set surround
 
