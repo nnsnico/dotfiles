@@ -92,16 +92,16 @@ map <C-S-c> "*y
 map <C-S-v> "*P
 
 " Goto Implementation class
-nmap gi :<C-u>action GotoImplementation<CR>
+nmap gi <Action>(GotoImplementation)
 
 " Move to Next(Right) tab by `t + t`
-nmap tt :<C-u>action NextTab<CR>
+nmap tt <Action>(NextTab)
 
 " Move to Previous(Left) tab by `t + T`
-nmap tT :<C-u>action PreviousTab<CR>
+nmap tT <Action>(PreviousTab)
 
 " Toggle wrap lines
-nmap tw :<C-u>action EditorToggleUseSoftWraps<CR>
+nmap tw <Action>(EditorToggleUseSoftWraps)
 
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
