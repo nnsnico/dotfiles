@@ -127,7 +127,9 @@ hook_add = '''
   nmap     <silent>       gy         <Plug>(coc-type-definition)
   nmap     <silent>       gi         <Plug>(coc-implementation)
   nmap     <silent>       gr         <Plug>(coc-references)
+  nmap     <silent>       <leader>rn <Plug>(coc-rename)
   nnoremap <silent>       K          :call CocAction('doHover')<CR>
+  nnoremap <silent>       <Space>c   :CocCommand<CR>
   nnoremap <silent>       <Space>f   :call CocAction('format')<CR>
   nnoremap <silent>       <Space>i   :CocCommand editor.action.organizeImport<CR>
   nnoremap <silent>       <Space>a   :<C-u>CocList diagnostics<CR>
