@@ -369,8 +369,8 @@ hook_add = '''
   nmap     <silent> <Space>hp <Plug>(GitGutterPreviewHunk)
   nmap     <silent> <Space>ha <Plug>(GitGutterStageHunk)
   nmap     <silent> <Space>hr <Plug>(GitGutterUndoHunk)
-  nnoremap <silent> ]c        :<C-u>GitGutterNextHunk<CR>zz
-  nnoremap <silent> [c        :<C-u>GitGutterPrevHunk<CR>zz
+  nnoremap <silent> ]c        :<C-u>GitGutterNextHunk<CR>
+  nnoremap <silent> [c        :<C-u>GitGutterPrevHunk<CR>
 
   let g:gitgutter_preview_win_floating    = 1
   let g:gitgutter_sign_removed            = '-'
