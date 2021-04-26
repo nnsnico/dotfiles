@@ -117,3 +117,8 @@ map <Space>i <Action>(OptimizeImports)
 " Run actions
 map <Leader>r <Action>(Run)
 map <Leader>R <Action>(Rerun)
+
+" -------------------------------- for Android --------------------------------
+
+map <Leader>S <Action>(Android.SyncProject)
+map <Space>v <Action>(ActivateBuildVariantsToolWindow)
