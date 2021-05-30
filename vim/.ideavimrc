@@ -77,7 +77,9 @@ set commentary
 set highlightedyank
 
 " Apply Easy-Motion
+let mapleader="\\"
 set easymotion
+map <Leader> <Plug>(easymotion-prefix)
 
 " ---------------------------------- Keymaps ----------------------------------
 
