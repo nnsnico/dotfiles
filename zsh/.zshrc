@@ -6,6 +6,7 @@ fpath+=~/.zfunc
 
 if [[ $OSTYPE =~ "linux*" ]]; then
   distribution=$(cat /etc/*-release | awk -F '=' '{if($1=="DISTRIB_DESCRIPTION"){print $2}}' | sed -r "s/\"(.+)\"/\1/")
+  # for Ubuntu (also with WSL)
   # one liner command that show intalled package list by apt
   if [[ $distribution =~ "Ubuntu*" ]]; then
       alias apt-installed-list="sudo dpkg -l | tail +6 | awk '{printf(\"%s%%%s%%\",\$2,\$3);for(i=5;i<=NF;++i){if(i!=NF){printf(\"%s \",\$i)}else{printf(\"%s\\n\",\$i)}}}' | column -s '%' -t"
@@ -24,7 +25,7 @@ if [[ $OSTYPE =~ "linux*" ]]; then
           if [ -n "$WSLPATH" ]; then
             /mnt/c/Windows/System32/cmd.exe /c start " " "$WSLPATH" > /dev/null 2>&1
           else
-            print -P "%F{160}Path not found: $dir"
+            print -P "%F{160}Path not found: $(realpath "$dir")"
           fi
         done
       fi
