@@ -53,6 +53,10 @@ set softtabstop=2
 " Move one more char from line end
 set virtualedit=onemore
 
+" disable beep
+set visualbell
+set noerrorbells
+
 " Set powerfull code joiner
 set ideajoin
 
