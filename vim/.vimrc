@@ -6,14 +6,21 @@ scriptencoding utf8
 " Please install `nerd fonts` if you show mini icon in nerdtree
 " https://github.com/ryanoasis/nerd-fonts
 
-let s:vimrcs_dir = expand(expand('%:p:h') . '/vimrcs')
+" TODO: put dotfiles dir (absolute path)
+let s:dotfiles_dir = '~/dotfiles'
+let s:vim_files = [
+  \ 'dein/installation.vim',
+  \ 'basic.vim',
+  \ 'visual.vim',
+  \ 'search.vim',
+  \ 'autocmd.vim',
+  \ 'other.vim',
+  \ 'functions/trimming_spaces.vim',
+  \ 'functions/converter.vim',
+  \ 'functions/auto_window_splitter.vim',
+  \ ]
 
-source expand(s:vimrcs_dir . /dein/installation.vim)
-source expand(s:vimrcs_dir . /basic.vim)
-source expand(s:vimrcs_dir . /visual.vim)
-source expand(s:vimrcs_dir . /search.vim)
-source expand(s:vimrcs_dir . /autocmd.vim)
-source expand(s:vimrcs_dir . /other.vim)
-source expand(s:vimrcs_dir . /functions/trimming_spaces.vim)
-source expand(s:vimrcs_dir . /functions/converter.vim)
-source expand(s:vimrcs_dir . /functions/auto_window_splitter.vim)
+for files in s:vim_files
+  let fullpath = expand(s:dotfiles_dir . '/vim/vimrcs/' . files)
+  exec 'source ' . fullpath
+endfor
