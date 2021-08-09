@@ -165,7 +165,8 @@ hook_add = '''
         \ -split=vertical
         \ -winwidth=46
         \ -direction=topleft
-        \ -ignored-files=""<CR>
+        \ -ignored-files=""
+        \ <CR>
 
   function! s:handleBinaryDrop() abort
     if defx#is_binary()
@@ -184,9 +185,9 @@ hook_add = '''
     nnoremap <silent><buffer><expr> x
           \ defx#do_action('close_tree')
     nnoremap <silent><buffer><expr> s
-          \ defx#do_action('drop', 'split')
+          \ defx#do_action('drop', 'vsplit')
     nnoremap <silent><buffer><expr> i
-          \ defx#do_action('open', 'vsplit')
+          \ defx#do_action('open', 'split')
     nnoremap <silent><buffer><expr> K
           \ defx#do_action('new_directory')
     nnoremap <silent><buffer><expr> M
@@ -205,6 +206,10 @@ hook_add = '''
           \ defx#do_action('preview')
     nnoremap <silent><buffer><expr> yy
           \ defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> A
+          \ winwidth(0) == 92 ?
+          \ defx#do_action('resize', 46) :
+          \ defx#do_action('resize', 92)
   endfunction
 '''
 
