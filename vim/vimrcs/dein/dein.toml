@@ -189,14 +189,6 @@ EOF
 repo = 'kyazdani42/nvim-web-devicons'
 lazy = 1
 
-[[plugins]]
-repo = 'kristijanhusak/defx-icons'
-lazy = 1
-
-[[plugins]]
-repo = 'kristijanhusak/defx-git'
-lazy = 1
-
 # ---------------------------- manipulation utility ----------------------------
 
 [[plugins]]
