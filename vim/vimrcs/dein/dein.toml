@@ -149,69 +149,45 @@ hook_add = '''
 repo = 'ryanoasis/vim-devicons'
 lazy = 1
 
-# required pynvim (check by :checkhealth)
 [[plugins]]
-repo = 'Shougo/defx.nvim'
-depends = ["defx-icons", "defx-git"]
+repo = 'kyazdani42/nvim-tree.lua'
+if = '''has('nvim')'''
+depends = ["nvim-web-devicons"]
 hook_add = '''
-  autocmd FileType defx set nonumber
-  autocmd BufWritePost * call defx#redraw()
+  let g:nvim_tree_disable_default_keybindings = 1
+  nnoremap <C-t> :<C-u>NvimTreeFindFile<CR>
 
-  nnoremap <silent> <C-t>
-        \ :<C-u>Defx
-        \ -search=`expand('%:p')`
-        \ -toggle
-        \ -columns=space:indent:mark:icons:git:filename:type
-        \ -split=vertical
-        \ -winwidth=46
-        \ -direction=topleft
-        \ -ignored-files=""
-        \ <CR>
-
-  function! s:handleBinaryDrop() abort
-    if defx#is_binary()
-      defx#do_action('drop')
-    endif
-  endfunction
-
-  autocmd FileType defx call s:defx_my_settings()
-  function! s:defx_my_settings() abort
-    nnoremap <silent><buffer><expr> o
-          \ !defx#is_directory() ?
-          \ defx#do_action('drop') :
-          \ defx#do_action('open_tree', 'toggle')
-    nnoremap <silent><buffer><expr> q
-          \ defx#do_action('quit')
-    nnoremap <silent><buffer><expr> x
-          \ defx#do_action('close_tree')
-    nnoremap <silent><buffer><expr> s
-          \ defx#do_action('drop', 'vsplit')
-    nnoremap <silent><buffer><expr> i
-          \ defx#do_action('open', 'split')
-    nnoremap <silent><buffer><expr> K
-          \ defx#do_action('new_directory')
-    nnoremap <silent><buffer><expr> M
-          \ defx#do_action('new_file')
-    nnoremap <silent><buffer><expr> c
-          \ defx#do_action('copy')
-    nnoremap <silent><buffer><expr> m
-          \ defx#do_action('move')
-    nnoremap <silent><buffer><expr> p
-          \ defx#do_action('paste')
-    nnoremap <silent><buffer><expr> d
-          \ defx#do_action('remove')
-    nnoremap <silent><buffer><expr> r
-          \ defx#do_action('rename')
-    nnoremap <silent><buffer><expr> go
-          \ defx#do_action('preview')
-    nnoremap <silent><buffer><expr> yy
-          \ defx#do_action('yank_path')
-    nnoremap <silent><buffer><expr> A
-          \ winwidth(0) == 92 ?
-          \ defx#do_action('resize', 46) :
-          \ defx#do_action('resize', 92)
-  endfunction
+lua <<EOF
+  local tree_callback = require'nvim-tree.config'.nvim_tree_callback
+  vim.g.nvim_tree_bindings = {
+    { key = {"<CR>", "o"}, cb = tree_callback("edit") },
+    { key = "<C-t>",       cb = tree_callback("close") },
+    { key = "x",           cb = tree_callback("close_node") },
+    { key = "K",           cb = tree_callback("first_sibling") },
+    { key = "J",           cb = tree_callback("last_sibling") },
+    { key = "I",           cb = tree_callback("toggle_ignored") },
+    { key = "H",           cb = tree_callback("toggle_dotfiles") },
+    { key = "R",           cb = tree_callback("refresh") },
+    { key = "i",           cb = tree_callback("split") },
+    { key = "s",           cb = tree_callback("vsplit") },
+    { key = "go",          cb = tree_callback("preview") },
+    { key = "[c",          cb = tree_callback("prev_git_item") },
+    { key = "]c",          cb = tree_callback("next_git_item") },
+    { key = "N",           cb = tree_callback("create") },
+    { key = "r",           cb = tree_callback("rename") },
+    { key = "m",           cb = tree_callback("cut") },
+    { key = "yy",          cb = tree_callback("copy") },
+    { key = "YY",          cb = tree_callback("copy_path") },
+    { key = "Yy",          cb = tree_callback("copy_absolute_path") },
+    { key = "dd",          cb = tree_callback("remove") },
+    { key = "g?",          cb = tree_callback("toggle_help") },
+  }
+EOF
 '''
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+lazy = 1
 
 [[plugins]]
 repo = 'kristijanhusak/defx-icons'
