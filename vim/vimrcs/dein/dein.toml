@@ -155,7 +155,7 @@ if = '''has('nvim')'''
 depends = ["nvim-web-devicons"]
 hook_add = '''
   let g:nvim_tree_disable_default_keybindings = 1
-  nnoremap <C-t> :<C-u>NvimTreeFindFile<CR>
+  nnoremap <silent><C-t> :<C-u>NvimTreeFindFile<CR>
 
 lua <<EOF
   local tree_callback = require'nvim-tree.config'.nvim_tree_callback
