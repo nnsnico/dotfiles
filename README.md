@@ -4,19 +4,19 @@ my dotfiles
 
 ## Description of directory
 
-- emacs: emacs settings
+- emacs: emacs setting files
 
-- fish: fish settings(not maintained)
+- fish: fish setting files(not maintained)
 
-- install: vim install scripts
+- install: installation scripts for vim setup
 
 - macos: application scripts for macOS
 
-- tmux: tmux settings(tmux.conf, powerline)
+- tmux: tmux setting files(tmux.conf, powerline)
 
-- vim: vim settings(vimrcs, coc.nvim, vint)
+- vim: vim setting files(vimrcs, coc.nvim, vint)
 
-- zsh: zsh settings(zshrc, zprezto)
+- zsh: zsh setting files(zshrc, zprezto)
 
 - root
 
@@ -26,17 +26,15 @@ my dotfiles
 
     - `Brewfile` : Dumped install list in HomeBrew (not maintained)
 
-## Installation
+## Requirements
 
-### General Installation
+- [NerdFonts](https://github.com/ryanoasis/nerd-fonts) (to use for NeoVim)
+- Python
+    - Use for [Powerline](https://github.com/powerline/powerline). To install, please see [here](https://powerline.readthedocs.io/en/latest/installation.html#generic-requirements).
 
-1. (MUST) Install NerdFonts
+## Setup
 
-    - Use vim-devicon, powerline-extra, and more. so not work only powerline.
-
-1. Clone this repositroy
-
-### Shell(Zsh) Installation
+### Setup Zsh
 
 1. Install zsh
     - recommend to use package manager(e.g., HomeBrew, LinuxBrew ..)
@@ -49,30 +47,33 @@ $ ln -s ~/dotfiles/zsh/.zshrc ~/
 $ ln -s ~/dotfiles/zsh/.zshenv ~/
 
 # zprezto via zinit
-$ ln -s ~/dotfiles/zsh/.init/plugins/sorin-ionescu---prezto ~/
+$ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
 ```
 
-### Vim(also can use NeoVim) Installation
+### Setup NeoVim
 
-1. Install Vim or NeoVim
+1. Install NeoVim >= 0.5.0
+    1. (Optional) To support all plugins, you should also install the following:
+        - Node.js >= 12.12
+        - Python >= 3
 
 1. Install to use `install/install_vim.sh`
 
-### tmux Installation
+### Setup tmux
 
-1. Install [powerline](https://github.com/powerline/powerline)
+1. Install [tmux](https://github.com/tmux/tmux)
 
-    1. `pip install powerline-status`
+1. `pip install powerline-status`
 
-    1. `cp -r $(pip show powerline-status | grep Location | awk '{print $2}')/powerline/config_files ~/.config/powerline`
+1. `cp -r $(pip show powerline-status | grep Location | awk '{print $2}')/powerline/config_files ~/.config/powerline`
 
 1. Add symbolic link
 
     1. `ln -s ~/dotfiles/tmux/.tmux.conf`
 
-    1. (Windows(Windows Terminal or Alacritty)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json`
+    1. (Windows(WSL2)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json`
 
-    1. (MacOS(iTerm2)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline_terminus.json`
+    1. (MacOS) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline_terminus.json`
 
 <!--
 vim: ts=4 sts=4 sw=4 et :
