@@ -7,20 +7,12 @@ hook_add = '''
 '''
 
 [[plugins]]
-
-[[plugins]]
 repo = 'derekwyatt/vim-scala'
 on_ft = 'scala'
 hook_add = '''
   " enable sorting groups
   let g:scala_sort_across_groups = 1
 '''
-
-[[plugins]]
-
-[[plugins]]
-
-[[plugins]]
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
