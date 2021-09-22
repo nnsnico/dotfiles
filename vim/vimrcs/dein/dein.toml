@@ -422,6 +422,47 @@ hook_add = '''
 [[plugins]]
 repo = 'knsh14/vim-github-link'
 
+# ------------------------------- language pack -------------------------------
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
+
+[[plugins]]
+repo = 'neoclide/jsonc.vim'
+on_ft = 'jsonc'
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = 'kotlin'
+
+[[plugins]]
+repo = 'neovimhaskell/haskell-vim'
+on_ft = 'haskell'
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript', 'typescriptreact']
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = 'javascriptreact'
+
+[[plugins]]
+repo = 'zinit-zsh/zinit-vim-syntax'
+on_ft = 'zsh'
+
+[[plugins]]
+repo = 'tjdevries/coc-zsh'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
 # ------------------------------- other plugins -------------------------------
 
 [[plugins]]

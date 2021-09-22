@@ -7,12 +7,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'neoclide/jsonc.vim'
-on_ft = 'jsonc'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
 
 [[plugins]]
 repo = 'derekwyatt/vim-scala'
@@ -23,24 +17,10 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = 'javascript'
 
 [[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-on_ft = 'javascriptreact'
 
 [[plugins]]
-repo = 'HerringtonDarkholme/yats.vim'
-on_ft = ['typescript', 'typescriptreact']
-
-[[plugins]]
-repo = 'dag/vim-fish'
-on_ft = 'fish'
-
-[[plugins]]
-repo = 'neovimhaskell/haskell-vim'
-on_ft = 'haskell'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
@@ -188,10 +168,6 @@ on_ft = [
 hook_add = '''
   let g:user_emmet_leader_key = '<C-y>'
 '''
-
-[[plugins]]
-repo = 'zinit-zsh/zinit-vim-syntax'
-on_ft = 'zsh'
 
 # ------------------------------ document utility ------------------------------
 
