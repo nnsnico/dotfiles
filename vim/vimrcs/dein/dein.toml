@@ -31,11 +31,9 @@ hook_post_update = '''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-if = '''!has('nvim')'''
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
@@ -45,49 +43,6 @@ repo = 'antoinemadec/FixCursorHold.nvim'
 if = '''has('nvim')'''
 
 # -------------------------------- fuzzy finder --------------------------------
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-if = '''has('nvim')'''
-depends = ['fzf']
-hook_add = '''
-  " customize to open in horizontal
-  let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-h': 'split',
-    \ 'ctrl-v': 'vsplit'
-    \ }
-
-  if has('nvim')
-    let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-    function! FloatingFZF()
-      let buf = nvim_create_buf(v:false, v:true)
-      call setbufvar(buf, '&signcolumn', 'no')
-
-      let height = &lines / 3
-      let width = float2nr(&columns - (&columns * 2 / 10))
-      let col = float2nr((&columns - width) / 2)
-
-      let opts = {
-            \ 'relative': 'editor',
-            \ 'row': 1,
-            \ 'col': col,
-            \ 'width': width,
-            \ 'height': height
-            \ }
-
-      call nvim_open_win(buf, v:true, opts)
-    endfunction
-  endif
-'''
-
-[[plugins]]
-repo = 'junegunn/fzf'
-lazy = 1
-hook_done_update = '''
-:<C-u>call fzf#install()<CR>
-'''
 
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
@@ -234,6 +189,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'junegunn/vim-easy-align'
+lazy = 1
+on_map = '<Plug>(EasyAlign)'
 hook_add = '''
   xmap ga <Plug>(EasyAlign)
   nmap ga <Plug>(EasyAlign)
@@ -241,6 +198,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+lazy = 1
+on_map = '<Plug>(easymotion-'
 hook_add = '''
   autocmd User EasyMotionPromptBegin silent! CocDisable
   autocmd User EasyMotionPromptEnd silent! CocEnable
@@ -486,12 +445,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nnsnico/sepcomment.vim'
+lazy = 1
+on_cmd = 'SepComment'
 hook_add = '''
   let g:sepcomment#length = 78
 '''
 
 [[plugins]]
 repo = 'junegunn/goyo.vim'
+lazy = 1
+on_cmd = 'Goyo'
 
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
