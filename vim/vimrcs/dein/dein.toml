@@ -85,6 +85,7 @@ hook_add = '''
   nnoremap <silent> <Plug>ClapWindows    :<C-u>Clap windows<CR>
   nnoremap <silent> <Plug>ClapColors     :<C-u>Clap colors<CR>
   nnoremap <silent> <Plug>ClapCommand    :<C-u>Clap command<CR>
+  nnoremap <silent> <Plug>ClapHelp       :<C-u>Clap help_tags<CR>
 
   nmap <silent> zf         <Plug>ClapFiles
   nmap <silent> zb         <Plug>ClapBuffers
@@ -96,6 +97,7 @@ hook_add = '''
   nmap <silent> zw         <Plug>ClapWindows
   nmap <silent> zc         <Plug>ClapColors
   nmap <silent> <Leader>zc <Plug>ClapCommand
+  nmap <silent> zh         <Plug>ClapHelp
 '''
 
 # ------------------------------- filer plugins --------------------------------
