@@ -1,14 +1,14 @@
 " ignore lowercase and uppercase
 set ignorecase
 
-" search by distinguishing if uppercase are included
+" search with *no*ignorecase if uppercase are included
 set smartcase
 
 " incremental search
 set incsearch
 
-" wrap scanning
-set wrapscan
+" not loop back to the beginnig
+set nowrapscan
 
 " highlight
 set hlsearch
