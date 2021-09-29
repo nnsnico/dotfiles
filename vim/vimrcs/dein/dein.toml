@@ -304,6 +304,7 @@ hook_add = '''
     call wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#DB8B33', 'bold': 1}])
 
     call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+          \ 'winblend': &pumblend,
           \ 'border': 'rounded',
           \ 'highlighter': l:highlighters,
           \ 'highlights': {
