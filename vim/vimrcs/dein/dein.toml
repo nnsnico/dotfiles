@@ -111,7 +111,7 @@ repo = 'kyazdani42/nvim-tree.lua'
 if = '''has('nvim')'''
 depends = ["nvim-web-devicons"]
 hook_add = '''
-  nnoremap <silent><C-t> :<C-u>NvimTreeFindFile<CR>
+  nnoremap <expr> <silent><C-t> @% == "" ? ":<C-u>NvimTreeOpen<CR>" : ":<C-u>NvimTreeFindFile<CR>"
 '''
 hook_source = '''
 lua <<EOF
