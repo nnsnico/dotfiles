@@ -3,6 +3,22 @@
 repo = 'Shougo/dein.vim'
 hook_add = '''
   let g:dein#install_github_api_token = system('cat ' . expand('~/dotfiles/yabai_yatsu.txt') . " | awk -F ': ' '/github_api/ {print $2}'")
+
+  command! -nargs=0 AutoRemovePackages call s:auto_remove_packges()
+  function! s:auto_remove_packges() abort
+    let unused_packages = dein#check_clean()
+    if empty(unused_packages)
+      echohl WarningMsg
+      echom "No packages to be removed."
+      echohl None
+      return
+    endif
+
+    call map(unused_packages, "delete(v:val, 'rf')")
+    echohl Green
+    echom "Success to remove all packages!"
+    echohl None
+  endfunction
 '''
 
 [[plugins]]
