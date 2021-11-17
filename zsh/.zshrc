@@ -39,7 +39,7 @@ fi
 if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
     command mkdir -p "$HOME/dotfiles/zsh/.zinit" && command chmod g-rwX "$HOME/dotfiles/zsh/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
         print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
@@ -51,7 +51,7 @@ zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak
   "sorin-ionescu/prezto"
 zinit wait lucid for \
   "peco/peco" \
-  "zdharma/fast-syntax-highlighting"
+  "zdharma-continuum/fast-syntax-highlighting"
 # install binary from github release
 zinit wait lucid from"gh-r" as"program" for \
   "junegunn/fzf"
