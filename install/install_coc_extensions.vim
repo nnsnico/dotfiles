@@ -1,16 +1,17 @@
 let s:extensions = [
-  \ 'coc-yaml',
   \ 'coc-eslint',
-  \ 'coc-rls',
-  \ 'coc-metals',
   \ 'coc-json',
+  \ 'coc-lua',
+  \ 'coc-markdown-preview-enhanced',
+  \ 'coc-markdownlint',
+  \ 'coc-metals',
   \ 'coc-prettier',
+  \ 'coc-pyright',
+  \ 'coc-rls',
   \ 'coc-tsserver',
-  \ 'coc-python',
-  \ 'coc-vimlsp'
+  \ 'coc-vimlsp',
+  \ 'coc-webview',
+  \ 'coc-yaml'
   \ ]
 
-for ex in s:extensions
-  echom 'Installing ' . ex
-  execute 'CocInstall -sync ' . ex
-endfor
+execute 'CocInstall ' . join(s:extensions)
