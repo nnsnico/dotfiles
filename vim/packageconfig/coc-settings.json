@@ -42,6 +42,7 @@
   "prettier.disableLanguages": ["markdown"],
   "python.jediEnabled": false,
   "python.formatting.provider": "black",
+  "markdown-preview-enhanced.previewTheme": "atom-dark.css",
   "languageserver": {
     "haskell": {
       "command": "hie-wrapper",
