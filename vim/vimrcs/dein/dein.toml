@@ -438,7 +438,7 @@ repo = 'maxmellon/vim-jsx-pretty'
 on_ft = 'javascriptreact'
 
 [[plugins]]
-repo = 'zinit-zsh/zinit-vim-syntax'
+repo = 'zdharma-continuum/zinit-vim-syntax'
 on_ft = 'zsh'
 
 [[plugins]]
