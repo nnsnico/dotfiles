@@ -133,6 +133,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+nnoremap ZZ :<C-u>q<CR>
+nnoremap ZA :<C-u>qa<CR>
+nnoremap ZW :<C-U>wq<CR>
+
 " maximize window
 nnoremap <silent><Space>m :<C-u>resize \| vertical resize<CR>
 
