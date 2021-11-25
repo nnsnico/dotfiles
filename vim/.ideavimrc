@@ -8,7 +8,7 @@
 set ignorecase
 set smartcase
 
-" incremental serach
+" incremental search
 set incsearch
 
 " Show highlight when search
@@ -111,6 +111,9 @@ nmap tT <Action>(PreviousTab)
 " Toggle wrap lines
 nmap tw <Action>(EditorToggleUseSoftWraps)
 
+" Search Everywhere
+nmap zf <Action>(SearchEverywhere)
+
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
 imap <C-h> <Left>
@@ -122,6 +125,10 @@ map <Space>i <Action>(OptimizeImports)
 " Run actions
 map <Leader>r <Action>(Run)
 map <Leader>R <Action>(Rerun)
+
+" Show settings
+nmap <Space>s <Action>(ShowSettings)
+nmap <Space>S <Action>(ShowProjectStructureSettings)
 
 " -------------------------------- for Android --------------------------------
 
