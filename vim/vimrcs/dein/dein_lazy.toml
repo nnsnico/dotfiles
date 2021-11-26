@@ -94,7 +94,8 @@ hook_add = '''
 
   nmap     <silent>       [e         <Plug>(coc-diagnostic-prev)
   nmap     <silent>       ]e         <Plug>(coc-diagnostic-next)
-  nmap     <silent>       <leader>ac <Plug>(coc-codeaction)
+  nmap     <silent>       <Space>q   :<C-u>CocFix<CR>
+  vmap     <silent>       <Space>q   <Plug>(coc-codeaction-selected)
   nmap     <silent>       gd         <Plug>(coc-definition)
   nmap     <silent>       gy         <Plug>(coc-type-definition)
   nmap     <silent>       gi         <Plug>(coc-implementation)
