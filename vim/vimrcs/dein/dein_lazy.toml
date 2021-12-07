@@ -186,28 +186,6 @@ hook_add = '''
   nnoremap <silent><Space>@ :TableFormat<CR>
 '''
 
-[[plugins]]
-repo = 'kannokanno/previm'
-on_ft = ['markdown', 'rst' ]
-hook_add = '''
-  " for wsl
-  let uname = substitute(system('uname'), '\n', '', '')
-  if uname == 'Linux'
-    let lines = readfile("/proc/version")
-    if lines[0] =~ "microsoft"
-      let user = 'yuji\ toyama'
-      let g:previm_open_cmd = '/mnt/c/Users/' . user . '/AppData/Local/Vivaldi/Application/vivaldi.exe'
-      let g:previm_wsl_mode = 1
-    endif
-  endif
-'''
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-on_ft = ['markdown', 'rst' ]
-hook_add = '''
-  vmap <Leader>o <Plug>(openbrowser-open)
-'''
 
 [[plugins]]
 repo = 'skanehira/preview-markdown.vim'

@@ -451,6 +451,13 @@ on_ft = 'toml'
 
 # ------------------------------- other plugins -------------------------------
 
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+  vmap <Leader>o <Plug>(openbrowser-open)
+'''
+
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
