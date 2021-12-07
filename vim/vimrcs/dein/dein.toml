@@ -150,13 +150,14 @@ lua <<EOF
           { key = "go",          cb = tree_callback("preview") },
           { key = "[c",          cb = tree_callback("prev_git_item") },
           { key = "]c",          cb = tree_callback("next_git_item") },
-          { key = "N",           cb = tree_callback("create") },
+          { key = "M",           cb = tree_callback("create") },
           { key = "r",           cb = tree_callback("rename") },
-          { key = "m",           cb = tree_callback("cut") },
+          { key = "cc",          cb = tree_callback("cut") },
           { key = "yy",          cb = tree_callback("copy") },
           { key = "YY",          cb = tree_callback("copy_path") },
           { key = "Yy",          cb = tree_callback("copy_absolute_path") },
           { key = "dd",          cb = tree_callback("remove") },
+          { key = "p",           cb = tree_callback("paste") },
           { key = "g?",          cb = tree_callback("toggle_help") },
         }
       }
