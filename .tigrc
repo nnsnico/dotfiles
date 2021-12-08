@@ -17,26 +17,41 @@ bind generic \<Ctrl-G> :move-last-line
 
 # ------------------------------------ Git -------------------------------------
 
-bind status  C  !git commit -v                      # Add commit option `-v (same as --verbose)`
+# generic
+
 bind generic U  ?git pull %(remote)                 # pull repository
 bind generic P  ?git push -u %(remote) %(repo:head) # push branch
-bind refs    D  ?git branch -d %(branch)            # delete branch
+bind generic F  ?git fetch %(remote)                # fetch repository
+bind generic \f :toggle file-name                   # toggle to show file name
 
-bind main    \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -" # checkout branch
-bind diff    \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
-bind refs    \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
+# main
 
-bind tree    D  ?git rm %(file)             # delete file on tree-view
-bind status  D  ?git clean -d -f -- %(file) # delete untracked file (current line)
-bind main    x  ?git clean -d -f            # delete untracked file (all)
-bind status  x  ?git clean -d -f
+bind main \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -" # checkout branch
+bind main x  ?git clean -d -f                                                                  # delete untracked file (all)
+bind main F  ?git fetch %(remote)
+bind main \f :toggle commit-title-refs                                                         # toogle to show refs(e.g., release-tag)
 
-bind generic F  ?git fetch %(remote) # fetch repository
-bind main    F  ?git fetch %(remote)
+# diff
 
-bind stash   D  ?git stash drop %(stash) # delete stash
+bind diff \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
 
-bind generic \f :toggle file-name         # toggle to show file name
-bind main    \f :toggle commit-title-refs # toogle to show refs(e.g., release-tag)
+# tree
 
-bind refs    x  ?sh -c "git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %" # Remove all merged local branch (expect for master/develop)
+bind tree D ?git rm %(file) # delete file on tree-view
+
+# refs
+
+bind refs D  ?git branch -d %(branch)                                                                     # delete branch
+bind refs \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
+bind refs x  ?sh -c "git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %" # Remove all merged local branch (expect for master/develop)
+
+# status
+
+bind status C !git commit -v              # Add commit option `-v (same as --verbose)`
+bind status c ?git checkout %(file)       # Add commit option `-v (same as --verbose)`
+bind status D ?git clean -d -f -- %(file) # delete untracked file (current line)
+bind status x ?git clean -d -f
+
+# stash
+
+bind stash D ?git stash drop %(stash) # delete stash
