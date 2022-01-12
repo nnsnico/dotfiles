@@ -4,5 +4,5 @@ set fileformats=unix,dos,mac
 
 set t_Co=256
 
-set guifont=HackNerdFontComplete-Regular:h12
+set guifont=JetBrainsMono\ Nerd\ Font:h9
 set macligatures

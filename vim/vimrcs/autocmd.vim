@@ -1,24 +1,10 @@
-" highlight comment
 augroup mygroup
   autocmd!
+  " set filetype to conf
   autocmd BufNewFile,BufRead *.conf set filetype=conf
-  if has('nvim')
-    function! OnUIEnter(event)
-      let l:ui = nvim_get_chan_info(a:event.chan)
-      if has_key(l:ui, 'client') && has_key(l:ui.client, 'name')
-        if l:ui.client.name ==# 'Firenvim'
-          set laststatus=0
-          set guifont=HackNerdFontCompleteM-Regular:h9
-        endif
-      endif
-    endfunction
-  endif
-  if has('nvim')
-    autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
-  endif
 augroup end
 
-" sort by line number in quickfix window
+" sort quickfix window in line number
 augroup QuickfixSortStrategy
   autocmd!
 

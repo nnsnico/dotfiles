@@ -84,12 +84,6 @@ hook_add = '''
     \ 'ctrl-v': 'vsplit'
     \ }
 
-  " open nerdtree if no specified arguments
-  autocmd StdinReadPre * let s:std_in = 1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in")
-    \ | :Clap files --hidden
-    \ | endif
-
   " custom commands likes `fzf.vim`
   nnoremap <silent> <Plug>ClapFiles      :<C-u>Clap files --hidden<CR>
   nnoremap <silent> <Plug>ClapBuffers    :<C-u>Clap buffers<CR>
@@ -495,3 +489,9 @@ repo = 'wakatime/vim-wakatime'
 
 [[plugins]]
 repo = 'gyim/vim-boxdraw'
+
+[[plugins]]
+repo = 'glacambre/firenvim'
+hook_post_update = '''
+  call firenvim#install(0)
+'''
