@@ -1,6 +1,6 @@
-my dotfiles
+# my dotfiles
 
-![](snapshots/screenshot.png)
+![screenshot](snapshots/screenshot.png)
 
 ## Description of directory
 
@@ -20,17 +20,17 @@ my dotfiles
 
 - root
 
-    - `.skhdrc` , `.yabairc` , `spacebarrc` : [yabai](https://github.com/koekeishiya/yabai) settings
+  - `.skhdrc` , `.yabairc` , `spacebarrc` : [yabai](https://github.com/koekeishiya/yabai) settings
 
-    - `.tigrc` : [tig](https://github.com/jonas/tig) setting
+  - `.tigrc` : [tig](https://github.com/jonas/tig) setting
 
-    - `Brewfile` : Dumped install list in HomeBrew (not maintained)
+  - `Brewfile` : Dumped install list in HomeBrew (not maintained)
 
 ## Requirements
 
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) (to use for NeoVim)
 - Python
-    - Use for [Powerline](https://github.com/powerline/powerline). To install, please see [here](https://powerline.readthedocs.io/en/latest/installation.html#generic-requirements).
+  - Use for [Powerline](https://github.com/powerline/powerline). To install, please see [here](https://powerline.readthedocs.io/en/latest/installation.html#generic-requirements).
 
 ## Setup
 
@@ -56,6 +56,8 @@ $ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
     1. (Optional) To support all plugins, you should also install the following:
         - Node.js >= 12.12
         - Python >= 3
+        - [SKK dictionary](https://skk-dev.github.io/dict/)
+            - Deno (use [skkeleton](https://github.com/vim-skk/skkeleton))
 
 1. Install to use `install/install_vim.sh`
 
