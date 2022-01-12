@@ -7,7 +7,7 @@ set smartcase
 " incremental search
 set incsearch
 
-" not loop back to the beginnig
+" not loop back to the beginning
 set nowrapscan
 
 " highlight
