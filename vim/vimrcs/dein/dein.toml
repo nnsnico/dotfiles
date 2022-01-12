@@ -58,6 +58,10 @@ repo = 'vim-jp/vital.vim'
 repo = 'antoinemadec/FixCursorHold.nvim'
 if = '''has('nvim')'''
 
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+lazy = 1
+
 # -------------------------------- fuzzy finder --------------------------------
 
 [[plugins]]
@@ -229,6 +233,56 @@ hook_add = '''
 
 [[plugins]]
 repo = 'psliwka/vim-smoothie'
+
+[[plugins]]
+repo = 'vim-skk/skkeleton'
+hook_add = '''
+  imap <C-j> <Plug>(skkeleton-toggle)
+  cmap <C-j> <Plug>(skkeleton-toggle)
+
+  function! s:skkeleton_init() abort
+    call skkeleton#config({
+          \   'eggLikeNewline': v:true,
+          \   'globalJisyo': expand('~/jisyo/SKK-JISYO.L'),
+          \ })
+    call skkeleton#register_kanatable('rom', {
+          \   "z\<Space>": ["\u3000", ''],
+          \ })
+  endfunction
+
+  augroup skkeleton-coc
+    autocmd!
+    autocmd User skkeleton-initialize-pre call s:skkeleton_init()
+    autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
+    autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
+  augroup END
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+depends = ["denops.vim"]
+hook_add = '''
+  call ddc#custom#patch_global('sources', ['skkeleton'])
+  call ddc#custom#patch_global('sourceOptions', {
+        \   '_': {
+        \     'matchers': ['matcher_head'],
+        \     'sorters': ['sorter_rank'],
+        \   },
+        \   'skkeleton': {
+        \     'mark': 'skkeleton',
+        \     'matchers': ['skkeleton'],
+        \     'sorters': [],
+        \     'minAutoCompleteLength': 2,
+        \   },
+        \ })
+  call ddc#enable()
+'''
 
 # ------------------------------- visual utility -------------------------------
 
