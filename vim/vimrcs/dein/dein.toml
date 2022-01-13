@@ -292,6 +292,17 @@ hook_source = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
+  function! SkkStat()
+    let l:is_enabled = skkeleton#is_enabled()
+    if (l:is_enabled)
+      return 'あ'
+    else
+      return 'A'
+    endif
+  endfunction
+  call airline#parts#define('skk', {'function': 'SkkStat'})
+  let g:airline_section_b = airline#section#create_left(['skk'])
+
   let g:airline_extensions = [
     \ 'tabline',
     \ 'coc',
