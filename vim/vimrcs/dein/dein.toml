@@ -236,6 +236,7 @@ repo = 'psliwka/vim-smoothie'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
+depends = ["denops.vim"]
 hook_add = '''
   imap <C-j> <Plug>(skkeleton-toggle)
   cmap <C-j> <Plug>(skkeleton-toggle)
@@ -260,14 +261,16 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
+lazy = 1
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
+lazy = 1
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ["denops.vim"]
-hook_add = '''
+depends = ["denops.vim", "ddc-matcher_head",  "ddc-sorter_rank"]
+hook_source = '''
   call ddc#custom#patch_global('sources', ['skkeleton'])
   call ddc#custom#patch_global('sourceOptions', {
         \   '_': {
