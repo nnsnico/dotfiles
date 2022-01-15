@@ -221,14 +221,20 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-lazy = 1
-on_map = '<Plug>(easymotion-'
-hook_add = '''
-  autocmd User EasyMotionPromptBegin silent! CocDisable
-  autocmd User EasyMotionPromptEnd silent! CocEnable
-
-  map <Leader> <Plug>(easymotion-prefix)
+repo = 'phaazon/hop.nvim'
+rev = 'v1'
+if = '''has('nvim')'''
+hook_source = '''
+lua <<EOF
+  require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+  vim.api.nvim_set_keymap('n', 'f',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",                         {})
+  vim.api.nvim_set_keymap('n', 'F',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",                        {})
+  vim.api.nvim_set_keymap('o', 'f',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",  {})
+  vim.api.nvim_set_keymap('o', 'F',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
+  vim.api.nvim_set_keymap('',  't',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",                         {})
+  vim.api.nvim_set_keymap('',  'T',         "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",                        {})
+  vim.api.nvim_set_keymap('n', '<Leader>s', "<cmd>lua require'hop'.hint_char1()<cr>",                                                                                                                   {})
+EOF
 '''
 
 [[plugins]]
