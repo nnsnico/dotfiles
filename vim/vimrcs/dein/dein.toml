@@ -251,6 +251,7 @@ hook_add = '''
     call skkeleton#config({
           \   'eggLikeNewline': v:true,
           \   'globalJisyo': expand('~/jisyo/SKK-JISYO.L'),
+          \   'registerConvertResult': v:true,
           \ })
     call skkeleton#register_kanatable('rom', {
           \   "z\<Space>": ["\u3000", ''],
