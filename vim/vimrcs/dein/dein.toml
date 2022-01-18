@@ -66,7 +66,6 @@ lazy = 1
 
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
-depends = ["vim-devicons"]
 build = ':Clap install-binary'
 hook_add = '''
   let g:clap_theme = 'material_design_dark'
@@ -75,6 +74,8 @@ hook_add = '''
     \ 'texthl': "WarningMsg",
     \ 'linehl': "ClapCurrentSelection"
     \ }
+
+  let g:clap_enable_icon = 1
 
   let height = &lines / 3
   let width = float2nr(&columns - (&columns * 2 / 10))
@@ -115,10 +116,6 @@ hook_add = '''
 '''
 
 # ------------------------------- filer plugins --------------------------------
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-lazy = 1
 
 [[plugins]]
 repo = 'kyazdani42/nvim-tree.lua'
