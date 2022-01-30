@@ -451,7 +451,7 @@ lua <<EOF
     provider = function(self)
       return " "..self.mode.." "
     end,
-    hl = function(self)
+    hl = function()
       return {
         fg = colors.skk.fg,
         bg = colors.skk.bg,
@@ -462,7 +462,7 @@ lua <<EOF
   SkkStatus = utils.insert(SkkStatus,
     {
       provider = ' ',
-      hl = function(self)
+      hl = function()
         return { fg = colors.skk.bg, bg = utils.get_highlight("StatusLine").bg }
       end,
     }
