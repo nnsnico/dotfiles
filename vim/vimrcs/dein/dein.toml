@@ -342,17 +342,17 @@ lua <<EOF
 
     filetype = {
       fg = general_colors.bg,
-      bg = general_colors.cyan,
+      bg = general_colors.sky_blue,
     },
 
     fileencode = {
       fg = general_colors.black,
-      bg = general_colors.blue,
+      bg = general_colors.cyan,
     },
 
     linestatus = {
       fg = general_colors.black,
-      bg = general_colors.cyan,
+      bg = general_colors.blue,
     },
   }
 
