@@ -340,6 +340,11 @@ lua <<EOF
       bg = general_colors.gray,
     },
 
+    filetype = {
+      fg = general_colors.bg,
+      bg = general_colors.cyan,
+    },
+
     fileencode = {
       fg = general_colors.black,
       bg = general_colors.blue,
@@ -471,13 +476,29 @@ lua <<EOF
   -- FileType
 
   local FileType = {
-    init = function(self)
+    condition = function(self)
       self.ft = vim.bo.filetype
+      return self.ft ~= ""
     end,
     provider = function(self)
       return " "..self.ft.." "
     end,
+    hl = {
+      fg = colors.filetype.fg,
+      bg = colors.filetype.bg,
+    }
   }
+
+  FileType = utils.insert(
+    {
+      provider = ' ',
+      hl = {
+        fg = colors.filetype.bg,
+        bg = colors.diag_err.bg,
+      },
+    },
+    FileType
+  )
 
   -- File encode type
 
@@ -490,8 +511,9 @@ lua <<EOF
       return " "..self.fenc.."["..self.ff.."]".." "
     end,
     hl = {
-      fg = colors.fileencode.fg, bg = colors.fileencode.bg,
-    }
+      fg = colors.fileencode.fg,
+      bg = colors.fileencode.bg,
+    },
   }
 
   FileEncodeType = utils.insert(
@@ -499,7 +521,7 @@ lua <<EOF
       provider = ' ',
       hl = {
         fg = colors.fileencode.bg,
-        bg = utils.get_highlight("StatusLine").bg,
+        bg = colors.filetype.bg,
       },
     },
     FileEncodeType
@@ -562,7 +584,7 @@ lua <<EOF
       provider = ' ',
       hl = {
         fg = colors.diag_warn.bg,
-        bg = colors.linestatus.bg,
+        bg = utils.get_highlight("StatusLine").bg,
       }
     },
     CocDiagnosticWarn
@@ -657,11 +679,11 @@ lua <<EOF
     { provider = "%=" },
     FileNameBlock,
     { provider = "%=" },
+    CocDiagnosticWarn,
+    CocDiagnosticError,
     FileType,
     FileEncodeType,
     LineStatus,
-    CocDiagnosticWarn,
-    CocDiagnosticError,
   }
 
   local InactiveStatusline = {
