@@ -409,8 +409,8 @@ lua <<EOF
         s      = general_colors.green_light,
         S      = general_colors.green_light,
         [""] = general_colors.green_light,
-        R      = general_colors.purple,
-        r      = general_colors.purple,
+        R      = general_colors.red_light,
+        r      = general_colors.red_light,
         ["!"]  = general_colors.red,
         t      = general_colors.red,
       }
