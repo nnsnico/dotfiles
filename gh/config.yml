@@ -10,5 +10,6 @@ pager:
 aliases:
     co: pr checkout
     see: repo view --web
-    pv: '!gh pr view -w `gh pr list | fzf --preview="" | awk ''{print $1}''`'
-    iv: '!gh issue view -w `gh issue list | fzf --preview="" | awk ''{print $1}''`'
+    pv: '!gh issue view `gh pr list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo ''Exited from FZF or No pull request in repository'''
+    iv: '!gh issue view -w `gh issue list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo ''Exited from FZF or No pull request in repository'''
+    al: alias list
