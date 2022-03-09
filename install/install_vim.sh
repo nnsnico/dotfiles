@@ -18,6 +18,7 @@ fi
 if [ ! -d "$HOME/.config/nvim" ]; then
   echo "nvim dir is not found. Create dir automatically..."
   mkdir $HOME/.config/nvim
+  mkdir $HOME/.config/nvim/lua
 
   echo "Add symbolic link of init.vim..."
   ln -s ~/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
@@ -31,11 +32,11 @@ ln -s ~/dotfiles/vim/.gvimrc ~/
 echo "Add symbolic link of .ideavimrc..."
 ln -s ~/dotfiles/vim/.ideavimrc ~/
 
-# 2. get 'dein.vim' installer, and install in '~/.vim/bundles'
-echo "Installing dein.vim..."
-curl -s https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > dein_vim_installer.sh
-sh ./dein_vim_installer.sh ~/.cache/dein
-rm -f dein_vim_installer.sh
+# 2. get 'packer.nvim' installer, and install in '~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+ln -s ~/dotfiles/vim/vimrcs/packer/plugins.lua ~/.config/nvim/lua/plugins.lua
 
 # 3. install vim plugins
 vim +":call dein#install() | q"

@@ -6,10 +6,14 @@ scriptencoding utf8
 " Please install `nerd fonts` if you show mini icon in nerdtree
 " https://github.com/ryanoasis/nerd-fonts
 
+lua <<EOF
+  require'packer.plugins'
+EOF
+
 " TODO: put dotfiles dir (absolute path)
 let s:dotfiles_dir = '~/dotfiles'
+  " \ 'dein/installation.vim',
 let s:vim_files = [
-  \ 'dein/installation.vim',
   \ 'basic.vim',
   \ 'visual.vim',
   \ 'search.vim',
