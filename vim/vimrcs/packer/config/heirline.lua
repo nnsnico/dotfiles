@@ -417,7 +417,7 @@ heirline.config = function()
       InactiveStatusline, DefaultStatusline
     }
 
-    require'heirline'.setup(Statuslines)
+    require('heirline').setup(Statuslines)
 end
 
 return heirline

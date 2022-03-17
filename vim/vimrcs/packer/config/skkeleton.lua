@@ -19,8 +19,8 @@ skkeleton.setup = function()
     augroup skkeleton-coc
       autocmd!
       autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-      " autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
-      " autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
+      autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
+      autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
     augroup END
   ]])
 end

@@ -10,8 +10,8 @@ nvim_tree.setup = function()
 end
 
 nvim_tree.config = function()
-  local tree_callback = require'nvim-tree.config'.nvim_tree_callback
-  require'nvim-tree'.setup {
+  local tree_callback = require('nvim-tree.config').nvim_tree_callback
+  require('nvim-tree').setup {
     view = {
       mappings = {
         custom_only = true,
