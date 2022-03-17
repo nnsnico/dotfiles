@@ -7,7 +7,7 @@ scriptencoding utf8
 " https://github.com/ryanoasis/nerd-fonts
 
 lua <<EOF
-  require'packer.plugins'
+  require('packer.plugins')
 EOF
 
 " TODO: put dotfiles dir (absolute path)

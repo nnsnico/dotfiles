@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 ln -s ~/dotfiles/vim/vimrcs/packer/ ~/.config/nvim/lua/
 
 # 3. install vim plugins
-vim +":call dein#install() | q"
+nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # TODO: 4. install coc.nvim extensions
-vim +":source $cur_path/install_coc_extensions.vim | q"
+nvim +":source $cur_path/install_coc_extensions.vim | q"
