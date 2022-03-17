@@ -4,6 +4,11 @@ augroup mygroup
   autocmd BufNewFile,BufRead *.conf set filetype=conf
 augroup end
 
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+augroup end
+
 " sort quickfix window in line number
 augroup QuickfixSortStrategy
   autocmd!
