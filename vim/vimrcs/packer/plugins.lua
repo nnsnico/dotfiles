@@ -197,6 +197,27 @@ return require('packer').startup(function(use)
     tag = 'v0.2.12',
     run = function()
       vim.fn['firenvim#install'](0)
+    end,
+    setup = function()
+      vim.api.nvim_set_keymap('n', '<C-e>', ':call firenvim#hide_frame()<CR>', { noremap = true, silent = true })
+      vim.g.firenvim_config = {
+        globalSettings = {
+          alt = 'all',
+        },
+        localSettings = {
+          ['.*'] = {
+            cmdline  = 'neovim',
+            content  = 'text',
+            priority = 0,
+            selector = 'textarea',
+            takeover = 'always',
+          },
+          -- www.google.com以外無効化する(検索結果上の翻訳とかは使いたい)
+          ['https?://[^/www]+\\.google\\.com\\/'] = {
+            takeover = 'never'
+          }
+        }
+      }
     end
   }
 
