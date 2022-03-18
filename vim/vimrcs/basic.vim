@@ -144,6 +144,9 @@ nnoremap <silent><Space>m :<C-u>resize \| vertical resize<CR>
 " set pastetoggle=<leader>p
 nnoremap <Leader>p :<C-u>set invpaste paste?<CR>
 
+" toggle to wrap line
+nnoremap <expr> tw &wrap == 0 ? ":set wrap<CR>" : ":set nowrap<CR>"
+
 " ------------------------------------ Tab ------------------------------------
 
 " replace tab to space
