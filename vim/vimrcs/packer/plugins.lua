@@ -244,5 +244,12 @@ return require('packer').startup(function(use)
       vim.api.nvim_set_keymap('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
     end
   }
+  use {
+    'AndrewRadev/tagalong.vim',
+    ft = { 'html', 'javascriptreact', 'jsx', 'php', 'typescriptreact', 'xml', 'markdown' },
+    setup = function()
+      vim.g.tagalong_additional_filetypes = { 'markdown' }
+    end
+  }
 
 end)
