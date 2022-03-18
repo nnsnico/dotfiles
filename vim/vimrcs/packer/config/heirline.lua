@@ -394,9 +394,9 @@ heirline.config = function()
       condition = function()
         return not conditions.is_active()
       end,
-      {
-        provider = ''
-      }
+      { provider = "%=" },
+      FileNameBlock,
+      { provider = "%=" }
     }
 
     local Statuslines = {
