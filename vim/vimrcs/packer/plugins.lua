@@ -114,6 +114,13 @@ return require('packer').startup(function(use)
       {"Shougo/ddc-sorter_rank"},
     }
   }
+  use {
+    'AndrewRadev/tagalong.vim',
+    ft = { 'html', 'javascriptreact', 'jsx', 'php', 'typescriptreact', 'xml', 'markdown' },
+    setup = function()
+      vim.g.tagalong_additional_filetypes = { 'markdown' }
+    end
+  }
 
 -------------------------------- visual utility --------------------------------
 
@@ -242,13 +249,6 @@ return require('packer').startup(function(use)
     ft = { 'markdown' },
     setup = function()
       vim.api.nvim_set_keymap('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
-    end
-  }
-  use {
-    'AndrewRadev/tagalong.vim',
-    ft = { 'html', 'javascriptreact', 'jsx', 'php', 'typescriptreact', 'xml', 'markdown' },
-    setup = function()
-      vim.g.tagalong_additional_filetypes = { 'markdown' }
     end
   }
 
