@@ -10,20 +10,19 @@ wilder.config = function()
             \ 'next_key': '<C-n>',
             \ 'previous_key': '<C-p>',
             \ })
+      call wilder#set_option('use_python_remote_plugin', 0)
       call wilder#set_option('pipeline', [
             \   wilder#branch(
             \     wilder#cmdline_pipeline({
             \       'fuzzy': 1,
-            \       'set_pcre2_pattern': has('nvim'),
+            \       'fuzzy_filter': wilder#lua_fzy_filter(),
             \     }),
-            \     wilder#python_search_pipeline({
-            \       'pattern': 'fuzzy',
-            \     }),
+            \     wilder#python_search_pipeline(),
             \   ),
             \ ])
 
       let l:highlighters = [
-            \ wilder#pcre2_highlighter(),
+            \ wilder#lua_fzy_highlighter(),
             \ wilder#basic_highlighter(),
             \ ]
       call wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#DB8B33', 'bold': 1}])
@@ -37,6 +36,14 @@ wilder.config = function()
             \     'accent': 'WilderAccent',
             \     'border': 'Normal',
             \   },
+            \   'left': [
+            \     ' ',
+            \     wilder#popupmenu_devicons(),
+            \   ],
+            \   'right': [
+            \     ' ',
+            \     wilder#popupmenu_scrollbar(),
+            \   ],
             \ })))
     endfunction
 

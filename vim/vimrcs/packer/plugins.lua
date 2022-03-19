@@ -141,8 +141,8 @@ return require('packer').startup(function(use)
   }
   use {
     'gelguy/wilder.nvim',
-    run = ':UpdateRemotePlugins',
     config = require('packer.config.wilder').config(),
+    requires = {'romgrk/fzy-lua-native', 'kyazdani42/nvim-web-devicons'}
   }
 
 ------------------------------------- VCS --------------------------------------
