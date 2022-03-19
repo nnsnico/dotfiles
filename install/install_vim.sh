@@ -17,8 +17,7 @@ fi
 
 if [ ! -d "$HOME/.config/nvim" ]; then
   echo "nvim dir is not found. Create dir automatically..."
-  mkdir $HOME/.config/nvim
-  mkdir $HOME/.config/nvim/lua
+  mkdir -p $HOME/.config/nvim/lua
 
   echo "Add symbolic link of init.vim..."
   ln -s ~/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
