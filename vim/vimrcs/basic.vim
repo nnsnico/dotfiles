@@ -147,6 +147,9 @@ nnoremap <Leader>p :<C-u>set invpaste paste?<CR>
 " toggle to wrap line
 nnoremap <expr> tw &wrap == 0 ? ":set wrap<CR>" : ":set nowrap<CR>"
 
+" center horizontally on cursor position
+nnoremap <silent> z. :<C-u>normal! zszH<CR>
+
 " ------------------------------------ Tab ------------------------------------
 
 " replace tab to space
