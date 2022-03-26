@@ -206,7 +206,6 @@ return require('packer').startup(function(use)
       vim.fn['firenvim#install'](0)
     end,
     setup = function()
-      vim.api.nvim_set_keymap('n', '<C-e>', ':call firenvim#hide_frame()<CR>', { noremap = true, silent = true })
       vim.g.firenvim_config = {
         globalSettings = {
           alt = 'all',
