@@ -250,5 +250,14 @@ return require('packer').startup(function(use)
       vim.api.nvim_set_keymap('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
     end
   }
+  use {
+    'ayu-theme/ayu-vim',
+    config = function()
+      vim.cmd([[let ayucolor = "mirage"]])
+    end ,
+    setup = function()
+      vim.o.termguicolors = true
+    end,
 
+  }
 end)
