@@ -6,19 +6,18 @@ heirline.config = function()
 
     -- import to dart theme of fancomi.vim
     local general_colors = {
-      fg          = '#C8C6B7',
-      bg          = '#00122C',
-      red         = '#C20706',
-      red_light   = '#C23F3E',
-      green       = '#80AA31',
-      green_light = '#8DAA55',
-      orange      = '#DB8B33',
-      yellow      = '#D9A45A',
-      blue        = '#4169AE',
-      sky_blue    = '#4DC8FF',
-      cyan        = '#41AEB4',
-      gray        = '#434C59',
-      black       = '#00173A',
+      fg          = vim.g.terminal_color_15,
+      black       = vim.g.terminal_color_0,
+      red         = vim.g.terminal_color_1,
+      red_light   = utils.get_highlight('IncSearch').bg,
+      green       = vim.g.terminal_color_2,
+      green_light = utils.get_highlight('String').fg,
+      orange      = utils.get_highlight('Debug').fg,
+      yellow      = vim.g.terminal_color_3,
+      blue        = vim.g.terminal_color_4,
+      sky_blue    = vim.g.terminal_color_5,
+      cyan        = vim.g.terminal_color_6,
+      gray        = utils.get_highlight('SpecialComment').fg,
       none        = 'NONE',
     }
 
@@ -45,7 +44,7 @@ heirline.config = function()
       },
 
       filetype = {
-        fg = general_colors.bg,
+        fg = general_colors.black,
         bg = general_colors.sky_blue,
       },
 
