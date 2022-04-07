@@ -72,5 +72,16 @@
       "command": "~/.cache/dein/repos/github.com/fwcd/kotlin-language-server/server/build/install/server/bin/kotlin-language-server",
       "filetypes": ["kotlin"]
     }
+  },
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.telemetry.enable": true,
+  "markdownlint.config": {
+    "default": true,
+    "line_length": false,
+    "no-inline-html": false,
+    "no-bare-urls": false,
+    "no-trailing-punctuation": false,
+    "no-emphasis-as-header": false,
+    "fenced-code-language": false
   }
 }

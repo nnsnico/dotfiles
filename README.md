@@ -78,5 +78,5 @@ $ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
     1. (MacOS) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline_terminus.json`
 
 <!--
-vim: ts=4 sts=4 sw=4 et :
+vim: ts=2 sts=2 sw=2 et :
 -->
