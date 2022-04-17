@@ -1,54 +1,65 @@
-local wilder = {}
+local M = {}
 
-wilder.config = function()
+M.config = function()
+  local wilder = require('wilder')
+
   vim.api.nvim_set_keymap('c', '<Tab>', '<C-n>', {})
 
-  vim.cmd([[
-    function! s:wilder_init() abort
-      call wilder#setup({
-            \ 'modes': [':'],
-            \ 'next_key': '<C-n>',
-            \ 'previous_key': '<C-p>',
-            \ })
-      call wilder#set_option('use_python_remote_plugin', 0)
-      call wilder#set_option('pipeline', [
-            \   wilder#branch(
-            \     wilder#cmdline_pipeline({
-            \       'fuzzy': 1,
-            \       'fuzzy_filter': wilder#lua_fzy_filter(),
-            \     }),
-            \     wilder#python_search_pipeline(),
-            \   ),
-            \ ])
+  local wilder_init = function()
+    wilder.setup({
+      modes = {':'},
+      next_key = '<C-n>',
+      previous_key = '<C-p>',
+    })
+    wilder.set_option('use_python_remote_plugin', 0)
+    wilder.set_option('pipeline', {
+      wilder.branch(
+        wilder.cmdline_pipeline({
+          fuzzy = 1,
+          fuzzy_filter = wilder.lua_fzy_filter(),
+        }),
+        wilder.python_search_pipeline()
+      )
+    })
 
-      let l:highlighters = [
-            \ wilder#lua_fzy_highlighter(),
-            \ wilder#basic_highlighter(),
-            \ ]
-      call wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#DB8B33', 'bold': 1}])
+    local highlighters = {
+      wilder.lua_pcre2_highlighter(),
+      wilder.lua_fzy_highlighter(),
+    }
 
-      call wilder#set_option('renderer', wilder#popupmenu_renderer(
-            \ wilder#popupmenu_border_theme({
-            \   'winblend': &pumblend,
-            \   'border': 'rounded',
-            \   'highlighter': l:highlighters,
-            \   'highlights': {
-            \     'accent': 'WilderAccent',
-            \     'border': 'Normal',
-            \   },
-            \   'left': [
-            \     ' ',
-            \     wilder#popupmenu_devicons(),
-            \   ],
-            \   'right': [
-            \     ' ',
-            \     wilder#popupmenu_scrollbar(),
-            \   ],
-            \ })))
-    endfunction
+    wilder.set_option('renderer', wilder.popupmenu_renderer(
+      wilder.popupmenu_border_theme({
+        winblend = vim.o.pumblend,
+        border = 'rounded',
+        highlighter = highlighters,
+        highlights = {
+          accent = wilder.make_hl(
+            'WilderAccent',
+            'Pmenu',
+            {{a = 1}, {a = 1}, {foreground = '#DB8B33', bold = 1}}
+          ),
+          border = 'Normal',
+        },
+        left = {
+          ' ',
+          wilder.popupmenu_devicons(),
+        },
+        right = {
+          ' ',
+          wilder.popupmenu_scrollbar(),
+        },
+      })
+    ))
+  end
 
-    autocmd CmdlineEnter * ++once call s:wilder_init() | call wilder#main#start()
-  ]])
+  vim.api.nvim_create_autocmd({'CmdlineEnter'}, {
+    pattern = {'*'},
+    once = true,
+    callback = function()
+      wilder_init()
+      vim.fn['wilder#main#start']()
+    end,
+  })
 end
 
-return wilder
+return M

@@ -4,25 +4,42 @@ skkeleton.setup = function()
   vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(skkeleton-toggle)', {})
   vim.api.nvim_set_keymap('c', '<C-j>', '<Plug>(skkeleton-toggle)', {})
 
-  vim.cmd([[
-    function! s:skkeleton_init() abort
-      call skkeleton#config({
-            \   'eggLikeNewline': v:true,
-            \   'globalJisyo': expand('~/jisyo/SKK-JISYO.L'),
-            \   'registerConvertResult': v:true,
-            \ })
-      call skkeleton#register_kanatable('rom', {
-            \   "z\<Space>": ["\u3000", ''],
-            \ })
-    endfunction
+  local skkeleton_init = function()
+    vim.fn['skkeleton#config']({
+      eggLikeNewline        = true,
+      globalJisyo           = vim.fn.expand('/mnt/c/Users/nns/jisyo/SKK-JISYO.L'),
+      registerConvertResult = true,
+      markerHenkan          = vim.api.nvim_exec([[echo "\uF7BE "]], true),
+      markerHenkanSelect    = vim.api.nvim_exec([[echo "\uF7BE "]], true),
+    })
+    vim.fn['skkeleton#register_kanatable']('rom', {
+      ['z '] = {
+        vim.api.nvim_exec([[echo "\u3000"]], true),
+        ''
+      }
+    })
+  end
 
-    augroup skkeleton-coc
-      autocmd!
-      autocmd User skkeleton-initialize-pre call s:skkeleton_init()
-      autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
-      autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
-    augroup END
-  ]])
+  local augroup = vim.api.nvim_create_augroup('skkeleton-coc', {})
+  vim.api.nvim_create_autocmd('User', {
+    group = augroup,
+    pattern = 'skkeleton-initialize-pre',
+    callback = skkeleton_init,
+  })
+  vim.api.nvim_create_autocmd('User', {
+    group = augroup,
+    pattern = 'skkeleton-enable-pre',
+    callback = function()
+      vim.b.coc_suggest_disable = true
+    end,
+  })
+  vim.api.nvim_create_autocmd('User', {
+    group = augroup,
+    pattern = 'skkeleton-disable-pre',
+    callback = function()
+      vim.b.coc_suggest_disable = false
+    end,
+  })
 end
 
 return skkeleton

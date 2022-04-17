@@ -45,7 +45,7 @@ return require('packer').startup(function(use)
 
   use {
     'liuchengxu/vim-clap',
-    run = ':Clap install-binary',
+    run = ':call clap#installer#download_binary()',
     setup = require('packer.config.clap').setup(),
     requires = {
       {'kyazdani42/nvim-web-devicons'},
@@ -142,7 +142,8 @@ return require('packer').startup(function(use)
   use {
     'gelguy/wilder.nvim',
     config = require('packer.config.wilder').config(),
-    requires = {'romgrk/fzy-lua-native', 'kyazdani42/nvim-web-devicons'}
+    requires = {'romgrk/fzy-lua-native', 'kyazdani42/nvim-web-devicons'},
+    rocks = {'pcre2'},
   }
 
 ------------------------------------- VCS --------------------------------------
