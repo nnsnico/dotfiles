@@ -208,7 +208,7 @@ return require('packer').startup(function(use)
   use {
     'tyru/open-browser.vim',
     setup = function()
-      vim.api.nvim_set_keymap('o', '<Leader>o', '<Plug>(openbrowser-open)', {})
+      vim.api.nvim_set_keymap('v', '<Leader>o', '<Plug>(openbrowser-open)', {})
     end,
   }
   use 'editorconfig/editorconfig-vim'
