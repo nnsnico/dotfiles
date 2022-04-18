@@ -3,7 +3,7 @@ local coc = {}
 coc.setup = function()
   vim.o.updatetime = 300
   vim.o.shortmess = vim.o.shortmess .. 'c'
-  vim.o.signcolumn = 'yes'
+  vim.o.signcolumn = 'yes:2'
 
   vim.cmd([[
     autocmd CursorHold *.scala,*.ts,*.tsx,*.dart silent call CocActionAsync('highlight')
