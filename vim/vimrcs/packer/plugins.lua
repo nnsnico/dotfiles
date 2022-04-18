@@ -133,10 +133,18 @@ return require('packer').startup(function(use)
     },
   }
   use {
-    'Yggdroot/indentLine',
-    setup = function()
-      vim.g.indentLine_char_list = {'|', '¦'}
-      vim.g.indentLine_setColors = 1
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      -- use gray color
+      vim.cmd([[highlight! link IndentBlanklineChar Ignore]])
+      vim.g.indent_blankline_char_list = { '|', '¦' }
+      vim.g.indent_blankline_use_treesitter = true
+
+      require('indent_blankline').setup {
+        space_char_blankline       = " ",
+        show_current_context       = true,
+        show_current_context_start = true,
+      }
     end
   }
   use {
