@@ -6,6 +6,24 @@ return require('packer').startup(function(use)
 
   use 'wbthomason/packer.nvim'
   use 'vim-jp/vital.vim'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { "lua", "json", "dart" },
+        sync_install = false,
+        highlight = {
+          enable = true,
+          disable = { "markdown" },
+          additional_vim_regex_highlighting = true,
+        },
+        indent = {
+          enable = true,
+        }
+      }
+    end
+  }
 
 -------------------------------------- LSP -------------------------------------
 
@@ -239,7 +257,6 @@ return require('packer').startup(function(use)
 -------------------------------- syntax highlight ------------------------------
 
   use { 'rust-lang/rust.vim',           ft = 'rust', setup = function() vim.g.rustfmt_autosave = 1 end }
-  use { 'elzr/vim-json',                ft = 'json', setup = function() vim.g.vim_json_syntax_conceal = 0 end }
   use { 'neoclide/jsonc.vim',           ft = 'jsonc' }
   use { 'HerringtonDarkholme/yats.vim', ft = { 'typescript', 'typescriptreact' } }
   use {
