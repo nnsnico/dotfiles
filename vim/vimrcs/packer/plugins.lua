@@ -18,11 +18,16 @@ return require('packer').startup(function(use)
           disable = { "markdown" },
           additional_vim_regex_highlighting = true,
         },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+        },
         indent = {
           enable = true,
         }
       }
-    end
+    end,
+    requires = {'p00f/nvim-ts-rainbow'}
   }
 
 -------------------------------------- LSP -------------------------------------
@@ -84,17 +89,6 @@ return require('packer').startup(function(use)
 ----------------------------- manipulation utility -----------------------------
 
   use 'jiangmiao/auto-pairs'
-  use {
-    'luochen1990/rainbow',
-    setup = function()
-      vim.g.rainbow_active = 1
-      vim.g.rainbow_conf = {
-        separately = {
-          nerdtree = 0
-        }
-      }
-    end,
-  }
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
