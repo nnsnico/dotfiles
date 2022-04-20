@@ -52,8 +52,13 @@ set visualbell
 " show match paren
 set showmatch
 
-" use global statusline
-set laststatus=3
+if has('nvim')
+  " use global statusline
+  set laststatus=3
+else
+  " always show statusline
+  set laststatus=2
+endif
 
 " not shown mode
 set noshowmode

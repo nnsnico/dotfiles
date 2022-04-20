@@ -1,4 +1,5 @@
 scriptencoding utf8
+
 " Installation
 " exec installer script(/install/vim_installer.sh)
 "
@@ -25,6 +26,7 @@ for files in s:vim_files
   exec 'source ' . fullpath
 endfor
 
+" If you use Vim, comment out it (this not work)
 lua <<EOF
   require('packer.plugins')
 EOF
