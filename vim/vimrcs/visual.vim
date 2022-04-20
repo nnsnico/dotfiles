@@ -52,8 +52,8 @@ set visualbell
 " show match paren
 set showmatch
 
-" always show status line
-set laststatus=2
+" use global statusline
+set laststatus=3
 
 " not shown mode
 set noshowmode
