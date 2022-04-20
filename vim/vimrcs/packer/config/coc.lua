@@ -5,9 +5,10 @@ coc.setup = function()
   vim.o.shortmess = vim.o.shortmess .. 'c'
   vim.o.signcolumn = 'yes:2'
 
-  vim.cmd([[
-    autocmd CursorHold *.scala,*.ts,*.tsx,*.dart silent call CocActionAsync('highlight')
-  ]])
+  vim.api.nvim_create_autocmd('CursorHold', {
+    pattern = {'*.scala', '*.ts', '*.tsx', '*.dart', '*.lua'},
+    command = "silent call CocActionAsync('highlight')",
+  })
 
   vim.api.nvim_set_keymap('n', '<C-j>', 'coc#float#has_float() ? coc#float#scroll(1) : "<C-j>"', { noremap = true, expr = true, silent = true })
   vim.api.nvim_set_keymap('n', '<C-k>', 'coc#float#has_float() ? coc#float#scroll(0) : "<C-k>"', { noremap = true, expr = true, silent = true })
