@@ -5,9 +5,21 @@ coc.setup = function()
   vim.o.shortmess = vim.o.shortmess .. 'c'
   vim.o.signcolumn = 'yes:2'
 
+  local augroup = vim.api.nvim_create_augroup('coc-config', {})
   vim.api.nvim_create_autocmd('CursorHold', {
-    pattern = {'*.scala', '*.ts', '*.tsx', '*.dart', '*.lua'},
+    group   = augroup,
+    pattern = { '*.scala', '*.ts', '*.tsx', '*.dart', '*.lua' },
     command = "silent call CocActionAsync('highlight')",
+  })
+  vim.api.nvim_create_autocmd('FileType', {
+    group   = augroup,
+    pattern = { 'json' },
+    command = [[syntax match Comment +/\/\.\+$+]],
+  })
+  vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+    group    = augroup,
+    pattern  = 'tsconfig.json',
+    callback = function() vim.o.filetype = 'jsonc' end,
   })
 
   vim.api.nvim_set_keymap('n', '<C-j>', 'coc#float#has_float() ? coc#float#scroll(1) : "<C-j>"', { noremap = true, expr = true, silent = true })

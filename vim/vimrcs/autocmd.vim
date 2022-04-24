@@ -4,11 +4,6 @@ augroup mygroup
   autocmd BufNewFile,BufRead *.conf set filetype=conf
 augroup end
 
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-augroup end
-
 " sort quickfix window in line number
 augroup QuickfixSortStrategy
   autocmd!
@@ -27,11 +22,3 @@ augroup QuickfixSortStrategy
   autocmd QuickFixCmdPost * call s:SortQuickfix()
   autocmd FileType qf nnoremap <buffer>p <CR>zz<C-w>p
 augroup end
-
-augroup CocConfigGroup
-  autocmd!
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-  " set filetype `jsonc` in tsconfig.json only
-  autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
-augroup end
-

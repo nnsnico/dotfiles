@@ -5,6 +5,15 @@ if vim.fn.has('mac') then
   vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 end
 
+local augroup = vim.api.nvim_create_augroup('packer_user_config', {})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = augroup,
+  pattern = 'pluings.lua',
+  callback = function(args)
+    vim.cmd(string.format('source %s | PackerCompile', args.file))
+  end,
+})
+
 local M = {}
 
 M.startup = function()
