@@ -19,7 +19,7 @@ local M = {}
 M.startup = function()
   return require('packer').startup(function(use)
 
-    ----------------------------------- Basic -----------------------------------
+    ----------------------------------- Basic ----------------------------------
 
     use 'wbthomason/packer.nvim'
     use 'vim-jp/vital.vim'
@@ -47,7 +47,7 @@ M.startup = function()
       requires = { 'p00f/nvim-ts-rainbow' }
     }
 
-    ----------------------------------- LSP -----------------------------------
+    ----------------------------------- LSP ------------------------------------
 
     use {
       'neoclide/coc.nvim',

@@ -2,7 +2,7 @@ local clap = {}
 
 clap.setup = function()
   vim.g.clap_current_selection_sign = {
-    text   = vim.api.nvim_exec([[echo "\uF0A4"]], true),
+    text   = '\u{F0A4}',
     texthl = "WarningMsg",
     linehl = "ClapCurrentSelection"
   }
