@@ -1,6 +1,10 @@
 vim.cmd[[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+if vim.fn.has('mac') then
+  -- @see: https://github.com/wbthomason/packer.nvim/issues/180
+  vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+end
 
 ------------------------------------- Basic ------------------------------------
 
