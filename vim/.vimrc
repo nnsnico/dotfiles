@@ -28,5 +28,5 @@ endfor
 
 " If you use Vim, comment out it (this not work)
 lua <<EOF
-  require('packer.plugins')
+  require('packer.plugins').startup()
 EOF
