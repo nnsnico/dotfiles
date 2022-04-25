@@ -295,13 +295,11 @@ M.startup = function()
       end
     }
     use {
-      'ayu-theme/ayu-vim',
+      'folke/tokyonight.nvim',
       config = function()
-        vim.cmd([[let ayucolor = "mirage"]])
-      end,
-      setup = function()
-        vim.o.termguicolors = true
-      end,
+        vim.g.tokyonight_style = 'night'
+        vim.cmd([[colorscheme tokyonight]])
+      end
     }
   end)
 end

@@ -15,7 +15,7 @@ endif
 
 " colorscheme
 set background=dark
-colorscheme ayu
+colorscheme tokyonight
 
 " transparent color on floating window and popup window (support neovim only)
 if has('nvim')
