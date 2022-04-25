@@ -9,8 +9,8 @@ skkeleton.setup = function()
       eggLikeNewline        = true,
       globalJisyo           = vim.fn.expand('~/jisyo/SKK-JISYO.L'),
       registerConvertResult = true,
-      markerHenkan          = '\u{F7BE}',
-      markerHenkanSelect    = '\u{F7BE}',
+      markerHenkan          = '\u{F7BE} ',
+      markerHenkanSelect    = '\u{F7BE} ',
     })
     vim.fn['skkeleton#register_kanatable']('rom', {
       ['z '] = { '\u{3000}', '' }
