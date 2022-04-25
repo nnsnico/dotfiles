@@ -164,8 +164,15 @@ M.startup = function()
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = function()
-        -- use gray color
-        vim.cmd([[highlight! link IndentBlanklineChar Ignore]])
+        -- Get the gray without gui attribute from the Comment highlight group.
+        vim.cmd([[highlight! link IndentBlanklineChar Comment]])
+        vim.cmd(
+          'highlight! IndentBlanklineChar '
+          .. 'cterm=NONE '
+          .. 'gui=NONE '
+          .. 'guifg=' .. vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'gui') .. ' '
+          .. 'ctermfg=' .. vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'cterm')
+        )
         vim.g.indent_blankline_char_list = { '|', '¦' }
         vim.g.indent_blankline_use_treesitter = true
 
