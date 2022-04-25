@@ -96,8 +96,8 @@ M.startup = function()
 
     use {
       'kyazdani42/nvim-tree.lua',
-      setup = require('packer.config.nvim-tree').setup(),
-      config = require('packer.config.nvim-tree').config(),
+      setup = require('packer.config.my-nvim-tree').setup(),
+      config = require('packer.config.my-nvim-tree').config(),
       requires = {
         { 'kyazdani42/nvim-web-devicons' },
       }
@@ -155,7 +155,7 @@ M.startup = function()
 
     use {
       'rebelot/heirline.nvim',
-      config = require('packer.config.heirline').config(),
+      config = require('packer.config.my-heirline').config(),
       requires = {
         { 'kyazdani42/nvim-web-devicons', opt = 1 },
         { 'vim-skk/skkeleton' },
@@ -178,7 +178,7 @@ M.startup = function()
     }
     use {
       'gelguy/wilder.nvim',
-      config = require('packer.config.wilder').config(),
+      config = require('packer.config.my-wilder').config(),
       requires = { 'romgrk/fzy-lua-native', 'kyazdani42/nvim-web-devicons' },
       rocks = { 'pcre2' },
     }

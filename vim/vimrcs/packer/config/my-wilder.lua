@@ -7,15 +7,16 @@ M.config = function()
 
   local wilder_init = function()
     wilder.setup({
-      modes = {':'},
-      next_key = '<C-n>',
+      modes        = { ':' },
+      next_key     = '<C-n>',
       previous_key = '<C-p>',
     })
     wilder.set_option('use_python_remote_plugin', 0)
     wilder.set_option('pipeline', {
+      wilder.debounce(50),
       wilder.branch(
         wilder.cmdline_pipeline({
-          fuzzy = 1,
+          fuzzy        = 1,
           fuzzy_filter = wilder.lua_fzy_filter(),
         }),
         wilder.python_search_pipeline()
@@ -36,7 +37,7 @@ M.config = function()
           accent = wilder.make_hl(
             'WilderAccent',
             'Pmenu',
-            {{a = 1}, {a = 1}, {foreground = '#DB8B33', bold = 1}}
+            { { a = 1 }, { a = 1 }, { foreground = '#DB8B33', bold = 1 } }
           ),
           border = 'Normal',
         },
@@ -52,8 +53,8 @@ M.config = function()
     ))
   end
 
-  vim.api.nvim_create_autocmd({'CmdlineEnter'}, {
-    pattern = {'*'},
+  vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
+    pattern = { '*' },
     once = true,
     callback = function()
       wilder_init()

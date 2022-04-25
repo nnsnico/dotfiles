@@ -39,7 +39,7 @@ heirline.config = function()
       },
 
       skk = {
-        fg = general_colors.fg,
+        fg = general_colors.black,
         bg = general_colors.gray,
       },
 
