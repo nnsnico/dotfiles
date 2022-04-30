@@ -47,6 +47,8 @@ source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+zinit wait lucid from"gh-r" as"program" ver"nightly" mv"nvim-* -> nvim" pick"nvim/bin/nvim" atpull"%atclone" for \
+  "neovim/neovim"
 zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
   "sorin-ionescu/prezto"
 zinit wait lucid for \
