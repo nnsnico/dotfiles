@@ -127,7 +127,7 @@ heirline.config = function()
         return {
           fg = general_colors.black,
           bg = self.mode_colors[mode],
-          style = "bold",
+          bold = true,
         }
       end,
     }
@@ -363,7 +363,7 @@ heirline.config = function()
     local FileNameModifier = {
         hl = function()
             if vim.bo.modified then
-                return { fg = general_colors.cyan, style = 'bold', force = true }
+                return { fg = general_colors.cyan, bold = true, force = true }
             end
         end,
     }
