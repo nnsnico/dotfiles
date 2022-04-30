@@ -50,35 +50,21 @@ M.startup = function()
     ----------------------------------- LSP ------------------------------------
 
     use {
-      'neoclide/coc.nvim',
-      ft = {
-        'c',
-        'dart',
-        'elm',
-        'eruby',
-        'go',
-        'haskell',
-        'hs',
-        'javascript',
-        'javascriptreact',
-        'json',
-        'lhs',
-        'lua',
-        'markdown',
-        'purescript',
-        'python',
-        'rust',
-        'sbt',
-        'scala',
-        'sh',
-        'typescript',
-        'typescriptreact',
-        'vim',
-        'yaml',
-        'zsh',
-      },
-      tag = 'release',
-      setup = require('packer.config.coc').setup(),
+      'williamboman/nvim-lsp-installer',
+      config = require('packer.config.lsp.my-nvim-lsp-installer').config(),
+      requires = {
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'neovim/nvim-lspconfig' },
+      }
+    }
+    use {
+      'hrsh7th/nvim-cmp',
+      config = require('packer.config.my-nvim-cmp').config(),
+      requires = {
+        { 'L3MON4D3/LuaSnip' },
+      }
     }
 
     ------------------------------- fuzzy finder -------------------------------
