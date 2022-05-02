@@ -47,7 +47,11 @@ source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit wait lucid from"gh-r" as"program" ver"nightly" mv"nvim-* -> nvim" pick"nvim/bin/nvim" atpull"%atclone" for \
+# if debian os (Ubuntu)
+zinit wait lucid if'[[ $OSTYPE =~ "linux*" ]]' from"gh-r" bpick"*linux64.tar.gz" as"program" ver"nightly" mv"nvim-* -> nvim" pick"nvim/bin/nvim" for \
+  "neovim/neovim"
+# if macos
+zinit wait lucid if'[[ $OSTYPE =~ "darwin*" ]]' from"gh-r" bpick"*macos.tar.gz" as"program" ver"nightly" mv"nvim-* -> nvim" pick"nvim/bin/nvim" for \
   "neovim/neovim"
 zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
   "sorin-ionescu/prezto"
