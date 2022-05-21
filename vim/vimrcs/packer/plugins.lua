@@ -189,6 +189,11 @@ M.startup = function()
       }
     }
 
+    use {
+      'rcarriga/nvim-notify',
+      config = require('packer.config.my-nvim-notify').config()
+    }
+
     ----------------------------------- VCS -----------------------------------
 
     use 'tpope/vim-fugitive'
