@@ -256,6 +256,11 @@ M.startup = function()
         vim.api.nvim_set_keymap('v', '<Leader>o', '<Plug>(openbrowser-open)', {})
       end,
     }
+    use {
+      'iamcco/markdown-preview.nvim',
+      ft = { 'markdown' },
+      run = ':call mkdp#util#install()',
+    }
     use 'editorconfig/editorconfig-vim'
     use {
       'voldikss/vim-translator',
