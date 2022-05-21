@@ -9,9 +9,6 @@ try
 
     Write-Host "Add symbolic link of init.vim..."
     New-Item -ItemType SymbolicLink -Path $Env:LOCALAPPDATA\nvim\init.vim -Target $Env:HOME\dotfiles\vim\.vimrc
-
-    Write-Host "Add symbolic link of coc-settings.json in nvim dir..."
-    New-Item -ItemType SymbolicLink -Path $Env:LOCALAPPDATA\nvim\coc-settings.json -Target $Env:HOME\dotfiles\vim\packageconfig\coc-settings.json
   }
 
   Write-Host "Add symbolic link of .gvimrc..."
@@ -28,9 +25,6 @@ try
 
   # 3. install vim plugins
   nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-  # TODO: 4. install coc.nvim extensions
-  nvim -c "source $Env:HOME\dotfiles\install\install_coc_extensions.vim | q"
 }
 catch [Exception] {
   $err = 1

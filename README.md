@@ -14,7 +14,7 @@
 
 - tmux: tmux setting files(tmux.conf, powerline)
 
-- vim: vim setting files(vimrcs, coc.nvim, vint)
+- vim: vim setting files(vimrcs, vint)
 
 - zsh: zsh setting files(zshrc, zprezto)
 
@@ -52,7 +52,7 @@ $ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
 
 ### Setup NeoVim
 
-1. Install NeoVim >= 0.5.0
+1. Install NeoVim nightly (it will be installed from zinit !)
     1. (Optional) To support all plugins, you should also install the following:
         - Node.js >= 12.12
         - Python >= 3
