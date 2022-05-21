@@ -48,6 +48,7 @@ M.on_attach = function(_, bufnr)
       vim.lsp.buf.clear_references()
     end
   })
+
 end
 
 M.setup = function(lsps)
