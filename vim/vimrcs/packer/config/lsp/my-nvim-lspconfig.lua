@@ -35,6 +35,19 @@ M.on_attach = function(_, bufnr)
   buf_set_keymap("n", "K",          "<cmd>lua vim.lsp.buf.hover()<CR>",                         opts)
   buf_set_keymap("n", "<Space>f",   "<cmd>lua vim.lsp.buf.format({ async = true })<CR>",        opts)
   buf_set_keymap("n", "<Space>a",   "<cmd>lua vim.diagnostic.setloclist()<CR>",                 opts)
+
+  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    buffer = vim.api.nvim_get_current_buf(),
+    callback = function()
+      vim.lsp.buf.document_highlight()
+    end
+  })
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    buffer = vim.api.nvim_get_current_buf(),
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end
+  })
 end
 
 M.setup = function(lsps)
