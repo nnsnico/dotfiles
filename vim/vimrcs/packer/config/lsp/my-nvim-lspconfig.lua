@@ -1,6 +1,6 @@
 local M = {}
 
-local on_attach = function(_, bufnr)
+M.on_attach = function(_, bufnr)
   vim.o.signcolumn = 'yes:2'
 
   -- Change diagnostic icons
@@ -40,7 +40,7 @@ end
 M.setup = function(lsps)
   for _, lsp in pairs(lsps) do
     require('lspconfig')[lsp.name].setup {
-      on_attach = on_attach,
+      on_attach = M.on_attach,
       settings = lsp.setting(),
     }
   end

@@ -67,6 +67,29 @@ M.startup = function()
       }
     }
 
+    use {
+      'akinsho/flutter-tools.nvim',
+      config = function()
+        local on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
+        require('flutter-tools').setup({
+          fvm = true,
+          widget_guides = {
+            enabled = true,
+          },
+          lsp = {
+            on_attach = on_attach,
+          }
+        })
+      end,
+      setup = function ()
+        vim.api.nvim_set_keymap('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { noremap = true, silent = true })
+      end,
+      requires = {
+        'williamboman/nvim-lsp-installer',
+        'nvim-lua/plenary.nvim',
+      },
+    }
+
     ------------------------------- fuzzy finder -------------------------------
 
     use {
