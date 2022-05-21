@@ -176,6 +176,19 @@ M.startup = function()
       rocks = { 'pcre2' },
     }
 
+    use {
+      'kevinhwang91/nvim-bqf',
+      ft = 'qf',
+      requires = {
+        {
+          'junegunn/fzf',
+          run = function()
+            vim.fn['fzf#install']()
+          end,
+        },
+      }
+    }
+
     ----------------------------------- VCS -----------------------------------
 
     use 'tpope/vim-fugitive'
