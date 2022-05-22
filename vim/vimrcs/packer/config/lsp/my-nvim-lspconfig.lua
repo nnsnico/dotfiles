@@ -1,4 +1,7 @@
 local M = {}
+local utils = require('luafunction.utils')
+local auto_window_splitter = require('luafunction.auto-window-splitter')
+local lsputils = require('packer.config.lsp.utils')
 
 M.on_attach = function(_, bufnr)
   vim.o.signcolumn = 'yes:2'
@@ -19,7 +22,32 @@ M.on_attach = function(_, bufnr)
 
   -- Change definition handling to open split automatically
   vim.lsp.handlers["textDocument/definition"] = function(_, results, _)
-    require('luafunction.auto-window-splitter').auto_split_for_builtinlsp(results)
+    if results == nil or utils.is_empty(results) then
+      vim.notify('No definition', 'info')
+      return
+    end
+    local qflist = lsputils.map_to_qflist(results)
+
+    if #qflist == 1 then
+      if qflist[1].filename == utils.get_current_filename() then
+        auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
+      else
+        local jumpable_windows = auto_window_splitter.get_jumpable_windows(qflist[1].filename)
+        if not utils.is_empty(jumpable_windows) then
+          for _, v in pairs(jumpable_windows) do
+            vim.fn.win_gotoid(v.winid)
+              auto_window_splitter.move_cursor(v.winid, qflist[1].lnum, qflist[1].col)
+            return
+          end
+        else
+          auto_window_splitter.auto_split(qflist[1].filename)
+          auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
+        end
+      end
+    else
+      vim.fn.setqflist(qflist)
+      vim.cmd('copen')
+    end
   end
 
   buf_set_keymap("n", "<Space>w", ":call v:lua.definition()<CR>", opts)
