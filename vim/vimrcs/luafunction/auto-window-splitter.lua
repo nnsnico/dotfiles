@@ -28,9 +28,9 @@ local function move_cursor(winid, line, character)
   vim.api.nvim_win_set_cursor(winid, { line, character - 1 })
 end
 
----@param target table responsed value from "textDocument/definition"
-local function auto_split(target)
-  local splitter = auto_split_str(target.filename)
+---@param filename string file name in project path or full path
+local function auto_split(filename)
+  local splitter = auto_split_str(filename)
 
   vim.fn.execute(splitter)
 end
@@ -38,31 +38,69 @@ end
 ---@param response table responsed value from "textDocument/definition"
 ---@return table Quickfix list format
 local function map_to_qflist(response)
-  return vim.fn.map(
-    response,
-    function(_, v)
-      local bufname = vim.fn.fnamemodify(vim.uri_to_fname(v.targetUri), ':.')
-      local bufnr = vim.fn.bufexists(vim.fn.bufnr(bufname)) > 0 and vim.fn.bufnr(bufname) or vim.fn.bufadd(bufname)
-      vim.fn.bufload(bufnr)
-      local lnum = v.targetRange['start'].line + 1
-      local col = v.targetRange['start'].character + 1
-      return {
-        bufnr = bufnr,
-        filename = bufname,
-        module = '',
-        lnum = lnum,
-        end_lnum = 0,
-        pattern = '',
-        col = col,
-        vcol = 0,
-        end_col = 0,
-        nr = 0,
-        text = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, true)[1],
-        type = '',
-        valid = 1,
-      }
+
+  local function create_qfitem(value)
+
+    ---@return string file name in project path
+    local function decode_filename(resp)
+      local fname = resp.uri ~= nil and
+          vim.uri_to_fname(resp.uri) or
+          vim.uri_to_fname(resp.targetUri)
+      return vim.fn.fnamemodify(fname, ':.')
     end
-  )
+
+    ---@return number, number (line, character)
+    local function decode_range(resp)
+      local range = resp.range ~= nil and
+          resp.range['start'] or
+          resp.targetRange['start']
+      return range.line + 1, range.character + 1
+    end
+
+    ---@return number bufnr buffer number
+    local function create_buffer(filepath)
+      local bufnr = vim.fn.bufexists(vim.fn.bufnr(filepath)) > 0 and
+          vim.fn.bufnr(filepath) or
+          vim.fn.bufadd(filepath)
+      vim.fn.bufload(bufnr)
+      return bufnr
+    end
+
+    local project_filepath = decode_filename(value)
+    local bufnr = create_buffer(project_filepath)
+    local lnum, col = decode_range(value)
+    return {
+      bufnr = bufnr,
+      filename = project_filepath,
+      module = '',
+      lnum = lnum,
+      end_lnum = 0,
+      pattern = '',
+      col = col,
+      vcol = 0,
+      end_col = 0,
+      nr = 0,
+      text = vim.api.nvim_buf_get_lines(bufnr, lnum - 1, lnum, true)[1],
+      type = '',
+      valid = 1,
+    }
+  end
+
+  -- check type `Location` or `Location[]`
+  if (type(response[1]) == "table") then
+    print('create from Location[] or LocationLink[]')
+    return vim.fn.map(
+      response,
+      function(_, v)
+        return create_qfitem(v)
+      end
+    )
+  else
+    print('create from Location')
+    return {
+      create_qfitem(response)
+    }
+  end
 end
 
 ---@param target_bufname string
@@ -86,7 +124,7 @@ local function get_jumpable_windows(target_bufname)
 end
 
 function M.auto_split_for_builtinlsp(response)
-  if response == nil then
+  if response == nil or utils.is_empty(response) then
     vim.notify('No definition', 'info')
     return
   end
@@ -104,7 +142,7 @@ function M.auto_split_for_builtinlsp(response)
           return
         end
       else
-        auto_split(qflist[1])
+        auto_split(qflist[1].filename)
         move_cursor(0, qflist[1].lnum, qflist[1].col)
       end
     end
