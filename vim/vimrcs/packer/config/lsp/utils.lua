@@ -1,8 +1,10 @@
 local M = {}
+local utils = require('luafunction.utils')
+local auto_window_splitter = require('luafunction.auto-window-splitter')
 
----@param response table responsed value from "textDocument/definition"
----@return table Quickfix list format
-function M.map_to_qflist(response)
+---@param response table Location or Location[] or LocationLink[] (e.g, responsed value from "textDocument/definition")
+---@return table quickfix quickfix list
+function M.map_to_qflist_from_location(response)
 
   local function create_qfitem(value)
 
@@ -63,6 +65,29 @@ function M.map_to_qflist(response)
     return {
       create_qfitem(response)
     }
+  end
+end
+
+function M.handle_qflist(qflist)
+  if #qflist == 1 then
+    if qflist[1].filename == utils.get_current_filename() then
+      auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
+    else
+      local jumpable_windows = auto_window_splitter.get_jumpable_windows(qflist[1].filename)
+      if not utils.is_empty(jumpable_windows) then
+        for _, v in pairs(jumpable_windows) do
+          vim.fn.win_gotoid(v.winid)
+          auto_window_splitter.move_cursor(v.winid, qflist[1].lnum, qflist[1].col)
+          return
+        end
+      else
+        auto_window_splitter.auto_split(qflist[1].filename)
+        auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
+      end
+    end
+  else
+    vim.fn.setqflist(qflist)
+    vim.cmd('copen')
   end
 end
 
