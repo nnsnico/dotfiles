@@ -36,8 +36,10 @@ function! s:join_line_without_spaces() abort
     silent! call repeat#set("\<Plug>JoinLineWithoutSpaces", v:count1)
 endfunction
 
-function! s:is_defx() abort
-    if &filetype ==# "defx"
+function! s:is_ignore_filetype() abort
+    if &filetype ==# "lsp-installer"
+        return 1
+    elseif &filetype ==# "fzf"
         return 1
     else
         return 0
@@ -51,14 +53,14 @@ highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
 
 augroup HighlightTrailingSpaces
     autocmd!
-    autocmd ColorScheme * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
-    autocmd BufRead,BufNew,FileType * if s:is_defx() | match TrailingSpaces /^^/ | else | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
-    autocmd InsertLeave * if !s:is_defx() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
-    autocmd InsertEnter * if !s:is_defx() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd ColorScheme             * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
+    autocmd BufRead,BufNew,FileType * if s:is_ignore_filetype() | match TrailingSpaces /^^/ | else | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertLeave             * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertEnter             * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
 augroup END
 
-nnoremap <silent> <Plug>JoinLineWithoutSpaces :<C-u>call <SID>join_line_without_spaces()<CR>
-nmap gJ <Plug>JoinLineWithoutSpaces
-nnoremap <silent> <space>t :<C-u>TrailingSpacesAll<CR>
+nnoremap <silent><Plug>JoinLineWithoutSpaces :<C-u>call <SID>join_line_without_spaces()<CR>
+nmap     gJ                                  <Plug>JoinLineWithoutSpaces
+nnoremap <silent><space>t                    :<C-u>TrailingSpacesAll<CR>
 
 " vim: set ts=4 sw=4 sts=4 et :

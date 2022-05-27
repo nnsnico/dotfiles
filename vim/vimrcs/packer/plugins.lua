@@ -44,7 +44,10 @@ M.startup = function()
           }
         }
       end,
-      requires = { 'p00f/nvim-ts-rainbow' }
+      requires = {
+        'p00f/nvim-ts-rainbow',
+        'nvim-treesitter/nvim-treesitter-context',
+      }
     }
 
     ----------------------------------- LSP ------------------------------------
@@ -65,6 +68,29 @@ M.startup = function()
       requires = {
         { 'L3MON4D3/LuaSnip' },
       }
+    }
+
+    use {
+      'akinsho/flutter-tools.nvim',
+      config = function()
+        local on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
+        require('flutter-tools').setup({
+          fvm = true,
+          widget_guides = {
+            enabled = true,
+          },
+          lsp = {
+            on_attach = on_attach,
+          }
+        })
+      end,
+      setup = function ()
+        vim.api.nvim_set_keymap('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { noremap = true, silent = true })
+      end,
+      requires = {
+        'williamboman/nvim-lsp-installer',
+        'nvim-lua/plenary.nvim',
+      },
     }
 
     ------------------------------- fuzzy finder -------------------------------
@@ -176,6 +202,24 @@ M.startup = function()
       rocks = { 'pcre2' },
     }
 
+    use {
+      'kevinhwang91/nvim-bqf',
+      ft = 'qf',
+      requires = {
+        {
+          'junegunn/fzf',
+          run = function()
+            vim.fn['fzf#install']()
+          end,
+        },
+      }
+    }
+
+    use {
+      'rcarriga/nvim-notify',
+      config = require('packer.config.my-nvim-notify').config()
+    }
+
     ----------------------------------- VCS -----------------------------------
 
     use 'tpope/vim-fugitive'
@@ -214,6 +258,11 @@ M.startup = function()
       setup = function()
         vim.api.nvim_set_keymap('v', '<Leader>o', '<Plug>(openbrowser-open)', {})
       end,
+    }
+    use {
+      'iamcco/markdown-preview.nvim',
+      ft = { 'markdown' },
+      run = ':call mkdp#util#install()',
     }
     use 'editorconfig/editorconfig-vim'
     use {

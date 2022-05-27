@@ -10,9 +10,6 @@ ln -s ~/dotfiles/vim/.vimrc ~/
 if [ ! -d "$HOME/.vim" ]; then
   echo "vim dir is not found. Create dir automatically..."
   mkdir $HOME/.vim
-
-  echo "Add symbolic link of coc-settings.json in vim dir..."
-  ln -s ~/dotfiles/vim/packageconfig/coc-settings.json ~/.vim/coc-settings.json
 fi
 
 if [ ! -d "$HOME/.config/nvim" ]; then
@@ -21,8 +18,6 @@ if [ ! -d "$HOME/.config/nvim" ]; then
 
   echo "Add symbolic link of init.vim..."
   ln -s ~/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
-  echo "Add symbolic link of coc-settings.json in nvim dir..."
-  ln -s ~/dotfiles/vim/packageconfig/coc-settings.json ~/.config/nvim/coc-settings.json
 fi
 
 echo "Add symbolic link of .gvimrc..."
@@ -39,6 +34,3 @@ ln -s ~/dotfiles/vim/vimrcs/packer/ ~/.config/nvim/lua/
 
 # 3. install vim plugins
 nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-# TODO: 4. install coc.nvim extensions
-nvim +":source $cur_path/install_coc_extensions.vim | q"

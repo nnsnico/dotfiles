@@ -3,6 +3,7 @@ local heirline = {}
 heirline.config = function()
     local conditions = require('heirline.conditions')
     local utils = require('heirline.utils')
+    local luafunctions = require('luafunction.utils')
 
     -- import to dart theme of fancomi.vim
     local general_colors = {
@@ -264,17 +265,15 @@ heirline.config = function()
 
     -- Warning status
 
-    local CocDiagnosticWarn = {
-      condition = function(self)
-        self.info = vim.b.coc_diagnostic_info
-        return self.info ~= nil and self.info.warning > 0
-      end,
+    local DiagnosticWarn = {
+      condition = conditions.has_diagnostics,
       init = function(self)
-        local line = self.info.lnums[2]
-        self.status = self.info.warning.."[".."L"..line.."]"
+        self.warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text
+        local warn = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        self.line = not luafunctions.is_empty(warn) and warn[1].lnum + 1 or 0
       end,
       provider = function(self)
-        return " ".." "..self.status.." "
+        return self.line ~= 0 and " " .. self.warn_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
       end,
       hl = {
         fg = colors.diag_warn.fg,
@@ -282,7 +281,7 @@ heirline.config = function()
       }
     }
 
-    CocDiagnosticWarn = utils.insert(
+    DiagnosticWarn = utils.insert(
       {
         provider = ' ',
         hl = {
@@ -290,22 +289,20 @@ heirline.config = function()
           bg = utils.get_highlight("StatusLine").bg,
         }
       },
-      CocDiagnosticWarn
+      DiagnosticWarn
     )
 
     -- Error status
 
-    local CocDiagnosticError = {
-      condition = function(self)
-        self.info = vim.b.coc_diagnostic_info
-        return self.info ~= nil and self.info.error > 0
-      end,
+    local DiagnosticError = {
+      condition = conditions.has_diagnostics,
       init = function(self)
-        local line = self.info.lnums[1]
-        self.status = self.info.error.."[".."L"..line.."]"
+        self.error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text
+        local error = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        self.line = not luafunctions.is_empty(error) and error[1].lnum + 1 or 0
       end,
       provider = function(self)
-        return " ".." "..self.status.." "
+        return self.line ~= 0 and " " .. self.error_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
       end,
       hl = {
         fg = colors.diag_err.fg,
@@ -313,7 +310,7 @@ heirline.config = function()
       }
     }
 
-    CocDiagnosticError = {
+    DiagnosticError = {
       {
         provider = ' ',
         hl = {
@@ -321,7 +318,7 @@ heirline.config = function()
           bg = colors.diag_warn.bg,
         }
       },
-      CocDiagnosticError
+      DiagnosticError
     }
 
 ----------------------------------- File name ---------------------------------
@@ -382,8 +379,8 @@ heirline.config = function()
       { provider = "%=" },
       FileNameBlock,
       { provider = "%=" },
-      CocDiagnosticWarn,
-      CocDiagnosticError,
+      DiagnosticWarn,
+      DiagnosticError,
       FileType,
       FileEncodeType,
       LineStatus,

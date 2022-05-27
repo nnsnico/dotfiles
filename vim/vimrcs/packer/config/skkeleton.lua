@@ -17,25 +17,9 @@ skkeleton.setup = function()
     })
   end
 
-  local augroup = vim.api.nvim_create_augroup('skkeleton-coc', {})
   vim.api.nvim_create_autocmd('User', {
-    group = augroup,
     pattern = 'skkeleton-initialize-pre',
     callback = skkeleton_init,
-  })
-  vim.api.nvim_create_autocmd('User', {
-    group = augroup,
-    pattern = 'skkeleton-enable-pre',
-    callback = function()
-      vim.b.coc_suggest_disable = true
-    end,
-  })
-  vim.api.nvim_create_autocmd('User', {
-    group = augroup,
-    pattern = 'skkeleton-disable-pre',
-    callback = function()
-      vim.b.coc_suggest_disable = false
-    end,
   })
 end
 
