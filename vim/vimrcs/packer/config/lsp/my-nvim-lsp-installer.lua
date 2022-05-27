@@ -33,16 +33,8 @@ local lsp_servers = {
   }
 }
 
-local map = function(fn, ary)
-  local tmp = {}
-  for i = 1, #ary do
-    table.insert(tmp, fn(ary[i]))
-  end
-  return tmp
-end
-
 M.config = function()
-  local server_name = map(function(server) return server.name end, lsp_servers)
+  local server_name = vim.fn.map(lsp_servers, function(_, server) return server.name end)
   lsp_installer.setup({
     ensure_installed = server_name,
     automatic_installation = true,

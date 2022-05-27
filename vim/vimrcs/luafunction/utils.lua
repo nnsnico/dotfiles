@@ -1,11 +1,11 @@
 local M = {}
 
-M.get_current_filename = function()
+function M.get_current_filename()
   return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':.')
 end
 
 ---@param table table
-M.is_empty = function(table)
+function M.is_empty(table)
   return #table == 0
 end
 
