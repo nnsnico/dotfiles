@@ -44,7 +44,10 @@ M.startup = function()
           }
         }
       end,
-      requires = { 'p00f/nvim-ts-rainbow' }
+      requires = {
+        'p00f/nvim-ts-rainbow',
+        'nvim-treesitter/nvim-treesitter-context',
+      }
     }
 
     ----------------------------------- LSP ------------------------------------
