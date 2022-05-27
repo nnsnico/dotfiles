@@ -18,7 +18,6 @@ let s:vim_files = [
   \ 'other.vim',
   \ 'functions/trimming_spaces.vim',
   \ 'functions/converter.vim',
-  \ 'functions/auto_window_splitter.vim',
   \ ]
 
 for files in s:vim_files
