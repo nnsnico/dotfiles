@@ -5,6 +5,13 @@ if vim.fn.has('mac') then
   vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 end
 
+local packer = require('packer')
+packer.init({
+  luarocks = {
+    python_cmd = 'python3'
+  }
+})
+
 local augroup = vim.api.nvim_create_augroup('packer_user_config', {})
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = augroup,

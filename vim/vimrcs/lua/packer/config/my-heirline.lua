@@ -3,7 +3,7 @@ local heirline = {}
 heirline.config = function()
   local conditions = require('heirline.conditions')
   local utils = require('heirline.utils')
-  local luafunctions = require('luafunction.utils')
+  local luafunctions = require('functions.utils')
 
   -- import to dart theme of fancomi.vim
   local general_colors = {

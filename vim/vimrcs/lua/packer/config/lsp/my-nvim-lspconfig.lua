@@ -1,5 +1,5 @@
 local M = {}
-local utils = require('luafunction.utils')
+local utils = require('functions.utils')
 local lsputils = require('packer.config.lsp.utils')
 
 M.on_attach = function(_, bufnr)

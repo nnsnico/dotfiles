@@ -1,6 +1,6 @@
 local M = {}
-local utils = require('luafunction.utils')
-local auto_window_splitter = require('luafunction.auto-window-splitter')
+local utils = require('functions.utils')
+local auto_window_splitter = require('functions.auto-window-splitter')
 
 ---@param response table Location or Location[] or LocationLink[] (e.g, responsed value from "textDocument/definition")
 ---@return table quickfix quickfix list

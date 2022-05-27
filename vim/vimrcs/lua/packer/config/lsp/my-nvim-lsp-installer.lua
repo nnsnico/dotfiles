@@ -5,7 +5,7 @@ local lsp_servers = {
   {
     name = "sumneko_lua",
     setting = function()
-      local runtime_path = vim.split(package.path, ';')
+      local runtime_path = vim.split(package.path, ';', {})
       table.insert(runtime_path, 'lua/?.lua')
       table.insert(runtime_path, 'lua/?/init.lua')
       return {
@@ -29,6 +29,10 @@ local lsp_servers = {
   },
   {
     name = "rust_analyzer",
+    setting = function() return {} end,
+  },
+  {
+    name = 'vimls',
     setting = function() return {} end,
   }
 }
