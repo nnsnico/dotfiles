@@ -66,7 +66,8 @@ M.startup = function()
       'hrsh7th/nvim-cmp',
       config = require('packer.config.my-nvim-cmp').config(),
       requires = {
-        { 'L3MON4D3/LuaSnip' },
+        'L3MON4D3/LuaSnip',
+        'hrsh7th/cmp-path',
       }
     }
 
