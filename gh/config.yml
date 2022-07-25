@@ -10,6 +10,11 @@ pager:
 aliases:
     co: pr checkout
     see: repo view --web
-    pv: '!gh issue view `gh pr list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo ''Exited from FZF or No pull request in repository'''
-    iv: '!gh issue view -w `gh issue list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo ''Exited from FZF or No pull request in repository'''
+    pvw: '!gh issue view -w `gh pr list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo "Exited from FZF or No pull requests in repository"'
+    pv: '!gh issue view `gh pr list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo "Exited from FZF or No pull requests in repository"'
+    ivw: '!gh issue view -w `gh issue list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo "Exited from FZF or No issues in repository"'
+    iv: '!gh issue view `gh issue list | fzf --preview="" -0 | awk ''{print $1}''` 2>/dev/null || echo "Exited from FZF or No issues in repository"'
+    sw: '!bash -c "t=\`gh issue list | fzf --preview='''' -0\` || { echo ''Exited from FZF or No open issues''; exit 1; }; echo \$t; inum=\`echo \$t | awk ''{print \$1}''\`; read -p ''Branch name (or exit to <C-c>): '' bt; bname=\`echo issue\${inum}-\${bt}\`; echo \$bname; git switch -c \"\$bname\""'
     al: alias list
+    il: issue list
+    pl: pr list
