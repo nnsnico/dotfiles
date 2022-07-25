@@ -37,9 +37,8 @@ function! s:join_line_without_spaces() abort
 endfunction
 
 function! s:is_ignore_filetype() abort
-    if &filetype ==# "lsp-installer"
-        return 1
-    elseif &filetype ==# "fzf"
+    let ignore_list = ["mason.nvim", "fzf", "minimap"]
+    if index(ignore_list, &filetype) >= 0
         return 1
     else
         return 0

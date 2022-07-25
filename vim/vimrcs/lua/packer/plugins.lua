@@ -60,15 +60,17 @@ M.startup = function()
     ----------------------------------- LSP ------------------------------------
 
     use {
-      'williamboman/nvim-lsp-installer',
+      'williamboman/mason.nvim',
       config = require('packer.config.lsp.my-nvim-lsp-installer').config(),
       requires = {
-        { 'hrsh7th/nvim-cmp' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'neovim/nvim-lspconfig' },
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
       }
     }
+
     use {
       'hrsh7th/nvim-cmp',
       config = require('packer.config.my-nvim-cmp').config(),
@@ -96,7 +98,6 @@ M.startup = function()
         vim.api.nvim_set_keymap('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { noremap = true, silent = true })
       end,
       requires = {
-        'williamboman/nvim-lsp-installer',
         'nvim-lua/plenary.nvim',
       },
     }
