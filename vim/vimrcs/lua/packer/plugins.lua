@@ -344,6 +344,9 @@ M.startup = function()
         vim.cmd([[colorscheme tokyonight]])
       end
     }
+
+    use 'wakatime/vim-wakatime'
+
   end)
 end
 
