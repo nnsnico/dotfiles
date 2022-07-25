@@ -61,6 +61,10 @@ M.config = function()
       return
     end
 
+    if (result.token == 'ANALYZING') then
+      return
+    end
+
     local notif_data = get_notif_data(client_id, result.token)
 
     if val.kind == "begin" then
@@ -82,7 +86,7 @@ M.config = function()
       })
     elseif val.kind == "end" and notif_data then
       notif_data.notification = vim.notify(val.message and format_message(val.message) or "Complete", "info", {
-        icon = "",
+        icon    = "",
         replace = notif_data.notification,
         timeout = 3000,
       })
