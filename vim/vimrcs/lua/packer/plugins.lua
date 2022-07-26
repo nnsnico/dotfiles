@@ -65,9 +65,6 @@ M.startup = function()
       requires = {
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-buffer',
       }
     }
 
@@ -76,7 +73,10 @@ M.startup = function()
       config = require('packer.config.my-nvim-cmp').config(),
       requires = {
         'L3MON4D3/LuaSnip',
+        'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
+        'f3fora/cmp-spell',
+        'hrsh7th/cmp-nvim-lsp',
       }
     }
 
