@@ -40,8 +40,19 @@ M.config = function()
           { key = "p",             cb = tree_callback("paste") },
           { key = "g?",            cb = tree_callback("toggle_help") },
         }
-      }
-    }
+      },
+    },
+    renderer = {
+      full_name = true,
+      indent_markers = {
+        enable = true,
+      },
+      icons = {
+        show = {
+          folder_arrow = false,
+        },
+      },
+    },
   }
 end
 
