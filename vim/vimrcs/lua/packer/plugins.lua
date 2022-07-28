@@ -126,7 +126,13 @@ M.startup = function()
 
     --------------------------- manipulation utility ---------------------------
 
-    use 'jiangmiao/auto-pairs'
+    use {
+      'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup()
+      end,
+    }
+
     use 'tpope/vim-commentary'
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
