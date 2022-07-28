@@ -48,9 +48,9 @@ M.config = function()
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'path' },
-      { name = 'spell' },
     }, {
       { name = 'buffer' },
+      { name = 'spell' },
     }),
     enabled = function()
       -- Disable cmp if mode of skkleton is kana
