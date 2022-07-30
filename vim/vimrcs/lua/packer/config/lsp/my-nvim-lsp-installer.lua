@@ -1,6 +1,5 @@
 local M = {}
 
-local lsp_installer = require('nvim-lsp-installer')
 local lsp_servers = {
   {
     name = "sumneko_lua",
