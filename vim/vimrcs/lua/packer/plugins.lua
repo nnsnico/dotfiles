@@ -234,19 +234,11 @@ M.startup = function()
     ----------------------------------- VCS -----------------------------------
 
     use 'tpope/vim-fugitive'
+
     use {
-      'airblade/vim-gitgutter',
-      setup = function()
-        vim.api.nvim_set_keymap('n', '<Space>hp', '<Plug>(GitGutterPreviewHunk)', { silent = true })
-        vim.api.nvim_set_keymap('n', '<Space>ha', '<Plug>(GitGutterStageHunk)', { silent = true })
-        vim.api.nvim_set_keymap('n', '<Space>hr', '<Plug>(GitGutterUndoHunk)', { silent = true })
-        vim.api.nvim_set_keymap('n', ']c', ':<C-u>GitGutterNextHunk<CR>', { noremap = true, silent = true })
-        vim.api.nvim_set_keymap('n', '[c', ':<C-u>GitGutterPrevHunk<CR>', { noremap = true, silent = true })
-        vim.g.gitgutter_preview_win_floating    = 1
-        vim.g.gitgutter_sign_removed            = '-'
-        vim.g.gitgutter_sign_removed_first_line = '-'
-        vim.g.gitgutter_highlight_linenrs       = 1
-      end
+      'lewis6991/gitsigns.nvim',
+      tag = 'release',
+      config = require('packer.config.my-gitsigns').config()
     }
     use {
       'APZelos/blamer.nvim',
