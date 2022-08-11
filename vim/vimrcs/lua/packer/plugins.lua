@@ -6,11 +6,7 @@ if vim.fn.has('mac') then
 end
 
 local packer = require('packer')
-packer.init({
-  luarocks = {
-    python_cmd = 'python3'
-  }
-})
+packer.init()
 
 local augroup = vim.api.nvim_create_augroup('packer_user_config', {})
 vim.api.nvim_create_autocmd('BufWritePost', {
