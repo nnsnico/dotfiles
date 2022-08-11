@@ -29,7 +29,17 @@ M.on_attach = function(_, bufnr)
     lsputils.handle_qflist(qflist)
   end
 
-  vim.lsp.handlers['textDocument/references'] = function (_, results, _)
+  vim.lsp.handlers['textDocument/typeDefinition'] = function(_, results, _)
+    if results == nil or utils.is_empty(results) then
+      vim.notify('No reference', 'info')
+      return
+    end
+
+    local qflist = lsputils.map_to_qflist_from_location(results)
+    lsputils.handle_qflist(qflist)
+  end
+
+  vim.lsp.handlers['textDocument/references'] = function(_, results, _)
     if results == nil or utils.is_empty(results) then
       vim.notify('No reference', 'info')
       return
