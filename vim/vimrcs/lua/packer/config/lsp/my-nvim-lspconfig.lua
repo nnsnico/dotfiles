@@ -19,34 +19,26 @@ M.on_attach = function(_, bufnr)
 
   -- Change default LSP handling to open split automatically
 
-  vim.lsp.handlers['textDocument/definition'] = function(_, results, _)
-    if results == nil or utils.is_empty(results) then
-      vim.notify('No definition', 'info')
+  local function auto_split(results, no_result_msg)
+    if utils.is_empty(results) then
+      vim.notify(no_result_msg, 'info')
       return
     end
 
     local qflist = lsputils.map_to_qflist_from_location(results)
     lsputils.handle_qflist(qflist)
+  end
+
+  vim.lsp.handlers['textDocument/definition'] = function(_, results, _)
+    auto_split(results, 'No definitions')
   end
 
   vim.lsp.handlers['textDocument/typeDefinition'] = function(_, results, _)
-    if results == nil or utils.is_empty(results) then
-      vim.notify('No reference', 'info')
-      return
-    end
-
-    local qflist = lsputils.map_to_qflist_from_location(results)
-    lsputils.handle_qflist(qflist)
+    auto_split(results, 'No type definitions')
   end
 
   vim.lsp.handlers['textDocument/references'] = function(_, results, _)
-    if results == nil or utils.is_empty(results) then
-      vim.notify('No reference', 'info')
-      return
-    end
-
-    local qflist = lsputils.map_to_qflist_from_location(results)
-    lsputils.handle_qflist(qflist)
+    auto_split(results, 'No references')
   end
 
   -- Keymaps
@@ -69,15 +61,11 @@ M.on_attach = function(_, bufnr)
 
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     buffer = vim.api.nvim_get_current_buf(),
-    callback = function()
-      vim.lsp.buf.document_highlight()
-    end
+    callback = vim.lsp.buf.document_highlight
   })
   vim.api.nvim_create_autocmd('CursorMoved', {
     buffer = vim.api.nvim_get_current_buf(),
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end
+    callback = vim.lsp.buf.clear_references
   })
 
 end

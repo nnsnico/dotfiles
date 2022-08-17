@@ -6,7 +6,7 @@ end
 
 ---@param table table
 function M.is_empty(table)
-  return #table == 0
+  return table == nil or #table == 0
 end
 
 return M
