@@ -51,22 +51,19 @@ M.on_attach = function(_, bufnr)
 
   -- Keymaps
 
-  local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local opts = { noremap = true, silent = true }
+  local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  buf_set_keymap("n", "<Space>w", ":call v:lua.definition()<CR>", opts)
-
-  buf_set_keymap("n", "[e",         "<cmd>lua vim.diagnostic.goto_prev()<CR>",                  opts)
-  buf_set_keymap("n", "]e",         "<cmd>lua vim.diagnostic.goto_next()<CR>",                  opts)
-  buf_set_keymap("n", "<Space>q",   "<cmd>lua vim.lsp.buf.code_action()<CR>",                   opts)
-  buf_set_keymap("n", "gd",         "<cmd>lua vim.lsp.buf.definition({ reusewin = true })<CR>", opts)
-  buf_set_keymap("n", "gy",         "<cmd>lua vim.lsp.buf.type_definition()<CR>",               opts)
-  buf_set_keymap("n", "gi",         "<cmd>lua vim.lsp.buf.implementation()<CR>",                opts)
-  buf_set_keymap("n", "gr",         "<cmd>lua vim.lsp.buf.references()<CR>",                    opts)
-  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>",                        opts)
-  buf_set_keymap("n", "K",          "<cmd>lua vim.lsp.buf.hover()<CR>",                         opts)
-  buf_set_keymap("n", "<Space>f",   "<cmd>lua vim.lsp.buf.format({ async = true })<CR>",        opts)
-  buf_set_keymap("n", "<Space>a",   "<cmd>lua vim.diagnostic.setloclist()<CR>",                 opts)
+  vim.keymap.set('n', '[e',         vim.diagnostic.goto_prev,                            opts)
+  vim.keymap.set('n', ']e',         vim.diagnostic.goto_next,                            opts)
+  vim.keymap.set('n', '<Space>a',   vim.diagnostic.setloclist,                           opts)
+  vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,                              opts)
+  vim.keymap.set('n', 'gy',         vim.lsp.buf.type_definition,                         opts)
+  vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,                          opts)
+  vim.keymap.set('n', 'gr',         vim.lsp.buf.references,                              opts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,                                  opts)
+  vim.keymap.set('n', 'K',          vim.lsp.buf.hover,                                   opts)
+  vim.keymap.set('n', '<Space>f',   function() vim.lsp.buf.format({ async = true }) end, opts)
+  vim.keymap.set('n', '<Space>q',   vim.lsp.buf.code_action,                             opts)
 
   -- auto commands
 

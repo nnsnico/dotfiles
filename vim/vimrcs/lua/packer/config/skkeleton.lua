@@ -1,8 +1,8 @@
 local skkeleton = {}
 
 skkeleton.setup = function()
-  vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(skkeleton-toggle)', {})
-  vim.api.nvim_set_keymap('c', '<C-j>', '<Plug>(skkeleton-toggle)', {})
+  vim.keymap.set('i', '<C-j>', '<Plug>(skkeleton-toggle)')
+  vim.keymap.set('c', '<C-j>', '<Plug>(skkeleton-toggle)')
 
   local skkeleton_init = function()
     vim.fn['skkeleton#config']({

@@ -3,13 +3,11 @@ local M = {}
 M.config = function()
   local wilder = require('wilder')
 
-  vim.api.nvim_set_keymap('c', '<Tab>', '<C-n>', {})
-
   local wilder_init = function()
     wilder.setup({
       modes        = { ':' },
-      next_key     = '<C-n>',
-      previous_key = '<C-p>',
+      next_key     = '<Tab>',
+      previous_key = '<S-Tab>',
     })
     wilder.set_option('use_python_remote_plugin', 0)
     wilder.set_option('pipeline', {

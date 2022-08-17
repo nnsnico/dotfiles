@@ -90,8 +90,8 @@ M.startup = function()
           }
         })
       end,
-      setup = function ()
-        vim.api.nvim_set_keymap('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { noremap = true, silent = true })
+      setup = function()
+        vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { noremap = true, silent = true })
       end,
       requires = {
         'nvim-lua/plenary.nvim',
@@ -137,8 +137,7 @@ M.startup = function()
       'junegunn/vim-easy-align',
       keys = { '<Plug>(EasyAlign)' },
       setup = function()
-        vim.api.nvim_set_keymap('x', 'ga', '<Plug>(EasyAlign)', {})
-        vim.api.nvim_set_keymap('n', 'ga', '<Plug>(EasyAlign)', {})
+        vim.keymap.set({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
       end,
     }
     use {
@@ -146,7 +145,7 @@ M.startup = function()
       tag = 'v1',
       config = function()
         require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-        vim.api.nvim_set_keymap('n', '<Leader>s', "<cmd>lua require'hop'.hint_char1()<CR>", {})
+        vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
       end,
     }
     use 'psliwka/vim-smoothie'
@@ -244,13 +243,13 @@ M.startup = function()
       'APZelos/blamer.nvim',
       setup = function()
         vim.g.blamer_delay = 100
-        vim.api.nvim_set_keymap('n', '<Space>b', ':<C-u>BlamerToggle<CR>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<Space>b', ':<C-u>BlamerToggle<CR>', { noremap = true, silent = true })
       end,
     }
     use {
       'rhysd/git-messenger.vim',
       setup = function()
-        vim.api.nvim_set_keymap('n', '<Leader>b', '<Plug>(git-messenger)', { silent = true })
+        vim.keymap.set('n', '<Leader>b', '<Plug>(git-messenger)', { silent = true })
       end
     }
 
@@ -259,7 +258,7 @@ M.startup = function()
     use {
       'tyru/open-browser.vim',
       setup = function()
-        vim.api.nvim_set_keymap('v', '<Leader>o', '<Plug>(openbrowser-open)', {})
+        vim.keymap.set('v', '<Leader>o', '<Plug>(openbrowser-open)')
       end,
     }
     use {
@@ -273,8 +272,8 @@ M.startup = function()
       setup = function()
         vim.g.translator_target_lang = 'ja'
         vim.g.translator_source_lang = 'en'
-        vim.api.nvim_set_keymap('n', '<Leader>t', '<Plug>TranslateW', { silent = true })
-        vim.api.nvim_set_keymap('v', '<Leader>t', '<Plug>TranslateWV', { silent = true })
+        vim.keymap.set('n', '<Leader>t', '<Plug>TranslateW', { silent = true })
+        vim.keymap.set('v', '<Leader>t', '<Plug>TranslateWV', { silent = true })
       end,
     }
     use {
@@ -329,7 +328,7 @@ M.startup = function()
       'godlygeek/tabular',
       ft = { 'markdown' },
       setup = function()
-        vim.api.nvim_set_keymap('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
+        vim.keymap.set('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
       end
     }
     use {

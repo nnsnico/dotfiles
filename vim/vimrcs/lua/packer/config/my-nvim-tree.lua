@@ -2,11 +2,22 @@
 local M = {}
 
 M.setup = function()
-  vim.api.nvim_set_keymap(
+  vim.keymap.set(
     'n',
     '<C-t>',
-    '@% == "" ? ":<C-u>NvimTreeOpen<CR>" : ":<C-u>NvimTreeFindFile<CR>"',
-    { noremap = true, expr = true }
+    function()
+      local utils = require('functions.utils')
+      local function is_empty(s)
+        return s == nil or s == ''
+      end
+
+      if is_empty(utils.get_current_filename()) then
+        return ':<C-u>NvimTreeOpen<CR>'
+      else
+        return ':<C-u>NvimTreeFindFile<CR>'
+      end
+    end,
+    { noremap = true, silent = true, expr = true }
   )
 end
 
