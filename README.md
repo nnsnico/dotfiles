@@ -24,8 +24,6 @@
 
   - `.tigrc` : [tig](https://github.com/jonas/tig) setting
 
-  - `Brewfile` : Dumped install list in HomeBrew (not maintained)
-
 ## Requirements
 
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) (to use for NeoVim)
@@ -41,14 +39,14 @@
 
 1. Add Symbolic link like below
 
-```
-# zsh
-$ ln -s ~/dotfiles/zsh/.zshrc ~/
-$ ln -s ~/dotfiles/zsh/.zshenv ~/
+    ```
+    # zsh
+    $ ln -s ~/dotfiles/zsh/.zshrc ~/
+    $ ln -s ~/dotfiles/zsh/.zshenv ~/
 
-# zprezto via zinit
-$ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
-```
+    # zprezto via zinit
+    $ ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/
+    ```
 
 ### Setup NeoVim
 
