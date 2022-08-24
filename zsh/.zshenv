@@ -91,6 +91,11 @@ zinit wait lucid for \
     atload"zicompinit; zicdreplay" \
   "BurntSushi/ripgrep"
 
+zinit wait lucid for \
+    from"gh-r" \
+    sbin"**/exa -> exa" \
+  "ogham/exa"
+
 # use completion for `git switch`
 zinit wait silent lucid for \
     atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" \
