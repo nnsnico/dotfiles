@@ -18,3 +18,4 @@ aliases:
     al: alias list
     il: issue list
     pl: pr list
+    gedit: '!gh gist list | fzf --preview="" -0 | awk ''{print $1}'' | xargs gh gist edit'
