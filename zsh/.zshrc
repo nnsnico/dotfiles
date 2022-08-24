@@ -4,6 +4,8 @@
 
 fpath+=~/.zfunc
 
+# ----------------------------- Setup WSL2(Ubuntu) -----------------------------
+
 if [[ $OSTYPE =~ "linux*" ]]; then
   distribution=$(cat /etc/*-release | awk -F '=' '{if($1=="DISTRIB_DESCRIPTION"){print $2}}' | sed -r "s/\"(.+)\"/\1/")
   # for Ubuntu (also with WSL)
@@ -33,59 +35,26 @@ if [[ $OSTYPE =~ "linux*" ]]; then
   fi
 fi
 
-# ----------------------------------- zinit -----------------------------------
+# -------------------------------- Setup macOS ---------------------------------
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/dotfiles/zsh/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
-    command mkdir -p "$HOME/dotfiles/zsh/.zinit" && command chmod g-rwX "$HOME/dotfiles/zsh/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/dotfiles/zsh/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f"
+## Brew-Cask(optional)
+## If Acceess permission of root dir is denied
+## by your pc, export this PATH.
+# export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+## support macos only
+if [[ $OSTYPE =~ "darwin*" ]]; then
+  ## imgcat
+  export ITERM="$HOME/dotfiles/macos/iterm2"
+  ## VimR
+  export VIMR_HOME="$HOME/dotfiles/macos/vimr"
+  export PATH=$PATH:$ITERM:$VIMR_HOME
 fi
-source "$HOME/dotfiles/zsh/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light-mode for \
-  "zdharma-continuum/zinit-annex-bin-gem-node"
-# if debian os (Ubuntu)
-zinit wait lucid for \
-    if'[[ $OSTYPE =~ "linux*" ]]' \
-    from"gh-r" \
-    bpick"*linux64.tar.gz" \
-    ver"nightly" \
-    sbin'**/nvim -> nvim' \
-  "neovim/neovim"
-# if macos
-zinit wait lucid for \
-    if'[[ $OSTYPE =~ "darwin*" ]]' \
-    from"gh-r" \
-    bpick"*macos.tar.gz" \
-    ver"nightly" \
-    sbin'**/nvim -> nvim' \
-  "neovim/neovim"
-zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
-  "sorin-ionescu/prezto"
-zinit wait lucid for \
-  "peco/peco" \
-  "zdharma-continuum/fast-syntax-highlighting"
-# install binary from github release
-zinit wait lucid from"gh-r" as"program" for \
-  "junegunn/fzf"
-zinit wait lucid from"gh-r" as"program" mv"tig* -> tig" atclone"cd tig; ./configure; make; make install" atpull"%atclone" pick"tig/src/tig" for \
-  "jonas/tig"
-zinit wait lucid from"gh-r" as"program" mv"jq* -> jq" for \
-  "stedolan/jq"
-# install ripgrep binary with completion
-zinit wait lucid from"gh-r" mv"ripgrep* -> ripgrep" for \
-  as"program" pick"ripgrep/rg" "BurntSushi/ripgrep" \
-  as"completion" pick"ripgrep/complete/_rg" atload"zicompinit; zicdreplay" "BurntSushi/ripgrep"
-# use completion for `git switch`
-zinit wait silent lucid atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" atpull"%atclone" for \
-  "https://github.com/git/git/blob/master/contrib/completion/git-completion.bash"
-zinit wait lucid as"completion" atload"zicompinit; zicdreplay" mv"git-completion.zsh -> _git" for \
-  "https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh"
+# ------------------------------------ FZF -------------------------------------
+#
+export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
+export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
 
 # ---------------------------------- Prezto ------------------------------------
 
@@ -176,49 +145,6 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='grey19'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='orchid1'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='grey19'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
-
-# --------------------------- ENVIRONMENT VARIABLES ---------------------------
-
-## Brew-Cask(optional)
-## If Acceess permission of root dir is denied
-## by your pc, export this PATH.
-# export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
-## support macos only
-if [[ $OSTYPE =~ "darwin*" ]]; then
-  ## imgcat
-  export ITERM="$HOME/dotfiles/macos/iterm2"
-  ## VimR
-  export VIMR_HOME="$HOME/dotfiles/macos/vimr"
-  export PATH=$PATH:$ITERM:$VIMR_HOME
-fi
-
-## FZF
-export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
-
-
-## OpenSSL@1.1
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-## Java
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
-
-## Android
-export ANDROID_HOME="/usr/local/share/android-sdk"
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-
-## flutter
-export FLUTTER_HOME="/Users/nns/flutter"
-
-## .NET
-export DOTNET_HOME="/usr/local/share/dotnet"
-
-## Tex
-export TEX_HOME="/Library/TeX/texbin"
-
-## Root Path
-export PATH=~/.nodebrew/current/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$JAVA_HOME/bin:$FLUTTER_HOME/bin:$DOTNET_HOME/:$TEX_HOME/:$(go env GOPATH)/bin:$PATH
 
 # ----------------------------------- ALIAS -----------------------------------
 
