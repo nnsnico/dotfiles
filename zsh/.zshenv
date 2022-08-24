@@ -93,6 +93,13 @@ zinit wait lucid for \
 
 zinit wait lucid for \
     from"gh-r" \
+    sbin"**/zoxide -> zoxide" \
+    atpull"rm ~/.zcompdump*; compinit" \
+    atload'eval "$(zoxide init zsh)"' \
+  "ajeetdsouza/zoxide" \
+
+zinit wait lucid for \
+    from"gh-r" \
     sbin"**/exa -> exa" \
   "ogham/exa"
 

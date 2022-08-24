@@ -31,7 +31,6 @@ zstyle ':prezto:load' pmodule \
   'docker' \
   'editor' \
   'environment' \
-  'fasd' \
   'git' \
   'history' \
   'homebrew' \
