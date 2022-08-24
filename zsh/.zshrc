@@ -52,7 +52,7 @@ if [[ $OSTYPE =~ "darwin*" ]]; then
 fi
 
 # ------------------------------------ FZF -------------------------------------
-#
+
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
 
@@ -63,53 +63,6 @@ if [[ -s "${HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # ------------------------------- POWERLEVEL10K --------------------------------
-
-### Handling proxy (support mac only)
-function handleproxy() {
-  {
-    autoload -Uz catch
-    autoload -Uz throw
-    local airport='/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport'
-    local ssid=''
-    if [ -f $airport ]; then
-      ssid=`$airport -I | awk -F': ' '/ SSID/ {print $2}'`
-    else
-      throw 'AirportNotFound'
-    fi
-    echo "[network] current ssid: $ssid"
-      if [ $ssid = 'aoyamafan' ]; then
-        echo '[network] proxy is set'
-          local decryptpath="$HOME/dotfiles"
-          local name=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/id/ {print $2}'`
-          local pass=`cat ${decryptpath}/yabai_yatsu.txt | awk -F ': ' '/password/ {print $2}'`
-          export http_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-          export https_proxy="http://${name}:${pass}@proxy.gate.fancs.com:8080"
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98C"'
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="grey19"
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="greenyellow"
-      elif [ -n $http_proxy ] && [ -n $https_proxy ]; then
-          unset http_proxy
-          unset https_proxy
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN='echo "\uF98D"'
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN_FOREGROUND="white"
-          POWERLEVEL9K_CUSTOM_PROXY_SIGN_BACKGROUND="dodgerblue2"
-      fi
-  } always {
-    if catch '*'; then
-      echo 'Error occurred while setting proxy'
-      case $CAUGHT in
-        (AirportNotFound)
-          echo 'Airport command is not found'
-          ;;
-        (*)
-          echo 'Unexpected Error'
-          ;;
-      esac
-    fi
-  }
-}
-
-handleproxy
 
 # powerlevel settings
 ## support awesome font
