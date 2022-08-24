@@ -28,6 +28,7 @@ autoload -Uz _zinit
 
 zinit light-mode for \
   "zdharma-continuum/zinit-annex-bin-gem-node"
+
 # if debian os (Ubuntu)
 zinit wait lucid for \
     if'[[ $OSTYPE =~ "linux*" ]]' \
@@ -36,6 +37,7 @@ zinit wait lucid for \
     ver"nightly" \
     sbin'**/nvim -> nvim' \
   "neovim/neovim"
+
 # if macos
 zinit wait lucid for \
     if'[[ $OSTYPE =~ "darwin*" ]]' \
@@ -44,28 +46,59 @@ zinit wait lucid for \
     ver"nightly" \
     sbin'**/nvim -> nvim' \
   "neovim/neovim"
+
 zinit wait lucid for \
     from"gh-r" \
     sbin"**/v -> v" \
   "vlang/v"
-zinit wait lucid atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" for \
+
+zinit wait lucid for \
+    atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" \
   "sorin-ionescu/prezto"
+
 zinit wait lucid for \
   "peco/peco" \
   "zdharma-continuum/fast-syntax-highlighting"
-# install binary from github release
-zinit wait lucid from"gh-r" as"program" for \
+
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
   "junegunn/fzf"
-zinit wait lucid from"gh-r" as"program" mv"tig* -> tig" atclone"cd tig; ./configure; make; sudo make install" atpull"%atclone" pick"tig/src/tig" for \
+
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
+    mv"tig* -> tig" \
+    atclone"cd tig; ./configure; make; sudo make install" \
+    atpull"%atclone" \
+    pick"tig/src/tig" \
   "jonas/tig"
-zinit wait lucid from"gh-r" as"program" mv"jq* -> jq" for \
+
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
+    mv"jq* -> jq" \
   "stedolan/jq"
-# install ripgrep binary with completion
-zinit wait lucid from"gh-r" mv"ripgrep* -> ripgrep" for \
-  as"program" pick"ripgrep/rg" "BurntSushi/ripgrep" \
-  as"completion" pick"ripgrep/complete/_rg" atload"zicompinit; zicdreplay" "BurntSushi/ripgrep"
+
+zinit wait lucid for \
+    from"gh-r" \
+    mv"ripgrep* -> ripgrep" \
+    as"program" \
+    pick"ripgrep/rg" \
+  "BurntSushi/ripgrep" \
+    as"completion" \
+    pick"ripgrep/complete/_rg" \
+    atload"zicompinit; zicdreplay" \
+  "BurntSushi/ripgrep"
+
 # use completion for `git switch`
-zinit wait silent lucid atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" atpull"%atclone" for \
+zinit wait silent lucid for \
+    atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" \
+    atpull"%atclone" \
   "https://github.com/git/git/blob/master/contrib/completion/git-completion.bash"
-zinit wait lucid as"completion" atload"zicompinit; zicdreplay" mv"git-completion.zsh -> _git" for \
+
+zinit wait lucid for \
+    as"completion" \
+    atload"zicompinit; zicdreplay" \
+    mv"git-completion.zsh -> _git" \
   "https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh"
