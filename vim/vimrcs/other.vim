@@ -13,3 +13,9 @@ if exists('g:started_by_firenvim')
   set wrap
   au BufEnter github.com_*.txt set ft=markdown
 endif
+
+" -------------------------------- for neovide ---------------------------------
+
+if exists('g:neovide')
+  set guifont=JetBrainsMono\ Nerd\ Font:h10
+endif
