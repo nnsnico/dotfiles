@@ -156,24 +156,14 @@ function select_ls() {
   fi
 }
 
-alias v='$(which vim)'
-alias nv='$(which nvim)'
+alias nv='nvim'
 alias e='exit'
 alias ls='select_ls'
 alias l='ls'
 alias la='(exa -alh --git --time-style=iso || ls -al)'
 alias lla='(exa -alh --git --time-style=long-iso || ls -al)'
 alias ll='(exa -lh --time-style=iso || ls -l)'
-alias emu='cd /usr/local/share/android-sdk/tools/'
-alias b='brew'
-alias stk='stack build && stack exec'
-alias git='hub'
-alias see='hub browse'
-alias issue='hub browse -- issues'
-alias pl='hub pull-request'
-alias peco='peco --initial-matcher Regexp'
-alias pcd='cd $(ls -a | peco)'
-alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all && nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"'
+alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all && nvim -c "PackerSync"'
 
 # ------------------------------------ tmux ------------------------------------
 
