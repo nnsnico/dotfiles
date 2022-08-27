@@ -338,6 +338,7 @@ M.startup = function()
     use { 'rust-lang/rust.vim', ft = 'rust', setup = function() vim.g.rustfmt_autosave = 1 end }
     use { 'neoclide/jsonc.vim', ft = 'jsonc' }
     use { 'HerringtonDarkholme/yats.vim', ft = { 'typescript', 'typescriptreact' } }
+    use { 'ollykel/v-vim', ft = 'vlang', setup = function() vim.g.v_autofmt_bufwritepre = 1 end }
     use {
       'plasticboy/vim-markdown',
       ft = 'markdown',
