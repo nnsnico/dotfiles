@@ -166,7 +166,7 @@ M.startup = function()
     }
     use {
       'phaazon/hop.nvim',
-      tag = 'v1',
+      tag = 'v2',
       config = function()
         require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
         vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
