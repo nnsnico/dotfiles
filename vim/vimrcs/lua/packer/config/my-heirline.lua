@@ -409,7 +409,7 @@ heirline.config = function()
         }
       end
     end,
-    init = utils.pick_child_on_condition,
+    fallthrough = false,
     InactiveStatusline, DefaultStatusline
   }
 
