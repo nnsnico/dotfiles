@@ -65,6 +65,14 @@ heirline.config = function()
   local ViMode = {
     init = function(self)
       self.mode = vim.fn.mode(1)
+
+      if not self.once then
+        vim.api.nvim_create_autocmd("ModeChanged", {
+          pattern = "*:*o",
+          command = 'redrawstatus'
+        })
+        self.once = true
+      end
     end,
     static = {
       mode_names = {
@@ -131,6 +139,9 @@ heirline.config = function()
         bold = true,
       }
     end,
+    update = {
+      "ModeChanged"
+    }
   }
 
   ViMode = utils.insert(ViMode,
