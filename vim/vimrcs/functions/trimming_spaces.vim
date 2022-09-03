@@ -37,7 +37,7 @@ function! s:join_line_without_spaces() abort
 endfunction
 
 function! s:is_ignore_filetype() abort
-    let ignore_list = ["mason.nvim", "fzf", "minimap"]
+    let ignore_list = ["mason", "fzf", "minimap", ""]
     if index(ignore_list, &filetype) >= 0
         return 1
     else
