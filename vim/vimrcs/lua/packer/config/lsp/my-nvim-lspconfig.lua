@@ -72,13 +72,14 @@ end
 
 M.setup = function(lsps)
   for _, lsp in pairs(lsps) do
+    local setting = lsp.setting or function() return {} end
     require('lspconfig')[lsp.name].setup(
       vim.tbl_extend(
         "error",
         {
           on_attach = M.on_attach,
         },
-        lsp.setting()
+        setting()
       ))
   end
 end

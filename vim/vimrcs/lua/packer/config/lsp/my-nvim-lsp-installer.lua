@@ -23,18 +23,16 @@ local lsp_servers = {
             telemetry = {
               enable = false,
             }
-          }
+          },
         },
       }
     end,
   },
   {
     name = "rust_analyzer",
-    setting = function() return {} end,
   },
   {
     name = 'vimls',
-    setting = function() return {} end,
   }
 }
 
