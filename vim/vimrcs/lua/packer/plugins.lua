@@ -211,13 +211,17 @@ M.startup = function()
       'lukas-reineke/indent-blankline.nvim',
       config = function()
         -- Get the gray without gui attribute from the Comment highlight group.
+        local hl_guifg_comment = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'gui')
+        local hl_cterm_comment = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'cterm')
+        local guifg_comment    = hl_guifg_comment ~= '' and 'guifg=' .. hl_guifg_comment or ''
+        local cterm_comment    = hl_cterm_comment ~= '' and 'ctermfg=' .. hl_guifg_comment or ''
         vim.cmd([[highlight! link IndentBlanklineChar Comment]])
         vim.cmd(
           'highlight! IndentBlanklineChar '
           .. 'cterm=NONE '
           .. 'gui=NONE '
-          .. 'guifg=' .. vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'gui') .. ' '
-          .. 'ctermfg=' .. vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID('Comment')), 'fg', 'cterm')
+          .. guifg_comment .. ' '
+          .. cterm_comment
         )
         vim.g.indent_blankline_char_list = { '|', '¦' }
         vim.g.indent_blankline_use_treesitter = true
@@ -359,7 +363,9 @@ M.startup = function()
     use {
       'folke/tokyonight.nvim',
       config = function()
-        vim.g.tokyonight_style = 'night'
+        require('tokyonight').setup({
+          style = 'night'
+        })
         vim.cmd([[colorscheme tokyonight]])
       end
     }
