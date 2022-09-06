@@ -102,6 +102,8 @@ M.startup = function()
       'scalameta/nvim-metals',
       config = function()
         local metals_config = require('metals').bare_config()
+        vim.opt_global.shortmess:remove('F'):append('c')
+
         metals_config.settings = {
           showImplicitArguments = true,
           excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' }
