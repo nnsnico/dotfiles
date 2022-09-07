@@ -313,7 +313,6 @@ M.startup = function()
     }
     use {
       'glacambre/firenvim',
-      tag = 'v0.2.12',
       run = function()
         vim.fn['firenvim#install'](0)
       end,
@@ -330,10 +329,22 @@ M.startup = function()
               selector = 'textarea',
               takeover = 'always',
             },
-            -- www.google.com以外無効化する(検索結果上の翻訳とかは使いたい)
-            ['https?://[^/www]+\\.google\\.com\\/'] = {
-              takeover = 'never'
-            }
+            ['https://www\\.google\\.com/'] = {
+              takeover = 'never',
+              priority = 1,
+            },
+            ['https://mail\\.google\\.com/'] = {
+              content  = 'html',
+              priority = 1,
+              selector = 'div[role="textbox"]',
+              takeover = 'always',
+            },
+            ['https://perf\\.hrmos\\.co/'] = {
+              content  = 'html',
+              priority = 1,
+              selector = 'div[class="ql-editor"]',
+              takeover = 'always',
+            },
           }
         }
       end
