@@ -7,7 +7,7 @@ skkeleton.setup = function()
   local skkeleton_init = function()
     vim.fn['skkeleton#config']({
       eggLikeNewline        = true,
-      globalJisyo           = vim.fn.expand('~/jisyo/SKK-JISYO.L'),
+      globalJisyo           = vim.fn.expand('~/dotfiles/dict/SKK-JISYO'),
       registerConvertResult = true,
       markerHenkan          = '\u{F7BE} ',
       markerHenkanSelect    = '\u{F7BE} ',
