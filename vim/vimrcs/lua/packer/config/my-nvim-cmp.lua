@@ -52,14 +52,6 @@ M.config = function()
       { name = 'buffer' },
       { name = 'spell' },
     }),
-    enabled = function()
-      -- Disable cmp if mode of skkleton is kana
-      if vim.fn['skkeleton#mode']() ~= '' then
-        return false
-      else
-        return true
-      end
-    end
   }
 end
 

@@ -12,6 +12,7 @@ ddc.config = function()
       matchers              = {'skkeleton'},
       sorters               = {},
       minAutoCompleteLength = 2,
+      isVolatile            = true
     }
   })
   vim.fn['ddc#enable']()
