@@ -59,13 +59,23 @@ M.on_attach = function(_, bufnr)
 
   -- auto commands
 
+  local filetypes = { 'lua' }
+
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     buffer = vim.api.nvim_get_current_buf(),
-    callback = vim.lsp.buf.document_highlight
+    callback = function()
+      if utils.contains(filetypes, vim.o.filetype) then
+        vim.lsp.buf.document_highlight()
+      end
+    end
   })
-  vim.api.nvim_create_autocmd('CursorMoved', {
+  vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
     buffer = vim.api.nvim_get_current_buf(),
-    callback = vim.lsp.buf.clear_references
+    callback = function()
+      if utils.contains(filetypes, vim.o.filetype) then
+        vim.lsp.buf.clear_references()
+      end
+    end
   })
 
 end
