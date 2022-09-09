@@ -56,6 +56,7 @@ M.on_attach = function(_, bufnr)
   vim.keymap.set('n', 'K',          vim.lsp.buf.hover,                                   opts)
   vim.keymap.set('n', '<Space>f',   function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<Space>q',   vim.lsp.buf.code_action,                             opts)
+  vim.keymap.set('n', '<Space>s',   vim.lsp.buf.document_symbol,                         opts)
 
   -- auto commands
 
