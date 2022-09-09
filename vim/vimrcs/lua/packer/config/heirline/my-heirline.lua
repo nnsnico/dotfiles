@@ -5,60 +5,8 @@ heirline.config = function()
   local utils = require('heirline.utils')
   local luafunctions = require('functions.utils')
 
-  -- import to dart theme of fancomi.vim
-  local general_colors = {
-    fg          = vim.g.terminal_color_15,
-    black       = vim.g.terminal_color_0,
-    red         = vim.g.terminal_color_1,
-    red_light   = utils.get_highlight('IncSearch').bg,
-    green       = vim.g.terminal_color_2,
-    green_light = utils.get_highlight('String').fg,
-    orange      = utils.get_highlight('Debug').fg,
-    yellow      = vim.g.terminal_color_3,
-    blue        = vim.g.terminal_color_4,
-    sky_blue    = vim.g.terminal_color_5,
-    cyan        = vim.g.terminal_color_6,
-    gray        = utils.get_highlight('SpecialComment').fg,
-    none        = 'NONE',
-  }
-
-  local colors = {
-    diag_warn = {
-      fg = general_colors.black,
-      bg = utils.get_highlight("DiagnosticWarn").fg,
-    },
-
-    diag_err = {
-      fg = general_colors.black,
-      bg = utils.get_highlight("DiagnosticError").fg,
-    },
-
-    git = {
-      del    = "#801D75",
-      add    = "#9BD330",
-      change = "#3555D4",
-    },
-
-    skk = {
-      fg = general_colors.black,
-      bg = general_colors.gray,
-    },
-
-    filetype = {
-      fg = general_colors.black,
-      bg = general_colors.sky_blue,
-    },
-
-    fileencode = {
-      fg = general_colors.black,
-      bg = general_colors.cyan,
-    },
-
-    linestatus = {
-      fg = general_colors.black,
-      bg = general_colors.blue,
-    },
-  }
+  -- init theme
+  require('packer.config.heirline.theme').init()
 
   ------------------------------------- ViMode -----------------------------------
 
@@ -112,19 +60,19 @@ heirline.config = function()
         t         = "TERMINAL ACTIVE",
       },
       mode_colors = {
-        n       = general_colors.blue,
-        i       = general_colors.green,
-        v       = general_colors.yellow,
-        V       = general_colors.yellow,
-        ["\22"] = general_colors.yellow,
-        c       = general_colors.orange,
-        s       = general_colors.green_light,
-        S       = general_colors.green_light,
-        ["\19"] = general_colors.green_light,
-        R       = general_colors.red_light,
-        r       = general_colors.red_light,
-        ["!"]   = general_colors.red,
-        t       = general_colors.red,
+        n       = 'vimode_normal',
+        i       = 'vimode_insert',
+        v       = 'vimode_visual',
+        V       = 'vimode_visual',
+        ["\22"] = 'vimode_visual',
+        c       = 'vimode_commandline',
+        s       = 'vimode_select',
+        S       = 'vimode_select',
+        ["\19"] = 'vimode_select',
+        R       = 'vimode_replace',
+        r       = 'vimode_replace',
+        ["!"]   = 'vimode_term',
+        t       = 'vimode_term',
       }
     },
     provider = function(self)
@@ -134,7 +82,7 @@ heirline.config = function()
       local mode = self.mode:sub(1, 1)
       self.bg_color = self.mode_colors[mode]
       return {
-        fg = general_colors.black,
+        fg = 'vimode_fg',
         bg = self.mode_colors[mode],
         bold = true,
       }
@@ -148,7 +96,7 @@ heirline.config = function()
     {
       provider = ' ',
       hl = function(self)
-        return { fg = self.bg_color, bg = colors.skk.bg }
+        return { fg = self.bg_color, bg = 'skk_bg' }
       end,
     }
   )
@@ -173,8 +121,8 @@ heirline.config = function()
     end,
     hl = function()
       return {
-        fg = colors.skk.fg,
-        bg = colors.skk.bg,
+        fg = 'skk_fg',
+        bg = 'skk_bg',
       }
     end,
   }
@@ -183,7 +131,7 @@ heirline.config = function()
     {
       provider = ' ',
       hl = function()
-        return { fg = colors.skk.bg, bg = utils.get_highlight("StatusLine").bg }
+        return { fg = 'skk_bg', bg = utils.get_highlight("StatusLine").bg }
       end,
     }
   )
@@ -199,8 +147,8 @@ heirline.config = function()
       return " " .. self.ft .. " "
     end,
     hl = {
-      fg = colors.filetype.fg,
-      bg = colors.filetype.bg,
+      fg = 'filetype_fg',
+      bg = 'filetype_bg',
     }
   }
 
@@ -208,8 +156,8 @@ heirline.config = function()
     {
       provider = ' ',
       hl = {
-        fg = colors.filetype.bg,
-        bg = colors.diag_err.bg,
+        fg = 'filetype_bg',
+        bg = 'diag_err_bg',
       },
     },
     FileType
@@ -226,8 +174,8 @@ heirline.config = function()
       return " " .. self.fenc .. "[" .. self.ff .. "]" .. " "
     end,
     hl = {
-      fg = colors.fileencode.fg,
-      bg = colors.fileencode.bg,
+      fg = 'fileencode_fg',
+      bg = 'fileencode_bg',
     },
   }
 
@@ -235,8 +183,8 @@ heirline.config = function()
     {
       provider = ' ',
       hl = {
-        fg = colors.fileencode.bg,
-        bg = colors.filetype.bg,
+        fg = 'fileencode_bg',
+        bg = 'filetype_bg',
       },
     },
     FileEncodeType
@@ -256,8 +204,8 @@ heirline.config = function()
       return " " .. percentage .. "%%" .. " " .. string.rep(self.sbar[i], 2) .. " "
     end,
     hl = {
-      fg = colors.linestatus.fg,
-      bg = colors.linestatus.bg,
+      fg = 'linestatus_fg',
+      bg = 'linestatus_bg',
     }
   }
 
@@ -265,8 +213,8 @@ heirline.config = function()
     {
       provider = ' ',
       hl = {
-        fg = colors.linestatus.bg,
-        bg = colors.fileencode.bg,
+        fg = 'linestatus_bg',
+        bg = 'fileencode_bg',
       }
     },
     LineStatus
@@ -287,8 +235,8 @@ heirline.config = function()
       return self.line ~= 0 and " " .. self.warn_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
     end,
     hl = {
-      fg = colors.diag_warn.fg,
-      bg = colors.diag_warn.bg,
+      fg = 'diag_warn_fg',
+      bg = 'diag_warn_bg',
     }
   }
 
@@ -296,7 +244,7 @@ heirline.config = function()
     {
       provider = ' ',
       hl = {
-        fg = colors.diag_warn.bg,
+        fg = 'diag_warn_bg',
         bg = utils.get_highlight("StatusLine").bg,
       }
     },
@@ -316,8 +264,8 @@ heirline.config = function()
       return self.line ~= 0 and " " .. self.error_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
     end,
     hl = {
-      fg = colors.diag_err.fg,
-      bg = colors.diag_err.bg,
+      fg = 'diag_err_fg',
+      bg = 'diag_err_bg',
     }
   }
 
@@ -325,8 +273,8 @@ heirline.config = function()
     {
       provider = ' ',
       hl = {
-        fg = colors.diag_err.bg,
-        bg = colors.diag_warn.bg,
+        fg = 'diag_err_bg',
+        bg = 'diag_warn_bg',
       }
     },
     DiagnosticError
@@ -365,13 +313,13 @@ heirline.config = function()
       end
       return filename
     end,
-    hl = { fg = general_colors.fg },
+    hl = { fg = 'filename_fg' },
   }
 
   local FileNameModifier = {
     hl = function()
       if vim.bo.modified then
-        return { fg = general_colors.cyan, bold = true, force = true }
+        return { fg = 'filename_modifier', bold = true, force = true }
       end
     end,
   }
@@ -408,7 +356,7 @@ heirline.config = function()
       local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
       return "\u{f489} " .. tname
     end,
-    hl = { fg = general_colors.black, bold = true },
+    hl = { fg = 'winbar_term_fg', bold = true },
   }
 
   local WinBars = {
@@ -428,7 +376,7 @@ heirline.config = function()
       condition = function()
         return conditions.buffer_matches({ buftype = { "terminal" } })
       end,
-      utils.surround({ "", "\u{e0bc}" }, general_colors.red, {
+      utils.surround({ "", "\u{e0bc}" }, 'winbar_term_bg', {
         FileType,
         { provider = "%=" },
         TerminalName,
@@ -440,15 +388,15 @@ heirline.config = function()
       end,
       utils.surround(
         { "", "\u{e0bd}" },
-        general_colors.blue,
-        { hl = { fg = general_colors.fg, bg = general_colors.black, force = true }, FileNameBlock }
+        'winbar_inactive_fg',
+        { hl = { fg = 'winbar_inactive_text', bg = 'winbar_inactive_bg', force = true }, FileNameBlock }
       ),
     },
     -- A winbar for regular files
     utils.surround(
       { "", "\u{e0bc}" },
-      general_colors.blue,
-      { hl = { fg = general_colors.black, force = true }, FileNameBlock }
+      'winbar_active_fg',
+      { hl = { fg = 'winbar_active_text', force = true }, FileNameBlock }
     ),
   }
 

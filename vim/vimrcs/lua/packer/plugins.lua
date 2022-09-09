@@ -203,7 +203,7 @@ M.startup = function()
 
     use {
       'rebelot/heirline.nvim',
-      config = require('packer.config.my-heirline').config(),
+      config = require('packer.config.heirline.my-heirline').config(),
       requires = {
         { 'kyazdani42/nvim-web-devicons', opt = 1 },
         { 'vim-skk/skkeleton' },
