@@ -204,7 +204,7 @@ heirline.config = function()
     }
   }
 
-  FileType = utils.insert(
+  FileTypePL = utils.insert(
     {
       provider = ' ',
       hl = {
@@ -377,22 +377,90 @@ heirline.config = function()
   }
 
   FileNameBlock = utils.insert(FileNameBlock,
+    { provider = " " },
     FileIcon,
     utils.insert(FileNameModifier, FileName),
-    { provider = '%<' }
+    { provider = '%<' },
+    { provider = " " }
   )
 
-  -------------------------------------- Main ------------------------------------
+  ----------------------------------- Winbar -----------------------------------
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = 'HeirlineInitWinbar',
+    callback = function(args)
+      local buf = args.buf
+      local buftype = vim.tbl_contains(
+        { "prompt", "nofile", "help", "quickfix" },
+        vim.bo[buf].buftype
+      )
+      local filetype = vim.tbl_contains({ "gitcommit", "fugitive" }, vim.bo[buf].filetype)
+      if buftype or filetype then
+        vim.opt_local.winbar = nil
+      end
+    end,
+  })
+
+  local TerminalName = {
+    -- we could add a condition to check that buftype == 'terminal'
+    -- or we could do that later (see #conditional-statuslines below)
+    provider = function()
+      local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
+      return "\u{f489} " .. tname
+    end,
+    hl = { fg = general_colors.black, bold = true },
+  }
+
+  local WinBars = {
+    fallthrough = false,
+    { -- Hide the winbar for special buffers
+      condition = function()
+        return conditions.buffer_matches({
+          buftype = { "nofile", "prompt", "help", "quickfix" },
+          filetype = { "^git.*", "fugitive" },
+        })
+      end,
+      init = function()
+        vim.opt_local.winbar = nil
+      end
+    },
+    { -- A special winbar for terminals
+      condition = function()
+        return conditions.buffer_matches({ buftype = { "terminal" } })
+      end,
+      utils.surround({ "", "\u{e0bc}" }, general_colors.red, {
+        FileType,
+        { provider = "%=" },
+        TerminalName,
+      }),
+    },
+    { -- An inactive winbar for regular files
+      condition = function()
+        return not conditions.is_active()
+      end,
+      utils.surround(
+        { "", "\u{e0bd}" },
+        general_colors.blue,
+        { hl = { fg = general_colors.fg, bg = general_colors.black, force = true }, FileNameBlock }
+      ),
+    },
+    -- A winbar for regular files
+    utils.surround(
+      { "", "\u{e0bc}" },
+      general_colors.blue,
+      { hl = { fg = general_colors.black, force = true }, FileNameBlock }
+    ),
+  }
+
+  ------------------------------------ Main ------------------------------------
 
   local DefaultStatusline = {
     ViMode,
     SkkStatus,
     { provider = "%=" },
-    FileNameBlock,
-    { provider = "%=" },
     DiagnosticWarn,
     DiagnosticError,
-    FileType,
+    FileTypePL,
     FileEncodeType,
     LineStatus,
   }
@@ -424,7 +492,7 @@ heirline.config = function()
     InactiveStatusline, DefaultStatusline
   }
 
-  require('heirline').setup(Statuslines)
+  require('heirline').setup(Statuslines, WinBars)
 end
 
 return heirline
