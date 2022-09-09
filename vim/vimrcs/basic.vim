@@ -72,6 +72,8 @@ set clipboard+=unnamed
 set timeoutlen=1000
 " timeout length while waiting next keycode
 set ttimeoutlen=10
+" set updatetime
+set updatetime=300
 
 " time while highlight match paren
 set matchtime=1
