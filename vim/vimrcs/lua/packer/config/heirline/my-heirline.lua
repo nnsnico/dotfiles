@@ -3,13 +3,14 @@ local heirline = {}
 heirline.config = function()
   local conditions = require('heirline.conditions')
   local utils = require('heirline.utils')
+  local components = require('packer.config.heirline.components')
 
   -- init theme
   require('packer.config.heirline.theme').init()
 
   ------------------------------------- ViMode -----------------------------------
 
-  local ViMode = require('packer.config.heirline.components.vimode')
+  local ViMode = components.vimode
   ViMode = utils.insert(ViMode,
     {
       provider = ' ',
@@ -21,7 +22,7 @@ heirline.config = function()
 
   ----------------------------------- SkkStatus ---------------------------------
 
-  local SkkStatus = require('packer.config.heirline.components.skk_status')
+  local SkkStatus = components.skk_status
   SkkStatus = utils.insert(SkkStatus,
     {
       provider = ' ',
@@ -33,7 +34,7 @@ heirline.config = function()
 
   ---------------------------------- FileType ----------------------------------
 
-  local FileType = require('packer.config.heirline.components.filetype')
+  local FileType = components.filetype
   local FileTypePL = utils.insert(
     {
       provider = ' ',
@@ -45,7 +46,7 @@ heirline.config = function()
     FileType
   )
 
-  local FileEncodeType = require('packer.config.heirline.components.file_encode_type')
+  local FileEncodeType = components.file_encode_type
   FileEncodeType = utils.insert(
     {
       provider = ' ',
@@ -59,7 +60,7 @@ heirline.config = function()
 
   ---------------------------------- Line status --------------------------------
 
-  local LineStatus = require('packer.config.heirline.components.line_status')
+  local LineStatus = components.line_status
   LineStatus = {
     {
       provider = ' ',
@@ -73,7 +74,7 @@ heirline.config = function()
 
   ----------------------------------- Diagnostic ---------------------------------
 
-  local diagnostic = require('packer.config.heirline.components.diagnostic_status')
+  local diagnostic = components.diagnostics
 
   -- Warn
   local DiagnosticWarn = diagnostic.warn
@@ -103,11 +104,11 @@ heirline.config = function()
 
   ----------------------------------- File name ---------------------------------
 
-  local FileName = require('packer.config.heirline.components.file_name')
+  local FileName = components.filename
 
   ----------------------------------- Winbar -----------------------------------
 
-  local WinBars = require('packer.config.heirline.components.winbar')
+  local WinBars = components.winbars
 
   local DefaultStatusline = {
     ViMode,
