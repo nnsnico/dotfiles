@@ -74,7 +74,7 @@ function M.handle_qflist(qflist)
       auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
     else
       local jumpable_windows = auto_window_splitter.get_jumpable_windows(qflist[1].filename)
-      if not utils.is_empty(jumpable_windows) then
+      if not vim.tbl_isempty(jumpable_windows) then
         for _, v in pairs(jumpable_windows) do
           vim.fn.win_gotoid(v.winid)
           auto_window_splitter.move_cursor(v.winid, qflist[1].lnum, qflist[1].col)

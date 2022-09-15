@@ -1,5 +1,4 @@
 local M = {}
-local utils = require('functions.utils')
 local lsputils = require('packer.config.lsp.utils')
 
 M.on_attach = function(_, bufnr)
@@ -20,7 +19,7 @@ M.on_attach = function(_, bufnr)
   -- Change default LSP handling to open split automatically
 
   local function auto_split(results, no_result_msg)
-    if utils.is_empty(results) then
+    if vim.tbl_isempty(results) then
       vim.notify(no_result_msg, 'info')
       return
     end
@@ -65,7 +64,7 @@ M.on_attach = function(_, bufnr)
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     buffer = vim.api.nvim_get_current_buf(),
     callback = function()
-      if utils.contains(filetypes, vim.o.filetype) then
+      if vim.tbl_contains(filetypes, vim.o.filetype) then
         vim.lsp.buf.document_highlight()
       end
     end
@@ -73,7 +72,7 @@ M.on_attach = function(_, bufnr)
   vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
     buffer = vim.api.nvim_get_current_buf(),
     callback = function()
-      if utils.contains(filetypes, vim.o.filetype) then
+      if vim.tbl_contains(filetypes, vim.o.filetype) then
         vim.lsp.buf.clear_references()
       end
     end
