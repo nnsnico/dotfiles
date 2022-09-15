@@ -373,13 +373,15 @@ M.startup = function()
         vim.keymap.set('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
       end
     }
+
     use {
-      'folke/tokyonight.nvim',
+      'ray-x/aurora',
       config = function()
-        require('tokyonight').setup({
-          style = 'night'
-        })
-        vim.cmd([[colorscheme tokyonight]])
+        vim.g.aurora_italic      = 1
+        vim.g.aurora_bold        = 1
+        vim.g.aurora_transparent = 1
+        vim.g.aurora_darker      = 1
+        vim.cmd([[colorscheme aurora]])
       end
     }
 
