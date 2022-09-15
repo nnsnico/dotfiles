@@ -61,6 +61,7 @@ M.startup = function()
       requires = {
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
+        'ii14/emmylua-nvim',
       }
     }
 
