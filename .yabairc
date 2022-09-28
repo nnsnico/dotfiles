@@ -50,4 +50,6 @@ yabai -m config top_padding    10
 yabai -m config bottom_padding 10
 yabai -m config window_gap     10
 
+yabai -m config window_animation_duration 0.05
+
 echo "yabai configuration loaded.."
