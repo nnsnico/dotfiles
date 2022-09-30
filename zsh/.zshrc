@@ -113,10 +113,10 @@ alias nv='nvim'
 alias e='exit'
 alias ls='select_ls'
 alias l='ls'
-alias la='(exa -alh --git --time-style=iso || ls -al)'
-alias lla='(exa -alh --git --time-style=long-iso || ls -al)'
-alias ll='(exa -lh --time-style=iso || ls -l)'
 alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all && nvim -c "PackerSync"'
+alias la='f(){ (exa -alh --git --time-style=iso --icons "$@" || ls -al "$@"); unset -f f; }; f'
+alias lla='f() { (exa -alh --git --time-style=long-iso --icons "$@" || ls -al "$@"); unset -f f; }; f'
+alias ll='f() { (exa -lh --time-style=iso "$@" || ls -al "$@"); unset -f f; }; f'
 
 # ------------------------------------ tmux ------------------------------------
 
