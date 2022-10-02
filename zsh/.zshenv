@@ -95,7 +95,7 @@ zinit wait lucid for \
     from"gh-r" \
     sbin"**/zoxide -> zoxide" \
     atpull"rm ~/.zcompdump*; compinit" \
-    atload'eval "$(zoxide init zsh)"' \
+    atload'eval "$(zoxide init zsh --cmd cd)"' \
   "ajeetdsouza/zoxide" \
 
 zinit wait lucid for \
@@ -114,3 +114,7 @@ zinit wait lucid for \
     atload"zicompinit; zicdreplay" \
     mv"git-completion.zsh -> _git" \
   "https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh"
+
+# --------------------------- ENVIRONMENT VARIABLES ---------------------------
+
+export _ZO_ECHO='1'
