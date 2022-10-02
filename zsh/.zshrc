@@ -101,22 +101,13 @@ POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='darkorange'
 
 # ----------------------------------- ALIAS -----------------------------------
 
-function select_ls() {
-  if [ -f $(which exa) ]; then
-    command exa $@
-  else
-    command ls $@
-  fi
-}
-
 alias nv='nvim'
 alias e='exit'
-alias ls='select_ls'
+alias ls='f(){ (command exa "$@" || command ls "$@"); unset -f f; }; f'
 alias l='ls'
-alias nikka='brew update && brew upgrade && brew cleanup && zinit update --all && nvim -c "PackerSync"'
-alias la='f(){ (exa -alh --git --time-style=iso --icons "$@" || ls -al "$@"); unset -f f; }; f'
-alias lla='f() { (exa -alh --git --time-style=long-iso --icons "$@" || ls -al "$@"); unset -f f; }; f'
-alias ll='f() { (exa -lh --time-style=iso "$@" || ls -al "$@"); unset -f f; }; f'
+alias la='f() { (command exa -alh --git --time-style=iso --icons "$@" || command ls -al "$@"); unset -f f; }; f'
+alias lla='f() { (command exa -alh --git --time-style=long-iso --icons "$@" || command ls -al "$@"); unset -f f; }; f'
+alias ll='f() { (command exa -lh --time-style=iso "$@" || command ls -al "$@"); unset -f f; }; f'
 
 # ------------------------------------ tmux ------------------------------------
 
