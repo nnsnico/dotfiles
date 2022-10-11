@@ -11,7 +11,7 @@ packer.init()
 local augroup = vim.api.nvim_create_augroup('packer_user_config', {})
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = augroup,
-  pattern = 'pluings.lua',
+  pattern = 'plugins.lua',
   callback = function(args)
     vim.cmd(string.format('source %s | PackerCompile', args.file))
   end,
