@@ -34,13 +34,32 @@ local lsp_servers = {
   {
     name = 'vimls',
   }
+
+M.linters = {
+  {
+    name = 'textlint',
+    setup = { 'diagnostics', 'formatting' },
+    configuration = {
+      filetypes = { 'markdown', 'text' }
+    }
+  },
+  {
+    name = 'shellcheck',
+    setup = { 'code_actions', 'diagnostics' },
+    configuration = {
+      filetypes = { 'sh' }
+    }
+  },
 }
 
 M.config = function()
   local server_name = vim.fn.map(lsp_servers, function(_, server) return server.name end)
+  local linter_name = vim.fn.map(M.linters, function(_, linter) return linter.name end)
+  local install_list = vim.list_extend(server_name, linter_name)
+
   require('mason').setup()
   require('mason-lspconfig').setup({
-    ensure_installed = server_name,
+    ensure_installed = install_list,
     automatic_installation = true,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   })

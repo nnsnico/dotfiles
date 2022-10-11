@@ -53,7 +53,7 @@ M.startup = function()
       }
     }
 
-    ----------------------------------- LSP ------------------------------------
+    -------------------------------- LSP/Linter --------------------------------
 
     use {
       'williamboman/mason.nvim',
@@ -74,6 +74,14 @@ M.startup = function()
         'hrsh7th/cmp-path',
         'f3fora/cmp-spell',
         'hrsh7th/cmp-nvim-lsp',
+      }
+    }
+
+    use {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = require('packer.config.my-null-ls').config,
+      requires = {
+        'nvim-lua/plenary.nvim'
       }
     }
 
