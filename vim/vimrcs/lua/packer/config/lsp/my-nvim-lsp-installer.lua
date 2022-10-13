@@ -56,13 +56,19 @@ M.linters = {
 M.config = function()
   local server_name = vim.fn.map(lsp_servers, function(_, server) return server.name end)
   local linter_name = vim.fn.map(M.linters, function(_, linter) return linter.name end)
-  local install_list = vim.list_extend(server_name, linter_name)
 
   require('mason').setup()
+
+  -- for language server
   require('mason-lspconfig').setup({
-    ensure_installed = install_list,
+    ensure_installed = server_name,
     automatic_installation = true,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  })
+
+  -- for linter
+  require('mason-tool-installer').setup({
+    ensure_installed = linter_name,
   })
 
   -- setup nvim-lspconfig

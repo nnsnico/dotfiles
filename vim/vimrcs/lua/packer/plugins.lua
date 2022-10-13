@@ -60,6 +60,7 @@ M.startup = function()
       config = require('packer.config.lsp.my-nvim-lsp-installer').config(),
       requires = {
         'williamboman/mason-lspconfig.nvim',
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
         'neovim/nvim-lspconfig',
         'ii14/emmylua-nvim',
       }
