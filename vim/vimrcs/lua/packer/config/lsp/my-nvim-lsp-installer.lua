@@ -34,6 +34,7 @@ local lsp_servers = {
   {
     name = 'vimls',
   }
+}
 
 M.linters = {
   {
