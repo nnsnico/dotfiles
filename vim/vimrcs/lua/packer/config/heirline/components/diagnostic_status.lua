@@ -10,7 +10,7 @@ M.warn = {
     self.line = not vim.tbl_isempty(warn) and warn[1].lnum + 1 or 0
   end,
   provider = function(self)
-    return self.line ~= 0 and " " .. self.warn_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
+    return self.line ~= 0 and " " .. self.warn_icon .. self.line .. " " or ""
   end,
   hl = {
     fg = 'diag_warn_fg',
@@ -26,7 +26,7 @@ M.error = {
     self.line = not vim.tbl_isempty(error) and error[1].lnum + 1 or 0
   end,
   provider = function(self)
-    return self.line ~= 0 and " " .. self.error_icon .. "[" .. "L" .. self.line .. "]" .. " " or ""
+    return self.line ~= 0 and " " .. self.error_icon .. self.line .. " " or ""
   end,
   hl = {
     fg = 'diag_err_fg',
