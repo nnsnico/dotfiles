@@ -119,7 +119,7 @@ M.startup = function()
           excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' }
         }
 
-        metals_config.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+        metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
         metals_config.on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
 
         local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
