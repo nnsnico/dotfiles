@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 local M = {}
+local utils = require('functions.utils')
 
 M.startup = function()
   return require('packer').startup(function(use)
@@ -57,7 +58,7 @@ M.startup = function()
 
     use {
       'williamboman/mason.nvim',
-      config = require('packer.config.lsp.my-nvim-lsp-installer').config(),
+      config = utils.call_safe(require('packer.config.lsp.my-nvim-lsp-installer').config),
       requires = {
         'williamboman/mason-lspconfig.nvim',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -213,7 +214,7 @@ M.startup = function()
 
     use {
       'rebelot/heirline.nvim',
-      config = require('packer.config.heirline.my-heirline').config(),
+      config = utils.call_safe(require('packer.config.heirline.my-heirline').config),
       requires = {
         { 'kyazdani42/nvim-web-devicons', opt = 1 },
         { 'vim-skk/skkeleton' },
