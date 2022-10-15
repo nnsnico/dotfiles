@@ -3,6 +3,20 @@ local M = {}
 
 M.config = function()
   vim.notify = require("notify")
+  vim.notify.setup({
+    timeout = 3000
+  })
+  vim.keymap.set(
+    'n',
+    '"',
+    function()
+      vim.notify.dismiss({
+        pending = true,
+        silent = true
+      })
+    end,
+    {}
+  )
 
   -- Utility functions shared between progress reports for LSP and DAP
 
