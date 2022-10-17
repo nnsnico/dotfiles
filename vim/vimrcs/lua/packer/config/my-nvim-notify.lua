@@ -4,7 +4,8 @@ local M = {}
 M.config = function()
   vim.notify = require("notify")
   vim.notify.setup({
-    timeout = 3000
+    timeout = 3000,
+    top_down = false,
   })
   vim.keymap.set(
     'n',
