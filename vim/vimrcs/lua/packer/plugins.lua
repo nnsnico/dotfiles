@@ -176,7 +176,7 @@ M.startup = function()
       'junegunn/vim-easy-align',
       keys = { '<Plug>(EasyAlign)' },
       setup = function()
-        vim.keymap.set({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)')
+        vim.keymap.set({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)', {})
       end,
     }
     use {
@@ -184,7 +184,7 @@ M.startup = function()
       tag = 'v2',
       config = function()
         require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-        vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
+        vim.keymap.set('n', '<Leader>s', require('hop').hint_char1, {})
       end,
     }
     use 'psliwka/vim-smoothie'
