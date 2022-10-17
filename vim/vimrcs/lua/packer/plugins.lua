@@ -113,7 +113,6 @@ M.startup = function()
       'scalameta/nvim-metals',
       config = function()
         local metals_config = require('metals').bare_config()
-        vim.opt_global.shortmess:remove('F'):append('c')
 
         metals_config.settings = {
           showImplicitArguments = true,
@@ -132,7 +131,10 @@ M.startup = function()
           group = nvim_metals_group
         })
       end,
-      require = { 'nvim-lua/plenary.nvim' }
+      require = {
+        'nvim-lua/plenary.nvim',
+        'hrsh7th/cmp-nvim-lsp',
+      }
     }
 
     ------------------------------- fuzzy finder -------------------------------
