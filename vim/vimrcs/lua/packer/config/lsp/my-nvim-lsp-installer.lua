@@ -36,7 +36,7 @@ local lsp_servers = {
   }
 }
 
-M.linters = {
+M.tools = {
   {
     name = 'textlint',
     setup = { 'diagnostics', 'formatting' },
@@ -55,7 +55,7 @@ M.linters = {
 
 M.config = function()
   local server_name = vim.fn.map(lsp_servers, function(_, server) return server.name end)
-  local linter_name = vim.fn.map(M.linters, function(_, linter) return linter.name end)
+  local tool_name = vim.fn.map(M.tools, function(_, tool) return tool.name end)
 
   require('mason').setup()
 
@@ -68,7 +68,7 @@ M.config = function()
 
   -- for linter
   require('mason-tool-installer').setup({
-    ensure_installed = linter_name,
+    ensure_installed = tool_name,
   })
 
   -- setup nvim-lspconfig
