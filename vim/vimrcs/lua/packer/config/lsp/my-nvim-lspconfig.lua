@@ -7,9 +7,10 @@ M.on_attach = function(_, bufnr)
   -- Change diagnostic icons
 
   local signs = {
+    Info  = '\u{F05A}',
     Error = '\u{F1E2}',
-    Warn  = '\u{E230}',
-    Hint  = '\u{F270}',
+    Warn  = '\u{F071}',
+    Hint  = '\u{FB4E}',
   }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
