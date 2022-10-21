@@ -36,6 +36,8 @@ local lsp_servers = {
   }
 }
 
+---@alias setup.Function 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
+---@type { name: string, setup: setup.Function[], configuration?: table }[]
 M.tools = {
   {
     name = 'textlint',
