@@ -21,7 +21,7 @@ M.on_attach = function(_, bufnr)
 
   local function auto_split(results, no_result_msg)
     if vim.tbl_isempty(results) then
-      vim.notify(no_result_msg, 'info')
+      vim.notify(no_result_msg, vim.log.levels.INFO)
       return
     end
 
