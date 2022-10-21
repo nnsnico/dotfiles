@@ -4,7 +4,7 @@ local M = {}
 M.config = function()
   vim.notify = require("notify")
   vim.notify.setup({
-    timeout = 3000,
+    timeout = 2000,
     top_down = false,
   })
   vim.keymap.set(
@@ -12,7 +12,7 @@ M.config = function()
     '"',
     function()
       vim.notify.dismiss({
-        pending = true,
+        pending = false,
         silent = true
       })
     end,
@@ -100,11 +100,15 @@ M.config = function()
         hide_from_history = false,
       })
     elseif val.kind == "end" and notif_data then
-      notif_data.notification = vim.notify(val.message and format_message(val.message) or "Complete", "info", {
-        icon    = "",
-        replace = notif_data.notification,
-        timeout = 3000,
-      })
+      notif_data.notification = vim.notify(
+        val.message and format_message(val.message) or "Complete",
+        vim.log.levels.INFO,
+        {
+          icon    = "\u{F058}",
+          replace = notif_data.notification,
+          timeout = 2000,
+        }
+      )
 
       notif_data.spinner = nil
     end
