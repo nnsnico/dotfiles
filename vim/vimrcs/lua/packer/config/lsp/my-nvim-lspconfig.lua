@@ -19,6 +19,8 @@ M.on_attach = function(client, bufnr)
 
   -- Change default LSP handling to open split automatically
 
+  ---@param results Response
+  ---@param no_result_msg string
   local function auto_split(results, no_result_msg)
     if results == nil or vim.tbl_isempty(results) then
       vim.notify(no_result_msg, vim.log.levels.INFO)
@@ -29,14 +31,17 @@ M.on_attach = function(client, bufnr)
     lsputils.handle_qflist(qflist)
   end
 
+  ---@param results Response
   vim.lsp.handlers['textDocument/definition'] = function(_, results, _)
     auto_split(results, 'No definitions')
   end
 
+  ---@param results Response
   vim.lsp.handlers['textDocument/typeDefinition'] = function(_, results, _)
     auto_split(results, 'No type definitions')
   end
 
+  ---@param results Response
   vim.lsp.handlers['textDocument/references'] = function(_, results, _)
     auto_split(results, 'No references')
   end
