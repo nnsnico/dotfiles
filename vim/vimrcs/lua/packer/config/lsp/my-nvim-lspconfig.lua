@@ -20,7 +20,7 @@ M.on_attach = function(_, bufnr)
   -- Change default LSP handling to open split automatically
 
   local function auto_split(results, no_result_msg)
-    if vim.tbl_isempty(results) then
+    if results == nil or vim.tbl_isempty(results) then
       vim.notify(no_result_msg, vim.log.levels.INFO)
       return
     end
