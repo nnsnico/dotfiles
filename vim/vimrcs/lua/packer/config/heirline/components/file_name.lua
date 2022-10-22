@@ -22,17 +22,20 @@ local icon = {
 }
 
 local file_name = {
-  provider = function(self)
-    local filename = vim.fn.fnamemodify(self.filename, ":.")
-    if filename == "" then
-      return "[No Name]"
-    end
-    if not conditions.width_percent_below(#filename, 0.25) then
-      filename = vim.fn.pathshorten(filename)
-    end
-    return filename
+  init = function(self)
+    self.lfilename = vim.fn.fnamemodify(self.filename, ":.")
+    if self.lfilename == "" then self.lfilename = "[No Name]" end
   end,
   hl = { fg = 'filename_fg' },
+  utils.make_flexible_component(2, {
+    provider = function(self)
+      return self.lfilename
+    end
+  }, {
+    provider = function(self)
+      return vim.fn.fnamemodify(self.lfilename, ':t')
+    end
+  })
 }
 
 local modifier_highlight = {
