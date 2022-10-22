@@ -64,6 +64,7 @@ M.startup = function()
         'WhoIsSethDaniel/mason-tool-installer.nvim',
         'neovim/nvim-lspconfig',
         'ii14/emmylua-nvim',
+        'SmiteshP/nvim-navic',
       }
     }
 
@@ -220,6 +221,7 @@ M.startup = function()
       requires = {
         { 'kyazdani42/nvim-web-devicons', opt = 1 },
         { 'vim-skk/skkeleton' },
+        { 'SmiteshP/nvim-navic' },
       },
     }
     use {

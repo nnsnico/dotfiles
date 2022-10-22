@@ -102,9 +102,17 @@ heirline.config = function()
     DiagnosticError
   }
 
-  ----------------------------------- File name ---------------------------------
+  -------------------------------- Code Context --------------------------------
 
-  local FileName = components.filename
+  local CodeContext = components.code_context('\u{E0BF} ')
+  CodeContext = utils.surround(
+    { "", "\u{E0B9} " },
+    ---@diagnostic disable-next-line: param-type-mismatch
+    nil,
+    {
+      CodeContext
+    }
+  )
 
   ----------------------------------- Winbar -----------------------------------
 
@@ -113,21 +121,13 @@ heirline.config = function()
   local DefaultStatusline = {
     ViMode,
     SkkStatus,
+    CodeContext,
     { provider = "%=" },
     DiagnosticWarn,
     DiagnosticError,
     FileTypePL,
     FileEncodeType,
     LineStatus,
-  }
-
-  local InactiveStatusline = {
-    condition = function()
-      return not conditions.is_active()
-    end,
-    { provider = "%=" },
-    FileName,
-    { provider = "%=" }
   }
 
   local Statuslines = {
@@ -145,7 +145,7 @@ heirline.config = function()
       end
     end,
     fallthrough = false,
-    InactiveStatusline, DefaultStatusline
+    DefaultStatusline
   }
 
   require('heirline').setup(Statuslines, WinBars)

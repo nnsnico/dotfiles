@@ -83,6 +83,11 @@ local filename = {
   modifier = general.cyan,
 }
 
+local code_context = {
+  fg = general.fg,
+  text = general.green_light,
+}
+
 local winbar = {
   term = {
     fg = general.black,
@@ -127,6 +132,10 @@ local colors = vim.tbl_extend('error',
   merge_theme('filename', filename),
   {
     filename_modifer = filename.modifier
+  },
+  merge_theme('code_context', code_context),
+  {
+    code_context_text = code_context.text
   },
   merge_theme('winbar_inactive', winbar.inactive),
   {

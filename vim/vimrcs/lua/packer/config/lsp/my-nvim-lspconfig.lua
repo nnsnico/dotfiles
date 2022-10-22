@@ -1,7 +1,7 @@
 local M = {}
 local lsputils = require('packer.config.lsp.utils')
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
   vim.o.signcolumn = 'yes:2'
 
   -- Change diagnostic icons
@@ -78,6 +78,11 @@ M.on_attach = function(_, bufnr)
       end
     end
   })
+
+  -- Enable nvim-navic
+  if client.server_capabilities.documentSymbolProvider then
+    require('nvim-navic').attach(client, bufnr)
+  end
 
 end
 
