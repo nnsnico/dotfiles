@@ -2,6 +2,9 @@ local M = {}
 
 local utils = require('heirline.utils')
 
+---@param prefix string
+---@param tbl { fg: string, bg: string }
+---@return { fg: string, bg: string }
 local function merge_theme(prefix, tbl)
   return {
     [prefix .. '_fg'] = tbl.fg,
@@ -11,6 +14,20 @@ end
 
 -------------------------------- general colors --------------------------------
 
+---@class GeneralColor
+---@field fg string
+---@field black string
+---@field red string
+---@field red_light string
+---@field green string
+---@field green_light string
+---@field orange string
+---@field yellow string
+---@field blue string
+---@field sky_blue string
+---@field cyan string
+---@field gray string
+---@field none string
 local general = {
   fg          = vim.g.terminal_color_15,
   black       = vim.g.terminal_color_0,
@@ -100,7 +117,7 @@ local winbar = {
   },
   active = {
     fg = general.blue,
-    bg = 'NONE',
+    bg = general.none,
     text = general.black,
   }
 }
@@ -153,7 +170,7 @@ local colors = vim.tbl_extend('error',
 function M.init()
   require('heirline').load_colors(colors)
 
-  vim.api.nvim_create_augroup('Heirline', { clear = true})
+  vim.api.nvim_create_augroup('Heirline', { clear = true })
   vim.api.nvim_create_autocmd('ColorScheme', {
     callback = function()
       utils.on_colorscheme(colors)
