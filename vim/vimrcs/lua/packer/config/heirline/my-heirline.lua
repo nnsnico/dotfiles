@@ -32,6 +32,16 @@ heirline.config = function()
     }
   )
 
+  -------------------------------- Code Context --------------------------------
+
+  local CodeContext = components.code_context('\u{E0BF} ')
+  CodeContext = utils.insert(CodeContext,
+    {
+      provider = '\u{E0BF} ',
+      hl = { fg = 'code_context_fg' }
+    }
+  )
+
   ---------------------------------- FileType ----------------------------------
 
   local FileType = components.filetype
@@ -101,18 +111,6 @@ heirline.config = function()
     },
     DiagnosticError
   }
-
-  -------------------------------- Code Context --------------------------------
-
-  local CodeContext = components.code_context('\u{E0BF} ')
-  CodeContext = utils.surround(
-    { "", "\u{E0B9} " },
-    ---@diagnostic disable-next-line: param-type-mismatch
-    nil,
-    {
-      CodeContext
-    }
-  )
 
   ----------------------------------- Winbar -----------------------------------
 

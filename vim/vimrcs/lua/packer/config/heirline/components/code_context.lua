@@ -55,11 +55,11 @@ local CodeContext = function(separator)
         -- encode line and column numbers into a single integer
         local pos = self.enc(d.scope.start.line, d.scope.start.character, self.winnr)
         local child = {
-          {
+          { -- icon
             provider = d.icon,
             hl = self.type_hl[d.type],
           },
-          {
+          { -- location name
             -- escape `%`s (elixir) and buggy default separators
             provider = d.name:gsub("%%", "%%%%"):gsub("%s*->%s*", ''),
             -- highlight icon only or location name as well
@@ -78,9 +78,15 @@ local CodeContext = function(separator)
           },
         }
         -- add a separator only if needed
-        if #data > 1 and i < #data then
+        if #data > 0 and i < #data then
           table.insert(child, {
             provider = " " .. separator .. " ",
+            hl = { fg = 'code_context_fg' },
+          })
+        end
+        if i == #data then
+          table.insert(child, {
+            provider = " ",
             hl = { fg = 'code_context_fg' },
           })
         end
@@ -91,7 +97,7 @@ local CodeContext = function(separator)
     end,
     -- evaluate the children containing navic components
     provider = function(self)
-      return " " .. self.child:eval() .. " "
+      return " " .. self.child:eval()
     end,
     hl = { fg = 'code_context_text' },
     update = 'CursorMoved'
