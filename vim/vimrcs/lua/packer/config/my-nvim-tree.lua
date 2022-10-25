@@ -54,6 +54,7 @@ M.config = function()
       },
     },
     renderer = {
+      group_empty = true,
       full_name = true,
       indent_markers = {
         enable = true,
