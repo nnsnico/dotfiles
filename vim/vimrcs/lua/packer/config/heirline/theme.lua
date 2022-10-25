@@ -102,7 +102,8 @@ local filename = {
 
 local code_context = {
   fg = general.fg,
-  text = general.green_light,
+  bg = general.green_light,
+  text = general.fg,
 }
 
 local winbar = {

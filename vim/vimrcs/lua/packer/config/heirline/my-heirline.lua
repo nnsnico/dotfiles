@@ -13,7 +13,7 @@ heirline.config = function()
   local ViMode = components.vimode
   ViMode = utils.insert(ViMode,
     {
-      provider = ' ',
+      provider = '\u{E0B8} ',
       hl = function(self)
         return { fg = self.bg_color, bg = 'skk_bg' }
       end,
@@ -25,7 +25,7 @@ heirline.config = function()
   local SkkStatus = components.skk_status
   SkkStatus = utils.insert(SkkStatus,
     {
-      provider = ' ',
+      provider = '\u{E0B8} ',
       hl = function()
         return { fg = 'skk_bg', bg = utils.get_highlight("StatusLine").bg }
       end,
@@ -47,7 +47,7 @@ heirline.config = function()
   local FileType = components.filetype
   local FileTypePL = utils.insert(
     {
-      provider = ' ',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'filetype_bg',
         bg = 'diag_err_bg',
@@ -59,7 +59,7 @@ heirline.config = function()
   local FileEncodeType = components.file_encode_type
   FileEncodeType = utils.insert(
     {
-      provider = ' ',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'fileencode_bg',
         bg = 'filetype_bg',
@@ -73,7 +73,7 @@ heirline.config = function()
   local LineStatus = components.line_status
   LineStatus = {
     {
-      provider = ' ',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'linestatus_bg',
         bg = 'fileencode_bg',
@@ -90,7 +90,7 @@ heirline.config = function()
   local DiagnosticWarn = diagnostic.warn
   DiagnosticWarn = utils.insert(
     {
-      provider = ' ',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'diag_warn_bg',
         bg = utils.get_highlight("StatusLine").bg,
@@ -103,7 +103,7 @@ heirline.config = function()
   local DiagnosticError = diagnostic.error
   DiagnosticError = {
     {
-      provider = ' ',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'diag_err_bg',
         bg = 'diag_warn_bg',
