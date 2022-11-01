@@ -1,6 +1,7 @@
 local ddc = {}
 
 ddc.config = function()
+  vim.fn['ddc#custom#patch_global']('ui', 'native')
   vim.fn['ddc#custom#patch_global']('sources', {'skkeleton'})
   vim.fn['ddc#custom#patch_global']('sourceOptions', {
     ["_"] = {

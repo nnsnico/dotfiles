@@ -203,6 +203,7 @@ M.startup = function()
         { "vim-denops/denops.vim" },
         { "Shougo/ddc-matcher_head" },
         { "Shougo/ddc-sorter_rank" },
+        { "Shougo/ddc-ui-native" },
       }
     }
     use {
