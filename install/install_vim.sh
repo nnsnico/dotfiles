@@ -1,7 +1,7 @@
 #!/bin/bash
 # install vim
 
-cur_path=$(pwd)/$(dirname $0)
+cd "$(dirname "$0")" || exit 1
 
 # 1. add vim synbolic link
 echo "Add symbolic link of .vimrc..."
@@ -9,12 +9,12 @@ ln -s ~/dotfiles/vim/.vimrc ~/
 
 if [ ! -d "$HOME/.vim" ]; then
   echo "vim dir is not found. Create dir automatically..."
-  mkdir $HOME/.vim
+  mkdir "$HOME"/.vim
 fi
 
 if [ ! -d "$HOME/.config/nvim" ]; then
   echo "nvim dir is not found. Create dir automatically..."
-  mkdir -p $HOME/.config/nvim/lua
+  mkdir -p "$HOME"/.config/nvim
 
   echo "Add symbolic link of init.vim..."
   ln -s ~/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
