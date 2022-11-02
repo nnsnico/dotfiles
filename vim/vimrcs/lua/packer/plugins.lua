@@ -261,6 +261,12 @@ M.startup = function()
     use {
       'kevinhwang91/nvim-bqf',
       ft = 'qf',
+      config = function()
+        require('packer.config.my-nvim-bqf').config()
+      end,
+      setup = function()
+        require('packer.config.my-nvim-bqf').setup()
+      end,
       requires = {
         {
           'junegunn/fzf',
