@@ -6,16 +6,16 @@ M.config = function()
   local sources = {}
   for _, tool in ipairs(tools) do
     for k, fn in ipairs(tool.setup) do
-      local fn_name = 'require("null-ls").builtins.' .. fn .. '.' .. tool.name
-      if tool.configuration then
-        fn_name = fn_name .. '.with(' .. vim.inspect(tool.configuration) .. ')'
+      local fn_name = 'require("null-ls").builtins.' .. fn.source .. '.' .. tool.name
+      if fn.config then
+        fn_name = fn_name .. '.with(' .. vim.inspect(fn.config) .. ')'
       end
       table.insert(sources, k, load('return ' .. fn_name)())
     end
   end
 
   require('null-ls').setup({
-    sources = sources,
+    sources   = sources,
     on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach,
   })
 end

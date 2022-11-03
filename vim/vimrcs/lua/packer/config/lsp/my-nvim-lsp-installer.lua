@@ -36,22 +36,38 @@ local lsp_servers = {
   }
 }
 
----@alias setup.Function 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
----@type { name: string, setup: setup.Function[], configuration?: table }[]
+---@class setup.Configuration
+---@field source setup.Source
+---@field config ?table
+
+---@alias setup.Source 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
+---@type { name: string, setup: setup.Configuration[] }[]
 M.tools = {
   {
     name = 'textlint',
-    setup = { 'diagnostics', 'formatting' },
-    configuration = {
-      filetypes = { 'markdown', 'text' }
-    }
+    setup = {
+      {
+        source = 'diagnostics',
+        config = {
+          filetypes = { 'markdown', 'text' },
+          extra_args = { '-c', vim.fn.expand('~/dotfiles/.textlintrc.json') },
+          method = require('null-ls').methods.DIAGNOSTICS_ON_SAVE,
+        }
+      },
+      {
+        source = 'formatting',
+        config = {
+          filetypes = { 'markdown', 'text' }
+        },
+      },
+    },
   },
   {
     name = 'shellcheck',
-    setup = { 'code_actions', 'diagnostics' },
-    configuration = {
-      filetypes = { 'sh' }
-    }
+    setup = {
+      { source = 'code_actions', config = { filetypes = { 'sh' } } },
+      { source = 'diagnostics', config = { filetypes = { 'sh' } } }
+    },
   },
 }
 
