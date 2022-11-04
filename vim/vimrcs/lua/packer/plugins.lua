@@ -141,11 +141,14 @@ M.startup = function()
     ------------------------------- fuzzy finder -------------------------------
 
     use {
-      'liuchengxu/vim-clap',
-      run = ':call clap#installer#download_binary()',
-      setup = require('packer.config.clap').setup(),
+      'nvim-telescope/telescope.nvim',
+      branch = '0.1.x',
+      setup = utils.call_safe(require('packer.config.my-telescope').setup),
+      config = utils.call_safe(require('packer.config.my-telescope').config),
       requires = {
-        { 'kyazdani42/nvim-web-devicons' },
+        'nvim-lua/plenary.nvim',
+        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        'kyazdani42/nvim-web-devicons',
       }
     }
 
