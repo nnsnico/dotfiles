@@ -14,6 +14,22 @@ end
 M.setup = function()
   local fn = vim.fn
 
+  ---@param str string type of quickfix
+  ---@return string 'diagnostic sign icon'
+  local function diagnostic_type(str)
+    if str == 'E' then
+      return '\u{F1E2}'
+    elseif str == 'W' then
+      return '\u{F071}'
+    elseif str == 'I' then
+      return '\u{F05A}'
+    elseif str == 'N' then
+      return '\u{FB4E}'
+    else
+      return ''
+    end
+  end
+
   function _G.qftf(info)
     local items
     local ret = {}
@@ -54,7 +70,7 @@ M.setup = function()
         end
         local lnum = e.lnum > 99999 and -1 or e.lnum
         local col = e.col > 999 and -1 or e.col
-        local qtype = e.type == '' and '' or ' ' .. e.type:sub(1, 1):upper()
+        local qtype = e.type == '' and '' or ' ' .. diagnostic_type(e.type:sub(1, 1):upper())
         str = validFmt:format(fname, lnum, col, qtype, e.text)
       else
         str = e.text
