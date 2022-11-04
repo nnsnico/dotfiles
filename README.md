@@ -1,6 +1,6 @@
 # my dotfiles
 
-![screenshot](snapshots/screenshot.png)
+![screenshot](snapshots/screenshot.jpeg)
 
 ## Description of directory
 
