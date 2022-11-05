@@ -27,15 +27,17 @@ local file_name = {
     if self.lfilename == "" then self.lfilename = "[No Name]" end
   end,
   hl = { fg = 'filename_fg' },
-  utils.make_flexible_component(2, {
+  flexible = 2,
+  {
     provider = function(self)
       return self.lfilename
     end
-  }, {
+  },
+  {
     provider = function(self)
       return vim.fn.fnamemodify(self.lfilename, ':t')
-    end
-  })
+    end,
+  }
 }
 
 local modifier_highlight = {
