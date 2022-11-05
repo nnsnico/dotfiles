@@ -57,12 +57,11 @@ zinit wait lucid for \
   "sorin-ionescu/prezto"
 
 zinit wait lucid for \
-  "peco/peco" \
   "zdharma-continuum/fast-syntax-highlighting"
 
 zinit wait lucid for \
     from"gh-r" \
-    as"program" \
+    sbin"fzf" \
   "junegunn/fzf"
 
 zinit wait lucid for \
@@ -82,9 +81,7 @@ zinit wait lucid for \
 
 zinit wait lucid for \
     from"gh-r" \
-    mv"ripgrep* -> ripgrep" \
-    as"program" \
-    pick"ripgrep/rg" \
+    sbin"**/rg -> rg" \
   "BurntSushi/ripgrep" \
     as"completion" \
     pick"ripgrep/complete/_rg" \
