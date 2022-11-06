@@ -1,6 +1,8 @@
 local ddc = {}
 
 ddc.config = function()
+  vim.o.shortmess = vim.o.shortmess .. "c"
+
   vim.fn['ddc#custom#patch_global']('ui', 'native')
   vim.fn['ddc#custom#patch_global']('sources', {'skkeleton'})
   vim.fn['ddc#custom#patch_global']('sourceOptions', {
