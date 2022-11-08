@@ -37,18 +37,18 @@ end
 ---@param target_bufname string
 ---@return {{winid: number, bufname: string}, ...} windows Currently windows that able to be jump
 function M.get_jumpable_windows(target_bufname)
-  local win_list = vim.fn.map(
-    vim.fn.range(1, vim.fn.winnr('$')),
-    function(_, v)
+  local win_list = vim.tbl_map(
+    function(v)
       return {
         winid = vim.fn.bufwinid(vim.fn.bufname(vim.fn.winbufnr(v))),
         bufname = vim.fn.bufname(vim.fn.winbufnr(v)),
       }
-    end
+    end,
+    vim.fn.range(1, vim.fn.winnr('$'))
   )
-  local jumpable_files = vim.fn.filter(
-    win_list,
-    function(_, v) return v.bufname == target_bufname end
+  local jumpable_files = vim.tbl_filter(
+    function(v) return v.bufname == target_bufname end,
+    win_list
   )
 
   return jumpable_files
