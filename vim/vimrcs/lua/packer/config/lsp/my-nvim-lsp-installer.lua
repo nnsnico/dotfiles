@@ -36,12 +36,13 @@ local lsp_servers = {
   }
 }
 
----@class setup.Configuration
----@field source setup.Source
+---@class NullLs.Configuration
+---@field source NullLs.Source
 ---@field config ?table
 
----@alias setup.Source 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
----@type { name: string, setup: setup.Configuration[] }[]
+---@alias NullLs.Source 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
+
+---@type { name: string, setup: NullLs.Configuration[] }[]
 M.tools = {
   {
     name = 'textlint',
@@ -57,7 +58,8 @@ M.tools = {
       {
         source = 'formatting',
         config = {
-          filetypes = { 'markdown', 'text' }
+          filetypes = { 'markdown', 'text' },
+          extra_args = { '-c', vim.fn.expand('~/dotfiles/.textlintrc.json') },
         },
       },
     },
