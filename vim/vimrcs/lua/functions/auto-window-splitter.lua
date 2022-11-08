@@ -35,7 +35,7 @@ function M.auto_split(filename)
 end
 
 ---@param target_bufname string
----@return {{winid: number, bufname: string}, ...} windows Currently windows that able to be jump
+---@return { winid: number, bufname: string }[] windows Currently windows that able to be jump
 function M.get_jumpable_windows(target_bufname)
   local win_list = vim.tbl_map(
     function(v)
