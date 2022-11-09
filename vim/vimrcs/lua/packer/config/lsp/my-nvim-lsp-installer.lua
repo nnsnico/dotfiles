@@ -77,7 +77,11 @@ M.config = function()
   local server_name = vim.fn.map(lsp_servers, function(_, server) return server.name end)
   local tool_name = vim.fn.map(M.tools, function(_, tool) return tool.name end)
 
-  require('mason').setup()
+  require('mason').setup({
+    ui = {
+      border = 'rounded'
+    }
+  })
 
   -- for language server
   require('mason-lspconfig').setup({

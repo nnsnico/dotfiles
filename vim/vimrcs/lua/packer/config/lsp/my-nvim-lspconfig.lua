@@ -19,17 +19,7 @@ M.on_attach = function(client, bufnr)
 
   -- Add border in hover
 
-  local border = {
-    { "╭", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
-    { "│", "FloatBorder" },
-  }
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 
   -- Change default LSP handling to open split automatically
 
