@@ -1,3 +1,4 @@
+local utils = require('heirline.utils')
 local navic = require('nvim-navic')
 
 ---@param separator string?
@@ -104,4 +105,12 @@ local CodeContext = function(separator)
   }
 end
 
-return CodeContext
+---@param separator string separator
+---@return table component
+return function(separator)
+  return utils.insert(
+    { provider = '%<' },
+    CodeContext(separator),
+    { provider = '%<' }
+  )
+end
