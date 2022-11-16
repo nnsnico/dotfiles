@@ -40,6 +40,23 @@ local file_name = {
   }
 }
 
+local FileFlags = {
+  {
+    condition = function()
+      return vim.bo.modified
+    end,
+    provider = "[+]",
+    hl = { fg = "file_flags_changed" },
+  },
+  {
+    condition = function()
+      return not vim.bo.modifiable or vim.bo.readonly
+    end,
+    provider = "\u{E0A2}",
+    hl = { fg = "file_flags_readonly" },
+  }
+}
+
 local modifier_highlight = {
   hl = function()
     if vim.bo.modified then
@@ -52,6 +69,7 @@ return utils.insert(base,
   { provider = " " },
   icon,
   utils.insert(modifier_highlight, file_name),
+  unpack(FileFlags),
   { provider = '%<' },
   { provider = " " }
 )

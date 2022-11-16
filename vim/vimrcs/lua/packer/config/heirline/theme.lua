@@ -84,6 +84,11 @@ local filetype = {
   bg = general.sky_blue,
 }
 
+local file_flags = {
+  changed = general.green,
+  readonly = general.yellow,
+}
+
 local fileencode = {
   fg = general.black,
   bg = general.cyan,
@@ -125,7 +130,7 @@ local winbar = {
 
 ------------------------------- extended pallet --------------------------------
 
-local colors = vim.tbl_extend('error',
+local my_theme = vim.tbl_extend('error',
   merge_theme('vimode', vimode),
   {
     vimode_normal      = vimode.normal,
@@ -145,6 +150,10 @@ local colors = vim.tbl_extend('error',
   },
   merge_theme('skk', skk),
   merge_theme('filetype', filetype),
+  {
+    file_flags_chaged = file_flags.changed,
+    file_flags_readonly = file_flags.readonly,
+  },
   merge_theme('fileencode', fileencode),
   merge_theme('linestatus', linestatus),
   merge_theme('filename', filename),
@@ -169,12 +178,12 @@ local colors = vim.tbl_extend('error',
 ------------------------------ initialize colors -------------------------------
 
 function M.init()
-  require('heirline').load_colors(colors)
+  require('heirline').load_colors(my_theme)
 
   vim.api.nvim_create_augroup('Heirline', { clear = true })
   vim.api.nvim_create_autocmd('ColorScheme', {
     callback = function()
-      utils.on_colorscheme(colors)
+      utils.on_colorscheme(my_theme)
     end,
     group = 'Heirline'
   })
