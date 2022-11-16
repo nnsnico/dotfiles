@@ -1,3 +1,5 @@
+---@see vim/vimrcs/syntax/qf.vim
+
 local M = {}
 
 M.config = function()
