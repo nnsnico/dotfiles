@@ -1,8 +1,3 @@
-" true color on terminal (support neovim only)
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
 " enable true colors
 if has('termguicolors')
   set termguicolors
