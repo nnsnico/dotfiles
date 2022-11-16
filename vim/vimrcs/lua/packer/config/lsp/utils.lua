@@ -89,13 +89,13 @@ end
 ---@return QfItem[] quickfix_list: Quickfix list
 function M.map_to_qflist_from_location(response)
   -- check type `Location` or `Location[]`
-  if response ~= nil and type(response[1]) == 'table' then
-    return vim.fn.map(
-      response,
+  if response and type(response[1]) == 'table' then
+    return vim.tbl_map(
       ---@param v Response
-      function(_, v)
+      function(v)
         return create_qfitem(v)
-      end
+      end,
+      response
     )
   else
     return {
@@ -110,7 +110,8 @@ function M.handle_qflist(qflist)
     if qflist[1].filename == utils.get_current_filename() then
       auto_window_splitter.move_cursor(0, qflist[1].lnum, qflist[1].col)
     else
-      local jumpable_windows = auto_window_splitter.get_jumpable_windows(qflist[1].filename)
+      local full_path = vim.fn.fnamemodify(qflist[1].filename, ':p')
+      local jumpable_windows = auto_window_splitter.get_jumpable_windows(full_path)
       if not vim.tbl_isempty(jumpable_windows) then
         for _, v in pairs(jumpable_windows) do
           vim.fn.win_gotoid(v.winid)

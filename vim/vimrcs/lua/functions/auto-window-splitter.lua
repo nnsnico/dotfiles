@@ -34,19 +34,26 @@ function M.auto_split(filename)
   vim.fn.execute(splitter)
 end
 
+---@class AutoWinSplit.Windows
+---@field winid integer
+---@field bufname string
+
 ---@param target_bufname string
----@return { winid: number, bufname: string }[] windows Currently windows that able to be jump
+---@return AutoWinSplit.Windows[] windows Currently windows that able to be jump
 function M.get_jumpable_windows(target_bufname)
+  ---@type AutoWinSplit.Windows[]
   local win_list = vim.tbl_map(
+    ---@param v integer
     function(v)
       return {
         winid = vim.fn.bufwinid(vim.fn.bufname(vim.fn.winbufnr(v))),
-        bufname = vim.fn.bufname(vim.fn.winbufnr(v)),
+        bufname = vim.fn.fnamemodify(vim.fn.bufname(vim.fn.winbufnr(v)), ':p'),
       }
     end,
     vim.fn.range(1, vim.fn.winnr('$'))
   )
   local jumpable_files = vim.tbl_filter(
+    ---@param v AutoWinSplit.Windows
     function(v) return v.bufname == target_bufname end,
     win_list
   )
