@@ -81,36 +81,28 @@ zinit wait lucid for \
 
 zinit wait lucid for \
     from"gh-r" \
+    as"program" \
     sbin"**/rg -> rg" \
-  "BurntSushi/ripgrep" \
-    as"completion" \
-    pick"ripgrep/complete/_rg" \
-    atload"zicompinit; zicdreplay" \
   "BurntSushi/ripgrep"
 
 zinit wait lucid for \
     from"gh-r" \
+    as"completion" \
+    pick"**/complete/_rg" \
+  "BurntSushi/ripgrep"
+
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
     sbin"**/zoxide -> zoxide" \
-    atpull"rm ~/.zcompdump*; compinit" \
-    atload'eval "$(zoxide init zsh --cmd cd)"' \
-  "ajeetdsouza/zoxide" \
+    atload'eval "$(zoxide init zsh --cmd cd)"; zicompinit; zicdreplay' \
+  "ajeetdsouza/zoxide"
 
 zinit wait lucid for \
     from"gh-r" \
     sbin"**/exa -> exa" \
   "ogham/exa"
 
-# use completion for `git switch`
-zinit wait silent lucid for \
-    atclone"zstyle ':completion:*:*:git:*' script git-completion.bash" \
-    atpull"%atclone" \
-  "https://github.com/git/git/blob/master/contrib/completion/git-completion.bash"
-
-zinit wait lucid for \
-    as"completion" \
-    atload"zicompinit; zicdreplay" \
-    mv"git-completion.zsh -> _git" \
-  "https://github.com/git/git/blob/master/contrib/completion/git-completion.zsh"
 
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
