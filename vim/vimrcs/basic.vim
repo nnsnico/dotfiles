@@ -135,6 +135,14 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" move to the first/end of the line
+nnoremap gh ^
+nnoremap gH 0
+nnoremap gl $
+nnoremap gL g$
+
+nnoremap gp %
+
 nnoremap ZZ :<C-u>q<CR>
 nnoremap ZA :<C-u>qa<CR>
 nnoremap ZW :<C-U>wq<CR>
