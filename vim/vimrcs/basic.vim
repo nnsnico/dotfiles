@@ -137,9 +137,20 @@ vnoremap k gk
 
 " move to the first/end of the line
 nnoremap gh ^
+onoremap gh ^
+xnoremap gh ^
+
 nnoremap gH 0
+onoremap gH 0
+xnoremap gH 0
+
 nnoremap gl $
+onoremap gl $
+xnoremap gl $
+
 nnoremap gL g$
+onoremap gL g$
+xnoremap gL g$
 
 nnoremap gp %
 
