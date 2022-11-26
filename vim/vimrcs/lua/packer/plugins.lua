@@ -197,18 +197,17 @@ M.startup = function()
       setup = require('packer.config.skkeleton').setup(),
       requires = {
         { "vim-denops/denops.vim" }
-      }
+      },
     }
+
     use {
-      'Shougo/ddc.vim',
-      config = require('packer.config.ddc').config(),
-      requires = {
-        { "vim-denops/denops.vim" },
-        { "Shougo/ddc-matcher_head" },
-        { "Shougo/ddc-sorter_rank" },
-        { "Shougo/ddc-ui-native" },
+      'uga-rosa/cmp-skkeleton',
+      after = {
+        'nvim-cmp',
+        'skkeleton',
       }
     }
+
     use {
       'AndrewRadev/tagalong.vim',
       ft = { 'html', 'javascriptreact', 'jsx', 'php', 'typescriptreact', 'xml', 'markdown' },

@@ -8,7 +8,6 @@ skkeleton.setup = function()
     vim.fn['skkeleton#config']({
       eggLikeNewline        = true,
       globalJisyo           = vim.fn.expand('~/dotfiles/dict/SKK-JISYO'),
-      registerConvertResult = true,
       markerHenkan          = '\u{F7BE} ',
       markerHenkanSelect    = '\u{F7BE} ',
     })
@@ -20,20 +19,6 @@ skkeleton.setup = function()
   vim.api.nvim_create_autocmd('User', {
     pattern = 'skkeleton-initialize-pre',
     callback = skkeleton_init,
-  })
-
-  -- Toggle use of skkeleton (with ddc) and nvim-cmp
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'skkeleton-enable-pre',
-    callback = function()
-      require('cmp').setup.buffer({ enabled = function() return false end })
-    end,
-  })
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'skkeleton-disable-pre',
-    callback = function()
-      require('cmp').setup.buffer({ enabled = function() return true end })
-    end
   })
 end
 

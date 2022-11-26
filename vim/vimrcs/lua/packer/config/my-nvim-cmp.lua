@@ -44,11 +44,13 @@ M.config = function()
           fallback()
         end
       end, { "i", "s" }),
-      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-Space>'] = cmp.mapping.complete({}),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
+      { name = 'skkeleton' },
+    }, {
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
       { name = 'path' },
