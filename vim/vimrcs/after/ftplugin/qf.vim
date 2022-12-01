@@ -2,14 +2,18 @@ function! s:auto_jump() abort
 lua <<EOF
   local auto_window_splitter = require('functions.auto-window-splitter')
 
-  local current_qf_item = vim.fn.getloclist(0)[vim.fn.line('.')]
+  local current_qf_item, close_fn = vim.fn.getloclist(0)[vim.fn.line('.')], 'lclose'
+  if not current_qf_item then
+    current_qf_item, close_fn = vim.fn.getqflist()[vim.fn.line('.')], 'cclose'
+  end
+
   local current_bufnr = current_qf_item.bufnr
 
   local current_buf_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(current_bufnr), ':p')
   local current_buf_lnum = current_qf_item.lnum
   local current_buf_col  = current_qf_item.col
 
-  vim.cmd('lclose')
+  vim.cmd(close_fn)
 
   auto_window_splitter.auto_jump(
     current_buf_name,
