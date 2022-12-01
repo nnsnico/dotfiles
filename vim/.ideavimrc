@@ -1,57 +1,11 @@
 " ------------------------------ general options ------------------------------
 
-"""""""""
-" BASIC "
-"""""""""
-
-" Not distinction uppercase and lowercase when search
-set ignorecase
-set smartcase
-
-" incremental search
-set incsearch
-
-" Show highlight when search
-set hlsearch
-
-" Jump match pane
-set showmatch matchtime=1
-
-" Show command message on 2 line
-set cmdheight=2
-
-" Show status line
-set laststatus=2
-
-" Show input command
-set showcmd
-
-" Not omit line
-set display=lastline
-
-" Visualize tab and trail
-set listchars=tab:^\ ,trail:~
-
-" Copying clipboard by Yank
-set clipboard+=unnamed
-
-" Show match pane
-set showmatch
-
-" Move line overwrite
-set whichwrap=b,s,h,l,<,>,[,],~
+source ~/dotfiles/vim/vimrcs/basic.vim
+source ~/dotfiles/vim/vimrcs/search.vim
+source ~/dotfiles/vim/vimrcs/visual.vim
 
 " Change how to indent
 set cinoptions+=:0
-
-" Indent width
-set shiftwidth=2
-
-" Specify char width when press Tab key
-set softtabstop=2
-
-" Move one more char from line end
-set virtualedit=onemore
 
 " disable beep
 set visualbell
@@ -60,37 +14,8 @@ set noerrorbells
 " Set powerfull code joiner
 set ideajoin
 
-"""""""""""
-" PLUGINS "
-"""""""""""
-
-set NERDTree
-" TODO: Projectツリーにフォーカス中はToggle出来ないのでそれが実装されたら
-" map <C-t> <Action>(NERDTreeToggle)
-
-" Apply `Surround Vim`
-set surround
-
-" Apply `Multiple Cursor`
-set multiple-cursors
-
-" Apply `Commentary`
-set commentary
-
-" Apply highlighted yank
-set highlightedyank
-
-" Apply Easy-Motion
-set easymotion
-map <Leader> <Plug>(easymotion-prefix)
-
 " ---------------------------------- Keymaps ----------------------------------
 
-" Erase search highlight by Esc + Esc Esc
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-
-" Enter + Spaceで空行追加
-nmap <Space><CR> o<ESC>
 " Copy in clipboard by yank
 map "+y "*y
 map "+Y "*Y
@@ -134,3 +59,25 @@ nmap <Space>S <Action>(ShowProjectStructureSettings)
 
 map <Leader>S <Action>(Android.SyncProject)
 map <Space>v <Action>(ActivateBuildVariantsToolWindow)
+
+" ---------------------------------- Plugins -----------------------------------
+
+set NERDTree
+" TODO: Projectツリーにフォーカス中はToggle出来ないのでそれが実装されたら
+" map <C-t> <Action>(NERDTreeToggle)
+
+" Apply `Surround Vim`
+set surround
+
+" Apply `Multiple Cursor`
+set multiple-cursors
+
+" Apply `Commentary`
+set commentary
+
+" Apply highlighted yank
+set highlightedyank
+
+" Apply Easy-Motion
+set easymotion
+map <Leader> <Plug>(easymotion-prefix)
