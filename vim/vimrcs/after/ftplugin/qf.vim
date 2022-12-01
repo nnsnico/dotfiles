@@ -19,7 +19,7 @@ lua <<EOF
 EOF
 endfunction
 
-nnoremap <Plug>QfAutoJump :<C-u>call <SID>auto_jump()<CR>
+nnoremap <silent><Plug>QfAutoJump :<C-u>call <SID>auto_jump()<CR>
 
 map <buffer> o    <Plug>QfAutoJump
 map <buffer> <CR> <Plug>QfAutoJump
