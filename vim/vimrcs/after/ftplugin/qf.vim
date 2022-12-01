@@ -1,25 +1,21 @@
 function! s:auto_jump() abort
-  let s:current_qf_item = getqflist()[line('.') - 1]
-  let s:current_bufnr = s:current_qf_item.bufnr
-
-  let g:current_buf_name = fnamemodify(bufname(s:current_bufnr), ':p')
-  let g:current_buf_lnum = s:current_qf_item.lnum
-  let g:current_buf_col = s:current_qf_item.col
-
-  execute('cclose')
-
 lua <<EOF
   local auto_window_splitter = require('functions.auto-window-splitter')
 
-  auto_window_splitter.auto_jump(
-    vim.g.current_buf_name,
-    vim.g.current_buf_lnum,
-    vim.g.current_buf_col
-  )
+  local current_qf_item = vim.fn.getloclist(0)[vim.fn.line('.')]
+  local current_bufnr = current_qf_item.bufnr
 
-  vim.api.nvim_del_var('current_buf_name')
-  vim.api.nvim_del_var('current_buf_lnum')
-  vim.api.nvim_del_var('current_buf_col')
+  local current_buf_name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(current_bufnr), ':p')
+  local current_buf_lnum = current_qf_item.lnum
+  local current_buf_col  = current_qf_item.col
+
+  vim.cmd('lclose')
+
+  auto_window_splitter.auto_jump(
+    current_buf_name,
+    current_buf_lnum,
+    current_buf_col
+  )
 EOF
 endfunction
 

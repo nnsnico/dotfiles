@@ -114,8 +114,8 @@ function M.handle_qflist(qflist)
       auto_window_splitter.auto_jump(full_path, qflist[1].lnum, qflist[1].col)
     end
   else
-    vim.fn.setqflist(qflist)
-    vim.cmd('copen')
+    vim.fn.setloclist(0, qflist)
+    vim.cmd('lopen')
   end
 end
 
