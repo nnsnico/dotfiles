@@ -1,10 +1,13 @@
-function! s:auto_jump() abort
-lua <<EOF
+local function auto_jump()
   local auto_window_splitter = require('functions.auto-window-splitter')
 
   local current_qf_item, close_fn = vim.fn.getloclist(0)[vim.fn.line('.')], 'lclose'
   if not current_qf_item then
     current_qf_item, close_fn = vim.fn.getqflist()[vim.fn.line('.')], 'cclose'
+  end
+  if not current_qf_item then
+    vim.cmd('close')
+    return
   end
 
   local current_bufnr = current_qf_item.bufnr
@@ -20,10 +23,8 @@ lua <<EOF
     current_buf_lnum,
     current_buf_col
   )
-EOF
-endfunction
+end
 
-nnoremap <silent><Plug>QfAutoJump :<C-u>call <SID>auto_jump()<CR>
-
-map <buffer> o    <Plug>QfAutoJump
-map <buffer> <CR> <Plug>QfAutoJump
+-- override `open` and `openc` command
+vim.keymap.set('n', 'o', auto_jump, { buffer = true, silent = true, noremap = true })
+vim.keymap.set('n', '<CR>', auto_jump, { buffer = true, silent = true, noremap = true })
