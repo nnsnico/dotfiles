@@ -70,14 +70,17 @@ M.startup = function()
 
     use {
       'hrsh7th/nvim-cmp',
-      config = require('packer.config.my-nvim-cmp').config(),
+      module = { 'cmp' },
       requires = {
-        'L3MON4D3/LuaSnip',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'f3fora/cmp-spell',
-        'hrsh7th/cmp-nvim-lsp',
-      }
+        { 'L3MON4D3/LuaSnip' },
+        { 'hrsh7th/cmp-buffer',   event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-path',     event = { 'InsertEnter' } },
+        { 'f3fora/cmp-spell',     event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-nvim-lsp', event = { 'InsertEnter' } },
+      },
+      config = function()
+        require('packer.config.my-nvim-cmp').config()
+      end,
     }
 
     use {
