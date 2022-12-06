@@ -97,6 +97,7 @@ M.startup = function()
 
     use {
       'akinsho/flutter-tools.nvim',
+      ft = 'dart',
       config = function()
         local on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
         require('flutter-tools').setup({
@@ -119,6 +120,7 @@ M.startup = function()
 
     use {
       'scalameta/nvim-metals',
+      ft = { 'scala', 'sbt' },
       config = function()
         local metals_config = require('metals').bare_config()
 
@@ -168,10 +170,21 @@ M.startup = function()
 
     use {
       'kyazdani42/nvim-tree.lua',
-      setup = require('packer.config.my-nvim-tree').setup(),
-      config = require('packer.config.my-nvim-tree').config(),
+      cmd = {
+        'NvimTreeOpen',
+        'NvimTreeToggle',
+        'NvimTreeFindFile',
+        'NvimTreeRefresh',
+      },
+      opt = true,
+      setup = function()
+        require('packer.config.my-nvim-tree').setup()
+      end,
+      config = function()
+        require('packer.config.my-nvim-tree').config()
+      end,
       requires = {
-        { 'kyazdani42/nvim-web-devicons' },
+        { 'kyazdani42/nvim-web-devicons', opt = true },
       }
     }
 
@@ -179,6 +192,7 @@ M.startup = function()
 
     use {
       'windwp/nvim-autopairs',
+      event = { 'InsertEnter' },
       config = function()
         require('nvim-autopairs').setup()
       end,
@@ -198,12 +212,25 @@ M.startup = function()
     use {
       'phaazon/hop.nvim',
       tag = 'v2',
+      keys = { { 'n', '<Leader>s' } },
       config = function()
         require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
         vim.keymap.set('n', '<Leader>s', require('hop').hint_char1, {})
       end,
     }
-    use 'psliwka/vim-smoothie'
+
+    use {
+      'karb94/neoscroll.nvim',
+      event = { 'BufReadPost' },
+      opt = true,
+      config = function()
+        require('neoscroll').setup({
+          mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zz' },
+          easing_function = 'circular'
+        })
+      end
+    }
+
     use {
       'vim-skk/skkeleton',
       setup = require('packer.config.skkeleton').setup(),
@@ -241,13 +268,9 @@ M.startup = function()
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
+      event = { 'BufReadPost' },
+      opt = true,
       config = function()
-        -- Get the gray without gui attribute from the Comment highlight group.
-        vim.api.nvim_set_hl(0, 'IndentBlanklineChar', { link = 'Comment' })
-        vim.api.nvim_set_hl(0, 'IndentBlanklineChar', {
-          bg = 'NONE',
-          ctermbg = 'NONE',
-        })
         vim.g.indent_blankline_char_list = { '|', '¦' }
         vim.g.indent_blankline_use_treesitter = true
 
@@ -260,7 +283,11 @@ M.startup = function()
     }
     use {
       'gelguy/wilder.nvim',
-      config = require('packer.config.my-wilder').config(),
+      opt = true,
+      event = 'CmdlineEnter',
+      config = function()
+        require('packer.config.my-wilder').config()
+      end,
       requires = { 'romgrk/fzy-lua-native', 'kyazdani42/nvim-web-devicons' },
       rocks = { 'pcre2' },
     }
@@ -291,12 +318,19 @@ M.startup = function()
 
     ----------------------------------- VCS -----------------------------------
 
-    use 'tpope/vim-fugitive'
+    use {
+      'tpope/vim-fugitive',
+      opt = true,
+      cmd = { 'Git', 'G' },
+    }
 
     use {
       'lewis6991/gitsigns.nvim',
+      event = { 'FocusLost', 'CursorHold' },
       tag = 'release',
-      config = require('packer.config.my-gitsigns').config()
+      config = function()
+        require('packer.config.my-gitsigns').config()
+      end,
     }
     use {
       'APZelos/blamer.nvim',
@@ -328,6 +362,8 @@ M.startup = function()
     use 'editorconfig/editorconfig-vim'
     use {
       'voldikss/vim-translator',
+      keys = { { 'n', '<Plug>Translate' }, { 'v', '<Plug>Translate' } },
+      cmd = { 'Translate' },
       setup = function()
         vim.g.translator_target_lang = 'ja'
         vim.g.translator_source_lang = 'en'
@@ -381,12 +417,35 @@ M.startup = function()
 
     ----------------------------- syntax highlight -----------------------------
 
-    use { 'rust-lang/rust.vim', ft = 'rust', setup = function() vim.g.rustfmt_autosave = 1 end }
-    use { 'neoclide/jsonc.vim', ft = 'jsonc' }
-    use { 'HerringtonDarkholme/yats.vim', ft = { 'typescript', 'typescriptreact' } }
-    use { 'ollykel/v-vim', ft = 'vlang', setup = function() vim.g.v_autofmt_bufwritepre = 1 end }
+    use {
+      'rust-lang/rust.vim',
+      opt = true,
+      ft = 'rust',
+      setup = function() vim.g.rustfmt_autosave = 1 end
+    }
+
+    use {
+      'neoclide/jsonc.vim',
+      opt = true,
+      ft = 'jsonc',
+    }
+
+    use {
+      'HerringtonDarkholme/yats.vim',
+      opt = true,
+      ft = { 'typescript', 'typescriptreact' },
+    }
+
+    use {
+      'ollykel/v-vim',
+      opt = true,
+      ft = 'vlang',
+      setup = function() vim.g.v_autofmt_bufwritepre = 0 end,
+    }
+
     use {
       'plasticboy/vim-markdown',
+      opt = true,
       ft = 'markdown',
       setup = function()
         vim.g.vim_markdown_no_default_key_mappings = 1
@@ -395,8 +454,10 @@ M.startup = function()
         vim.g.vim_markdown_conceal_code_blocks     = 0
       end
     }
+
     use {
       'godlygeek/tabular',
+      opt = true,
       ft = { 'markdown' },
       setup = function()
         vim.keymap.set('n', '<Space>@', ':TableFormat<CR>', { noremap = true, silent = true })
