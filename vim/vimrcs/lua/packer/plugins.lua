@@ -75,11 +75,13 @@ M.startup = function()
       module = { 'cmp' },
       requires = {
         { 'L3MON4D3/LuaSnip' },
-        { 'hrsh7th/cmp-buffer',   event = { 'InsertEnter' } },
-        { 'hrsh7th/cmp-path',     event = { 'InsertEnter' } },
-        { 'f3fora/cmp-spell',     event = { 'InsertEnter' } },
-        { 'hrsh7th/cmp-nvim-lsp', event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-buffer',     event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-path',       event = { 'InsertEnter' } },
+        { 'f3fora/cmp-spell',       event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-nvim-lsp',   event = { 'InsertEnter' } },
+        { 'uga-rosa/cmp-skkeleton', event = { 'InsertEnter' }, wants = { 'skkeleton' } }
       },
+      wants = { 'nvim-autopairs' },
       config = function()
         require('packer.config.my-nvim-cmp').config()
       end,
