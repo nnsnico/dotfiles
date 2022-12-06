@@ -30,6 +30,8 @@ M.startup = function()
     use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
+      event = 'BufReadPost',
+      opt = true,
       config = function()
         require('nvim-treesitter.configs').setup {
           ensure_installed = { "lua", "json", "dart" },
@@ -49,8 +51,8 @@ M.startup = function()
         }
       end,
       requires = {
-        'p00f/nvim-ts-rainbow',
-        'nvim-treesitter/nvim-treesitter-context',
+        { 'p00f/nvim-ts-rainbow', opt = true, wants = 'nvim-treesitter' },
+        { 'nvim-treesitter/nvim-treesitter-context', opt = true, wants = 'nvim-treesitter' },
       }
     }
 
