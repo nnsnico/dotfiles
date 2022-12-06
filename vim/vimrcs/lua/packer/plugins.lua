@@ -198,7 +198,17 @@ M.startup = function()
       end,
     }
 
-    use 'tpope/vim-commentary'
+    use {
+      'tpope/vim-commentary',
+      keys = {
+        { 'n', 'gc' },
+        { 'n', 'gcc' },
+        { 'n', 'gcu' },
+        { 'x', 'gc' },
+        { 'o', 'gc' },
+      }
+    }
+
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'mg979/vim-visual-multi'
@@ -326,13 +336,16 @@ M.startup = function()
     }
     use {
       'APZelos/blamer.nvim',
+      cmd = 'BlamerToggle',
       setup = function()
+        vim.g.blamer_date_format = '%Y/%m/%d %H:%M'
         vim.g.blamer_delay = 100
         vim.keymap.set('n', '<Space>b', ':<C-u>BlamerToggle<CR>', { noremap = true, silent = true })
       end,
     }
     use {
       'rhysd/git-messenger.vim',
+      keys = { '<Plug>(git-messenger)' },
       setup = function()
         vim.keymap.set('n', '<Leader>b', '<Plug>(git-messenger)', { silent = true })
       end
@@ -342,6 +355,8 @@ M.startup = function()
 
     use {
       'tyru/open-browser.vim',
+      keys = { '<Plug>(openbrowser-open)' },
+      cmd = { 'OpenBrowser*' },
       setup = function()
         vim.keymap.set('v', '<Leader>o', '<Plug>(openbrowser-open)')
       end,
@@ -355,7 +370,7 @@ M.startup = function()
     use {
       'voldikss/vim-translator',
       keys = { { 'n', '<Plug>Translate' }, { 'v', '<Plug>Translate' } },
-      cmd = { 'Translate' },
+      cmd = { 'Translate*' },
       setup = function()
         vim.g.translator_target_lang = 'ja'
         vim.g.translator_source_lang = 'en'
