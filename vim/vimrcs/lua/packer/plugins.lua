@@ -240,14 +240,6 @@ M.startup = function()
     }
 
     use {
-      'uga-rosa/cmp-skkeleton',
-      after = {
-        'nvim-cmp',
-        'skkeleton',
-      }
-    }
-
-    use {
       'AndrewRadev/tagalong.vim',
       ft = { 'html', 'javascriptreact', 'jsx', 'php', 'typescriptreact', 'xml', 'markdown' },
       setup = function()
