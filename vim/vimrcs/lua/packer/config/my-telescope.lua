@@ -1,21 +1,30 @@
 local M = {}
 
-local telescope = require('telescope')
-local actions = require('telescope.actions')
-local config = require('telescope.config')
-
 M.setup = function()
-  vim.keymap.set('n', 'zf',         ':<C-u>Telescope find_files<CR>',                { noremap = true })
-  vim.keymap.set('n', 'zb',         ':<C-u>Telescope buffers<CR>',                   { noremap = true })
-  vim.keymap.set('n', 'zl',         ':<C-u>Telescope current_buffer_fuzzy_find<CR>', { noremap = true })
-  vim.keymap.set('n', 'zg',         ':<C-u>Telescope git_status<CR>',                { noremap = true })
-  vim.keymap.set('n', 'zr',         ':<C-u>Telescope live_grep<CR>',                 { noremap = true })
-  vim.keymap.set('n', 'zc',         ':<C-u>Telescope colorscheme<CR>',               { noremap = true })
-  vim.keymap.set('n', '<Leader>zc', ':<C-u>Telescope commands<CR>',                  { noremap = true })
-  vim.keymap.set('n', 'zh',         ':<C-u>Telescope help_tags<CR>',                 { noremap = true })
+  ---@param name string
+  ---@param opt table?
+  ---@return function
+  local function builtin(name, opt)
+    return function()
+      require('telescope.builtin')[name](opt or {})
+    end
+  end
+
+  vim.keymap.set('n', 'zf',         builtin('find_files'),                {})
+  vim.keymap.set('n', 'zb',         builtin('buffers'),                   {})
+  vim.keymap.set('n', 'zl',         builtin('current_buffer_fuzzy_find'), {})
+  vim.keymap.set('n', 'zg',         builtin('git_status'),                {})
+  vim.keymap.set('n', 'zr',         builtin('live_grep'),                 {})
+  vim.keymap.set('n', 'zc',         builtin('colorscheme'),               {})
+  vim.keymap.set('n', '<Leader>zc', builtin('commands'),                  {})
+  vim.keymap.set('n', 'zh',         builtin('help_tags'),                 {})
 end
 
 M.config = function()
+  local telescope = require('telescope')
+  local actions = require('telescope.actions')
+  local config = require('telescope.config')
+
   local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
   table.insert(vimgrep_arguments, '--hidden')
   table.insert(vimgrep_arguments, '--glob')
