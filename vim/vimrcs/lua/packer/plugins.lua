@@ -47,13 +47,69 @@ M.startup = function()
           },
           indent = {
             enable = true,
+          },
+          textobjects = {
+            select = {
+              enable    = true,
+              lockahead = true,
+              keymaps   = {
+                ['af']  = '@function.outer',
+                ['if']  = '@function.inner',
+                ['ac']  = '@class.outer',
+                ['ic']  = '@class.inner',
+              },
+            },
+            move = {
+              enable = true,
+              set_jumps = true,
+              goto_next_start = {
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer",
+              },
+              goto_next_end = {
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer",
+              },
+              goto_previous_start = {
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer",
+              },
+              goto_previous_end = {
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer",
+              },
+            }
           }
         }
       end,
       requires = {
-        { 'p00f/nvim-ts-rainbow', opt = true, wants = 'nvim-treesitter' },
-        { 'nvim-treesitter/nvim-treesitter-context', opt = true, wants = 'nvim-treesitter' },
+        'p00f/nvim-ts-rainbow',
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects',
       }
+    }
+
+    use {
+      'p00f/nvim-ts-rainbow',
+      opt = true,
+      after = 'nvim-treesitter'
+    }
+
+    use {
+      'nvim-treesitter/nvim-treesitter-context',
+      opt = true,
+      config = function()
+        require('treesitter-context').setup({
+          enable = true
+        })
+      end,
+      after = 'nvim-treesitter'
+    }
+
+    use {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      opt = true,
+      after = 'nvim-treesitter',
     }
 
     -------------------------------- LSP/Linter --------------------------------
