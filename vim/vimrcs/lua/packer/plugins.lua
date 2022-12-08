@@ -123,7 +123,8 @@ M.startup = function()
         'neovim/nvim-lspconfig',
         'ii14/emmylua-nvim',
         'SmiteshP/nvim-navic',
-      }
+        'hrsh7th/cmp-nvim-lsp',
+      },
     }
 
     use {
