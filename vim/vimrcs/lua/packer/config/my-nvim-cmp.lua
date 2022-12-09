@@ -46,7 +46,15 @@ M.config = function()
       end, { "i", "s" }),
       ['<C-Space>'] = cmp.mapping.complete({}),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping(function(callback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        elseif vim.fn["skkeleton#mode"]() ~= "" then
+          vim.fn["skkeleton#handle"]("handleKey", { key = "<CR>", ["function"] = "newline" })
+        else
+          callback()
+        end
+      end, { "i" }),
     }),
     sources = cmp.config.sources({
       { name = 'skkeleton' },

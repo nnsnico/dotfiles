@@ -20,6 +20,14 @@ skkeleton.setup = function()
     pattern = 'skkeleton-initialize-pre',
     callback = skkeleton_init,
   })
+
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'skkeleton-enable-post',
+    callback = function()
+      vim.keymap.del('l', '<CR>', { buffer = true })
+    end,
+  })
+
 end
 
 return skkeleton
