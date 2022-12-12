@@ -135,6 +135,7 @@ M.startup = function()
         { 'hrsh7th/cmp-buffer',     event = { 'InsertEnter' } },
         { 'hrsh7th/cmp-path',       event = { 'InsertEnter' } },
         { 'f3fora/cmp-spell',       event = { 'InsertEnter' } },
+        { 'hrsh7th/cmp-emoji',      event = { 'InsertEnter' } },
         { 'hrsh7th/cmp-nvim-lsp',   event = { 'InsertEnter' } },
         { 'uga-rosa/cmp-skkeleton', event = { 'InsertEnter' }, wants = { 'skkeleton' } }
       },

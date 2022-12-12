@@ -64,6 +64,7 @@ M.config = function()
       { name = 'path' },
     }, {
       { name = 'buffer' },
+      { name = 'emoji' },
       { name = 'spell' },
     }),
   }
