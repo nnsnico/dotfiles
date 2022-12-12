@@ -153,6 +153,17 @@ M.startup = function()
     }
 
     use {
+      'stevearc/aerial.nvim',
+      cmd = 'AerialToggle',
+      setup = function()
+        vim.keymap.set('n', '<Space>s', '<cmd>AerialToggle!<CR>', {})
+      end,
+      config = function()
+        require('aerial').setup()
+      end
+    }
+
+    use {
       'akinsho/flutter-tools.nvim',
       ft = 'dart',
       config = function()
