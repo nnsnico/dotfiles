@@ -37,7 +37,7 @@ function! s:join_line_without_spaces() abort
 endfunction
 
 function! s:is_ignore_filetype() abort
-    let ignore_list = ["mason", "fzf", "minimap", "TelescopePrompt", ""]
+    let ignore_list = ["mason", "fzf", "minimap", "TelescopePrompt", "aerial", ""]
     if index(ignore_list, &filetype) >= 0
         return 1
     else
