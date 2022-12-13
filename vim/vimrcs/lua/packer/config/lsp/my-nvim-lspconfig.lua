@@ -56,7 +56,6 @@ M.on_attach = function(client, bufnr)
 
   vim.keymap.set('n', '[e',         vim.diagnostic.goto_prev,                            opts)
   vim.keymap.set('n', ']e',         vim.diagnostic.goto_next,                            opts)
-  vim.keymap.set('n', '<Space>a',   vim.diagnostic.setloclist,                           opts)
   vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,                              opts)
   vim.keymap.set('n', 'gy',         vim.lsp.buf.type_definition,                         opts)
   vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,                          opts)
@@ -65,6 +64,14 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K',          vim.lsp.buf.hover,                                   opts)
   vim.keymap.set('n', '<Space>f',   function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<Space>q',   vim.lsp.buf.code_action,                             opts)
+  vim.keymap.set('n', '<Space>a', function()
+    vim.diagnostic.setloclist({ open = false })
+    if not vim.tbl_isempty(vim.fn.getloclist(0)) then
+      vim.cmd('lopen')
+    else
+      vim.notify('No diagnostics')
+    end
+  end, opts)
 
   -- auto commands
 
