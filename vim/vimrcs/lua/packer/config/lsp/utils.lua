@@ -27,33 +27,23 @@ local auto_window_splitter = require('functions.auto-window-splitter')
 ---@field type string
 ---@field valid number
 
----@alias Response (lsp.Location | lsp.Location[] | lsp.LocationLink)?
+---@alias Response (lsp.Location | lsp.Location[] | lsp.LocationLink[])?
 
----@param value Response
+---@param value lsp.Location
 ---@return QfItem quickfix_item quickfix item
-local function create_qfitem(value)
-  ---@param resp Response
+local function qfitem_from_location(value)
+  ---@param resp lsp.Location
   ---@return string file name in project path
   local function decode_filename(resp)
-    if resp then
-      local fname = resp.uri ~= nil and vim.uri_to_fname(resp.uri) or vim.uri_to_fname(resp.targetUri)
-      return vim.fn.fnamemodify(fname, ':.')
-    end
-    return ''
+    local fname = vim.uri_to_fname(resp.uri)
+    return vim.fn.fnamemodify(fname, ':.')
   end
 
-  ---@param resp Response
+  ---@param resp lsp.Location
   ---@return number, number (line, character)
   local function decode_range(resp)
     ---@type lsp.Position
-    local position = { line = 0, character = 0 }
-    if resp then
-      if resp.range ~= nil then -- if type is lsp.Location
-        position = resp.range['start']
-      elseif resp.targetRange ~= nil then -- if type is lsp.LocationLink
-        position = resp.targetRange['start']
-      end
-    end
+    local position = resp.range['start']
     return position.line + 1, position.character + 1
   end
 
@@ -88,18 +78,12 @@ end
 ---@param response Response: Location or Location[] or LocationLink[] (e.g, responsed value from "textDocument/definition")
 ---@return QfItem[] quickfix_list: Quickfix list
 function M.map_to_qflist_from_location(response)
-  -- check type `Location` or `Location[]`
-  if response and type(response[1]) == 'table' then
-    return vim.tbl_map(
-      ---@param v Response
-      function(v)
-        return create_qfitem(v)
-      end,
-      response
-    )
-  else
+  if response and type(response[1]) == 'table' then -- is `Location[] | LocationLink[]`
+    return vim.lsp.util.locations_to_items(response, 'utf-8')
+  else -- is `Location`
     return {
-      create_qfitem(response),
+      ---@cast response lsp.Location
+      qfitem_from_location(response),
     }
   end
 end
