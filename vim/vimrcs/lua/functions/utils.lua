@@ -13,4 +13,24 @@ function M.call_safe(method)
   end
 end
 
+---@param cmd string shell command
+---@return string command result
+function M.call_process(cmd)
+  local result = ""
+  local process = io.popen(cmd)
+  if process then
+    result = process:read('*a')
+    process:close()
+  end
+  return result
+end
+
+function M.get_actual_term_width()
+  return M.call_process('tput lines')
+end
+
+function M.get_actual_term_height()
+  return M.call_process('tput cols')
+end
+
 return M

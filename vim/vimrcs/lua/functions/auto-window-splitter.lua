@@ -1,5 +1,7 @@
 local M = {}
 
+local utils = require('functions.utils')
+
 ---@class AutoWinSplit.Windows
 ---@field winid integer
 ---@field bufname string
@@ -7,10 +9,10 @@ local M = {}
 ---Calculate to split in direction of a wide window.
 ---@return string execute_command command in string `vsplit ` or `split `
 local function calc_split_direction()
-  local current_width_ratio = vim.fn.winwidth(0) / vim.fn.str2float(vim.o.columns)
-  local current_height_ratio = vim.fn.winheight(0) / vim.fn.str2float(vim.o.lines)
+  local term_width = utils.get_actual_term_width()
+  local term_height = utils.get_actual_term_height()
 
-  if current_width_ratio > current_height_ratio then
+  if term_width > term_height then
     return "vsplit "
   else
     return "split "
