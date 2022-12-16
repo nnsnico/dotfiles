@@ -2,9 +2,9 @@ if exists('b:current_syntax')
     finish
 endif
 
-let error = sign_getdefined('DiagnosticSignError')[0]['text']
-let warn  = sign_getdefined('DiagnosticSignWarn')[0]['text']
-let info  = sign_getdefined('DiagnosticSignInfo')[0]['text']
+let error = execute('echon "\uF1E2"')
+let warn  = execute('echon "\uF071"')
+let info  = execute('echon "\uF05A"')
 let note  = execute('echon "\uFB4E"')
 
 syntax match qfFileName       /^[^│]*/ nextgroup=qfSeparatorLeft
