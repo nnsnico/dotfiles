@@ -11,7 +11,6 @@ scriptencoding utf8
 let s:dotfiles_dir = '~/dotfiles'
   " \ 'dein/installation.vim',
 let s:vim_files = [
-  \ 'basic.vim',
   \ 'visual.vim',
   \ 'search.vim',
   \ 'autocmd.vim',
@@ -24,6 +23,9 @@ for files in s:vim_files
   let fullpath = expand(s:dotfiles_dir . '/vim/vimrcs/' . files)
   exec 'source ' . fullpath
 endfor
+
+let s:basic = expand('~/dotfiles/vim/vimrcs/basic.lua')
+exec 'luafile ' .. s:basic
 
 " If you use Vim, comment out it (this not work)
 if has('nvim')
