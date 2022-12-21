@@ -279,7 +279,6 @@ M.startup = function()
     }
 
     use 'tpope/vim-repeat'
-    use 'mg979/vim-visual-multi'
 
     use {
       'tpope/vim-surround',
@@ -297,6 +296,11 @@ M.startup = function()
           end
         })
       end
+    }
+
+    use {
+      'mg979/vim-visual-multi',
+      keys = { '<C-n>', '\\A', '\\/' }
     }
 
     use {
