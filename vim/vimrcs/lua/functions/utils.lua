@@ -25,12 +25,4 @@ function M.call_process(cmd)
   return result
 end
 
-function M.get_actual_term_width()
-  return M.call_process('tput lines')
-end
-
-function M.get_actual_term_height()
-  return M.call_process('tput cols')
-end
-
 return M
