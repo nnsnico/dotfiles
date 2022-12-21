@@ -279,8 +279,26 @@ M.startup = function()
     }
 
     use 'tpope/vim-repeat'
-    use 'tpope/vim-surround'
     use 'mg979/vim-visual-multi'
+
+    use {
+      'tpope/vim-surround',
+      setup = function()
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'lua',
+          callback = function ()
+            vim.b.surround_102 = 'function \1function name: \1() \r end'
+          end
+        })
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = 'vim',
+          callback = function()
+            vim.b.surround_102 = 'function \1function name: \1() \r endfunction'
+          end
+        })
+      end
+    }
+
     use {
       'junegunn/vim-easy-align',
       keys = { '<Plug>(EasyAlign)' },
