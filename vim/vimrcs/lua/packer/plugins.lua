@@ -304,7 +304,7 @@ M.startup = function()
       opt = true,
       config = function()
         require('neoscroll').setup({
-          mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zz' },
+          mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zz', 'zt', 'zb' },
           easing_function = 'circular'
         })
       end

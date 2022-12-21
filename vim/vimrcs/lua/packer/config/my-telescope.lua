@@ -10,14 +10,14 @@ M.setup = function()
     end
   end
 
-  vim.keymap.set('n', 'zf',         builtin('find_files'),                {})
-  vim.keymap.set('n', 'zb',         builtin('buffers'),                   {})
-  vim.keymap.set('n', 'zl',         builtin('current_buffer_fuzzy_find'), {})
-  vim.keymap.set('n', 'zg',         builtin('git_status'),                {})
-  vim.keymap.set('n', 'zr',         builtin('live_grep'),                 {})
-  vim.keymap.set('n', 'zc',         builtin('colorscheme'),               {})
-  vim.keymap.set('n', '<Leader>zc', builtin('commands'),                  {})
-  vim.keymap.set('n', 'zh',         builtin('help_tags'),                 {})
+  vim.keymap.set('n', 'zf',         builtin('find_files'))
+  vim.keymap.set('n', '<Leader>zb', builtin('buffers'))
+  vim.keymap.set('n', 'zl',         builtin('current_buffer_fuzzy_find'))
+  vim.keymap.set('n', 'zg',         builtin('git_status'))
+  vim.keymap.set('n', 'zr',         builtin('live_grep'))
+  vim.keymap.set('n', 'zc',         builtin('colorscheme'))
+  vim.keymap.set('n', '<Leader>zc', builtin('commands'))
+  vim.keymap.set('n', 'zh',         builtin('help_tags'))
 end
 
 M.config = function()
