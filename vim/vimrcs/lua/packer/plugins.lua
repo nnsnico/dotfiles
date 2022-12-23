@@ -413,6 +413,30 @@ M.startup = function()
       config = require('packer.config.my-nvim-notify').config()
     }
 
+    use {
+      'stevearc/dressing.nvim',
+      config = function()
+        require('dressing').setup({
+          select = {
+            get_config = function(opts)
+              if opts.kind == 'codeaction' then
+                return {
+                  backend = 'builtin',
+                  builtin = {
+                    relative = 'cursor',
+                    min_height = 1,
+                    mappings = {
+                      ['<C-g>'] = 'Close'
+                    }
+                  }
+                }
+              end
+            end
+          }
+        })
+      end
+    }
+
     ----------------------------------- VCS -----------------------------------
 
     use {
