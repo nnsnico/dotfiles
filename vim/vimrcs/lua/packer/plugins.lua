@@ -36,14 +36,14 @@ M.startup = function()
         require('packer.config.my-treesitter').config()
       end,
       requires = {
-        'p00f/nvim-ts-rainbow',
+        'mrjones2014/nvim-ts-rainbow',
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
       }
     }
 
     use {
-      'p00f/nvim-ts-rainbow',
+      'mrjones2014/nvim-ts-rainbow',
       opt = true,
       after = 'nvim-treesitter'
     }
