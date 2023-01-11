@@ -146,7 +146,10 @@ heirline.config = function()
     DefaultStatusline
   }
 
-  require('heirline').setup(Statuslines, WinBars)
+  require('heirline').setup({
+    statusline = Statuslines,
+    winbar = WinBars
+  })
 end
 
 return heirline
