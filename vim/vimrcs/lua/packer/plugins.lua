@@ -485,6 +485,10 @@ M.startup = function()
               selector = 'div[class="ql-editor"]',
               takeover = 'always',
             },
+            ['https://.*\\.notion\\.so'] = {
+              takeover = 'never',
+              priority = 1,
+            }
           }
         }
       end
