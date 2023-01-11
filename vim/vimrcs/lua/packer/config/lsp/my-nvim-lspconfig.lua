@@ -1,6 +1,8 @@
 local M = {}
 local lsputils = require('packer.config.lsp.utils')
 
+local is_hover = false
+
 M.on_attach = function(client, bufnr)
   vim.o.signcolumn = 'yes:2'
 
@@ -16,6 +18,15 @@ M.on_attach = function(client, bufnr)
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
   end
+
+  -- diagnostic config
+
+  vim.diagnostic.config({
+    virtual_text = false,
+    float = {
+      border = 'rounded'
+    }
+  })
 
   -- Add border in hover
 
@@ -59,18 +70,17 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,                          opts)
   vim.keymap.set('n', 'gr',         vim.lsp.buf.references,                              opts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,                                  opts)
-  vim.keymap.set('n', 'K',          vim.lsp.buf.hover,                                   opts)
+  vim.keymap.set('n', 'K',          function()
+    is_hover = true
+    vim.lsp.buf.hover()
+  end, opts)
   vim.keymap.set('n', '<Space>f',   function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<Space>q',   vim.lsp.buf.code_action,                             opts)
   vim.keymap.set('n', '[e', function()
-    vim.diagnostic.goto_prev({
-      float = { border = 'rounded' }
-    })
+    vim.diagnostic.goto_prev({ float = false })
   end, opts)
   vim.keymap.set('n', ']e', function()
-    vim.diagnostic.goto_next({
-      float = { border = 'rounded' }
-    })
+    vim.diagnostic.goto_next({ float = false })
   end, opts)
   vim.keymap.set('n', '<Space>a', function()
     vim.diagnostic.setloclist({ open = false })
@@ -98,6 +108,19 @@ M.on_attach = function(client, bufnr)
     callback = function()
       if vim.tbl_contains(filetypes, vim.o.filetype) then
         vim.lsp.buf.clear_references()
+      end
+    end
+  })
+
+  vim.api.nvim_create_autocmd('CursorHold', {
+    buffer = vim.api.nvim_get_current_buf(),
+    callback = function()
+      if is_hover then
+        vim.diagnostic.hide(nil, 0)
+        is_hover = false
+      else
+        vim.diagnostic.show(nil, 0, nil, nil)
+        vim.diagnostic.open_float(nil, { focus = false })
       end
     end
   })
