@@ -7,8 +7,8 @@ local M = {}
 ---Calculate to split in direction of a wide window.
 ---@return string execute_command command in string `vsplit ` or `split `
 local function calc_split_direction()
-  local width_ratio = vim.fn.winwidth(0) / vim.o.columns
-  local height_ratio = vim.fn.winheight(0) / vim.o.lines
+  local width_ratio = vim.fn.winwidth(0) * 0.549
+  local height_ratio = vim.fn.winheight(0) * 1.125
 
   if width_ratio > height_ratio then
     return "vsplit "
