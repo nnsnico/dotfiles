@@ -26,6 +26,7 @@ map <C-S-v> "*P
 
 " Goto Implementation class
 nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(GotoSuperMethod)
 
 " Move to Next(Right) tab by `t + t`
 nmap tt <Action>(NextTab)
@@ -54,6 +55,12 @@ map <Leader>R <Action>(Rerun)
 " Show settings
 nmap <Space>s <Action>(ShowSettings)
 nmap <Space>S <Action>(ShowProjectStructureSettings)
+
+nmap [e <Action>(GotoPreviousError)
+nmap ]e <Action>(GotoNextError)
+nmap <C-e> <Action>(ShowErrorDescription)
+
+nmap <Leader>o <Action>(activateStructureToolWindow)
 
 " -------------------------------- for Android --------------------------------
 
