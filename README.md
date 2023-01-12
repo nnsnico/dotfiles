@@ -65,15 +65,17 @@
 
 1. `pip install powerline-status`
 
-1. `cp -r $(pip show powerline-status | grep Location | awk '{print $2}')/powerline/config_files ~/.config/powerline`
+1. ```
+   cp -r $(pip show powerline-status | grep Location | awk '{print $2}')/powerline/config_files ~/.config/powerline
+   ```
 
 1. Add symbolic link
 
     1. `ln -s ~/dotfiles/tmux/.tmux.conf`
 
-    1. (Windows(WSL2)) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline.json`
+    1. (Windows(WSL2)) `ln -sf ~/dotfiles/tmux/powerline.json ~/.config/powerline/themes/`
 
-    1. (MacOS) `ln -s ~/.config/powerline/themes/powerline.json ~/dotfiles/tmux/powerline_terminus.json`
+    1. (MacOS) `ln -sf ~/dotfiles/tmux/powerline_terminus.json ~/.config/powerline/themes/`
 
 <!--
 vim: ts=2 sts=2 sw=2 et :
