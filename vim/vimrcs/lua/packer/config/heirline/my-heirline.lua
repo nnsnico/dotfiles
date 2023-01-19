@@ -34,10 +34,10 @@ heirline.config = function()
 
   -------------------------------- Code Context --------------------------------
 
-  local CodeContext = components.code_context(' \u{E0BF}')
+  local CodeContext = components.code_context('\u{E0BF} ')
   CodeContext = utils.insert(CodeContext,
     {
-      provider = ' \u{E0BF}',
+      provider = '\u{E0BF} ',
       hl = { fg = 'code_context_fg' }
     }
   )
@@ -47,7 +47,7 @@ heirline.config = function()
   local FileType = components.filetype
   local FileTypePL = utils.insert(
     {
-      provider = ' \u{E0BE}',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'filetype_bg',
         bg = 'diag_err_bg',
@@ -59,7 +59,7 @@ heirline.config = function()
   local FileEncodeType = components.file_encode_type
   FileEncodeType = utils.insert(
     {
-      provider = ' \u{E0BE}',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'fileencode_bg',
         bg = 'filetype_bg',
@@ -73,7 +73,7 @@ heirline.config = function()
   local LineStatus = components.line_status
   LineStatus = {
     {
-      provider = ' \u{E0BE}',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'linestatus_bg',
         bg = 'fileencode_bg',
@@ -90,7 +90,7 @@ heirline.config = function()
   local DiagnosticWarn = diagnostic.warn
   DiagnosticWarn = utils.insert(
     {
-      provider = ' \u{E0BE}',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'diag_warn_bg',
         bg = utils.get_highlight("StatusLine").bg,
@@ -103,7 +103,7 @@ heirline.config = function()
   local DiagnosticError = diagnostic.error
   DiagnosticError = {
     {
-      provider = ' \u{E0BE}',
+      provider = '\u{E0BE} ',
       hl = {
         fg = 'diag_err_bg',
         bg = 'diag_warn_bg',
