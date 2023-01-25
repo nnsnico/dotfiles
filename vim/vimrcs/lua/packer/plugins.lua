@@ -253,7 +253,15 @@ M.startup = function()
 
     use {
       'mg979/vim-visual-multi',
-      keys = { '<C-n>', '\\A', '\\/' }
+      keys = {
+        { 'n', '<C-n>' },
+        { 'v', '<C-n>' },
+        { 'n', '\\A' },
+        { 'v', '\\A' },
+        { 'n', '\\c' },
+        { 'v', '\\c' },
+        { 'n', '\\/' },
+      }
     }
 
     use {
