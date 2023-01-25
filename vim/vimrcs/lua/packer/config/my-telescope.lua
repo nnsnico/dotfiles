@@ -12,6 +12,7 @@ M.setup = function()
 
   vim.keymap.set('n', 'zf',         builtin('find_files'))
   vim.keymap.set('n', '<Leader>zb', builtin('buffers'))
+  vim.keymap.set('n', 'zk',         builtin('keymaps'))
   vim.keymap.set('n', 'zl',         builtin('current_buffer_fuzzy_find'))
   vim.keymap.set('n', 'zg',         builtin('git_status'))
   vim.keymap.set('n', 'zr',         builtin('live_grep'))
