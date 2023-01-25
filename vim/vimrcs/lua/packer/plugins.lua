@@ -419,6 +419,17 @@ M.startup = function()
       end
     }
 
+    use {
+      'iberianpig/tig-explorer.vim',
+      cmd = 'Tig*',
+      setup = function()
+        vim.keymap.set('n', '<Leader>g', function() vim.cmd('TigOpenProjectRootDir') end)
+      end,
+      requires = {
+        'rbgrouleff/bclose.vim', cmd = 'Bclose', wants = 'tig-explorer.vim'
+      }
+    }
+
     ---------------------------------- Other ----------------------------------
 
     use {
