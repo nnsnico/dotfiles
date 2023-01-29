@@ -13,6 +13,7 @@ if exists('g:started_by_firenvim')
   set wrap
   au BufEnter * if &lines <= 20 | set lines=20 | endif
   au BufEnter github.com_*.txt set ft=markdown
+  au BufEnter play.kotlinlang.org_*.c set ft=kotlin
 endif
 
 " -------------------------------- for neovide ---------------------------------
