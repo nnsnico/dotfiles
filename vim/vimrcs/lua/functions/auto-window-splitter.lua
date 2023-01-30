@@ -66,6 +66,7 @@ end
 ---@param line number line number
 ---@param character number column number
 function M.move_cursor(winid, line, character)
+  character = character <= 0 and 1 or character
   vim.api.nvim_win_set_cursor(winid, { line, character - 1 })
 end
 
