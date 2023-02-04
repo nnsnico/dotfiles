@@ -8,6 +8,7 @@ end
 M.config = function()
   local cmp = require('cmp')
   local luasnip = require('luasnip')
+  local lspkind = require('lspkind')
 
   vim.o.completeopt = 'menu,menuone,noselect'
 
@@ -18,8 +19,12 @@ M.config = function()
       end
     },
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered()
+      completion = cmp.config.window.bordered({
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        col_offset = -3,
+        side_padding = 0,
+      }),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -56,17 +61,37 @@ M.config = function()
         end
       end, { "i" }),
     }),
-    sources = cmp.config.sources({
-      { name = 'skkeleton' },
-    }, {
-      { name = 'nvim_lsp' },
-      { name = 'luasnip' },
-      { name = 'path' },
-    }, {
-      { name = 'buffer' },
-      { name = 'emoji' },
-      { name = 'spell' },
-    }),
+    formatting = {
+      fields = { 'kind', 'abbr', 'menu' },
+      ---@param item lsp.CompletionItem
+      format = function(entry, item)
+        -- item.menu = entry:get_completion_item().detail
+        local kind = lspkind.cmp_format({
+          mode = 'symbol_text',
+          maxwidth = 50,
+          ellipsis_char = '...',
+        })(entry, item)
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.kind = " " .. (strings[1] or "") .. " "
+        kind.menu = "    (" .. (strings[2] or "") .. ")"
+        return kind
+      end
+    },
+    sources = cmp.config.sources(
+      {
+        { name = 'skkeleton' },
+      },
+      {
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+        { name = 'path' },
+      },
+      {
+        { name = 'buffer' },
+        { name = 'emoji' },
+        { name = 'spell' },
+      }
+    ),
   }
 end
 

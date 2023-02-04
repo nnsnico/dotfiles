@@ -90,9 +90,10 @@ M.startup = function()
         { 'f3fora/cmp-spell',       event = { 'InsertEnter' } },
         { 'hrsh7th/cmp-emoji',      event = { 'InsertEnter' } },
         { 'hrsh7th/cmp-nvim-lsp',   event = { 'InsertEnter' } },
-        { 'uga-rosa/cmp-skkeleton', event = { 'InsertEnter' }, wants = { 'skkeleton' } }
+        { 'uga-rosa/cmp-skkeleton', event = { 'InsertEnter' }, wants = { 'skkeleton' } },
+        { 'onsails/lspkind.nvim',   opt = true, module = 'lspkind' }
       },
-      wants = { 'nvim-autopairs' },
+      wants = { 'nvim-autopairs', 'lspkind.nvim' },
       config = function()
         require('packer.config.my-nvim-cmp').config()
       end,
