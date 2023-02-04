@@ -376,6 +376,24 @@ M.startup = function()
       'stevearc/dressing.nvim',
       config = function()
         require('dressing').setup({
+          input = {
+            insert_only = false,
+            start_in_insert = false,
+            mappings = {
+              n = {
+                ["<Esc><Esc>"] = "Close",
+                ["<C-g>"]      = "Close",
+                ["<CR>"]       = "Confirm",
+              },
+              i = {
+                ["<Esc><Esc>"] = "Close",
+                ["<C-g>"]      = "Close",
+                ["<CR>"]       = "Confirm",
+                ["<C-a>"]      = "<Home>",
+                ["<C-e>"]      = "<End>",
+              }
+            },
+          },
           select = {
             get_config = function(opts)
               if opts.kind == 'codeaction' then
@@ -391,7 +409,7 @@ M.startup = function()
                 }
               end
             end
-          }
+          },
         })
       end
     }
