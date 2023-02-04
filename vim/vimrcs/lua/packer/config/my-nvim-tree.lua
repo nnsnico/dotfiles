@@ -38,6 +38,7 @@ M.config = function()
           { key = "R",             cb = tree_callback("refresh") },
           { key = "i",             cb = tree_callback("split") },
           { key = "s",             cb = tree_callback("vsplit") },
+          { key = "t",             cb = tree_callback("tabnew") },
           { key = "go",            cb = tree_callback("preview") },
           { key = "[c",            cb = tree_callback("prev_git_item") },
           { key = "]c",            cb = tree_callback("next_git_item") },
@@ -65,6 +66,9 @@ M.config = function()
         },
       },
     },
+    diagnostics = {
+      enable = true
+    }
   }
 end
 
