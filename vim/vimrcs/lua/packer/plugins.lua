@@ -193,6 +193,7 @@ M.startup = function()
 
     use {
       'kyazdani42/nvim-tree.lua',
+      tag = 'nightly',
       cmd = {
         'NvimTreeOpen',
         'NvimTreeToggle',
