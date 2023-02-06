@@ -65,11 +65,11 @@ M.on_attach = function(client, bufnr)
 
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,                              opts)
-  vim.keymap.set('n', 'gy',         vim.lsp.buf.type_definition,                         opts)
-  vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,                          opts)
-  vim.keymap.set('n', 'gr',         vim.lsp.buf.references,                              opts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,                                  opts)
+  vim.keymap.set('n', 'gd',         vim.lsp.buf.definition,      opts)
+  vim.keymap.set('n', 'gy',         vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation,  opts)
+  vim.keymap.set('n', 'gr',         vim.lsp.buf.references,      opts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,          opts)
   vim.keymap.set('n', 'K',          function()
     is_hover = true
     vim.lsp.buf.hover()
@@ -93,7 +93,7 @@ M.on_attach = function(client, bufnr)
 
   -- auto commands
 
-  local filetypes = { 'lua' }
+  local filetypes = { 'lua', 'dart' }
 
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     buffer = vim.api.nvim_get_current_buf(),
@@ -112,15 +112,24 @@ M.on_attach = function(client, bufnr)
     end
   })
 
+  -- toggle hide/show diagnostic window by is_hover flag
+
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    buffer = vim.api.nvim_get_current_buf(),
+    callback = function()
+      if is_hover then
+        is_hover = false
+      end
+    end
+  })
   vim.api.nvim_create_autocmd('CursorHold', {
     buffer = vim.api.nvim_get_current_buf(),
     callback = function()
       if is_hover then
         vim.diagnostic.hide(nil, 0)
-        is_hover = false
       else
         vim.diagnostic.show(nil, 0, nil, nil)
-        vim.diagnostic.open_float(nil, { focus = false })
+        vim.diagnostic.open_float({ focus = false })
       end
     end
   })
