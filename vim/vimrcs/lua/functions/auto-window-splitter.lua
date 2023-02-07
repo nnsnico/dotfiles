@@ -83,7 +83,7 @@ function M.auto_jump(filename, lnum, col)
         bufname = vim.fn.fnamemodify(vim.fn.bufname(vim.fn.winbufnr(win)), ':p'),
       }
     end,
-    vim.api.nvim_list_wins()
+    vim.api.nvim_tabpage_list_wins(0)
   )
   local jumpable_windows = get_jumpable_windows(filename, windows)
   if not vim.tbl_isempty(jumpable_windows) then
