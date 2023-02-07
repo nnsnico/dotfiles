@@ -37,7 +37,18 @@ function! s:join_line_without_spaces() abort
 endfunction
 
 function! s:is_ignore_filetype() abort
-    let ignore_list = ["mason", "fzf", "minimap", "TelescopePrompt", "aerial", ""]
+    let ignore_list = [
+                \ "",
+                \ "TelescopePrompt",
+                \ "aerial",
+                \ "calendar",
+                \ "flutter_tools_popup",
+                \ "fzf",
+                \ "gitcommit",
+                \ "mason",
+                \ "minimap",
+                \ "notify",
+                \ ]
     if index(ignore_list, &filetype) >= 0
         return 1
     else
