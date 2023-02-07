@@ -29,6 +29,14 @@ autoload -Uz _zinit
 zinit light-mode for \
   "zdharma-continuum/zinit-annex-bin-gem-node"
 
+zinit wait lucid for \
+    from'gh-r' \
+    as'program' \
+    atclone'**/gh completion -s zsh > _gh; zicompinit; zicdreplay' \
+    atpull'%atclone' \
+    sbin'**/gh' \
+  cli/cli
+
 # if debian os (Ubuntu)
 zinit wait lucid for \
     if'[[ $OSTYPE =~ "linux*" ]]' \
