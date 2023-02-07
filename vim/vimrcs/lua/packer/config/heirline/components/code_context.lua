@@ -4,7 +4,7 @@ local navic = require('nvim-navic')
 ---@param separator string?
 local CodeContext = function(separator)
   return {
-    condition = navic.is_available,
+    condition = navic.is_available(),
     static = {
       -- create a type highlight map
       type_hl = {
