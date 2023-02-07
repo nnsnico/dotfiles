@@ -49,7 +49,7 @@ function! s:is_ignore_filetype() abort
                 \ "minimap",
                 \ "notify",
                 \ ]
-    if index(ignore_list, &filetype) >= 0
+    if index(ignore_list, &filetype) >= 0 || &buftype == 'terminal'
         return 1
     else
         return 0
