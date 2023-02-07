@@ -71,11 +71,13 @@
 
 1. Add symbolic link
 
-    1. `ln -s ~/dotfiles/tmux/.tmux.conf`
-
-    1. (Windows(WSL2)) `ln -sf ~/dotfiles/tmux/powerline.json ~/.config/powerline/themes/`
-
-    1. (MacOS) `ln -sf ~/dotfiles/tmux/powerline_terminus.json ~/.config/powerline/themes/`
+    - `config file`
+      1. `ln -s ~/dotfiles/tmux/.tmux.conf`
+    - `powerline top theme file`
+      1. (Windows(WSL2)) `ln -sf ~/dotfiles/tmux/powerline.json ~/.config/powerline/themes/`
+      1. (MacOS) `ln -sf ~/dotfiles/tmux/powerline_terminus.json ~/.config/powerline/themes/`
+    - `powerline theme file`
+      1. `ln -sf ~/dotfiles/tmux/default.json ~/.config/powerline/themes/tmux/default.json`
 
 <!--
 vim: ts=2 sts=2 sw=2 et :
