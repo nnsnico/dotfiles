@@ -284,6 +284,19 @@ M.startup = function()
     }
 
     use {
+      's1n7ax/nvim-window-picker',
+      tag = 'v1.*',
+      module = 'window-picker',
+      setup = function()
+        require('packer.config.my-window-picker').setup()
+      end,
+      config = function()
+        require('packer.config.my-window-picker').config()
+      end,
+      wants = { 'nvim-tree.lua' }
+    }
+
+    use {
       'karb94/neoscroll.nvim',
       event = { 'BufReadPost' },
       opt = true,
