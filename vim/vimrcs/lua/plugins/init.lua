@@ -304,9 +304,9 @@ require('lazy').setup({
     'mg979/vim-visual-multi',
     keys = {
       { '<C-n>', mode = { 'n', 'v' } },
-      { '\\A',   mode = { 'n', 'v' } },
-      { '\\c',   mode = { 'n', 'v' } },
-      '\\/'
+      { '<Leader><Leader>A', mode = { 'n', 'v' } },
+      { '<Leader><Leader>c', mode = { 'n', 'v' } },
+      '<Leader><Leader>/'
     },
   },
   {
