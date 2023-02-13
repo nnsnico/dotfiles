@@ -50,6 +50,7 @@ require('lazy').setup({
   ------------------------------------ LSP -------------------------------------
   {
     'williamboman/mason.nvim',
+    ft = require('packer.config.lsp.my-nvim-lsp-installer').filetypes(),
     config = function()
       require('packer.config.lsp.my-nvim-lsp-installer').config()
     end,
