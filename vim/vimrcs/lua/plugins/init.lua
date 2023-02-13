@@ -204,7 +204,9 @@ require('lazy').setup({
   },
   {
     'rcarriga/nvim-notify',
-    config = require('packer.config.my-nvim-notify').config()
+    config = function()
+      require('packer.config.my-nvim-notify').config()
+    end
   },
   {
     'stevearc/dressing.nvim',
