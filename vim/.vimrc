@@ -30,6 +30,6 @@ exec 'luafile ' .. s:basic
 " If you use Vim, comment out it (this not work)
 if has('nvim')
 lua <<EOF
-  require('packer.plugins').startup()
+  require('plugins')
 EOF
 endif

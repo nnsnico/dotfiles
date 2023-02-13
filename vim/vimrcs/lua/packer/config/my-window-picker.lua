@@ -1,15 +1,17 @@
 local M = {}
 
 function M.setup()
-  vim.keymap.set(
-      'n',
+  return {
+    {
       '<Leader>w',
       function()
         local win_id = require('window-picker').pick_window() or vim.api.nvim_get_current_win()
         vim.api.nvim_set_current_win(win_id)
       end,
-      { desc = 'Pick a window' }
-  )
+      mode = 'n',
+      desc = 'Pick a window',
+    }
+  }
 end
 
 function M.config()

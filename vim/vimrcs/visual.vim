@@ -10,7 +10,6 @@ endif
 
 " colorscheme
 set background=dark
-colorscheme aurora
 
 " transparent color on floating window and popup window (support neovim only)
 if has('nvim')
