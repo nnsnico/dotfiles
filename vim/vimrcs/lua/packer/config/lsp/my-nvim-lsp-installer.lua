@@ -2,7 +2,7 @@ local M = {}
 
 local lsp_servers = {
   {
-    name = "sumneko_lua",
+    name = "lua_ls",
     setting = function()
       local runtime_path = vim.split(package.path, ';', {})
       table.insert(runtime_path, 'lua/?.lua')
