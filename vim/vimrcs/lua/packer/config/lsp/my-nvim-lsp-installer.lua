@@ -1,13 +1,32 @@
 local M = {}
 
+---@class LspConf.Configuration
+---@field name string
+---@field ft string | string[]
+---@field setting ?function
+
+---@type LspConf.Configuration[]
 local lsp_servers = {
   {
     name = "lua_ls",
     ft = 'lua',
     setting = function()
-      local runtime_path = vim.split(package.path, ';', {})
+      local runtime_path = vim.split(package.path, ';')
       table.insert(runtime_path, 'lua/?.lua')
       table.insert(runtime_path, 'lua/?/init.lua')
+
+      local library = {}
+      local function add(lib)
+        for _, p in pairs(vim.fn.expand(lib, false, true)) do
+          p = vim.loop.fs_realpath(p)
+          library[p] = true
+        end
+      end
+
+      add("$VIMRUNTIME")
+      add("~/dotfiles/vim/vimrcs") -- specify dotfile path
+      add(vim.fn.stdpath('data') .. '/lazy/*') -- specify the package path
+
       return {
         settings = {
           Lua = {
@@ -15,11 +34,14 @@ local lsp_servers = {
               version = 'LuaJIT',
               path = runtime_path,
             },
+            completion = { callSnippet = "Both" },
             diagnostics = {
               globals = { 'vim' },
             },
             workspace = {
-              library = vim.api.nvim_get_runtime_file('', true),
+              library = library,
+              maxPreload = 2000,
+              preloadFileSize = 50000,
             },
             telemetry = {
               enable = false,

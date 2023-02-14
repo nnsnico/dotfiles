@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   ---@param name string
-  ---@param opt table?
+  ---@param opt ?table
   ---@return function
   local function builtin(name, opt)
     return function()
@@ -11,15 +11,15 @@ M.setup = function()
   end
 
   return {
-    { 'zf',         builtin('find_files'), mode = 'n' },
-    { '<Leader>zb', builtin('buffers'), mode = 'n' },
-    { 'zk',         builtin('keymaps'), mode = 'n' },
+    { 'zf',         builtin('find_files'),                mode = 'n' },
+    { '<Leader>zb', builtin('buffers'),                   mode = 'n' },
+    { 'zk',         builtin('keymaps'),                   mode = 'n' },
     { 'zl',         builtin('current_buffer_fuzzy_find'), mode = 'n' },
-    { 'zg',         builtin('git_status'), mode = 'n' },
-    { 'zr',         builtin('live_grep'), mode = 'n' },
-    { 'zc',         builtin('colorscheme'), mode = 'n' },
-    { '<Leader>zc', builtin('commands'), mode = 'n' },
-    { 'zh',         builtin('help_tags'), mode = 'n' },
+    { 'zg',         builtin('git_status'),                mode = 'n' },
+    { 'zr',         builtin('live_grep'),                 mode = 'n' },
+    { 'zc',         builtin('colorscheme'),               mode = 'n' },
+    { '<Leader>zc', builtin('commands'),                  mode = 'n' },
+    { 'zh',         builtin('help_tags'),                 mode = 'n' },
   }
 end
 
