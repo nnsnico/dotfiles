@@ -105,9 +105,10 @@ require('lazy').setup({
     'akinsho/flutter-tools.nvim',
     ft = 'dart',
     init = function()
-      vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { silent = true })
     end,
     config = function()
+      vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { silent = true, buffer = true })
+
       local on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach
       require('flutter-tools').setup({
         fvm = true,
@@ -170,8 +171,8 @@ require('lazy').setup({
       vim.g.indent_blankline_char_list = { '|', '¦' }
       vim.g.indent_blankline_use_treesitter = true
       require('indent_blankline').setup {
-        space_char_blankline = " ",
-        show_current_context = true,
+        space_char_blankline       = " ",
+        show_current_context       = true,
         show_current_context_start = true,
       }
     end
