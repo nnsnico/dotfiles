@@ -1,7 +1,7 @@
 local conditions = require('heirline.conditions')
 local utils = require('heirline.utils')
-local filetype = require('packer.config.heirline.components.filetype')
-local filename = require('packer.config.heirline.components.file_name')
+local filetype = require('plugins.config.heirline.components.filetype')
+local filename = require('plugins.config.heirline.components.file_name')
 
 vim.api.nvim_create_autocmd("User", {
   pattern = 'HeirlineInitWinbar',

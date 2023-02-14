@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-  local tools = require('packer.config.lsp.my-nvim-lsp-installer').tools
+  local tools = require('plugins.config.lsp.my-nvim-lsp-installer').tools
 
   local sources = {}
   for _, tool in ipairs(tools) do
@@ -16,7 +16,7 @@ M.config = function()
 
   require('null-ls').setup({
     sources   = sources,
-    on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach,
+    on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach,
   })
 end
 

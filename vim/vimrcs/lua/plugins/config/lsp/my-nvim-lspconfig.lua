@@ -1,5 +1,5 @@
 local M = {}
-local lsputils = require('packer.config.lsp.utils')
+local lsputils = require('plugins.config.lsp.utils')
 
 local is_hover = false
 

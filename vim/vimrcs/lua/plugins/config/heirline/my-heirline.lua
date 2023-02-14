@@ -3,10 +3,10 @@ local heirline = {}
 heirline.config = function()
   local conditions = require('heirline.conditions')
   local utils = require('heirline.utils')
-  local components = require('packer.config.heirline.components')
+  local components = require('plugins.config.heirline.components')
 
   -- init theme
-  require('packer.config.heirline.theme').init()
+  require('plugins.config.heirline.theme').init()
 
   ------------------------------------- ViMode -----------------------------------
 

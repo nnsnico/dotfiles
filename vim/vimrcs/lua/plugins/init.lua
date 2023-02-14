@@ -19,7 +19,7 @@ require('lazy').setup({
     build = ':TSUpdate',
     event = 'BufReadPost',
     config = function()
-      require('packer.config.my-treesitter').config()
+      require('plugins.config.my-treesitter').config()
     end,
     dependencies = {
       'mrjones2014/nvim-ts-rainbow',
@@ -38,9 +38,9 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    keys = require('packer.config.my-telescope').setup(),
+    keys = require('plugins.config.my-telescope').setup(),
     config = function()
-      require('packer.config.my-telescope').config()
+      require('plugins.config.my-telescope').config()
     end,
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -51,10 +51,10 @@ require('lazy').setup({
   ------------------------------------ LSP -------------------------------------
   {
     'williamboman/mason.nvim',
-    ft = require('packer.config.lsp.my-nvim-lsp-installer').filetypes(),
+    ft = require('plugins.config.lsp.my-nvim-lsp-installer').filetypes(),
     cmd = 'Mason',
     config = function()
-      require('packer.config.lsp.my-nvim-lsp-installer').config()
+      require('plugins.config.lsp.my-nvim-lsp-installer').config()
     end,
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
@@ -66,7 +66,7 @@ require('lazy').setup({
       {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
-          require('packer.config.my-null-ls').config()
+          require('plugins.config.my-null-ls').config()
         end,
         dependencies = {
           { 'nvim-lua/plenary.nvim' },
@@ -88,7 +88,7 @@ require('lazy').setup({
       { 'onsails/lspkind.nvim' }
     },
     config = function()
-      require('packer.config.my-nvim-cmp').config()
+      require('plugins.config.my-nvim-cmp').config()
     end,
   },
   {
@@ -108,7 +108,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { silent = true })
     end,
     config = function()
-      local on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
+      local on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach
       require('flutter-tools').setup({
         fvm = true,
         widget_guides = {
@@ -135,7 +135,7 @@ require('lazy').setup({
       }
 
       metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-      metals_config.on_attach = require('packer.config.lsp.my-nvim-lspconfig').on_attach
+      metals_config.on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach
 
       local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
       vim.api.nvim_create_autocmd('FileType', {
@@ -155,7 +155,7 @@ require('lazy').setup({
   {
     'rebelot/heirline.nvim',
     config = function()
-      require('packer.config.heirline.my-heirline').config()
+      require('plugins.config.heirline.my-heirline').config()
     end,
     dependencies = {
       'kyazdani42/nvim-web-devicons',
@@ -180,7 +180,7 @@ require('lazy').setup({
     'gelguy/wilder.nvim',
     event = 'CmdlineEnter',
     config = function()
-      require('packer.config.my-wilder').config()
+      require('plugins.config.my-wilder').config()
     end,
     dependencies = {
       'romgrk/fzy-lua-native',
@@ -191,10 +191,10 @@ require('lazy').setup({
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
     init = function()
-      require('packer.config.my-nvim-bqf').setup()
+      require('plugins.config.my-nvim-bqf').setup()
     end,
     config = function()
-      require('packer.config.my-nvim-bqf').config()
+      require('plugins.config.my-nvim-bqf').config()
     end,
     dependencies = {
       {
@@ -208,7 +208,7 @@ require('lazy').setup({
   {
     'rcarriga/nvim-notify',
     config = function()
-      require('packer.config.my-nvim-notify').config()
+      require('plugins.config.my-nvim-notify').config()
     end
   },
   {
@@ -306,7 +306,7 @@ require('lazy').setup({
   {
     'mg979/vim-visual-multi',
     keys = {
-      { '<C-n>', mode = { 'n', 'v' } },
+      { '<C-n>',             mode = { 'n', 'v' } },
       { '<Leader><Leader>A', mode = { 'n', 'v' } },
       { '<Leader><Leader>c', mode = { 'n', 'v' } },
       '<Leader><Leader>/'
@@ -321,7 +321,9 @@ require('lazy').setup({
   {
     'phaazon/hop.nvim',
     branch = 'v2',
-    keys = { '<Leader>s' },
+    keys = {
+      { '<Leader>s' },
+    },
     config = function()
       require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
       vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
@@ -330,9 +332,9 @@ require('lazy').setup({
   {
     's1n7ax/nvim-window-picker',
     version = 'v1.*',
-    keys = require('packer.config.my-window-picker').setup(),
+    keys = require('plugins.config.my-window-picker').setup(),
     config = function()
-      require('packer.config.my-window-picker').config()
+      require('plugins.config.my-window-picker').config()
     end,
     dependencies = { 'nvim-tree.lua' }
   },
@@ -357,10 +359,10 @@ require('lazy').setup({
       'NvimTreeRefresh',
     },
     init = function()
-      require('packer.config.my-nvim-tree').setup()
+      require('plugins.config.my-nvim-tree').setup()
     end,
     config = function()
-      require('packer.config.my-nvim-tree').config()
+      require('plugins.config.my-nvim-tree').config()
     end,
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
@@ -370,7 +372,7 @@ require('lazy').setup({
     tag = 'release',
     event = { 'FocusLost', 'CursorHold' },
     config = function()
-      require('packer.config.my-gitsigns').config()
+      require('plugins.config.my-gitsigns').config()
     end,
   },
   {
@@ -412,7 +414,7 @@ require('lazy').setup({
   {
     'vim-skk/skkeleton',
     init = function()
-      require('packer.config.skkeleton').setup()
+      require('plugins.config.skkeleton').setup()
     end,
     dependencies = {
       { "vim-denops/denops.vim" }

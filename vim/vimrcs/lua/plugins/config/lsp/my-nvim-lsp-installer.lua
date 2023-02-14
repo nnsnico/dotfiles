@@ -158,7 +158,7 @@ M.config = function()
   })
 
   -- setup nvim-lspconfig
-  require('packer.config.lsp.my-nvim-lspconfig').setup(lsp_servers)
+  require('plugins.config.lsp.my-nvim-lspconfig').setup(lsp_servers)
 end
 
 return M
