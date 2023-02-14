@@ -512,18 +512,18 @@ require('lazy').setup({
       vim.g.vim_markdown_conceal                 = 0
       vim.g.vim_markdown_conceal_code_blocks     = 0
     end,
-    dependencies = {
-      {
-        'godlygeek/tabular',
-        keys = {
-          { '<Space>@', ':TableFormat<CR>', mode = 'n', silent = true }
-        },
-      },
-      {
-        'iamcco/markdown-preview.nvim',
-        build = ':call mkdp#util#install()',
-      },
-    },
+  },
+  {
+    'godlygeek/tabular',
+    ft = 'markdown',
+    config = function()
+      vim.keymap.set('n', '<Space>@', '<Cmd>TableFormat<CR>', { silent = true, buffer = true })
+    end,
+  },
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = 'markdown',
+    build = ':call mkdp#util#install()',
   },
   -------------------------------- color scheme --------------------------------
   {
