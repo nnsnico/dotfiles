@@ -27,6 +27,7 @@ M.config = function()
       map({ 'n', 'v' }, '<Space>hr', ':Gitsigns reset_hunk<CR>')
       map('n',          '<Space>hp', gs.preview_hunk)
 
+      map('n', '<Space>g', '<Cmd>Gitsigns setqflist<CR>', { silent = true })
     end
   })
 end
