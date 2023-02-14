@@ -4,8 +4,11 @@
 
 **this workflow will be automated in the future.**
 
-* `$ ln -s ~/dotfiles/gh/config.yml ~/.config/gh/config.yml`
-  * if it already exists, remove it before setup.
+*
+    ```bash
+    $ ln -s ~/dotfiles/gh/config.yml ~/.config/gh/config.yml
+    ```
+  * if it already exists, remove it before setup
 
 ### Windows
 
