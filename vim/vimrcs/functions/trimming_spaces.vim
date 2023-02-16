@@ -50,7 +50,7 @@ function! s:is_ignore_filetype() abort
                 \ "notify",
                 \ "lazy",
                 \ ]
-    if index(ignore_list, &filetype) >= 0 || &buftype == 'terminal'
+    if index(ignore_list, &filetype) >= 0 || &buftype != ''
         return 1
     else
         return 0
