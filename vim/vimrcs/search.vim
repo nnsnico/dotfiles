@@ -14,8 +14,7 @@ set nowrapscan
 set hlsearch
 
 " set very magic
-nnoremap / /\v
-nnoremap ? ?\v
+nnoremap ? /\v
 
 " search in word
 nnoremap <Space>/ /\<\><Left><Left>

@@ -76,8 +76,9 @@ require('lazy').setup({
   },
   {
     'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter' },
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
+      { 'hrsh7th/cmp-cmdline' },
       { 'L3MON4D3/LuaSnip' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
@@ -85,7 +86,7 @@ require('lazy').setup({
       { 'hrsh7th/cmp-emoji' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'uga-rosa/cmp-skkeleton' },
-      { 'onsails/lspkind.nvim' }
+      { 'onsails/lspkind.nvim' },
     },
     config = function()
       require('plugins.config.my-nvim-cmp').config()
@@ -176,17 +177,6 @@ require('lazy').setup({
         show_current_context_start = true,
       }
     end
-  },
-  {
-    'gelguy/wilder.nvim',
-    event = 'CmdlineEnter',
-    config = function()
-      require('plugins.config.my-wilder').config()
-    end,
-    dependencies = {
-      'romgrk/fzy-lua-native',
-      'kyazdani42/nvim-web-devicons',
-    },
   },
   {
     'kevinhwang91/nvim-bqf',
