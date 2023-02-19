@@ -54,6 +54,37 @@ local lsp_servers = {
   {
     name = "rust_analyzer",
     ft = 'rust',
+    setting = function()
+      return {
+        settings = {
+          ['rust-analyzer'] = {
+            imports = {
+              granularity = {
+                group = 'module',
+              },
+              prefix = 'self',
+            },
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
+              enable = true,
+            },
+            checkOnSave = true,
+            check = {
+              command = 'clippy',
+              extraArgs = {
+                '--',
+                '-W',
+                'clippy::pedantic'
+              },
+            },
+          }
+        }
+      }
+    end
   },
   {
     name = 'vimls',

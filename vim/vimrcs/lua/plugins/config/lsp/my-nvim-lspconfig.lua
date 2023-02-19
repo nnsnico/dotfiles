@@ -93,7 +93,7 @@ M.on_attach = function(client, bufnr)
 
   -- auto commands
 
-  local filetypes = { 'lua', 'dart' }
+  local filetypes = { 'lua', 'dart', 'rust' }
 
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
     buffer = vim.api.nvim_get_current_buf(),
