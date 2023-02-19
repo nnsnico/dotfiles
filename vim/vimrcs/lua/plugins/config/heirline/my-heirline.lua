@@ -116,6 +116,8 @@ heirline.config = function()
 
   local WinBars = components.winbars
 
+  local Tabline = components.tabline
+
   local DefaultStatusline = {
     ViMode,
     SkkStatus,
@@ -148,7 +150,8 @@ heirline.config = function()
 
   require('heirline').setup({
     statusline = Statuslines,
-    winbar = WinBars
+    winbar = WinBars,
+    tabline = Tabline,
   })
 end
 

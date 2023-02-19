@@ -8,4 +8,5 @@ return {
   filename         = require('plugins.config.heirline.components.file_name'),
   code_context     = require('plugins.config.heirline.components.code_context'),
   winbars          = require('plugins.config.heirline.components.winbar'),
+  tabline          = require('plugins.config.heirline.components.tabline')
 }

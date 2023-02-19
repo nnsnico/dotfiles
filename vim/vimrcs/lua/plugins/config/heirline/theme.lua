@@ -128,6 +128,17 @@ local winbar = {
   }
 }
 
+local tabline = {
+  inactive = {
+    fg = general.blue,
+    bg = general.black,
+  },
+  active = {
+    fg = general.black,
+    bg = general.cyan,
+  }
+}
+
 ------------------------------- extended pallet --------------------------------
 
 local my_theme = vim.tbl_extend('error',
@@ -172,7 +183,9 @@ local my_theme = vim.tbl_extend('error',
   {
     winbar_active_text = winbar.active.text
   },
-  merge_theme('winbar_term', winbar.term)
+  merge_theme('winbar_term', winbar.term),
+  merge_theme('tabline_inactive', tabline.inactive),
+  merge_theme('tabline_active', tabline.active)
 )
 
 ------------------------------ initialize colors -------------------------------
