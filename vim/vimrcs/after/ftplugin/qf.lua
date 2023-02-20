@@ -25,6 +25,8 @@ local function auto_jump()
   )
 end
 
+vim.o.number = false
+
 -- override `open` and `openc` command
 vim.keymap.set('n', 'o', auto_jump, { buffer = true, silent = true })
 vim.keymap.set('n', '<CR>', auto_jump, { buffer = true, silent = true })
