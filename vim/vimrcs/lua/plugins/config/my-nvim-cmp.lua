@@ -86,6 +86,7 @@ M.config = function()
     sources = cmp.config.sources(
       {
         { name = 'skkeleton' },
+        { name = 'emoji' },
       },
       {
         { name = 'nvim_lsp' },
@@ -94,7 +95,6 @@ M.config = function()
       },
       {
         { name = 'buffer' },
-        { name = 'emoji' },
         { name = 'spell' },
       }
     ),
