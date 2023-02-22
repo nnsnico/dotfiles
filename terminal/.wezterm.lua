@@ -1,6 +1,18 @@
 local wezterm = require('wezterm')
 
--- AaaaaaBCDE ->
+local function basename(s)
+  return string.gsub(s, '(.*)[/\\]([a-z]+)[/\\]?$', '%2')
+end
+
+wezterm.on(
+  'format-window-title',
+  function(_, pane, _, _, _)
+    local prog = pane.user_vars.WEZTERM_PROG
+    local cwd = basename(pane.current_working_dir)
+    return 'WezTerm' .. ' - ' .. cwd .. ' > ' .. (prog or '')
+  end
+)
+
 return {
   color_scheme              = "tokyonight",
   font                      = wezterm.font_with_fallback({
