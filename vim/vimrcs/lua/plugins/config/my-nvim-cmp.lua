@@ -105,8 +105,14 @@ M.config = function()
     sources = cmp.config.sources(
       {
         { name = 'buffer' },
+      },
+      {
+        { name = 'skkeleton' },
       }
-    )
+    ),
+    formatting = {
+      fields = { 'abbr' },
+    },
   })
 
   cmp.setup.cmdline(':', {
@@ -119,6 +125,20 @@ M.config = function()
         { name = 'cmdline' },
       }
     ),
+    formatting = {
+      fields = { 'kind', 'abbr' },
+      ---@param item lsp.CompletionItem
+      format = function(entry, item)
+        local kind = lspkind.cmp_format({
+          mode = 'symbol_text',
+          maxwidth = 50,
+          ellipsis_char = '...',
+        })(entry, item)
+        local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.kind = " " .. (strings[1] or "") .. " "
+        return kind
+      end
+    },
   })
 end
 
