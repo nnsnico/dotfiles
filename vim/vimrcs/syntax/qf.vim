@@ -2,10 +2,10 @@ if exists('b:current_syntax')
     finish
 endif
 
-let error = execute('echon "\uF1E2"')
-let warn  = execute('echon "\uF071"')
-let info  = execute('echon "\uF05A"')
-let note  = execute('echon "\uFB4E"')
+let error = luaeval('require("constants").diagnostic_icons.error')
+let warn  = luaeval('require("constants").diagnostic_icons.warn')
+let info  = luaeval('require("constants").diagnostic_icons.info')
+let note  = luaeval('require("constants").diagnostic_icons.hint')
 
 syntax match qfFileName       /^[^│]*/ nextgroup=qfSeparatorLeft
 syntax match qfSeparatorLeft  /│/      contained nextgroup=qfLineNr

@@ -1,5 +1,6 @@
 local M = {}
 local lsputils = require('plugins.config.lsp.utils')
+local const = require('constants')
 
 local is_hover = false
 
@@ -9,10 +10,10 @@ M.on_attach = function(client, bufnr)
   -- Change diagnostic icons
 
   local signs = {
-    Info  = '\u{F05A}',
-    Error = '\u{F1E2}',
-    Warn  = '\u{F071}',
-    Hint  = '\u{FB4E}',
+    Info  = const.diagnostic_icons.info,
+    Error = const.diagnostic_icons.error,
+    Warn  = const.diagnostic_icons.warn,
+    Hint  = const.diagnostic_icons.hint,
   }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type

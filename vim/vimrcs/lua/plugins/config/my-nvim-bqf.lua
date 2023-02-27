@@ -1,6 +1,7 @@
 ---@see vim/vimrcs/syntax/qf.vim
 
 local M = {}
+local const = require('constants')
 
 M.config = function()
   -- Adapt fzf's delimiter in nvim-bqf
@@ -20,13 +21,13 @@ M.setup = function()
   ---@return string 'diagnostic sign icon'
   local function diagnostic_type(str)
     if str == 'E' then
-      return '\u{F1E2}'
+      return const.diagnostic_icons.error
     elseif str == 'W' then
-      return '\u{F071}'
+      return const.diagnostic_icons.warn
     elseif str == 'I' then
-      return '\u{F05A}'
+      return const.diagnostic_icons.info
     elseif str == 'N' then
-      return '\u{FB4E}'
+      return const.diagnostic_icons.hint
     else
       return ''
     end
