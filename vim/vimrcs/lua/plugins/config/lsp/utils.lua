@@ -29,21 +29,21 @@ local auto_window_splitter = require('functions.auto-window-splitter')
 
 ---@alias Response (lsp.Location | lsp.Location[] | lsp.LocationLink[])?
 
----@param value lsp.Location
+---@param location lsp.Location
 ---@return QfItem quickfix_item quickfix item
-local function qfitem_from_location(value)
-  ---@param resp lsp.Location
+local function qfitem_from_location(location)
+  ---@param uri string
   ---@return string file name in project path
-  local function decode_filename(resp)
-    local fname = vim.uri_to_fname(resp.uri)
+  local function decode_filename(uri)
+    local fname = vim.uri_to_fname(uri)
     return vim.fn.fnamemodify(fname, ':.')
   end
 
-  ---@param resp lsp.Location
+  ---@param range lsp.Range
   ---@return number, number (line, character)
-  local function decode_range(resp)
+  local function decode_range(range)
     ---@type lsp.Position
-    local position = resp.range['start']
+    local position = range.start
     return position.line + 1, position.character + 1
   end
 
@@ -55,9 +55,9 @@ local function qfitem_from_location(value)
     return bufnr
   end
 
-  local project_filepath = decode_filename(value)
+  local project_filepath = decode_filename(location.uri)
   local bufnr = create_buffer(project_filepath)
-  local lnum, col = decode_range(value)
+  local lnum, col = decode_range(location.range)
   return {
     bufnr = bufnr,
     filename = project_filepath,
@@ -78,7 +78,7 @@ end
 ---@param response Response: Location or Location[] or LocationLink[] (e.g, responsed value from "textDocument/definition")
 ---@return QfItem[] quickfix_list: Quickfix list
 function M.map_to_qflist_from_location(response)
-  if response and type(response[1]) == 'table' then -- is `Location[] | LocationLink[]`
+  if response and vim.tbl_islist(response) then -- is `Location[] | LocationLink[]`
     return vim.lsp.util.locations_to_items(response, 'utf-8')
   else -- is `Location`
     return {

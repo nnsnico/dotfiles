@@ -24,20 +24,6 @@ local function auto_split_str(bufname)
   return cmd .. bufname
 end
 
----@param target_bufname string
----@param win_buf_list AutoWinSplit.Windows
----@return AutoWinSplit.Windows[] windows Currently windows that able to be jump
-local function get_jumpable_windows(target_bufname, win_buf_list)
-  ---@type AutoWinSplit.Windows[]vim.
-  local jumpable_files = vim.tbl_filter(
-  ---@param v AutoWinSplit.Windows
-    function(v) return v.bufname == target_bufname end,
-    win_buf_list
-  )
-
-  return jumpable_files
-end
-
 ---@param filename string file name in project path or full path
 ---@param windows AutoWinSplit.Windows[]
 -- Automatically splits a wide window to open a file
@@ -59,15 +45,15 @@ local function auto_split(filename, windows)
   vim.fn.win_gotoid(window_size_list[1].winid)
 
   local splitter = auto_split_str(filename)
-  vim.fn.execute(splitter)
+  vim.cmd(splitter)
 end
 
 ---@param winid number window id. if 0, current window
----@param line number line number
----@param character number column number
-function M.move_cursor(winid, line, character)
-  character = character <= 0 and 1 or character
-  vim.api.nvim_win_set_cursor(winid, { line, character - 1 })
+---@param row number line number
+---@param col number column number
+function M.move_cursor(winid, row, col)
+  col = col <= 0 and 1 or col
+  vim.api.nvim_win_set_cursor(winid, { row, col - 1 })
 end
 
 ---@param filename string
@@ -75,30 +61,37 @@ end
 ---@param col integer
 function M.auto_jump(filename, lnum, col)
   ---@type AutoWinSplit.Windows[]
-  local windows = vim.tbl_map(
-  ---@param win integer
-    function(win)
+  local win_buf_list = vim.tbl_map(
+  ---@param winid integer
+    function(winid)
       return {
-        winid = win,
-        bufname = vim.fn.fnamemodify(vim.fn.bufname(vim.fn.winbufnr(win)), ':p'),
+        winid = winid,
+        bufname = vim.fn.fnamemodify(vim.fn.bufname(vim.fn.winbufnr(winid)), ':p'),
       }
     end,
     vim.api.nvim_list_wins()
   )
-  local jumpable_windows = get_jumpable_windows(filename, windows)
+  local jumpable_windows = vim.tbl_filter(
+    ---@param v AutoWinSplit.Windows
+    function(v) return v.bufname == filename end,
+    win_buf_list
+  )
+
   if not vim.tbl_isempty(jumpable_windows) then
+    -- only cursor moving
     for _, v in pairs(jumpable_windows) do
       vim.fn.win_gotoid(v.winid)
       M.move_cursor(v.winid, lnum, col)
       return
     end
   else
+    -- split window and move cursor
     local current_tabpage_wins = vim.tbl_filter(
-      ---@param v AutoWinSplit.Windows
-      function(v)
-        return vim.tbl_contains(vim.api.nvim_tabpage_list_wins(0), v.winid)
+    ---@param win AutoWinSplit.Windows
+      function(win)
+        return vim.tbl_contains(vim.api.nvim_tabpage_list_wins(0), win.winid)
       end,
-      windows
+      win_buf_list
     )
     auto_split(filename, current_tabpage_wins)
     M.move_cursor(0, lnum, col)
