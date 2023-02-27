@@ -1,3 +1,5 @@
+-- !!No longer maintained because replace to lazy.nvim!!
+
 vim.cmd([[packadd packer.nvim]])
 
 if vim.fn.has('mac') then
