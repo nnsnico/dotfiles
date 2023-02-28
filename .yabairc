@@ -4,15 +4,10 @@
 #   stackline installation:
 #     1. installa HammerSpoon
 #     2. clone stackline in ~/.hammerspoon
-#     3. type to ~/.hammerspoon/init.lua like below
-#       ```
-#       local stackline = require "stackline.stackline.stackline"
-#       stackline:init()
-#       ```
-#     4. change jq path
-#       ```
-#       $ eval "hs -c \"stackline.config:set('paths.jq', '$(which jq)')\""
-#       ```
+#     3. add symbolic link like below:
+#         ```
+#         $ ln -sf ~/dotfiles/hammerspoon/init.lua ~/.hammerspoon
+#         ```
 
 # load scripting-addition
 # @see https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
