@@ -33,7 +33,7 @@ M.config = function()
           { key = "x",             cb = tree_callback("close_node") },
           { key = "K",             cb = tree_callback("first_sibling") },
           { key = "J",             cb = tree_callback("last_sibling") },
-          { key = "I",             cb = tree_callback("toggle_ignored") },
+          { key = "I",             cb = tree_callback("toggle_git_ignored") },
           { key = "H",             cb = tree_callback("toggle_dotfiles") },
           { key = "R",             cb = tree_callback("refresh") },
           { key = "i",             cb = tree_callback("split") },
