@@ -153,6 +153,8 @@ onoremap gL g$
 xnoremap gL g$
 
 nnoremap gp %
+onoremap gp %
+xnoremap gp %
 
 nnoremap ZZ :<C-u>q<CR>
 nnoremap ZA :<C-u>qa<CR>
