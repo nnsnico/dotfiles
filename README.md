@@ -10,7 +10,7 @@
 
 - fish: fish setting files(not maintained)
 
-- gh: config file for [GitHhub CLI](https://github.com/cli/cli)
+- gh: config file for [GitHub CLI](https://github.com/cli/cli)
 
 - install: installation scripts for vim setup
 
