@@ -72,6 +72,7 @@ map <Space>v <Action>(ActivateBuildVariantsToolWindow)
 set NERDTree
 " TODO: Projectツリーにフォーカス中はToggle出来ないのでそれが実装されたら
 " map <C-t> <Action>(NERDTreeToggle)
+map <C-g> :NERDTreeFind<CR>
 
 " Apply `Surround Vim`
 set surround
