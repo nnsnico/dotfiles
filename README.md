@@ -19,7 +19,7 @@
 - tmux: tmux setting files(tmux.conf, powerline)
 
 - vim: vim setting files(vimrcs)
-  - startuptime: `034.329` (2023/2/28)
+  - startuptime: `34ms` (2023/2/28)
     - MacBook Air (M1, 2020)
       <details>
       <summary>log</summary>
