@@ -447,6 +447,30 @@ require('lazy').setup({
             selector = 'div[role="textbox"]',
             takeover = 'always',
           },
+          ['https://github\\.com/'] = {
+            cmdline  = 'neovim',
+            content  = 'text',
+            priority = 0,
+            selector = 'textarea',
+            takeover = 'always',
+            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
+          },
+          ['https://blog\\.hatena\\.ne\\.jp/'] = {
+            cmdline  = 'neovim',
+            content  = 'text',
+            priority = 0,
+            selector = 'textarea',
+            takeover = 'always',
+            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
+          },
+          ['https://play\\.kotlinlang\\.org'] = {
+            cmdline  = 'neovim',
+            content  = 'text',
+            priority = 0,
+            selector = 'textarea',
+            takeover = 'always',
+            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.kt',
+          },
           ['https://perf\\.hrmos\\.co/'] = {
             content  = 'html',
             priority = 1,
@@ -460,7 +484,7 @@ require('lazy').setup({
           ['https://.*\\.notion\\.site/'] = {
             takeover = 'never',
             priority = 1,
-          }
+          },
         }
       }
       if vim.g.started_by_firenvim then
@@ -473,14 +497,6 @@ require('lazy').setup({
               vim.o.lines = 20
             end
           end
-        })
-        vim.api.nvim_create_autocmd('BufEnter', {
-          pattern = 'github.com_*.txt',
-          command = 'set ft=markdown'
-        })
-        vim.api.nvim_create_autocmd('BufEnter', {
-          pattern = 'play.kotlinlang.org_*.c',
-          command = 'set ft=kotlin',
         })
       end
       vim.cmd('hi link CmpItemAbbrDefault Pmenu')
