@@ -109,6 +109,16 @@ alias la='f() { (command exa -alh --git --time-style=iso --icons "$@" || command
 alias lla='f() { (command exa -alh --git --time-style=long-iso --icons "$@" || command ls -al "$@"); unset -f f; }; f'
 alias ll='f() { (command exa -lh --time-style=iso "$@" || command ls -al "$@"); unset -f f; }; f'
 
+# -- for Android
+
+function logapp() {
+  if ! [[ $# == 0 ]]; then
+    command adb logcat --pid=$(adb shell ps | rg "$1" | awk '{print $2}') 2>/dev/null | rogcat - && (echo "No PID"; exit 1)
+  else
+    command adb logcat | rogcat -
+  fi
+}
+
 # ------------------------------------ tmux ------------------------------------
 
 # attach tmux when launching terminal

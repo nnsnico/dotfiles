@@ -111,6 +111,14 @@ zinit wait lucid for \
     sbin"**/exa -> exa" \
   "ogham/exa"
 
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
+    sbin"rogcat-* -> rogcat" \
+  "flxo/rogcat"
+    # completion is not working
+    # atclone'rogcat-* completions zsh > _rogcat; zicompinit; zicdreplay' \
+    # atpull'%atclone' \
 
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
