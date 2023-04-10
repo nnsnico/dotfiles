@@ -16,7 +16,10 @@ end
 
 function M.config()
   -- synchronizes background color with nvim-tree.lua
-  local background_color = vim.api.nvim_exec([[echo synIDattr(synIDtrans(hlID('NvimTreeWindowPicker')), 'bg')]], true)
+  local background_color = vim.api.nvim_exec2(
+    [[echo synIDattr(synIDtrans(hlID('NvimTreeWindowPicker')), 'bg')]],
+    { output = true }
+  )
   require('window-picker').setup({
       include_current_win = true,
       selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
