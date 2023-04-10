@@ -23,7 +23,7 @@ function M.config()
   require('window-picker').setup({
       include_current_win = true,
       selection_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      other_win_hl_color = background_color,
+      other_win_hl_color = background_color.output,
       use_winbar = 'never',
       show_prompt = false,
       filter_rules = {
