@@ -384,13 +384,6 @@ require('lazy').setup({
     cmd = { 'OpenBrowser', 'OpenBrowserSearch' },
   },
   {
-    'editorconfig/editorconfig-vim',
-    cond = function()
-      local cwd = vim.fn.getcwd()
-      return vim.loop.fs_stat(cwd .. '/.editorconfig')
-    end,
-  },
-  {
     'voldikss/vim-translator',
     keys = {
       { '<Leader>t', '<Plug>TranslateW', mode = 'n', silent = true },
