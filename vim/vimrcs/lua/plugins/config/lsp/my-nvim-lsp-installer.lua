@@ -189,7 +189,9 @@ M.config = function()
   })
 
   -- setup nvim-lspconfig
-  require('plugins.config.lsp.my-nvim-lspconfig').setup(lsp_servers)
+  local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
+  lspconfig.setup(lsp_servers)
+  lspconfig.attach_lsp()
 end
 
 return M

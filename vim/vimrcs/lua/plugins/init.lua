@@ -108,17 +108,15 @@ require('lazy').setup({
     init = function()
     end,
     config = function()
+      require('plugins.config.lsp.my-nvim-lspconfig').attach_lsp()
+
       vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { silent = true, buffer = true })
 
-      local on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach
       require('flutter-tools').setup({
         fvm = true,
         widget_guides = {
           enabled = true,
         },
-        lsp = {
-          on_attach = on_attach,
-        }
       })
     end,
     dependencies = {
@@ -131,13 +129,13 @@ require('lazy').setup({
     config = function()
       local metals_config = require('metals').bare_config()
 
+      require('plugins.config.lsp.my-nvim-lspconfig').attach_lsp()
+
       metals_config.settings = {
         showImplicitArguments = true,
         excludedPackages = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' }
       }
-
       metals_config.capabilities = require('cmp_nvim_lsp').default_capabilities()
-      metals_config.on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach
 
       local nvim_metals_group = vim.api.nvim_create_augroup('nvim-metals', { clear = true })
       vim.api.nvim_create_autocmd('FileType', {

@@ -4,7 +4,7 @@ local const = require('constants')
 
 local is_hover = false
 
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   vim.o.signcolumn = 'yes:2'
 
   -- Change diagnostic icons
@@ -142,17 +142,21 @@ M.on_attach = function(client, bufnr)
 
 end
 
+M.attach_lsp = function()
+  vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function (args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        on_attach(client, bufnr)
+      end
+    })
+end
+
 M.setup = function(lsps)
+
   for _, lsp in pairs(lsps) do
     local setting = lsp.setting or function() return {} end
-    require('lspconfig')[lsp.name].setup(
-      vim.tbl_extend(
-        "error",
-        {
-          on_attach = M.on_attach,
-        },
-        setting()
-      ))
+    require('lspconfig')[lsp.name].setup(setting())
   end
 end
 
