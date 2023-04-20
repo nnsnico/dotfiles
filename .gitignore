@@ -12,3 +12,6 @@ zsh/.zhistory
 
 // zplugin
 zsh/.zinit
+
+// other
+*.log
