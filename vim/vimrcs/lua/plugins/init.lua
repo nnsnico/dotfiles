@@ -438,10 +438,14 @@ require('lazy').setup({
             selector = 'div[role="textbox"]',
             takeover = 'always',
           },
-          ['https://github\\.com/'] = {
+          ['https://github\\.com/.*blob.*'] = {
+            takeover = 'never',
+            priority = 1,
+          },
+          ['https://github\\.com/.*(issues|pull).*'] = {
             cmdline  = 'neovim',
             content  = 'text',
-            priority = 0,
+            priority = 1,
             selector = 'textarea',
             takeover = 'always',
             filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
@@ -449,7 +453,7 @@ require('lazy').setup({
           ['https://blog\\.hatena\\.ne\\.jp/'] = {
             cmdline  = 'neovim',
             content  = 'text',
-            priority = 0,
+            priority = 1,
             selector = 'textarea',
             takeover = 'always',
             filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
@@ -457,7 +461,7 @@ require('lazy').setup({
           ['https://play\\.kotlinlang\\.org'] = {
             cmdline  = 'neovim',
             content  = 'text',
-            priority = 0,
+            priority = 1,
             selector = 'textarea',
             takeover = 'always',
             filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.kt',
