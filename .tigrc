@@ -32,6 +32,7 @@ bind main \u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && g
 bind main x  ?git clean -d -f                                                                  # delete untracked file (all)
 bind main F  ?git fetch %(remote)
 bind main \f :toggle commit-title-refs                                                         # toogle to show refs(e.g., release-tag)
+bind main y  +sh -c "printf %(commit) | pbcopy && echo 'Copy commit id: %(commit)'"
 
 # diff
 
