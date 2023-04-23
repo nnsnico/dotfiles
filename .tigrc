@@ -14,6 +14,8 @@ bind generic <Ctrl-F>  :move-page-down
 bind generic <Ctrl-B>  :move-page-up
 bind generic <Ctrl-G>  :move-first-line
 bind generic \<Ctrl-G> :move-last-line
+bind generic s         :view-status
+bind generic S         :view-stash
 
 # ------------------------------------ Git -------------------------------------
 
