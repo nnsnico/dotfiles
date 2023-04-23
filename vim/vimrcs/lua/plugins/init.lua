@@ -242,6 +242,20 @@ require('lazy').setup({
       })
     end
   },
+  {
+    'anuvyklack/windows.nvim',
+    event = { 'BufReadPost' },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
+    end,
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    }
+  },
   ---------------------------- manipulation utility ----------------------------
   {
     'windwp/nvim-autopairs',
