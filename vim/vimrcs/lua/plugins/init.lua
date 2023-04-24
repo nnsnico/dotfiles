@@ -457,7 +457,7 @@ require('lazy').setup({
             takeover = 'never',
             priority = 1,
           },
-          ['https://github\\.com/.*(issues|pull).*'] = {
+          ['https://github\\.com/.*(issues|pull|compare).*'] = {
             cmdline  = 'neovim',
             content  = 'text',
             priority = 1,
