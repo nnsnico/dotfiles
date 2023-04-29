@@ -4,9 +4,6 @@
 
 fpath+=~/.zfunc
 
-export EDITOR='nvim'
-export MANPAGER='nvim +Man!'
-
 # ----------------------------- Setup WSL2(Ubuntu) -----------------------------
 
 if [[ $OSTYPE =~ "linux*" ]]; then
