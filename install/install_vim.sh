@@ -3,7 +3,7 @@
 
 cd "$(dirname "$0")" || exit 1
 
-# 1. add vim synbolic link
+# add vim synbolic link
 echo "Add symbolic link of .vimrc..."
 ln -s ~/dotfiles/vim/.vimrc ~/
 
@@ -29,6 +29,3 @@ ln -s ~/dotfiles/vim/.ideavimrc ~/
 ln -s ~/dotfiles/vim/vimrcs/after/ ~/.config/nvim/
 ln -s ~/dotfiles/vim/vimrcs/syntax/ ~/.config/nvim/
 ln -s ~/dotfiles/vim/vimrcs/lua/ ~/.config/nvim/
-
-# 2. install vim plugins
-nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
