@@ -16,7 +16,6 @@ M.config = function()
 
   require('null-ls').setup({
     sources   = sources,
-    on_attach = require('plugins.config.lsp.my-nvim-lspconfig').on_attach,
   })
 end
 
