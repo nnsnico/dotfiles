@@ -1,12 +1,12 @@
 {
   "dividers": {
     "left": {
-      "hard": " ",
-      "soft": " "
+      "hard": "",
+      "soft": ""
     },
     "right": {
-      "hard": "  ",
-      "soft": " "
+      "hard": "",
+      "soft": ""
     }
   },
   "spaces": 1,
@@ -60,6 +60,9 @@
     },
     "powerline.segments.common.sys.uptime": {
       "before": "↑  "
+    },
+    "powerline.segments.common.sys.system_load": {
+      "after": " "
     },
     "powerline.segments.common.mail.email_imap_alert": {
       "before": "MAIL "
