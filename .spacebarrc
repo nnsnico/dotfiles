@@ -5,7 +5,7 @@ spacebar -m config icon_font        "JetBrainsMono Nerd Font:Regular:12.0"
 spacebar -m config background_color 0xff202020
 spacebar -m config foreground_color 0xfffafafa
 spacebar -m config space_icon_color 0xff76ff03
-spacebar -m config space_icon_strip  聆  ﳟ      
+spacebar -m config space_icon_strip  󰒱  󰟡 󰎦 󰎩 󰎬 󰎮 󰎰 󰎵
 spacebar -m config power_icon_strip  
 spacebar -m config space_icon       
 spacebar -m config clock_icon       
