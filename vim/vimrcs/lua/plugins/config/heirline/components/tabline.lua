@@ -100,7 +100,7 @@ local TablineFileNameBlock = {
 }
 
 local TablineBufferBlock = utils.surround(
-  { '\u{E0BA} ', '\u{E0BC} ' },
+  { '\u{E0BA}', '\u{E0BC}' },
   function(self)
     if self.is_active then
       return 'tabline_active_bg'
