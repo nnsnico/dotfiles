@@ -65,6 +65,7 @@ nmap <Leader>o <Action>(activateStructureToolWindow)
 " -------------------------------- for Android --------------------------------
 
 map <Leader>S <Action>(Android.SyncProject)
+map <Leader>d <Action>(DeviceAndSnapshotComboBox)
 map <Space>v <Action>(ActivateBuildVariantsToolWindow)
 
 " ---------------------------------- Plugins -----------------------------------
