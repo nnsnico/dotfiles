@@ -62,6 +62,8 @@ nmap <C-e> <Action>(ShowErrorDescription)
 
 nmap <Leader>o <Action>(activateStructureToolWindow)
 
+map <Space>m <Action>(MaximizeEditorInSplit)
+
 " -------------------------------- for Android --------------------------------
 
 map <Leader>S <Action>(Android.SyncProject)
@@ -69,6 +71,8 @@ map <Leader>d <Action>(DeviceAndSnapshotComboBox)
 map <Space>v <Action>(ActivateBuildVariantsToolWindow)
 
 " ---------------------------------- Plugins -----------------------------------
+
+map <Leader>, <Action>(VimActions)
 
 set NERDTree
 " TODO: Projectツリーにフォーカス中はToggle出来ないのでそれが実装されたら
