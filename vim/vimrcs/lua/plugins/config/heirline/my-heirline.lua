@@ -4,6 +4,7 @@ heirline.config = function()
   local conditions = require('heirline.conditions')
   local utils = require('heirline.utils')
   local components = require('plugins.config.heirline.components')
+  local divider = require('constants').ple
 
   -- init theme
   require('plugins.config.heirline.theme').init()
@@ -13,7 +14,7 @@ heirline.config = function()
   local ViMode = components.vimode
   ViMode = utils.insert(ViMode,
     {
-      provider = '\u{E0B8}',
+      provider = divider.bottom_right,
       hl = function(self)
         return { fg = self.bg_color, bg = 'skk_bg' }
       end,
@@ -25,7 +26,7 @@ heirline.config = function()
   local SkkStatus = components.skk_status
   SkkStatus = utils.insert(SkkStatus,
     {
-      provider = '\u{E0B8}',
+      provider = divider.bottom_right,
       hl = function()
         return { fg = 'skk_bg', bg = utils.get_highlight("StatusLine").bg }
       end,
@@ -34,10 +35,10 @@ heirline.config = function()
 
   -------------------------------- Code Context --------------------------------
 
-  local CodeContext = components.code_context('\u{E0BF}')
+  local CodeContext = components.code_context(divider.bottom_div)
   CodeContext = utils.insert(CodeContext,
     {
-      provider = '\u{E0BF}',
+      provider = divider.bottom_div,
       hl = { fg = 'code_context_fg' }
     }
   )
@@ -47,7 +48,7 @@ heirline.config = function()
   local FileType = components.filetype
   local FileTypePL = utils.insert(
     {
-      provider = '\u{E0BE}',
+      provider = divider.bottom_left,
       hl = {
         fg = 'filetype_bg',
         bg = 'diag_err_bg',
@@ -59,7 +60,7 @@ heirline.config = function()
   local FileEncodeType = components.file_encode_type
   FileEncodeType = utils.insert(
     {
-      provider = '\u{E0BE}',
+      provider = divider.bottom_left,
       hl = {
         fg = 'fileencode_bg',
         bg = 'filetype_bg',
@@ -73,7 +74,7 @@ heirline.config = function()
   local LineStatus = components.line_status
   LineStatus = {
     {
-      provider = '\u{E0BE}',
+      provider = divider.bottom_left,
       hl = {
         fg = 'linestatus_bg',
         bg = 'fileencode_bg',
@@ -90,7 +91,7 @@ heirline.config = function()
   local DiagnosticWarn = diagnostic.warn
   DiagnosticWarn = utils.insert(
     {
-      provider = '\u{E0BE}',
+      provider = divider.bottom_left,
       hl = {
         fg = 'diag_warn_bg',
         bg = utils.get_highlight("StatusLine").bg,
@@ -103,7 +104,7 @@ heirline.config = function()
   local DiagnosticError = diagnostic.error
   DiagnosticError = {
     {
-      provider = '\u{E0BE}',
+      provider = divider.bottom_left,
       hl = {
         fg = 'diag_err_bg',
         bg = 'diag_warn_bg',
@@ -116,7 +117,7 @@ heirline.config = function()
 
   local WinBars = components.winbars
 
-  local Tabline = components.tabline
+  local Tabline = components.tabline(divider.top_left, divider.top_right)
 
   local DefaultStatusline = {
     ViMode,

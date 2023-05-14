@@ -99,21 +99,31 @@ local TablineFileNameBlock = {
   TablineCloseButton,
 }
 
-local TablineBufferBlock = utils.surround(
-  { '\u{E0BA}', '\u{E0BC}' },
-  function(self)
-    if self.is_active then
-      return 'tabline_active_bg'
-    else
-      return 'tabline_inactive_bg'
-    end
-  end,
-  { TablineFileNameBlock }
-)
+---@param left_div string
+---@param right_div string
+---@return table component
+local TablineBufferBlock = function(left_div, right_div)
+  return utils.surround(
+    { left_div, right_div },
+    function(self)
+      if self.is_active then
+        return 'tabline_active_bg'
+      else
+        return 'tabline_inactive_bg'
+      end
+    end,
+    { TablineFileNameBlock }
+  )
+end
 
-return {
-  condition = function()
-    return #vim.api.nvim_list_tabpages() >= 2
-  end,
-  utils.make_tablist(TablineBufferBlock)
-}
+---@param left_div string
+---@param right_div string
+---@return table component
+return function(left_div, right_div)
+  return {
+    condition = function()
+      return #vim.api.nvim_list_tabpages() >= 2
+    end,
+    utils.make_tablist(TablineBufferBlock(left_div, right_div))
+  }
+end
