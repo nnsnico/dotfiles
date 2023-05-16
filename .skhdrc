@@ -124,4 +124,4 @@ ctrl + cmd - o : yabai -m display --focus next
 
 # ----------------------------------- other -----------------------------------
 
-ctrl + shift + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+ctrl + shift + cmd - r : yabai --restart-service
