@@ -111,11 +111,29 @@ alias ll='f() { (command exa -lh --time-style=iso "$@" || command ls -al "$@"); 
 
 # -- for Android
 
-function logapp() {
+function adbdevices() {
+  local selected=$(adb devices | rg -v '^$' | tail -n +2 | fzf --select-1 --exit-0 | awk '{print $1}')
+  [ -n "$selected" ] && echo "$selected" || (>&2 echo 'Not selected device'; exit 1)
+}
+
+function adbps() {
+  local device=$(adbdevices)
+  [ -n "$device" ] && \
+    command adb -s "$device" shell ps -o PID -o NAME | rg "$1" || \
+    (>&2 echo 'No PID'; exit 1)
+}
+
+function adblog() {
+  local device=$(adbdevices)
   if ! [[ $# == 0 ]]; then
-    command adb logcat --pid=$(adb shell ps | rg "$1" | awk '{print $2}') 2>/dev/null | rogcat - && (echo "No PID"; exit 1)
+    [ -n "$device" ] && \
+      command adb -s "$device" logcat \
+        --pid=$(adb -s "$device" shell ps -o PID -o NAME | rg "$1" | awk '{print $1}') 2>/dev/null | \
+        rogcat - && (echo "No PID"; exit 1)
   else
-    command adb logcat | rogcat -
+    [ -n "$device" ] && \
+      command adb -s "$device" logcat | \
+        rogcat -
   fi
 }
 
