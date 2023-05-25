@@ -109,18 +109,44 @@ alias la='f() { (command exa -alh --git --time-style=iso --icons "$@" || command
 alias lla='f() { (command exa -alh --git --time-style=long-iso --icons "$@" || command ls -al "$@"); unset -f f; }; f'
 alias ll='f() { (command exa -lh --time-style=iso "$@" || command ls -al "$@"); unset -f f; }; f'
 
-# -- for Android
+# ----------------------------- Script for Android -----------------------------
 
 function adbdevices() {
   local selected=$(adb devices | rg -v '^$' | tail -n +2 | fzf --select-1 --exit-0 | awk '{print $1}')
-  [ -n "$selected" ] && echo "$selected" || (>&2 echo 'Not selected device'; exit 1)
+  [ -n "$selected" ] && echo "$selected" || (>&2 echo "adbdevices:\tNot selected a device"; exit 1)
+}
+
+function adbapps() {
+  local device=$1
+  if [ -n "$device" ]; then
+    command adb -s "$device" shell pm list packages
+  elif [ ! -t 0 ]; then # read from pipe input
+    read device_from_pipe
+    command adb -s "$device_from_pipe" shell pm list packages
+  else
+    (>&2 echo "adbapps:\tNot selected a device"; exit 1)
+  fi
+}
+
+function adbstartapp() {
+  local device=$(adbdevices)
+  local apps=$(adbapps "$device")
+  local apppackage=$(echo "$apps" | fzf --select-1 --exit-0 | awk -F':' '{print $2}')
+  [ -n "$apppackage" ] && [ -n "$device" ] && \
+    command adb -s "$device" shell monkey -p "$apppackage" 1 || \
+    (>&2 echo "adbstartapp:\tNot selected an app"; exit 1)
 }
 
 function adbps() {
-  local device=$(adbdevices)
-  [ -n "$device" ] && \
-    command adb -s "$device" shell ps -o PID -o NAME | rg "$1" || \
-    (>&2 echo 'No PID'; exit 1)
+  local device=$1
+  if [ -n "$device" ]; then
+    command adb -s "$device" shell ps -o PID -o NAME | rg "$1"
+  elif [ ! -t 0 ]; then # read from pipe input
+    read device_from_pipe
+    command adb -s "$device_from_pipe" shell ps -o PID -o NAME | rg "$1"
+  else
+    (>&2 echo "adbps:\tNo PID"; exit 1)
+  fi
 }
 
 function adblog() {
@@ -129,11 +155,23 @@ function adblog() {
     [ -n "$device" ] && \
       command adb -s "$device" logcat \
         --pid=$(adb -s "$device" shell ps -o PID -o NAME | rg "$1" | awk '{print $1}') 2>/dev/null | \
-        rogcat - && (echo "No PID"; exit 1)
+        rogcat - && (echo "adblog:\tNo PID"; exit 1)
   else
     [ -n "$device" ] && \
       command adb -s "$device" logcat | \
         rogcat -
+  fi
+}
+
+function adbunpin() {
+  local device=$1
+  if [ -n "$device" ]; then
+    command adb -s "$device" shell am task lock stop
+  elif [ ! -t 0 ]; then # read from pipe input
+    read device_from_pipe
+    command adb -s "$device_from_pipe" shell am task lock stop
+  else
+    (>&2 echo "adbunpin: Not selected a device"; exit 1)
   fi
 }
 
