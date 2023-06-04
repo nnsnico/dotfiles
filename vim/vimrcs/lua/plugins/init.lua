@@ -155,6 +155,7 @@ require('lazy').setup({
   ------------------------------- visual utility -------------------------------
   {
     'rebelot/heirline.nvim',
+    event = 'VeryLazy',
     config = function()
       require('plugins.config.heirline.my-heirline').config()
     end,
@@ -197,6 +198,7 @@ require('lazy').setup({
   },
   {
     'rcarriga/nvim-notify',
+    event = 'VeryLazy',
     config = function()
       require('plugins.config.my-nvim-notify').config()
     end
