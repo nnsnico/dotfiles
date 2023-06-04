@@ -519,6 +519,10 @@ require('lazy').setup({
   {
     'wakatime/vim-wakatime'
   },
+  {
+    'powerman/vim-plugin-AnsiEsc',
+    cmd = 'AnsiEsc',
+  },
   --------------------------------- file type ----------------------------------
   -- markdown
   {
