@@ -346,7 +346,7 @@ require('lazy').setup({
   },
   {
     'karb94/neoscroll.nvim',
-    event = { 'BufReadPost' },
+    event = { 'BufReadPost', 'BufWinEnter' },
     config = function()
       require('neoscroll').setup({
         mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zz', 'zt', 'zb' },
