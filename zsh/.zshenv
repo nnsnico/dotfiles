@@ -120,6 +120,11 @@ zinit wait lucid for \
     # atclone'rogcat-* completions zsh > _rogcat; zicompinit; zicdreplay' \
     # atpull'%atclone' \
 
+zinit wait lucid for \
+    pick"_gradle" \
+    as"completion" \
+  "gradle/gradle-completion"
+
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
 export _ZO_ECHO='1'
