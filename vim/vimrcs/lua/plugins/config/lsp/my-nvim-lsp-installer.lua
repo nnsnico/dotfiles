@@ -18,7 +18,7 @@ local lsp_servers = {
       local library = {}
       local function add(lib)
         for _, p in pairs(vim.fn.expand(lib, false, true)) do
-          p = vim.loop.fs_realpath(p)
+          p = vim.uv.fs_realpath(p)
           library[p] = true
         end
       end
