@@ -348,10 +348,6 @@ require('lazy').setup({
         { 'n', 'x', 'o' },
       }
     },
-    config = function()
-      local leap = require('leap')
-      leap.opts.case_sensitive = true
-    end,
   },
   {
     's1n7ax/nvim-window-picker',
