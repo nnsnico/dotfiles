@@ -51,8 +51,7 @@ require('lazy').setup({
   ------------------------------------ LSP -------------------------------------
   {
     'williamboman/mason.nvim',
-    ft = require('plugins.config.lsp.my-nvim-lsp-installer').filetypes(),
-    cmd = 'Mason',
+    event = 'VeryLazy',
     config = function()
       require('plugins.config.lsp.my-nvim-lsp-installer').config()
     end,
@@ -105,9 +104,7 @@ require('lazy').setup({
   },
   {
     'akinsho/flutter-tools.nvim',
-    ft = 'dart',
-    init = function()
-    end,
+    event = 'VeryLazy',
     config = function()
       require('plugins.config.lsp.my-nvim-lspconfig').attach_lsp()
 
@@ -126,7 +123,7 @@ require('lazy').setup({
   },
   {
     'scalameta/nvim-metals',
-    ft = { 'scala', 'sbt', 'sc' },
+    event = 'VeryLazy',
     config = function()
       local metals_config = require('metals').bare_config()
 

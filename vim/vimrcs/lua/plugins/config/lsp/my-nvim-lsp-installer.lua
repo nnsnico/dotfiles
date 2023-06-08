@@ -149,6 +149,7 @@ M.tools = {
 }
 
 ---@return string[]
+---@deprecated not use until find the method to lazy loading by lazy.nvim
 M.filetypes = function()
   ---@param server LspConf.Configuration
   ---@type string[]
