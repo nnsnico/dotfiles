@@ -325,7 +325,9 @@ require('lazy').setup({
     }
   },
   {
+    ---@deprecated: no longer maintained. Use instead leap.nvim
     'phaazon/hop.nvim',
+    enabled = false,
     branch = 'v2',
     keys = {
       { '<Leader>s' },
@@ -333,6 +335,22 @@ require('lazy').setup({
     config = function()
       require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
       vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
+    end,
+  },
+  {
+    'ggandor/leap.nvim',
+    keys = {
+      {
+        '<Leader>s',
+        function()
+          require('leap').leap({ target_windows = { vim.fn.win_getid() } })
+        end,
+        { 'n', 'x', 'o' },
+      }
+    },
+    config = function()
+      local leap = require('leap')
+      leap.opts.case_sensitive = true
     end,
   },
   {
