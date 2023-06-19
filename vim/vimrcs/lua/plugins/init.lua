@@ -338,7 +338,7 @@ require('lazy').setup({
     'ggandor/leap.nvim',
     keys = {
       {
-        '<Leader>s',
+        '<Leader>\\',
         function()
           require('leap').leap({ target_windows = { vim.fn.win_getid() } })
         end,
