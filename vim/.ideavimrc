@@ -28,17 +28,17 @@ map <C-S-v> "*P
 nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(GotoSuperMethod)
 
-" Move to Next(Right) tab by `t + t`
-nmap tt <Action>(NextTab)
+" Move to Next(Right) tab
+nmap tt :<C-u>tabm+1<CR>
 
-" Move to Previous(Left) tab by `t + T`
-nmap tT <Action>(PreviousTab)
+" Move to Previous(Left) tab
+nmap tT :<C-u>tabm-1<CR>
 
 " Toggle wrap lines
 nmap tw <Action>(EditorToggleUseSoftWraps)
 
 " Search Everywhere
-nmap zf <Action>(SearchEverywhere)
+map zf <Action>(SearchEverywhere)
 
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
@@ -60,7 +60,7 @@ nmap [e <Action>(GotoPreviousError)
 nmap ]e <Action>(GotoNextError)
 nmap <C-e> <Action>(ShowErrorDescription)
 
-nmap <Leader>o <Action>(activateStructureToolWindow)
+nmap <Space>o <Action>(ActivateStructureToolWindow)
 
 map <Space>m <Action>(MaximizeEditorInSplit)
 
@@ -84,6 +84,7 @@ set surround
 
 " Apply `Multiple Cursor`
 set multiple-cursors
+map <C-n> <Plug>NextWholeOccurrence
 
 " Apply `Commentary`
 set commentary
