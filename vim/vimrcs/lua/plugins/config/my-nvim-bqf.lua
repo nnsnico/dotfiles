@@ -6,6 +6,10 @@ local const = require('constants')
 M.config = function()
   -- Adapt fzf's delimiter in nvim-bqf
   require('bqf').setup({
+    func_map = {
+      open = '',
+      openc = '',
+    },
     filter = {
       fzf = {
         extra_opts = { '--bind', 'ctrl-o:toggle-all', '--delimiter', '│' }
