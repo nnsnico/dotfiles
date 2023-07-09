@@ -194,11 +194,11 @@ require('lazy').setup({
     }
   },
   {
-    'rcarriga/nvim-notify',
+    'vigoux/notifier.nvim',
     event = 'VeryLazy',
     config = function()
-      require('plugins.config.my-nvim-notify').config()
-    end
+      require('notifier').setup()
+    end,
   },
   {
     'stevearc/dressing.nvim',
