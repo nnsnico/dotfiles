@@ -129,10 +129,7 @@ keymap.set('n', 'z.', function()
   vim.cmd('normal! zszH')
 end, { silent = true })
 
------------------------------------ Commands -----------------------------------
 
-local command = vim.api.nvim_create_user_command
-
-command('W',   function() vim.cmd('w') end,   { force = true })
-command('WQA', function() vim.cmd('wqa') end, { force = true })
-command('QA',  function() vim.cmd('qa') end,  { force = true })
+keymap.set('n', '<Space>w',   function() vim.cmd('w') end)
+keymap.set('n', '<Space>wqa', function() vim.cmd('wqa') end)
+keymap.set('n', '<Space>QA',  function() vim.cmd('qa') end)
