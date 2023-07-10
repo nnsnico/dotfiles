@@ -442,7 +442,7 @@ require('lazy').setup({
     build = function()
       vim.fn['firenvim#install'](0)
     end,
-    enabled = not not vim.g.started_by_firenvim,
+    cond = not not vim.g.started_by_firenvim,
     init = function()
       vim.g.firenvim_config = {
         globalSettings = {
