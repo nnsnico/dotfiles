@@ -93,7 +93,6 @@ ctrl + cmd - t : yabai -m window --toggle float;\
 # toggle sticky(+float), topmost, border and picture-in-picture
 ctrl + cmd - s : yabai -m window --toggle sticky;\
           yabai -m window --toggle topmost;\
-          yabai -m window --toggle border;\
           yabai -m window --toggle pip
 
 # ----------------------------------- stack -----------------------------------
