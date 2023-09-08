@@ -85,7 +85,7 @@ zinit wait lucid for \
     from"gh-r" \
     as"program" \
     mv"jq* -> jq" \
-  "stedolan/jq"
+  "jqlang/jq"
 
 zinit wait lucid for \
     from"gh-r" \
