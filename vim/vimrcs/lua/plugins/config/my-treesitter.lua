@@ -52,6 +52,9 @@ function M.config()
       }
     }
   })
+
+  -- enable zsh syntax using as bash
+  vim.treesitter.language.register('bash', 'zsh')
 end
 
 return M
