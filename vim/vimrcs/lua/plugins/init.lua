@@ -22,12 +22,19 @@ require('lazy').setup({
       require('plugins.config.my-treesitter').config()
     end,
     dependencies = {
-      'mrjones2014/nvim-ts-rainbow',
+      'HiPhish/rainbow-delimiters.nvim',
       {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
           require('treesitter-context').setup({
-            enable = true
+            enable = true,
+            max_lines = 0,
+            min_window_height = 0,
+            line_numbers = true,
+            multiline_threshold = 20,
+            trim_scope = 'outer',
+            zindex = 20,
+            mode = 'cursor',
           })
         end,
       },

@@ -1,19 +1,16 @@
 local M = {}
 
 function M.config()
-  local ensure_installed = { 'lua', 'json', 'dart' }
-
   require('nvim-treesitter.configs').setup({
-    ensure_installed = ensure_installed,
+    modules = {},
+    ignore_install = {},
+    auto_install = true,
+    ensure_installed = { 'lua', 'json', 'dart' },
     sync_install = true,
     highlight = {
       enable = true,
       disable = { "markdown" },
       additional_vim_regex_highlighting = true,
-    },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
     },
     indent = {
       enable = true,
