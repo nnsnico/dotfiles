@@ -132,4 +132,6 @@ zinit wait lucid for \
 
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
+export GPG_TTY=$(tty)
+
 export _ZO_ECHO='1'
