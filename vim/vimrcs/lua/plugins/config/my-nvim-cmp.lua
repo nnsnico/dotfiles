@@ -55,8 +55,6 @@ M.config = function()
       ['<CR>'] = cmp.mapping(function(callback)
         if cmp.visible() then
           cmp.confirm({ select = true })
-        elseif vim.fn["skkeleton#mode"]() ~= "" then
-          vim.fn["skkeleton#handle"]("handleKey", { key = "<CR>", ["function"] = "newline" })
         else
           callback()
         end
