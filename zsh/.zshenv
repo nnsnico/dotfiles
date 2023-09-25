@@ -125,6 +125,11 @@ zinit wait lucid for \
     as"completion" \
   "gradle/gradle-completion"
 
+zinit wait lucid for \
+    from"gh-r" \
+    sbin"**/delta -> delta" \
+  "dandavison/delta"
+
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
 export _ZO_ECHO='1'
