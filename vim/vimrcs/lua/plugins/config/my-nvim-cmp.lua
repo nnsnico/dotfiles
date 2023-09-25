@@ -19,11 +19,6 @@ M.config = function()
   )
 
   cmp.setup {
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end
-    },
     window = {
       completion = cmp.config.window.bordered({
         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -83,31 +78,27 @@ M.config = function()
         return kind
       end
     },
-    sources = cmp.config.sources(
-      {
-        { name = 'skkeleton' },
-        { name = 'emoji' },
-      },
-      {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
-      },
-      {
-        { name = 'buffer' },
-        { name = 'spell' },
-      }
-    ),
+    sources = cmp.config.sources({
+      { name = 'skkeleton' },
+      { name = 'emoji' },
+    }, {
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+      { name = 'path' },
+      { name = 'spell' },
+    }, {
+      { name = 'buffer' },
+    }),
   }
 
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources(
       {
-        { name = 'buffer' },
+        { name = 'skkeleton' },
       },
       {
-        { name = 'skkeleton' },
+        { name = 'buffer' },
       }
     ),
     formatting = {
