@@ -1,6 +1,16 @@
 [user]
 	name = nnsnico
 	email = yuji.jampan.blue@gmail.com
+	signingkey = {PUT_THE_SIGNING_KEY}
+
+# [includeIf "hasconfig:remote.*.url:https://github.com/{org}/**"]
+# 	path = {ORG_CONFIG_FILE}
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgsign = true
 
 [core]
 	editor = nvim
