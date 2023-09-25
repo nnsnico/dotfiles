@@ -10,6 +10,8 @@
 
 - gh: config file for [GitHub CLI](https://github.com/cli/cli)
 
+- git: config file for git
+
 - install: installation scripts for vim setup
 
 - macos: application scripts for macOS
