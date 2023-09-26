@@ -19,6 +19,11 @@ M.config = function()
   )
 
   cmp.setup {
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end
+    },
     window = {
       completion = cmp.config.window.bordered({
         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
@@ -81,7 +86,6 @@ M.config = function()
       { name = 'emoji' },
     }, {
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
       { name = 'path' },
       { name = 'spell' },
     }, {
