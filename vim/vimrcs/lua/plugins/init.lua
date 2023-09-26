@@ -39,6 +39,7 @@ require('lazy').setup({
         end,
       },
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
     }
   },
   -------------------------------- fuzzy finder --------------------------------
@@ -276,14 +277,13 @@ require('lazy').setup({
     end,
   },
   {
-    'tpope/vim-commentary',
-    keys = {
-      'gc',
-      'gcc',
-      'gcu',
-      { 'gc', mode = 'x' },
-      { 'gc', mode = 'o' },
-    }
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+      })
+    end,
+    lazy = false,
   },
   {
     'tpope/vim-repeat',

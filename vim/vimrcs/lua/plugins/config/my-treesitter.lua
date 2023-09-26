@@ -15,6 +15,7 @@ function M.config()
     indent = {
       enable = true,
     },
+    -- nvim-treesitter-textobjects
     textobjects = {
       select = {
         enable    = true,
@@ -50,7 +51,12 @@ function M.config()
           ["[]"] = "@class.outer",
         },
       }
-    }
+    },
+    -- nvim-ts-context-commentstring
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    },
   })
 
   -- enable zsh syntax using as bash
