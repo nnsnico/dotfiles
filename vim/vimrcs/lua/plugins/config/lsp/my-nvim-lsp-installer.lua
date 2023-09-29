@@ -94,12 +94,12 @@ local lsp_servers = {
 
 ---@class NullLsConf.Configuration
 ---@field source 'code_actions' | 'completion' | 'diagnostics' | 'formatting' | 'hover'
----@field config ?function()
+---@field config function?
 
 ---@class ToolConf.Configuration
 ---@field name string
 ---@field ft string | string[]
----@field setup NullLsConf.Configuration
+---@field setup NullLsConf.Configuration[]
 
 ---@type ToolConf.Configuration[]
 M.tools = {
