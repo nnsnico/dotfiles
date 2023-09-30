@@ -30,6 +30,9 @@ M.config = function()
       map('n', '<Space>g', '<Cmd>Gitsigns setqflist<CR>', { silent = true })
     end
   })
+
+  vim.api.nvim_set_hl(0, 'GitSignsAddPreview',    { link = 'diffAdded' })
+  vim.api.nvim_set_hl(0, 'GitSignsDeletePreview', { link = 'diffRemoved' })
 end
 
 return M
