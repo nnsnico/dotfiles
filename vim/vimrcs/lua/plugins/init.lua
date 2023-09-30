@@ -423,7 +423,6 @@ require('lazy').setup({
   ------------------------------------ VCS -------------------------------------
   {
     'lewis6991/gitsigns.nvim',
-    tag = 'release',
     event = { 'FocusLost', 'CursorHold' },
     config = function()
       require('plugins.config.my-gitsigns').config()
