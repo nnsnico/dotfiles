@@ -2,9 +2,9 @@ local heirline = {}
 
 heirline.config = function()
   local conditions = require('heirline.conditions')
-  local utils = require('heirline.utils')
+  local utils      = require('heirline.utils')
   local components = require('plugins.config.heirline.components')
-  local divider = require('constants').ple
+  local divider    = require('constants').ple
 
   -- init theme
   require('plugins.config.heirline.theme').init()

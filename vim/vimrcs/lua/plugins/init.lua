@@ -19,7 +19,7 @@ require('lazy').setup({
     build = ':TSUpdate',
     event = 'BufReadPost',
     config = function()
-      require('plugins.config.my-treesitter').config()
+      require('plugins.config.treesitter').config()
     end,
     dependencies = {
       'HiPhish/rainbow-delimiters.nvim',
@@ -46,9 +46,9 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    keys = require('plugins.config.my-telescope').setup(),
+    keys = require('plugins.config.telescope').setup(),
     config = function()
-      require('plugins.config.my-telescope').config()
+      require('plugins.config.telescope').config()
     end,
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -73,7 +73,7 @@ require('lazy').setup({
       {
         'jose-elias-alvarez/null-ls.nvim',
         config = function()
-          require('plugins.config.my-null-ls').config()
+          require('plugins.config.null-ls').config()
         end,
         dependencies = {
           { 'nvim-lua/plenary.nvim' },
@@ -100,7 +100,7 @@ require('lazy').setup({
       { 'onsails/lspkind.nvim' },
     },
     config = function()
-      require('plugins.config.my-nvim-cmp').config()
+      require('plugins.config.nvim-cmp').config()
     end,
   },
   {
@@ -166,7 +166,7 @@ require('lazy').setup({
     'rebelot/heirline.nvim',
     event = 'VeryLazy',
     config = function()
-      require('plugins.config.heirline.my-heirline').config()
+      require('plugins.config.heirline').config()
     end,
     dependencies = {
       'kyazdani42/nvim-web-devicons',
@@ -185,10 +185,10 @@ require('lazy').setup({
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
     init = function()
-      require('plugins.config.my-nvim-bqf').setup()
+      require('plugins.config.nvim-bqf').setup()
     end,
     config = function()
-      require('plugins.config.my-nvim-bqf').config()
+      require('plugins.config.nvim-bqf').config()
     end,
     dependencies = {
       {
@@ -319,9 +319,9 @@ require('lazy').setup({
   {
     's1n7ax/nvim-window-picker',
     version = 'v1.*',
-    keys = require('plugins.config.my-window-picker').setup(),
+    keys = require('plugins.config.window-picker').setup(),
     config = function()
-      require('plugins.config.my-window-picker').config()
+      require('plugins.config.window-picker').config()
     end,
     dependencies = { 'nvim-tree.lua' }
   },
@@ -346,10 +346,10 @@ require('lazy').setup({
       'NvimTreeRefresh',
     },
     init = function()
-      require('plugins.config.my-nvim-tree').setup()
+      require('plugins.config.nvim-tree').setup()
     end,
     config = function()
-      require('plugins.config.my-nvim-tree').config()
+      require('plugins.config.nvim-tree').config()
     end,
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
@@ -358,7 +358,7 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     event = { 'FocusLost', 'CursorHold' },
     config = function()
-      require('plugins.config.my-gitsigns').config()
+      require('plugins.config.gitsigns').config()
     end,
   },
   {
