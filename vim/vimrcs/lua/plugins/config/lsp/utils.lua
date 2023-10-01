@@ -2,6 +2,16 @@ local M = {}
 local utils = require('functions.utils')
 local auto_window_splitter = require('functions.auto-window-splitter')
 
+---@class lsp.Location
+---@field uri string
+---@field range lsp.Range
+
+---@class lsp.LocationLink
+---@field originSelectionRange? lsp.Range
+---@field targetUri string
+---@field targetRange lsp.Range
+---@field targetSelectionRange lsp.Range
+
 ---@class QfItem
 ---@field bufnr number
 ---@field filename string?
