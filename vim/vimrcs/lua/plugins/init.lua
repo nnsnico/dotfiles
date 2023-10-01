@@ -178,39 +178,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufReadPost' },
     config = function()
-      ---@class Ibl.Highlight
-      ---@field name string
-      ---@field colorCode string
-
-      ---@type Ibl.Highlight[]
-      local highlight = {
-        { name = "RainbowRed",    colorCode = "#E06C75" },
-        { name = "RainbowYellow", colorCode = "#E5C07B" },
-        { name = "RainbowBlue",   colorCode = "#61AFEF" },
-        { name = "RainbowOrange", colorCode = "#D19A66" },
-        { name = "RainbowGreen",  colorCode = "#98C379" },
-        { name = "RainbowViolet", colorCode = "#C678DD" },
-        { name = "RainbowCyan",   colorCode = "#56B6C2" },
-      }
-      local hooks = require('ibl.hooks')
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        for _, value in pairs(highlight) do
-          vim.api.nvim_set_hl(0, value.name, { fg = value.colorCode })
-        end
-      end)
-
-      local highlightName = vim.tbl_map(
-        ---@param value Ibl.Highlight
-        function(value)
-          return value.name
-        end,
-        highlight
-      )
-
-      vim.g.rainbow_delimiters = { highlight = highlightName }
-      require('ibl').setup({ scope = { highlight = highlightName } })
-
-      hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+      require('plugins.config.indent-blankline').config()
     end
   },
   {
@@ -242,42 +210,7 @@ require('lazy').setup({
     'stevearc/dressing.nvim',
     event = 'VeryLazy',
     config = function()
-      require('dressing').setup({
-        input = {
-          insert_only = false,
-          start_in_insert = false,
-          mappings = {
-            n = {
-              ["<Esc><Esc>"] = "Close",
-              ["<C-g>"]      = "Close",
-              ["<CR>"]       = "Confirm",
-            },
-            i = {
-              ["<Esc><Esc>"] = "Close",
-              ["<C-g>"]      = "Close",
-              ["<CR>"]       = "Confirm",
-              ["<C-a>"]      = "<Home>",
-              ["<C-e>"]      = "<End>",
-            }
-          },
-        },
-        select = {
-          get_config = function(opts)
-            if opts.kind == 'codeaction' then
-              return {
-                backend = 'builtin',
-                builtin = {
-                  relative = 'cursor',
-                  min_height = 1,
-                  mappings = {
-                    ['<C-g>'] = 'Close'
-                  }
-                }
-              }
-            end
-          end
-        },
-      })
+      require('plugins.config.dressing').config()
     end
   },
   {
@@ -480,87 +413,7 @@ require('lazy').setup({
     end,
     cond = not not vim.g.started_by_firenvim,
     init = function()
-      vim.g.firenvim_config = {
-        globalSettings = {
-          alt = 'all',
-        },
-        localSettings = {
-          ['.*'] = {
-            cmdline  = 'neovim',
-            content  = 'text',
-            priority = 0,
-            selector = 'textarea',
-            takeover = 'always',
-          },
-          ['https://www\\.google\\.com/'] = {
-            takeover = 'never',
-            priority = 1,
-          },
-          ['https://mail\\.google\\.com/'] = {
-            content  = 'html',
-            priority = 1,
-            selector = 'div[role="textbox"]',
-            takeover = 'always',
-          },
-          ['https://github\\.com/.*blob.*'] = {
-            takeover = 'never',
-            priority = 1,
-          },
-          ['https://github\\.com/.*(issues|pull|compare).*'] = {
-            cmdline  = 'neovim',
-            content  = 'text',
-            priority = 1,
-            selector = 'textarea',
-            takeover = 'always',
-            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
-          },
-          ['https://blog\\.hatena\\.ne\\.jp/'] = {
-            cmdline  = 'neovim',
-            content  = 'text',
-            priority = 1,
-            selector = 'textarea',
-            takeover = 'always',
-            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
-          },
-          ['https://play\\.kotlinlang\\.org'] = {
-            cmdline  = 'neovim',
-            content  = 'text',
-            priority = 1,
-            selector = 'textarea',
-            takeover = 'always',
-            filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.kt',
-          },
-          ['https://perf\\.hrmos\\.co/'] = {
-            content  = 'html',
-            priority = 1,
-            selector = 'div[class="ql-editor"]',
-            takeover = 'always',
-          },
-          ['https://.*\\.notion\\.so'] = {
-            takeover = 'never',
-            priority = 1,
-          },
-          ['https://.*\\.notion\\.site/'] = {
-            takeover = 'never',
-            priority = 1,
-          },
-        }
-      }
-      if vim.g.started_by_firenvim then
-        vim.keymap.set('n', '<C-e>', '<Cmd>call firenvim#hide_frame()<CR>', { silent = true })
-        vim.o.laststatus = 0
-        vim.o.wrap = true
-        vim.api.nvim_create_autocmd('BufEnter', {
-          callback = function()
-            if vim.o.lines < 20 then
-              vim.o.lines = 20
-            end
-          end
-        })
-      end
-      vim.cmd('hi link CmpItemAbbrDefault Pmenu')
-      vim.cmd('hi link CmpItemAbbr Pmenu')
-      vim.cmd('hi link CmpItemMenu Pmenu')
+      require('plugins.config.firenvim').init()
     end
   },
   {
