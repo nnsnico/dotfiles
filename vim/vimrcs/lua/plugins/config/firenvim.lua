@@ -27,7 +27,7 @@ M.init = function()
         takeover = 'never',
         priority = 1,
       },
-      ['https://github\\.com/.*(issues|pull|compare).*'] = {
+      ['https://github\\.com/.*(issues|pull|discussions|compare).*'] = {
         cmdline  = 'neovim',
         content  = 'text',
         priority = 1,
