@@ -239,12 +239,11 @@ require('lazy').setup({
             sign = {
               name     = { 'Diagnostic' },
               maxwidth = 2,
-              auto     = true
             },
             click = 'v:lua.ScSa',
           },
           {
-            text = { builtin.lnumfunc },
+            text = { builtin.lnumfunc, ' ' },
             click = 'v:lua.ScLa',
           },
           {
