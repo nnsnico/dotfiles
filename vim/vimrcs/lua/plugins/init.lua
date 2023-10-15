@@ -227,6 +227,34 @@ require('lazy').setup({
       "anuvyklack/animation.nvim",
     }
   },
+  {
+    'luukvbaal/statuscol.nvim',
+    event = 'VeryLazy',
+    config = function()
+      local builtin = require('statuscol.builtin')
+      require('statuscol').setup({
+        relculright = true,
+        segments = {
+          {
+            sign = {
+              name     = { 'Diagnostic' },
+              maxwidth = 2,
+              auto     = true
+            },
+            click = 'v:lua.ScSa',
+          },
+          {
+            text = { builtin.lnumfunc },
+            click = 'v:lua.ScLa',
+          },
+          {
+            sign = { namespace = { 'gitsign*' } },
+            click = 'v:lua.ScSa',
+          },
+        }
+      })
+    end
+  },
   ---------------------------- manipulation utility ----------------------------
   {
     'windwp/nvim-autopairs',
