@@ -234,6 +234,8 @@ require('lazy').setup({
       local builtin = require('statuscol.builtin')
       require('statuscol').setup({
         relculright = true,
+        ft_ignore = { 'NvimTree', 'aerial' },
+        bt_ignore = { 'help', 'terminal', 'quickfix' },
         segments = {
           {
             sign = {
