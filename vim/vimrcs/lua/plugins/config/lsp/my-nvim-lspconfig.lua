@@ -5,8 +5,6 @@ local const = require('constants')
 local is_hover = false
 
 local on_attach = function(client, bufnr)
-  vim.o.signcolumn = 'yes:2'
-
   -- Change diagnostic icons
 
   local signs = {
