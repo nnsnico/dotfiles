@@ -71,7 +71,7 @@ require('lazy').setup({
       'SmiteshP/nvim-navic',
       'hrsh7th/cmp-nvim-lsp',
       {
-        'jose-elias-alvarez/null-ls.nvim',
+        'nvimtools/none-ls.nvim',
         config = function()
           require('plugins.config.null-ls').config()
         end,

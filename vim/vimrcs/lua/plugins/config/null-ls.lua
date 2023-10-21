@@ -15,7 +15,7 @@ M.config = function()
   end
 
   require('null-ls').setup({
-    sources   = sources,
+    sources = sources,
   })
 end
 
