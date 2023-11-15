@@ -1,5 +1,8 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 
+sketchybar --add event window_focus \
+           --add event title_change \
+
 # ------------------------------- Bar Appearance -------------------------------
 
 sketchybar --bar height=24               \
@@ -58,7 +61,8 @@ sketchybar --add item space_separator center                       \
            --add item front_app center                             \
            --set front_app       script="$PLUGIN_DIR/front_app.sh" \
                                  icon.drawing=off                  \
-           --subscribe front_app front_app_switched
+                                 associated_display=active         \
+           --subscribe front_app front_app_switched window_focus title_change display_change
 
 
 # ----------------------------- Adding Right Items -----------------------------

@@ -5,7 +5,5 @@
 # focused application in the $INFO variable:
 # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
-if [ "$SENDER" = "front_app_switched" ]; then
-  TITLE_YABAI=$(yabai -m query --windows --window | "$HOME"/dotfiles/zsh/.zinit/plugins/jqlang---jq/jq -r '.title')
-  sketchybar --set "$NAME" label="$TITLE_YABAI"
-fi
+TITLE_YABAI=$(yabai -m query --windows --window | "$HOME"/dotfiles/zsh/.zinit/plugins/jqlang---jq/jq -r '.title')
+sketchybar --set "$NAME" label="$TITLE_YABAI"

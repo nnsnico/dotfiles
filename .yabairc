@@ -13,6 +13,12 @@
 # @see https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 #      ./install/update_yabai.sh
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# sketchybar events (.yabairc)
+yabai -m signal --add event=window_focused       action="sketchybar -m --trigger window_focus &> /dev/null"
+yabai -m signal --add event=window_minimized     action="sketchybar -m --trigger window_focus &> /dev/null"
+yabai -m signal --add event=window_title_changed action="sketchybar -m --trigger title_change &> /dev/null"
+
 sudo yabai --load-sa
 
 # Disable to manage app
