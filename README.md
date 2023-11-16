@@ -193,8 +193,15 @@
 
 - zsh: zsh setting files(zshrc, zprezto)
 
+- terminal: terminal app settings
+  - `.wezterm.lua` : for [WezTerm](https://wezfurlong.org/wezterm/index.html)
+  - `alacritty.yml` : for [Alacritty](https://github.com/alacritty/alacritty)
+
+- sketchybar : [SketchyBar](https://github.com/FelixKratz/SketchyBar) setting and scripts
+
 - root
-  - `.skhdrc` , `.yabairc` , `spacebarrc` : [yabai](https://github.com/koekeishiya/yabai) settings
+  - `.skhdrc` : [skhd](https://github.com/koekeishiya/skhd) setting
+  - `.yabairc` : [yabai](https://github.com/koekeishiya/yabai) setting
   - `.tigrc` : [tig](https://github.com/jonas/tig) setting
 
 ## Requirements
