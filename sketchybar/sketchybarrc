@@ -50,9 +50,6 @@ do
                               click_script="yabai -m space --focus $sid"
 done
 
-
-# ---------------------------- Adding Center Items -----------------------------
-
 sketchybar --add item space_separator left                         \
            --set space_separator icon=                            \
                                  padding_left=10                   \
@@ -72,6 +69,10 @@ sketchybar --add item clock right                              \
            --set clock   update_freq=10                        \
                          icon=                                \
                          script="$PLUGIN_DIR/clock.sh"         \
+                                                               \
+           --add item volume right                             \
+           --set volume  script="$PLUGIN_DIR/volume.sh"        \
+           --subscribe volume volume_change                    \
                                                                \
            --add item battery right                            \
            --set battery script="$PLUGIN_DIR/battery.sh"       \
