@@ -321,29 +321,14 @@ require('lazy').setup({
     }
   },
   {
-    ---@deprecated: no longer maintained. Use instead leap.nvim
-    'phaazon/hop.nvim',
-    enabled = false,
-    branch = 'v2',
-    keys = {
-      { '<Leader>s' },
-    },
+    'smoka7/hop.nvim',
+    version = '*',
+    keys = { '<Leader>s', ',,', },
     config = function()
-      require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
-      vim.keymap.set('n', '<Leader>s', require('hop').hint_char1)
+      local hop = require('hop')
+      hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
+      vim.keymap.set('n', '<Leader>s', hop.hint_patterns)
     end,
-  },
-  {
-    'ggandor/leap.nvim',
-    keys = {
-      {
-        '<Leader>\\',
-        function()
-          require('leap').leap({ target_windows = { vim.fn.win_getid() } })
-        end,
-        { 'n', 'x', 'o' },
-      }
-    },
   },
   {
     's1n7ax/nvim-window-picker',
