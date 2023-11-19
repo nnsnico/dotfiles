@@ -23,11 +23,11 @@ skkeleton.setup = function()
 
     -- custom kana table
     vim.fn['skkeleton#register_kanatable']('rom', {
-      ['z '] = { '\u{3000}', '' }
+      ['z '] = { '\u{3000}', '' },
     })
 
     -- custom keymap in input kana
-    vim.fn['skkeleton#register_keymap']('input', '[', 'katakana')
+    vim.fn['skkeleton#register_keymap']('input', 'q', 'katakana')
     vim.fn['skkeleton#register_keymap']('input', 'l', 'disable')
   end
 
