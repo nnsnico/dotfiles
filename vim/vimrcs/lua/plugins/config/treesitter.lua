@@ -52,11 +52,6 @@ function M.config()
         },
       }
     },
-    -- nvim-ts-context-commentstring
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   })
 
   -- enable zsh syntax using as bash

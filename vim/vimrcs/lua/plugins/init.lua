@@ -23,6 +23,8 @@ require('lazy').setup({
     end,
     dependencies = {
       'HiPhish/rainbow-delimiters.nvim',
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
       {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
@@ -38,8 +40,17 @@ require('lazy').setup({
           })
         end,
       },
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      {
+        'numToStr/Comment.nvim',
+        config = function()
+          require('Comment').setup({
+            pre_hook = function()
+              return vim.bo.commentstring
+            end
+          })
+        end,
+        lazy = false,
+      },
     }
   },
   -------------------------------- fuzzy finder --------------------------------
@@ -263,15 +274,6 @@ require('lazy').setup({
     config = function()
       require('nvim-autopairs').setup()
     end,
-  },
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup({
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
-      })
-    end,
-    lazy = false,
   },
   {
     'tpope/vim-repeat',
