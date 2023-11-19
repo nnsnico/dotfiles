@@ -325,7 +325,7 @@ require('lazy').setup({
   {
     'smoka7/hop.nvim',
     version = '*',
-    keys = { '<Leader>s', ',,', },
+    keys = { '<Leader>s' },
     config = function()
       local hop = require('hop')
       hop.setup({ keys = 'etovxqpdygfblzhckisuran' })
