@@ -130,6 +130,14 @@ zinit wait lucid for \
     sbin"**/delta -> delta" \
   "dandavison/delta"
 
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
+    atclone'**/zellij setup --generate-completion zsh > _zellij; zicompinit; zicdreplay' \
+    atpull'%atclone' \
+    sbin"**/zellij -> zellij" \
+  "zellij-org/zellij"
+
 # --------------------------- ENVIRONMENT VARIABLES ---------------------------
 
 export GPG_TTY=$(tty)
