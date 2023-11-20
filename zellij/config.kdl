@@ -13,9 +13,6 @@ ui {
 keybinds clear-defaults=true {
   tmux {
     bind "Ctrl e" { Write 2; SwitchToMode "Normal"; }
-    // Cancel
-    bind "Esc"    { SwitchToMode "Normal"; }
-    bind "Ctrl g" { SwitchToMode "Normal"; }
     // Toggle scroll mode
     bind "["      { SwitchToMode "Scroll"; }
     // Split pane
@@ -27,10 +24,33 @@ keybinds clear-defaults=true {
     bind "k"      { MoveFocus "Up";    SwitchToMode "Normal"; }
     bind "l"      { MoveFocus "Right"; SwitchToMode "Normal"; }
     // Create new tab
-    bind "t"      { NewTab; SwitchToMode "Normal"; }
+    bind "c" "t"  { NewTab; SwitchToMode "Normal"; }
     // Move Tab
     bind "p"      { GoToPreviousTab; SwitchToMode "Normal"; }
     bind "n"      { GoToNextTab;     SwitchToMode "Normal"; }
+  }
+  scroll {
+    // Scroll
+    bind "j" "Down" { ScrollDown; }
+    bind "k" "Up"   { ScrollUp; }
+    bind "Ctrl f"   { PageScrollDown; }
+    bind "Ctrl b"   { PageScrollUp; }
+    bind "Ctrl d"   { HalfPageScrollDown; }
+    bind "Ctrl u"   { HalfPageScrollUp; }
+    // Move to edit
+    bind "e"        { EditScrollback; SwitchToMode "Normal"; }
+    // Move to search
+    bind "/"        { SwitchToMode "EnterSearch"; SearchInput 0; }
+  }
+  search {
+    bind "Ctrl f" { PageScrollDown; }
+    bind "Ctrl b" { PageScrollUp; }
+    bind "Ctrl d" { HalfPageScrollDown; }
+    bind "Ctrl u" { HalfPageScrollUp; }
+  }
+  shared_except {
+    // Cancel
+    bind "Ctrl g" { SwitchToMode "Normal"; }
   }
   shared_except "tmux" "locked" {
     bind "Ctrl e" { SwitchToMode "Tmux"; }
