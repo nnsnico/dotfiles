@@ -48,7 +48,7 @@ keybinds clear-defaults=true {
     bind "Ctrl d" { HalfPageScrollDown; }
     bind "Ctrl u" { HalfPageScrollUp; }
   }
-  shared_except {
+  locked {
     // Cancel
     bind "Ctrl g" { SwitchToMode "Normal"; }
   }
