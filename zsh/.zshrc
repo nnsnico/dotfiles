@@ -175,6 +175,30 @@ function adbunpin() {
   fi
 }
 
+function adbtglshowtap() {
+  function toggleshowtap() {
+    local device=$1
+    local value=$(adb -s "$device" shell settings get system show_touches)
+    if [ $value = 1 ]; then
+      echo "Put \`show_touches\` value to 0"
+      command adb -s "$device" shell settings put system show_touches 0
+    else
+      echo "Put \`show_touches\` value to 1"
+      command adb -s "$device" shell settings put system show_touches 1
+    fi
+  }
+
+  local device=$1
+  if [ -n "$device" ]; then
+    toggleshowtap $device
+  elif [ ! -t 0 ]; then # read from pipe input
+    read device_from_pipe
+    toggleshowtap "$device_from_pipe"
+  else
+    (>&2 echo "adbputshowtap: Not selected a device"; exit 1)
+  fi
+}
+
 # ------------------------------------ tmux ------------------------------------
 
 # attach tmux when launching terminal
