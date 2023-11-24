@@ -16,7 +16,7 @@ wezterm.on(
 return {
   color_scheme              = "tokyonight",
   font                      = wezterm.font_with_fallback({
-    'JetBrainsMono Nerd Font',
+    'JetBrainsMono NF',
     { family = 'PlemolJP Console' },
   }),
   font_size                 = 13,
