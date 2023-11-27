@@ -28,7 +28,6 @@ skkeleton.setup = function()
 
     -- custom keymap in input kana
     vim.fn['skkeleton#register_keymap']('input', '-', 'katakana')
-    vim.fn['skkeleton#register_keymap']('input', 'l', 'disable')
   end
 
   -- Setup user config before initializing skkeleton
