@@ -1,31 +1,86 @@
-#!/bin/bash
-# install vim
+#!/bin/bash -e
+#
+# Setup Vim configurations
+#
+
+# ------------------------------ Utility functions -----------------------------
+
+output() {
+	local message=$1
+	printf '%b\n' "\e[1;34m${message}\e[0m"
+}
+
+success() {
+	local message=$1
+	printf '%b\n' "\e[32m${message}\e[0m"
+}
+
+error() {
+	local message=$1
+	printf '%b\n' "\e[31m${message}\e[0m" 1>&2
+}
+
+exec_step() {
+	local message=$1
+	shift
+	local exec_cmds=("$@")
+	local index=1
+
+	output "$message"
+	output "All Steps: ${#exec_cmds[@]}"
+	for cmd in "${exec_cmds[@]}"; do
+		if [ -n "$message" ] && [ -n "$cmd" ]; then
+			echo "$index> $cmd"
+			sleep 2
+			bash -c "$cmd"
+			success "Success!"
+			echo
+		else
+			error "Can't execute command."
+			exit 1
+		fi
+		((index++))
+	done
+}
 
 cd "$(dirname "$0")" || exit 1
 
-# add vim synbolic link
-echo "Add symbolic link of .vimrc..."
-ln -s ~/dotfiles/vim/.vimrc ~/
+# ------------------------ Make symbolic link for vimrc ------------------------
+
+exec_step "Add symbolic link of .vimrc..." "ln -s $HOME/dotfiles/vim/.vimrc $HOME/"
 
 if [ ! -d "$HOME/.vim" ]; then
-	echo "vim dir is not found. Create dir automatically..."
-	mkdir "$HOME"/.vim
+	exec_step \
+		"Vim config directory is not found. Create dir automatically..." \
+		"mkdir $HOME/.vim"
 fi
+
+# ------------------ Make symbolic link for Vim configurations -----------------
 
 if [ ! -d "$HOME/.config/nvim" ]; then
-	echo "nvim dir is not found. Create dir automatically..."
-	mkdir -p "$HOME"/.config/nvim
-
-	echo "Add symbolic link of init.vim..."
-	ln -s ~/dotfiles/vim/.vimrc ~/.config/nvim/init.vim
+	# create config directory
+	exec_step \
+		"nvim dir is not found. Create dir automatically..." \
+		"mkdir -p $HOME/.config/nvim"
+	# make symbolic link for nvim
+	exec_step \
+		"Add symbolic link of init.vim..." \
+		"ln -s $HOME/dotfiles/vim/.vimrc $HOME/.config/nvim/init.vim"
 fi
 
-echo "Add symbolic link of .gvimrc..."
-ln -s ~/dotfiles/vim/.gvimrc ~/
+# make symbolic link for configurations
+exec_step \
+	"Add symbolic link of neovim configs..." \
+	"ln -s $HOME/dotfiles/vim/vimrcs/after/ $HOME/.config/nvim/" \
+	"ln -s $HOME/dotfiles/vim/vimrcs/syntax/ $HOME/.config/nvim/" \
+	"ln -s $HOME/dotfiles/vim/vimrcs/lua/ $HOME/.config/nvim/"
 
-echo "Add symbolic link of .ideavimrc..."
-ln -s ~/dotfiles/vim/.ideavimrc ~/
+# --------------------- Make symbolic link for GVim system ---------------------
 
-ln -s ~/dotfiles/vim/vimrcs/after/ ~/.config/nvim/
-ln -s ~/dotfiles/vim/vimrcs/syntax/ ~/.config/nvim/
-ln -s ~/dotfiles/vim/vimrcs/lua/ ~/.config/nvim/
+exec_step \
+	"Add symbolic link of .gvimrc..." \
+	"ln -s $HOME/dotfiles/vim/.gvimrc $HOME/"
+
+exec_step \
+	"Add symbolic link of .ideavimrc..." \
+	"ln -s $HOME/dotfiles/vim/.ideavimrc $HOME/"
