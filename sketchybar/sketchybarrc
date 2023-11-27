@@ -22,15 +22,15 @@ sketchybar --bar height=24               \
 
 # ----------------------------- Changing Defaults ------------------------------
 
-sketchybar --default icon.font="JetBrainsMono NF:Bold:13.0"  \
-                     icon.color=0xffffffff                   \
-                     label.font="JetBrainsMono NF:Bold:13.0" \
-                     label.color=0xffffffff                  \
-                     padding_left=5                          \
-                     padding_right=5                         \
-                     label.padding_left=4                    \
-                     label.padding_right=4                   \
-                     icon.padding_left=4                     \
+sketchybar --default icon.font="JetBrainsMono Nerd Font:Bold:13.0"  \
+                     icon.color=0xffffffff                          \
+                     label.font="JetBrainsMono Nerd Font:Bold:13.0" \
+                     label.color=0xffffffff                         \
+                     padding_left=5                                 \
+                     padding_right=5                                \
+                     label.padding_left=4                           \
+                     label.padding_right=4                          \
+                     icon.padding_left=4                            \
                      icon.padding_right=4
 
 # ----------------------------- Adding Left Items -----------------------------
