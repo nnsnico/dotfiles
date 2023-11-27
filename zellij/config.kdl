@@ -66,8 +66,8 @@ keybinds clear-defaults=true {
 theme "aurora_dark"
 themes {
   aurora_dark {
-    fg      "#211c2f"
-    bg      "#daeeeb"
+    fg      "#daeeeb"
+    bg      "#211c2f"
     black   "#5f5f87"
     red     "#d93234"
     green   "#9ec410"
