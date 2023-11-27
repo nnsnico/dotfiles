@@ -35,7 +35,7 @@ zinit wait lucid for \
     atclone'**/gh completion -s zsh > _gh; zicompinit; zicdreplay' \
     atpull'%atclone' \
     sbin'**/gh' \
-  cli/cli
+  "cli/cli"
 
 # if debian os (Ubuntu)
 zinit wait lucid for \
@@ -105,6 +105,17 @@ zinit wait lucid for \
     sbin"**/zoxide -> zoxide" \
     atload'eval "$(zoxide init zsh --cmd cd)"; zicompinit; zicdreplay' \
   "ajeetdsouza/zoxide"
+
+zinit wait lucid for \
+    from"gh-r" \
+    as"program" \
+    sbin"**/fd -> fd" \
+  "@sharkdp/fd"
+
+zinit wait lucid for \
+    pick"contrib/completion/_fd" \
+    as"completion" \
+  "@sharkdp/fd"
 
 zinit wait lucid for \
     from"gh-r" \
