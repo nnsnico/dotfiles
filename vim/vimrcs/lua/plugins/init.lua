@@ -174,6 +174,20 @@ require('lazy').setup({
   },
   ------------------------------- visual utility -------------------------------
   {
+    'kyazdani42/nvim-web-devicons',
+    lazy = true,
+    config = function()
+      require('nvim-web-devicons').setup({
+        override_by_extension = {
+          v = {
+            icon = '',
+            name = 'vlang'
+          }
+        }
+      })
+    end,
+  },
+  {
     'rebelot/heirline.nvim',
     event = 'VeryLazy',
     config = function()
