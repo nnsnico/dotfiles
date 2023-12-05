@@ -87,9 +87,17 @@ local lsp_servers = {
     end
   },
   {
-    name = 'vimls',
-    ft = 'vim',
-  }
+    name = 'v_analyzer',
+    ft = 'vlang',
+    setting = function()
+      local zinit_path = vim.fn.environ()['ZPFX'] or ''
+      return {
+        cmd = { zinit_path .. '/bin/v-analyzer' },
+        filetypes = { 'v', 'vsh', 'vv', 'vlang' },
+      }
+    end
+  },
+  { name = 'vimls',                  ft = 'vim' },
 }
 
 ---@class NullLsConf.Configuration
