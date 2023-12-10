@@ -90,6 +90,12 @@ keymap.set('n', '<Space><CR>', 'o<Esc>')
 keymap.set({ 'n', 'v' }, 'j', 'gj', { buffer = true })
 keymap.set({ 'n', 'v' }, 'k', 'gk', { buffer = true })
 
+keymap.set('n', '<leader>d', function()
+  local date = vim.system({ 'date', "+'%Y/%m/%d %H:%M'" }, { text = true }):wait()
+  local result = vim.fn.substitute(date.stdout, [[\v^'(.+)'\n$]], '\\1', '')
+  vim.fn.setline(vim.fn.line('.'), result)
+end)
+
 keymap.set({ 'o', 'n', 'x' }, '$', '<Nop>')
 keymap.set({ 'o', 'n', 'x' }, '%', '<Nop>')
 keymap.set({ 'o', 'n', 'x' }, '^', '<Nop>')
