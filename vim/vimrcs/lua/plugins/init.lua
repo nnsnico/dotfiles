@@ -115,6 +115,15 @@ require('lazy').setup({
     end,
   },
   {
+    'hedyhli/outline.nvim',
+    cmd = { 'Outline', 'OutlineOpen' },
+    keys = {
+      { '<leader>o', '<cmd>Outline<CR>', desc = 'Toggle Outline' },
+      { '<leader>h', '<cmd>OutlineFocus<CR>' },
+    },
+    opts = {}
+  },
+  {
     'stevearc/aerial.nvim',
     cmd = 'AerialToggle',
     init = function()
@@ -259,7 +268,7 @@ require('lazy').setup({
       local builtin = require('statuscol.builtin')
       require('statuscol').setup({
         relculright = true,
-        ft_ignore = { 'NvimTree', 'aerial' },
+        ft_ignore = { 'NvimTree', 'aerial', 'Outline' },
         bt_ignore = { 'help', 'terminal', 'quickfix' },
         segments = {
           {

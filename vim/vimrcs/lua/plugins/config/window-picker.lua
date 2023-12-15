@@ -28,7 +28,7 @@ function M.config()
       show_prompt = false,
       filter_rules = {
           bo = {
-              filetype = { 'NvimTree', 'notify', 'qf' },
+              filetype = { 'NvimTree', 'notify', 'qf', 'Outline' },
               buftype = { 'terminal' },
           },
       },
