@@ -4,7 +4,7 @@ local const = require('constants')
 
 local is_hover = false
 
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   -- Change diagnostic icons
 
   local signs = {
@@ -137,21 +137,20 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require('nvim-navic').attach(client, bufnr)
   end
-
 end
 
 M.attach_lsp = function()
   vim.api.nvim_create_autocmd('LspAttach', {
-      callback = function (args)
-        local bufnr = args.buf
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        on_attach(client, bufnr)
-      end
-    })
+    callback = function(args)
+      local bufnr = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      M.on_attach(client, bufnr)
+    end
+  })
 end
 
+---@param lsps LspConf.Configuration[]
 M.setup = function(lsps)
-
   for _, lsp in pairs(lsps) do
     local setting = lsp.setting or function() return {} end
     require('lspconfig')[lsp.name].setup(setting())

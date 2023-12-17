@@ -139,15 +139,19 @@ require('lazy').setup({
     'akinsho/flutter-tools.nvim',
     ft = 'dart',
     config = function()
-      require('plugins.config.lsp.my-nvim-lspconfig').attach_lsp()
+      local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
 
-      vim.keymap.set('n', '<Space>o', ':<C-u>FlutterOutlineToggle<CR>', { silent = true, buffer = true })
+      vim.keymap.set('n', '<Space>o', '<cmd>FlutterOutlineToggle<CR>', { silent = true })
 
       require('flutter-tools').setup({
         fvm = true,
         widget_guides = {
           enabled = true,
         },
+        lsp = {
+          on_attach = lspconfig.on_attach,
+          capabilities = require('cmp_nvim_lsp').default_capabilities,
+        }
       })
     end,
     dependencies = {
