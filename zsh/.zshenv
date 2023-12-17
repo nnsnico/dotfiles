@@ -62,7 +62,7 @@ zinit wait lucid for \
 
 zinit wait lucid for \
     from"gh-r" \
-    ver"latest" \
+    ver"nightly" \
     sbin"v-analyzer -> v-analyzer" \
   "v-analyzer/v-analyzer"
 
