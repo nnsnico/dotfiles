@@ -84,7 +84,7 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', '<Space>a', function()
     vim.diagnostic.setloclist({ open = false })
     if not vim.tbl_isempty(vim.fn.getloclist(0)) then
-      vim.cmd('lopen')
+      vim.cmd('botright lopen')
     else
       vim.notify('No diagnostics')
     end
