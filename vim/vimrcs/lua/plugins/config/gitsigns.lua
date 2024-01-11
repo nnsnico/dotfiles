@@ -28,7 +28,13 @@ M.config = function()
       map({ 'n', 'v' }, '<Space>hr', ':Gitsigns reset_hunk<CR>')
       map('n',          '<Space>hp', gs.preview_hunk)
 
-      map('n', '<Space>g', '<Cmd>Gitsigns setqflist<CR>', { silent = true })
+      map('n', '<Space>g', function()
+        if vim.b.gitsigns_status ~= '' then
+          vim.cmd('botright Gitsigns setloclist')
+        else
+          vim.notify('No changed files')
+        end
+      end, { silent = true })
     end
   })
 
