@@ -24,9 +24,23 @@ M.config = function()
         return '<Ignore>'
       end, { expr = true })
 
-      map({ 'n', 'v' }, '<Space>ha', ':Gitsigns stage_hunk<CR>')
-      map({ 'n', 'v' }, '<Space>hr', ':Gitsigns reset_hunk<CR>')
-      map('n',          '<Space>hp', gs.preview_hunk)
+      map({ 'n' }, '<Space>ha', gs.stage_hunk)
+      map({ 'v' }, '<Space>ha', function()
+        gs.stage_hunk({
+          vim.fn.line('.'),
+          vim.fn.line('v'),
+        })
+      end)
+
+      map({ 'n' }, '<Space>hr', gs.reset_hunk)
+      map({ 'v' }, '<Space>hr', function()
+        gs.reset_hunk({
+          vim.fn.line('.'),
+          vim.fn.line('v'),
+        })
+      end)
+
+      map('n', '<Space>hp', gs.preview_hunk)
 
       map('n', '<Space>g', function()
         if vim.b.gitsigns_status ~= '' then
