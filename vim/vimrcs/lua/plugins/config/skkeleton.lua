@@ -17,7 +17,7 @@ skkeleton.setup = function()
     -- custom configurations
     vim.fn['skkeleton#config']({
       eggLikeNewline       = true,
-      globalJisyo          = vim.fn.expand('~/dotfiles/dict/SKK-JISYO'),
+      globalDictionaries   = { vim.fn.expand('~/dotfiles/dict/SKK-JISYO') },
       globalKanaTableFiles = azik_rule_path,
     })
 
