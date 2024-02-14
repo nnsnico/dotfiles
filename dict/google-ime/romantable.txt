@@ -51,7 +51,6 @@ byz	びゃん
 bz	ばん
 ca	ちゃ
 cd	ちぇん
-ce	ちぇ
 cf	ちぇ
 ch	ちゅう
 cj	ちゅん
@@ -68,7 +67,6 @@ dci	でぃ
 dck	でぃん
 dcu	どぅ
 dd	でん
-de	で
 df	で
 dh	づう
 di	ぢ
@@ -188,7 +186,6 @@ jn	じゃん
 jo	じょ
 jp	じょう
 jq	じゃい
-ju	じゅ
 jw	じぇい
 jz	じゃん
 ka	か
@@ -206,7 +203,6 @@ kgq	きゃい
 kgu	きゅ
 kgz	きゃん
 kh	くう
-ki	き
 kj	くん
 kk	きん
 kl	こん
@@ -271,7 +267,6 @@ mp	もう
 mq	まい
 ms	ます
 mt	また
-mu	む
 mw	めい
 mya	みゃ
 myd	みぇん
@@ -316,7 +311,6 @@ np	のう
 nq	ない
 nr	なる
 nt	にち
-nu	ぬ
 nw	ねい
 nya	にゃ
 nyd	にぇん
@@ -455,7 +449,9 @@ td	てん
 te	て
 tgi	てぃ
 tgk	てぃん
-tgu	とぅ
+tgu	てゅ
+tgh	てゅー
+tgp	とぅ
 th	つう
 ti	ち
 tj	つん
@@ -520,7 +516,7 @@ xu	しゅ
 xw	しぇい
 xz	しゃん
 ya	や
-yf	ゆ
+yf	ゆう
 yh	ゆう
 yj	ゆん
 yl	よん
