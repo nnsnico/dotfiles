@@ -77,7 +77,7 @@ dm	でも
 dn	だん
 do	ど
 dp	どう
-dq	だい
+dv	だい
 ds	です
 dt	だち
 du	づ
@@ -213,7 +213,7 @@ kp	こう
 kq	かい
 kr	から
 kt	こと
-ku	く
+kv	く
 kw	けい
 kya	きゃ
 kyd	きぇん
@@ -257,7 +257,7 @@ mgu	みゅ
 mgw	みぇい
 mgz	みゃん
 mh	むう
-mi	み
+mv	み
 mj	むん
 mk	みん
 ml	もん
@@ -301,7 +301,7 @@ ngu	にゅ
 ngw	にぇい
 ngz	にゃん
 nh	ぬう
-ni	に
+nv	に
 nj	ぬん
 nk	にん
 nl	のん
