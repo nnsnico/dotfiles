@@ -97,7 +97,14 @@ local lsp_servers = {
       }
     end
   },
-  { name = 'vimls',                  ft = 'vim' },
+  {
+    name = 'vimls',
+    ft = 'vim',
+  },
+  {
+    name = 'bashls',
+    ft = { 'bash', 'zsh' },
+  },
 }
 
 ---@class NullLsConf.Configuration
@@ -137,19 +144,13 @@ M.tools = {
     },
   },
   {
-    name = 'shellcheck',
+    name = 'shfmt',
     ft = { 'sh', 'bash' },
     setup = {
       {
-        source = 'code_actions',
+        source = 'formatting',
         config = function()
-          return { filetypes = { 'sh' } }
-        end,
-      },
-      {
-        source = 'diagnostics',
-        config = function()
-          return { filetypes = { 'sh' } }
+          return { filetypes = { 'sh', 'bash' } }
         end,
       },
     },
