@@ -262,7 +262,7 @@ mj	むん
 mk	みん
 ml	もん
 mn	もの
-mo	も
+mr	も
 mp	もう
 mq	まい
 ms	ます
