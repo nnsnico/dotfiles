@@ -382,7 +382,6 @@ require('lazy').setup({
   ----------------------------------- filer ------------------------------------
   {
     'kyazdani42/nvim-tree.lua',
-    tag = 'nightly',
     cmd = {
       'NvimTreeOpen',
       'NvimTreeToggle',
