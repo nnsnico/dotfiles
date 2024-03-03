@@ -5,18 +5,6 @@ local const = require('constants')
 local is_hover = false
 
 M.on_attach = function(client, bufnr)
-  -- Change diagnostic icons
-
-  local signs = {
-    Info  = const.diagnostic_icons.info,
-    Error = const.diagnostic_icons.error,
-    Warn  = const.diagnostic_icons.warn,
-    Hint  = const.diagnostic_icons.hint,
-  }
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
 
   -- diagnostic config
 
@@ -24,7 +12,15 @@ M.on_attach = function(client, bufnr)
     virtual_text = false,
     float = {
       border = 'rounded'
-    }
+    },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.INFO]  = const.diagnostic_icons.info,
+        [vim.diagnostic.severity.ERROR] = const.diagnostic_icons.error,
+        [vim.diagnostic.severity.WARN]  = const.diagnostic_icons.warn,
+        [vim.diagnostic.severity.HINT]  = const.diagnostic_icons.hint,
+      }
+    },
   })
 
   -- Add border in hover
