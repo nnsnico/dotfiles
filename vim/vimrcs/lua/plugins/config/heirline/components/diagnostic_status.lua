@@ -5,9 +5,7 @@ local conditions = require('heirline.conditions')
 M.warn = {
   condition = conditions.has_diagnostics,
   init = function(self)
-    self.warn_icon = not vim.tbl_isempty(vim.fn.sign_getdefined("DiagnosticSignWarn")) and
-        vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text or
-        ""
+    self.warn_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.WARN] .. " "
     local warn = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
     self.line = not vim.tbl_isempty(warn) and warn[1].lnum + 1 or 0
   end,
@@ -23,9 +21,7 @@ M.warn = {
 M.error = {
   condition = conditions.has_diagnostics,
   init = function(self)
-    self.error_icon = not vim.tbl_isempty(vim.fn.sign_getdefined("DiagnosticSignError")) and
-      vim.fn.sign_getdefined("DiagnosticSignError")[1].text or
-      ""
+    self.error_icon = vim.diagnostic.config()['signs']['text'][vim.diagnostic.severity.ERROR] .. " "
     local error = vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
     self.line = not vim.tbl_isempty(error) and error[1].lnum + 1 or 0
   end,
