@@ -278,8 +278,8 @@ require('lazy').setup({
         segments = {
           {
             sign = {
-              name     = { 'Diagnostic' },
-              maxwidth = 2,
+              namespace = { 'diagnostic' },
+              maxwidth  = 2,
             },
             click = 'v:lua.ScSa',
           },
