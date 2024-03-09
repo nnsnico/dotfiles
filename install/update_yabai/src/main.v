@@ -1,5 +1,6 @@
 module main
 
+import arrays
 import os
 import term
 import cli
@@ -7,12 +8,22 @@ import cli
 const target_path = "/private/etc/sudoers.d/yabai"
 
 fn main() {
+	dry_run_flag := cli.Flag{
+		flag: cli.FlagType.bool
+		name: 'dry'
+		abbrev: 'd'
+		description: 'Prints the command to be executed.'
+	}
+
 	mut app := cli.Command{
 		name: 'update_yabai'
 		description: 'update sudoer script for yabai'
 		version: '0.1'
-		execute: fn (cmd cli.Command) ! {
-			if os.user_os() == 'macos' {
+		flags: [
+			dry_run_flag
+		]
+		execute: fn [dry_run_flag] (cmd cli.Command) ! {
+			if os.user_os() != 'macos' {
 				eprintln(term.red('This command is only available on macos'))
 				exit(1)
 			}
@@ -38,13 +49,31 @@ fn main() {
 
 			yabai_sudoer_config := '${user} ALL=(root) NOPASSWD: sha256:${checksum} --load-sa'
 
-			println('Write config to `${target_path}` ..')
+			is_dry_run := arrays.find_first(
+				cmd.flags,
+				fn [dry_run_flag] (elem cli.Flag) bool {
+					return elem.name == dry_run_flag.name
+				}
+			) or {
+				// Unreachable
+				panic(err)
+			}.get_bool() or {
+				// Unreachable
+				eprintln(term.red(err.str()))
+				exit(1)
+			}
 
-			os.write_file(target_path, yabai_sudoer_config)!
+			if is_dry_run {
+				println(yabai_sudoer_config)
+			} else {
+				println('Write config to `${target_path}` ..')
+
+				os.write_file(target_path, yabai_sudoer_config)!
+
+				println(term.ok_message("Writing completed!"))
+			}
 
 			target_file.close()
-
-			println(term.ok_message("Writing completed!"))
 
 			return
 		}
