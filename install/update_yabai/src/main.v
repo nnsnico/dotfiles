@@ -12,7 +12,11 @@ fn main() {
 		description: 'update sudoer script for yabai'
 		version: '0.1'
 		execute: fn (cmd cli.Command) ! {
-			user := os.loginname()!
+			// TODO: `whoami`, `logname`, `echo $USER` with root are not working...
+			user := exec_panicable('who | awk \'{print \$1\'}') or {
+				eprintln(term.red(err.str()))
+				exit(1)
+			}
 			yabai_path := exec_panicable('which yabai') or {
 				eprintln(term.red(err.str()))
 				exit(1)
