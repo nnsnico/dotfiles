@@ -12,6 +12,11 @@ fn main() {
 		description: 'update sudoer script for yabai'
 		version: '0.1'
 		execute: fn (cmd cli.Command) ! {
+			if os.user_os() == 'macos' {
+				eprintln(term.red('This command is only available on macos'))
+				exit(1)
+			}
+
 			// TODO: `whoami`, `logname`, `echo $USER` with root are not working...
 			user := exec_panicable('who | awk \'{print \$1\'}') or {
 				eprintln(term.red(err.str()))
