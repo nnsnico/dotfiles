@@ -6,7 +6,7 @@ opt.shell = 'zsh'
 
 -- character encoding
 opt.encoding      = 'utf-8'
-opt.fileencodings = 'utf-8'
+opt.fileencodings = 'utf-8,euc-jp'
 opt.fileformats   = 'unix,dos,mac'
 
 vim.cmd([[filetype plugin on]])
