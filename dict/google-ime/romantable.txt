@@ -65,7 +65,8 @@ cz	ちゃん
 da	だ
 dci	でぃ
 dck	でぃん
-dcu	どぅ
+dcu	でゅ
+dcp	どぅ
 dd	でん
 df	で
 dh	づう
