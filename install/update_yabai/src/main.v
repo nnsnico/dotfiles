@@ -5,7 +5,7 @@ import os
 import term
 import cli
 
-const target_path = "/private/etc/sudoers.d/yabai"
+const target_path = '/private/etc/sudoers.d/yabai'
 
 fn main() {
 	dry_run_flag := cli.Flag{
@@ -20,7 +20,7 @@ fn main() {
 		description: 'update sudoer script for yabai'
 		version: '0.1'
 		flags: [
-			dry_run_flag
+			dry_run_flag,
 		]
 		execute: fn [dry_run_flag] (cmd cli.Command) ! {
 			if os.user_os() != 'macos' {
@@ -29,7 +29,7 @@ fn main() {
 			}
 
 			// TODO: `whoami`, `logname`, `echo $USER` with root are not working...
-			user := exec_panicable('who | awk \'{print \$1\'}') or {
+			user := exec_panicable("who | awk '{print \$1'}") or {
 				eprintln(term.red(err.str()))
 				exit(1)
 			}
@@ -42,19 +42,11 @@ fn main() {
 				exit(1)
 			}
 
-			mut target_file := os.create(target_path) or {
-				eprintln(term.red("You don't have permission to access the file"))
-				exit(1)
-			}
-
 			yabai_sudoer_config := '${user} ALL=(root) NOPASSWD: sha256:${checksum} --load-sa'
 
-			is_dry_run := arrays.find_first(
-				cmd.flags,
-				fn [dry_run_flag] (elem cli.Flag) bool {
-					return elem.name == dry_run_flag.name
-				}
-			) or {
+			is_dry_run := arrays.find_first(cmd.flags, fn [dry_run_flag] (elem cli.Flag) bool {
+				return elem.name == dry_run_flag.name
+			}) or {
 				// Unreachable
 				panic(err)
 			}.get_bool() or {
@@ -66,14 +58,19 @@ fn main() {
 			if is_dry_run {
 				println(yabai_sudoer_config)
 			} else {
+				mut target_file := os.create(target_path) or {
+					eprintln(term.red("You don't have permission to access the file"))
+					exit(1)
+				}
+
 				println('Write config to `${target_path}` ..')
 
 				os.write_file(target_path, yabai_sudoer_config)!
 
-				println(term.ok_message("Writing completed!"))
-			}
+				println(term.ok_message('Writing completed!'))
 
-			target_file.close()
+				target_file.close()
+			}
 
 			return
 		}
