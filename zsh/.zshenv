@@ -64,7 +64,7 @@ zinit wait lucid for \
     from"gh-r" \
     ver"nightly" \
     sbin"v-analyzer -> v-analyzer" \
-  "v-analyzer/v-analyzer"
+  "vlang/v-analyzer"
 
 zinit wait lucid for \
     atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" \
