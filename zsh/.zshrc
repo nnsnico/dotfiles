@@ -199,14 +199,3 @@ function adbtglshowtap() {
   fi
 }
 
-# ------------------------------------ tmux ------------------------------------
-
-# attach tmux when launching terminal
-if [ $SHLVL = 1 ]; then
-  tmux new-session -d -s mySession -n development && \
-  tmux new-window -d -n development.2 && \
-  tmux new-window -d -n ssh && \
-  tmux new-window -d -n openvpn
-  tmux attach -t mySession:development
-fi
-
