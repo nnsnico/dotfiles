@@ -49,7 +49,7 @@ pub fn run_update_packages(command cli.Command) ! {
 
 fn parse_package_type(str string) UpdatePackageType {
 	return match true {
-		str == UpdatePackageType.yabai.str() {
+		str.contains(UpdatePackageType.yabai.str()) {
 			.yabai
 		}
 		else {
