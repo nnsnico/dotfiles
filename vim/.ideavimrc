@@ -14,6 +14,21 @@ set noerrorbells
 " Set powerfull code joiner
 set ideajoin
 
+" set keymap to handle either vim or ide
+sethandler <C-a> a:vim
+sethandler <C-b> a:vim
+sethandler <C-d> a:vim
+sethandler <C-e> a:vim
+sethandler <C-g> a:vim
+sethandler <C-h> a:vim
+sethandler <C-l> a:vim
+sethandler <C-n> a:vim
+sethandler <C-p> a:vim
+sethandler <C-r> a:vim
+sethandler <C-t> a:vim
+sethandler <C-v> a:vim
+sethandler <C-w> a:vim
+
 " ---------------------------------- Keymaps ----------------------------------
 
 " Copy in clipboard by yank
