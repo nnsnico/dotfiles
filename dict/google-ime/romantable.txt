@@ -1,4 +1,4 @@
-~	～
+'	ー
 ,	、
 .	。
 /	・
@@ -65,8 +65,8 @@ cz	ちゃん
 da	だ
 dci	でぃ
 dck	でぃん
-dcu	でゅ
 dcp	どぅ
+dcu	でゅ
 dd	でん
 df	で
 dh	づう
@@ -78,10 +78,10 @@ dm	でも
 dn	だん
 do	ど
 dp	どう
-dv	だい
 ds	です
 dt	だち
 du	づ
+dv	だい
 dw	でい
 dz	だん
 e	え
@@ -187,8 +187,10 @@ jn	じゃん
 jo	じょ
 jp	じょう
 jq	じゃい
+ju	じゅ
 jw	じぇい
 jz	じゃん
+k;	こう
 ka	か
 kd	けん
 ke	け
@@ -204,6 +206,7 @@ kgq	きゃい
 kgu	きゅ
 kgz	きゃん
 kh	くう
+ki	き
 kj	くん
 kk	きん
 kl	こん
@@ -214,6 +217,7 @@ kp	こう
 kq	かい
 kr	から
 kt	こと
+ku	く
 kv	く
 kw	けい
 kya	きゃ
@@ -258,16 +262,18 @@ mgu	みゅ
 mgw	みぇい
 mgz	みゃん
 mh	むう
-mv	み
+mi	み
 mj	むん
 mk	みん
 ml	もん
 mn	もの
-mr	も
 mp	もう
 mq	まい
+mr	も
 ms	ます
 mt	また
+mv	み
+mv	む
 mw	めい
 mya	みゃ
 myd	みぇん
@@ -302,7 +308,8 @@ ngu	にゅ
 ngw	にぇい
 ngz	にゃん
 nh	ぬう
-nv	に
+ni	に
+nu	ぬ
 nj	ぬん
 nk	にん
 nl	のん
@@ -312,6 +319,7 @@ np	のう
 nq	ない
 nr	なる
 nt	にち
+nv	に
 nw	ねい
 nya	にゃ
 nyd	にぇん
@@ -355,6 +363,7 @@ po	ぽ
 pp	ぽう
 pq	ぱい
 pu	ぷ
+pv	ぴん
 pw	ぺい
 pya	ぴゃ
 pyd	ぴぇん
@@ -448,11 +457,11 @@ ta	た
 tb	たび
 td	てん
 te	て
+tgh	てゅー
 tgi	てぃ
 tgk	てぃん
-tgu	てゅ
-tgh	てゅー
 tgp	とぅ
+tgu	てゅ
 th	つう
 ti	ち
 tj	つん
@@ -484,7 +493,11 @@ tz	たん
 u	う
 va	う゛ぁ
 ve	う゛ぇ
+vh	←
 vi	う゛ぃ
+vj	↓
+vk	↑
+vl	→
 vo	う゛ぉ
 vu	う゛
 wa	わ
@@ -503,6 +516,8 @@ wso	うぉ
 wt	わた
 ww	ｗｗ
 wz	わん
+x[	「
+x]	」
 xa	しゃ
 xd	しぇん
 xe	しぇ
@@ -528,6 +543,9 @@ yq	やい
 yr	よる
 yu	ゆ
 yz	やん
+z'	〜
+z[	『
+z]	』
 za	ざ
 zc	ざ
 zd	ぜん
@@ -548,9 +566,4 @@ zv	ざい
 zw	ぜい
 zx	ぜい
 zz	ざん
-'	ー
-z[	『
-z]	』
-x[	「
-x]	」
-z-	〜
+~	～
