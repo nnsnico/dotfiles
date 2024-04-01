@@ -50,10 +50,12 @@ zinit wait lucid for \
 zinit wait lucid for \
     if'[[ $OSTYPE =~ "darwin*" ]]' \
     from"gh-r" \
-    bpick"*macos.tar.gz" \
+    bpick"*macos-arm64.tar.gz" \
     ver"nightly" \
     sbin'**/nvim -> nvim' \
   "neovim/neovim"
+    # make'CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$ZPFX install' \
+    # ver"808752f" \
 
 zinit wait lucid for \
     from"gh-r" \
