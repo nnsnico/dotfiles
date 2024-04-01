@@ -1,7 +1,7 @@
 local skkeleton = {}
 
 skkeleton.setup = function()
-  vim.keymap.set('i', '<C-j>', '<Plug>(skkeleton-enable)')
+  vim.keymap.set('i', '<C-j>', '<Plug>(skkeleton-toggle)')
   vim.keymap.set('c', '<C-j>', '<Plug>(skkeleton-toggle)')
 
   local skkeleton_init = function()
@@ -24,10 +24,25 @@ skkeleton.setup = function()
     -- custom kana table
     vim.fn['skkeleton#register_kanatable']('rom', {
       ['z '] = { '\u{3000}', '' },
+      ["z'"] = { '～', '' },
+      ["vh"] = { '←', '' },
+      ["vj"] = { '↓', '' },
+      ["vk"] = { '↑', '' },
+      ["vl"] = { '→', '' },
     })
 
+    vim.cmd([[
+      call add(g:skkeleton#mapped_keys, '<C-l>')
+      call add(g:skkeleton#mapped_keys, '<C-d>')
+    ]])
+
     -- custom keymap in input kana
-    vim.fn['skkeleton#register_keymap']('input', '-', 'katakana')
+    vim.fn['skkeleton#register_keymap']('input', '<C-d>', 'katakana')
+
+    vim.fn.add(vim.g['skkeleton#mapped_keys'], '_')
+    vim.fn['skkeleton#register_keymap']('input', '_', 'hankatakana')
+    vim.fn['skkeleton#register_keymap']('input', ':', 'henkanPoint')
+    vim.fn['skkeleton#register_keymap']('input', '<C-l>', 'disable')
   end
 
   -- Setup user config before initializing skkeleton
