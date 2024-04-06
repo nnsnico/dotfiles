@@ -454,7 +454,7 @@ syz	しゃん
 sz	さん
 ta	た
 tb	たび
-td	てん
+t;	てん
 te	て
 tgh	てゅー
 tgi	てぃ
