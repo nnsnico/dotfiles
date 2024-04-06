@@ -273,7 +273,6 @@ mr	も
 ms	ます
 mt	また
 mv	み
-mv	む
 mw	めい
 mya	みゃ
 myd	みぇん
@@ -309,7 +308,6 @@ ngw	にぇい
 ngz	にゃん
 nh	ぬう
 ni	に
-nu	ぬ
 nj	ぬん
 nk	にん
 nl	のん
@@ -319,6 +317,7 @@ np	のう
 nq	ない
 nr	なる
 nt	にち
+nu	ぬ
 nv	に
 nw	ねい
 nya	にゃ
