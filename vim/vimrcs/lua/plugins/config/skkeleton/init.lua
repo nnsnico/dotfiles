@@ -1,34 +1,24 @@
 local skkeleton = {}
+local azik_converter = require('plugins.config.skkeleton.convert_azik')
 
 skkeleton.setup = function()
   vim.keymap.set('i', '<C-j>', '<Plug>(skkeleton-toggle)')
   vim.keymap.set('c', '<C-j>', '<Plug>(skkeleton-toggle)')
 
   local skkeleton_init = function()
-    ---@type table?
-    local azik_rule_path = vim.fn.exists('mac') and
-    {
-      {
-        vim.fn.expand('~/dotfiles/dict/azik_us.rule'),
-        'euc-jp'
-      }
-    } or nil
+    local google_ime_kanatable = vim.fn.expand('~/dotfiles/dict/google-ime/romantable.txt')
+    azik_converter.register_azik_kanatable(google_ime_kanatable)
 
     -- custom configurations
     vim.fn['skkeleton#config']({
       eggLikeNewline       = true,
       globalDictionaries   = { vim.fn.expand('~/dotfiles/dict/SKK-JISYO') },
-      globalKanaTableFiles = azik_rule_path,
+      kanaTable = 'azik',
     })
 
     -- custom kana table
-    vim.fn['skkeleton#register_kanatable']('rom', {
+    vim.fn['skkeleton#register_kanatable']('azik', {
       ['z '] = { '\u{3000}', '' },
-      ["z'"] = { '～', '' },
-      ["vh"] = { '←', '' },
-      ["vj"] = { '↓', '' },
-      ["vk"] = { '↑', '' },
-      ["vl"] = { '→', '' },
     })
 
     vim.cmd([[
