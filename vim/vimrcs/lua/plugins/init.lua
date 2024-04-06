@@ -43,11 +43,7 @@ require('lazy').setup({
       {
         'numToStr/Comment.nvim',
         config = function()
-          require('Comment').setup({
-            pre_hook = function()
-              return vim.bo.commentstring
-            end
-          })
+          require('Comment').setup()
         end,
         lazy = false,
       },
