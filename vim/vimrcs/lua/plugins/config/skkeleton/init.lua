@@ -11,14 +11,20 @@ skkeleton.setup = function()
 
     -- custom configurations
     vim.fn['skkeleton#config']({
-      eggLikeNewline       = true,
-      globalDictionaries   = { vim.fn.expand('~/dotfiles/dict/SKK-JISYO') },
-      kanaTable = 'azik',
+      eggLikeNewline     = true,
+      globalDictionaries = { vim.fn.expand('~/dotfiles/dict/SKK-JISYO') },
+      completionRankFile = vim.fn.expand('~/dotfiles/dict/rank.json'),
+      kanaTable          = 'azik',
     })
 
     -- custom kana table
     vim.fn['skkeleton#register_kanatable']('azik', {
       ['z '] = { '\u{3000}', '' },
+      ['?'] = { '？', '' },
+      ['!'] = { '！', '' },
+      [' '] = 'henkanFirst',
+      ['_'] = 'hankatakana',
+      [':'] = 'henkanPoint',
     })
 
     vim.cmd([[
@@ -28,10 +34,6 @@ skkeleton.setup = function()
 
     -- custom keymap in input kana
     vim.fn['skkeleton#register_keymap']('input', '<C-d>', 'katakana')
-
-    vim.fn.add(vim.g['skkeleton#mapped_keys'], '_')
-    vim.fn['skkeleton#register_keymap']('input', '_', 'hankatakana')
-    vim.fn['skkeleton#register_keymap']('input', ':', 'henkanPoint')
     vim.fn['skkeleton#register_keymap']('input', '<C-l>', 'disable')
   end
 
