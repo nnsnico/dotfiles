@@ -43,6 +43,9 @@ opt.modeline = true
 opt.splitbelow = true
 opt.splitright = true
 
+-- Scrolling Offset
+opt.scrolloff = 3
+
 -------------------------------------- Tab -------------------------------------
 
 -- use space instead tab
