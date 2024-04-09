@@ -435,7 +435,15 @@ require('lazy').setup({
       require('plugins.config.skkeleton').setup()
     end,
     dependencies = {
-      { "vim-denops/denops.vim" }
+      { "vim-denops/denops.vim" },
+      {
+        "delphinus/skkeleton_indicator.nvim",
+        config = function()
+          require('skkeleton_indicator').setup({
+            zindex = 9999,
+          })
+        end
+      },
     },
   },
   {
