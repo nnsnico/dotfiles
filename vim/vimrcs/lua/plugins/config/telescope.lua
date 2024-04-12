@@ -37,8 +37,7 @@ M.config = function()
     defaults = {
       mappings = {
         i = {
-          ['<C-j>'] = actions.move_selection_next,
-          ['<C-k>'] = actions.move_selection_previous,
+          ['<C-j>'] = { "<Plug>(skkeleton-toggle)", type = "command" },
           ['<C-u>'] = false,
         },
         n = {
