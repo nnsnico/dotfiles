@@ -20,7 +20,13 @@ pub fn run_update_packages(command cli.Command) ! {
 		eprintln(response_err(err.str()))
 		exit(1)
 	}
-	outdated_list := brew.exec_with_print('outdated', .with_print) or {
+
+	brew.exec_with_print('update', .with_print) or {
+		eprintln(response_err(err.str()))
+		exit(1)
+	}
+
+	outdated_list := brew.exec_with_print('outdated --quiet', .with_print) or {
 		eprintln(response_err(err.str()))
 		exit(1)
 	}.split('\n').filter(fn (s string) bool {
@@ -34,6 +40,11 @@ pub fn run_update_packages(command cli.Command) ! {
 	if package_list.len == 0 {
 		println(response_ok('No package updates'))
 		exit(0)
+	} else {
+		println(response_ok('Update the following packages'))
+		for p in outdated_list {
+			println(response_ok('\t·${p}'))
+		}
 	}
 
 	brew.update_all(package_list) or {
@@ -42,9 +53,6 @@ pub fn run_update_packages(command cli.Command) ! {
 	}
 
 	println(response_ok('Package updates are complete!'))
-	for p in outdated_list {
-		println(response_ok('\t·${p}'))
-	}
 }
 
 fn parse_package_type(str string) UpdatePackageType {
