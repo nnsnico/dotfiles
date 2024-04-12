@@ -13,7 +13,7 @@ pub fn run_yabai_path(command cli.Command) ! {
 	}
 
 	// TODO: `whoami`, `logname`, `echo $USER` with root are not working...
-	who := create_command('who')!.exec_with_print('', .no_print) or {
+	who := create_command('who')!.exec_with_print(.no_print) or {
 		eprintln(err.str())
 		exit(1)
 	}
@@ -22,8 +22,7 @@ pub fn run_yabai_path(command cli.Command) ! {
 		eprintln(err.str())
 		exit(1)
 	}
-	checksum := create_command('shasum')!.exec_with_print('-a 256 ${yabai_path.cmd_path}',
-		.no_print)!
+	checksum := create_command('shasum')!.exec_with_print(.no_print, '-a', '256', '${yabai_path.cmd_path}')!
 
 	yabai_sudoer_config := '${user} ALL=(root) NOPASSWD: sha256:${checksum} --load-sa'
 

@@ -21,12 +21,12 @@ pub fn run_update_packages(command cli.Command) ! {
 		exit(1)
 	}
 
-	brew.exec_with_print('update', .with_print) or {
+	brew.exec_with_print(.with_print, 'update') or {
 		eprintln(response_err(err.str()))
 		exit(1)
 	}
 
-	outdated_list := brew.exec_with_print('outdated --quiet', .with_print) or {
+	outdated_list := brew.exec_with_print(.with_print, 'outdated', '--quiet') or {
 		eprintln(response_err(err.str()))
 		exit(1)
 	}.split('\n').filter(fn (s string) bool {
@@ -82,7 +82,7 @@ fn parse_answer(str string) Answer {
 
 fn (c Command) execute_update() ! {
 	if c.name == 'brew' {
-		c.exec_with_print('upgrade', .with_print)!
+		c.exec_with_print(.with_print, 'upgrade')!
 	} else {
 		return error(response_err('Specified command should be `brew`'))
 	}
@@ -99,7 +99,7 @@ fn (c Command) update_all(list []UpdatePackageType) ! {
 			match answer {
 				.yes {
 					yabai := create_command('yabai')!
-					yabai.exec_with_print('--stop-service', .with_print)!
+					yabai.exec_with_print(.with_print, '--stop-service')!
 					c.execute_update()!
 					break
 				}

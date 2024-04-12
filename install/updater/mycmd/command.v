@@ -24,8 +24,9 @@ pub fn create_command(str string) !Command {
 	}
 }
 
-pub fn (c Command) exec_with_print(sub_command_str string, with_print WithPrint) !string {
-	full_cmd := '${c.cmd_path} ${sub_command_str}'
+pub fn (c Command) exec_with_print(with_print WithPrint, sub_command_and_options ...string) !string {
+	command_with_options := sub_command_and_options.join(' ')
+	full_cmd := '${c.cmd_path} ${command_with_options}'
 	result := match with_print {
 		.with_print {
 			println(response_progress(full_cmd))

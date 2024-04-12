@@ -22,15 +22,15 @@ app.add_command(cli.Command{
 	description: 'Update sudoer script for yabai'
 	execute: mycmd.run_yabai_path
 	flags: [
-	mycmd.flags['output'],
+		mycmd.flags['output'],
 	]
-	})
+})
 
 app.add_command(cli.Command{
 	name: 'packages'
 	description: 'Update all packages in Homebrew'
 	execute: mycmd.run_update_packages
-	})
+})
 
 app.setup()
 app.parse(os.args)
