@@ -65,6 +65,9 @@ M.config = function()
         end
       end, { "i" }),
     }),
+    completion = {
+      keyword_length = 2,
+    },
     formatting = {
       fields = { 'kind', 'abbr', 'menu' },
       ---@param item lsp.CompletionItem
@@ -87,7 +90,15 @@ M.config = function()
     }, {
       { name = 'nvim_lsp' },
       { name = 'path' },
-      { name = 'spell' },
+      {
+        name = 'spell',
+        option = {
+          enable_in_context = function()
+            local skk_mode = vim.fn['skkeleton#mode']()
+            return skk_mode == ''
+          end
+        },
+      },
     }, {
       { name = 'buffer' },
     }),
