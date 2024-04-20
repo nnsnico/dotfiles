@@ -491,9 +491,25 @@ require('lazy').setup({
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.aurora_italic = 1
-      vim.g.aurora_bold   = 1
-      vim.g.aurora_darker = 1
+      vim.g.aurora_italic      = 1
+      vim.g.aurora_bold        = 1
+      vim.g.aurora_darker      = 1
+      vim.g.aurora_transparent = 1
+
+      -- Markdown heading
+      -- Purple
+      vim.api.nvim_set_hl(0, '@markup.heading.1', { link = 'Title' })
+      -- Yellow
+      vim.api.nvim_set_hl(0, '@markup.heading.2', { link = 'TSDefinitionUsage' })
+      -- Cyan
+      vim.api.nvim_set_hl(0, '@markup.heading.3', { link = '@function.builtin' })
+      -- Green
+      vim.api.nvim_set_hl(0, '@markup.heading.4', { link = 'diffAdded' })
+      -- Red
+      vim.api.nvim_set_hl(0, '@markup.heading.5', { link = 'markdownHeadingRule' })
+      -- Orange
+      vim.api.nvim_set_hl(0, '@markup.heading.6', { link = 'sqlKeyword' })
+
       vim.cmd([[colorscheme aurora]])
     end
   }
