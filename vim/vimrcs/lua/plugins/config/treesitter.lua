@@ -5,11 +5,29 @@ function M.config()
     modules = {},
     ignore_install = {},
     auto_install = true,
-    ensure_installed = { 'lua', 'json', 'dart' },
+    ensure_installed = {
+      'lua',
+      'json',
+      'dart',
+      'markdown',
+      'markdown_inline',
+    },
     sync_install = true,
+    markdown = {
+      enable = true,
+      {
+        mappings = {
+          inline_surround_toggle      = false,
+          inline_surround_toggle_line = false,
+          inline_surround_delete      = false,
+          inline_surround_change      = false,
+          link_add                    = false,
+          link_follow                 = false,
+        }
+      },
+    },
     highlight = {
       enable = true,
-      disable = { "markdown" },
       additional_vim_regex_highlighting = true,
     },
     indent = {
