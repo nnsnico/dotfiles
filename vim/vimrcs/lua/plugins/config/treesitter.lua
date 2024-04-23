@@ -15,15 +15,13 @@ function M.config()
     sync_install = true,
     markdown = {
       enable = true,
-      {
-        mappings = {
-          inline_surround_toggle      = false,
-          inline_surround_toggle_line = false,
-          inline_surround_delete      = false,
-          inline_surround_change      = false,
-          link_add                    = false,
-          link_follow                 = false,
-        }
+      mappings = {
+        inline_surround_toggle      = false,
+        inline_surround_toggle_line = false,
+        inline_surround_delete      = false,
+        inline_surround_change      = false,
+        link_add                    = false,
+        link_follow                 = false,
       },
     },
     highlight = {
@@ -39,14 +37,14 @@ function M.config()
         enable    = true,
         lockahead = true,
         keymaps   = {
-          ['af']  = '@function.outer',
-          ['if']  = '@function.inner',
-          ['ac']  = '@class.outer',
-          ['ic']  = '@class.inner',
-          ['ai']  = '@conditional.outer',
-          ['ii']  = '@conditional.inner',
-          ['al']  = '@loop.outer',
-          ['il']  = '@loop.inner',
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+          ['ac'] = '@class.outer',
+          ['ic'] = '@class.inner',
+          ['ai'] = '@conditional.outer',
+          ['ii'] = '@conditional.inner',
+          ['al'] = '@loop.outer',
+          ['il'] = '@loop.inner',
         },
       },
       move = {
