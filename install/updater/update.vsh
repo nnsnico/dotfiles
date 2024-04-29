@@ -13,8 +13,10 @@ mut app := cli.Command{
 	name: manifest.name
 	description: manifest.description
 	version: manifest.version
-	disable_man: true
 	posix_mode: true
+	defaults: struct {
+		man: false
+	}
 }
 
 app.add_command(cli.Command{
