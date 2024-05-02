@@ -60,14 +60,14 @@ endfunction
 command! -nargs=+ TrimSpaces call s:trimming_spaces_one_line(<f-args>)
 command! TrailingSpacesAll call s:trailing_spaces_all_line()
 
-highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
+highlight TrailingSpaces term=underline guibg=#FF69B4 ctermbg=205
 
 augroup HighlightTrailingSpaces
     autocmd!
-    autocmd ColorScheme             * highlight TrailingSpaces term=underline guibg=HotPink ctermbg=205
-    autocmd BufRead,BufNew,FileType * if s:is_ignore_filetype() | match TrailingSpaces /^^/ | else | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
-    autocmd InsertLeave             * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
-    autocmd InsertEnter             * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd ColorScheme    * highlight link bTrailingSpaces TrailingSpaces
+    autocmd BufRead,BufNew * if s:is_ignore_filetype() | match TrailingSpaces /^^/ | else | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertLeave    * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
+    autocmd InsertEnter    * if !s:is_ignore_filetype() | match TrailingSpaces /\v((\s|　)+$)|(　)/ | endif
 augroup END
 
 nnoremap <silent><Plug>JoinLineWithoutSpaces :<C-u>call <SID>join_line_without_spaces()<CR>
