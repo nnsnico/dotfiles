@@ -402,13 +402,25 @@ require('lazy').setup({
     end,
   },
   {
-    'iberianpig/tig-explorer.vim',
-    keys = {
-      { '<Leader>g', '<Cmd>TigOpenProjectRootDir<CR>', mode = 'n' }
-    },
-    dependencies = {
-      { 'rbgrouleff/bclose.vim', cmd = 'Bclose' },
-    }
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      local term = require('toggleterm.terminal').Terminal
+      local tig = term:new({
+        cmd = 'tig',
+        hidden = true,
+        direction = 'float',
+        float_opts = {
+          border = 'rounded',
+        },
+      })
+
+      local function toggle_tig()
+        tig:toggle()
+      end
+
+      vim.keymap.set('n', '<Leader>g', toggle_tig, { noremap = true, silent = true })
+    end,
   },
   ----------------------------------- Other ------------------------------------
   {
