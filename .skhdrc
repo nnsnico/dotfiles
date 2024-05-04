@@ -118,8 +118,8 @@ ctrl + cmd - i : yabai -m space --balance
 
 # ---------------------------------- display ----------------------------------
 
-ctrl + cmd - u : yabai -m display --focus prev
-ctrl + cmd - o : yabai -m display --focus next
+ctrl + cmd - u : yabai -m display --focus prev || yabai -m display --focus last
+ctrl + cmd - o : yabai -m display --focus next || yabai -m display --focus first
 
 # ----------------------------------- other -----------------------------------
 
