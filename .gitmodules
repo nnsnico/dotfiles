@@ -1,0 +1,6 @@
+[submodule "cli/adv"]
+	path = cli/adv
+	url = https://github.com/nnsnico/adv.git
+	branch = main
+
+; vim: ts=4 sw=4 sts=4 noet :
