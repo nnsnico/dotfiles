@@ -53,7 +53,6 @@ require('lazy').setup({
   -------------------------------- fuzzy finder --------------------------------
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     keys = require('plugins.config.telescope').setup(),
     config = function()
       require('plugins.config.telescope').config()
