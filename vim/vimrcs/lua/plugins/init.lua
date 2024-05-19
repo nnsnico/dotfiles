@@ -235,11 +235,9 @@ require('lazy').setup({
     }
   },
   {
-    'vigoux/notifier.nvim',
+    'j-hui/fidget.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('notifier').setup()
-    end,
+    opts = {},
   },
   {
     'stevearc/dressing.nvim',
