@@ -165,7 +165,7 @@ M.filetypes = function()
   ---@param tool ToolConf.Configuration
   ---@type string[]
   local tool_ft = vim.tbl_map(function (tool) return tool.ft end, M.tools)
-  local extended = vim.tbl_flatten(vim.list_extend(lsp_ft, tool_ft))
+  local extended = vim.iter(vim.list_extend(lsp_ft, tool_ft)):flatten():totable()
   local set = {}
   for i, _ in ipairs(extended) do
     if not vim.tbl_contains(set, extended[i]) then

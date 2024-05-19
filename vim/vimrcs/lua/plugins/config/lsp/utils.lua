@@ -78,7 +78,7 @@ end
 ---@param response Response: Location or Location[] or LocationLink[] (e.g, responsed value from "textDocument/definition")
 ---@return QfItem[] quickfix_list: Quickfix list
 function M.map_to_qflist_from_location(response)
-  if response and vim.tbl_islist(response) then -- is `Location[] | LocationLink[]`
+  if response and vim.islist(response) then -- is `Location[] | LocationLink[]`
     return vim.lsp.util.locations_to_items(response, 'utf-8')
   else -- is `Location`
     return {

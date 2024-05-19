@@ -17,7 +17,7 @@ local function make_keymaps(keymaps, bufnr)
 
   ---@diagnostic disable: param-type-mismatch
   for _, keymap in ipairs(keymaps) do
-    if (vim.tbl_islist(keymap.key)) then
+    if (vim.islist(keymap.key)) then
       for _, key in ipairs(keymap.key) do
         vim.keymap.set('n', key, keymap.api, opts(keymap.desc))
       end
