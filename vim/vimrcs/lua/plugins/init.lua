@@ -27,6 +27,9 @@ require('lazy').setup({
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
         branch = 'main',
+        config = function()
+          require('plugins.config.treesitter.textobject').config()
+        end,
       },
       'JoosepAlviste/nvim-ts-context-commentstring',
       {
