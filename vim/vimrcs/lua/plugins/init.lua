@@ -24,7 +24,10 @@ require('lazy').setup({
     dependencies = {
       'tadmccorkle/markdown.nvim',
       'HiPhish/rainbow-delimiters.nvim',
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = 'main',
+      },
       'JoosepAlviste/nvim-ts-context-commentstring',
       {
         'nvim-treesitter/nvim-treesitter-context',
