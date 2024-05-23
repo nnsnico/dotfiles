@@ -394,6 +394,7 @@ require('lazy').setup({
       require('neoscroll').setup({
         mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>', 'zz', 'zt', 'zb' },
         easing_function = 'circular'
+        hide_cursor = false,
       })
     end
   },
