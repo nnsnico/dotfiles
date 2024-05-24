@@ -22,7 +22,6 @@ require('lazy').setup({
       require('plugins.config.treesitter').config()
     end,
     dependencies = {
-      'tadmccorkle/markdown.nvim',
       'HiPhish/rainbow-delimiters.nvim',
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
@@ -514,11 +513,29 @@ require('lazy').setup({
   --------------------------------- file type ----------------------------------
   -- markdown
   {
-    'godlygeek/tabular',
+    'tadmccorkle/markdown.nvim',
     ft = 'markdown',
     config = function()
-      vim.keymap.set('n', '<Space>@', '<Cmd>TableFormat<CR>', { silent = true, buffer = true })
+      require('plugins.config.treesitter.markdown').config()
     end,
+  },
+  {
+    'preservim/vim-markdown',
+    ft = 'markdown',
+    init = function()
+      vim.g.vim_markdown_no_default_key_mappings = 1
+      vim.g.vim_markdown_folding_disabled        = 1
+      vim.g.vim_markdown_conceal                 = 0
+      vim.g.vim_markdown_code_blocks             = 0
+    end,
+    dependencies = {
+      {
+        'godlygeek/tabular',
+        config = function()
+          vim.keymap.set('n', '<Space>@', '<Cmd>TableFormat<CR>', { silent = true, buffer = true })
+        end,
+      },
+    }
   },
   {
     'iamcco/markdown-preview.nvim',

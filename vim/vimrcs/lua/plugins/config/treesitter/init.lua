@@ -13,17 +13,6 @@ function M.config()
       'markdown_inline',
     },
     sync_install = true,
-    markdown = {
-      enable = true,
-      mappings = {
-        inline_surround_toggle      = false,
-        inline_surround_toggle_line = false,
-        inline_surround_delete      = false,
-        inline_surround_change      = false,
-        link_add                    = false,
-        link_follow                 = false,
-      },
-    },
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = true,
