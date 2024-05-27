@@ -61,23 +61,8 @@ local on_attach = function(bufnr)
 end
 
 M.setup = function()
-  vim.keymap.set(
-    'n',
-    '<C-t>',
-    function()
-      local utils = require('functions.utils')
-      local function is_empty(s)
-        return s == nil or s == ''
-      end
-
-      if is_empty(utils.get_current_filename()) then
-        return ':<C-u>NvimTreeOpen<CR>'
-      else
-        return ':<C-u>NvimTreeFindFile<CR>'
-      end
-    end,
-    { noremap = true, silent = true, expr = true }
-  )
+  vim.keymap.set('n', '<C-t>', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-g>', '<Cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
 end
 
 M.config = function()
