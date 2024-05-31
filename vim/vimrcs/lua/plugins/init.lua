@@ -242,7 +242,13 @@ require('lazy').setup({
   {
     'j-hui/fidget.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+      notification = {
+        window = {
+          winblend = vim.o.winblend,
+        },
+      },
+    },
   },
   {
     'folke/todo-comments.nvim',
