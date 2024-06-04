@@ -458,15 +458,31 @@ require('lazy').setup({
     cmd = { 'OpenBrowser', 'OpenBrowserSearch' },
   },
   {
-    'voldikss/vim-translator',
-    keys = {
-      { '<Leader>t', '<Plug>TranslateW', mode = 'n', silent = true },
-      { '<Leader>t', '<Plug>TranslateWV', mode = 'v', silent = true },
-    },
-    cmd = { 'Translate' },
-    init = function()
-      vim.g.translator_target_lang = 'ja'
-      vim.g.translator_source_lang = 'en'
+    'potamides/pantran.nvim',
+    keys = function()
+      local pantran = require('pantran')
+      return {
+        {
+          '<Leader>t',
+          pantran.motion_translate,
+          mode = { 'n', 'x' },
+          noremap = true,
+          silent = true,
+          expr = true,
+        },
+      }
+    end,
+    config = function()
+      require('pantran').setup({
+        default_engine = 'google',
+        engines = {
+          google = {
+            fallback = {
+              default_target = 'ja',
+            }
+          },
+        },
+      })
     end,
   },
   {
