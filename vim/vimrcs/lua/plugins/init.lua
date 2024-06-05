@@ -324,6 +324,20 @@ require('lazy').setup({
       })
     end
   },
+  {
+    'folke/zen-mode.nvim',
+    cmd = 'ZenMode',
+    opts = {
+      plugins = {
+        tmux = {
+          enabled = true,
+        },
+        wezterm = {
+          enabled = true,
+        }
+      }
+    },
+  },
   ---------------------------- manipulation utility ----------------------------
   {
     'windwp/nvim-autopairs',
