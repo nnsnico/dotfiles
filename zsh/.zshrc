@@ -111,32 +111,6 @@ alias ll='f() { (command exa -lh --time-style=iso "$@" || command ls -al "$@"); 
 
 # ----------------------------- Script for Android -----------------------------
 
-function adbdevices() {
-  local selected=$(adb devices | rg -v '^$' | tail -n +2 | fzf --select-1 --exit-0 | awk '{print $1}')
-  [ -n "$selected" ] && echo "$selected" || (>&2 echo "adbdevices:\tNot selected a device"; exit 1)
-}
-
-function adbapps() {
-  local device=$1
-  if [ -n "$device" ]; then
-    command adb -s "$device" shell pm list packages
-  elif [ ! -t 0 ]; then # read from pipe input
-    read device_from_pipe
-    command adb -s "$device_from_pipe" shell pm list packages
-  else
-    (>&2 echo "adbapps:\tNot selected a device"; exit 1)
-  fi
-}
-
-function adbstartapp() {
-  local device=$(adbdevices)
-  local apps=$(adbapps "$device")
-  local apppackage=$(echo "$apps" | fzf --select-1 --exit-0 | awk -F':' '{print $2}')
-  [ -n "$apppackage" ] && [ -n "$device" ] && \
-    command adb -s "$device" shell monkey -p "$apppackage" 1 || \
-    (>&2 echo "adbstartapp:\tNot selected an app"; exit 1)
-}
-
 function adbps() {
   local device=$1
   if [ -n "$device" ]; then
@@ -163,39 +137,4 @@ function adblog() {
   fi
 }
 
-function adbunpin() {
-  local device=$1
-  if [ -n "$device" ]; then
-    command adb -s "$device" shell am task lock stop
-  elif [ ! -t 0 ]; then # read from pipe input
-    read device_from_pipe
-    command adb -s "$device_from_pipe" shell am task lock stop
-  else
-    (>&2 echo "adbunpin: Not selected a device"; exit 1)
-  fi
-}
-
-function adbtglshowtap() {
-  function toggleshowtap() {
-    local device=$1
-    local value=$(adb -s "$device" shell settings get system show_touches)
-    if [ $value = 1 ]; then
-      echo "Put \`show_touches\` value to 0"
-      command adb -s "$device" shell settings put system show_touches 0
-    else
-      echo "Put \`show_touches\` value to 1"
-      command adb -s "$device" shell settings put system show_touches 1
-    fi
-  }
-
-  local device=$1
-  if [ -n "$device" ]; then
-    toggleshowtap $device
-  elif [ ! -t 0 ]; then # read from pipe input
-    read device_from_pipe
-    toggleshowtap "$device_from_pipe"
-  else
-    (>&2 echo "adbputshowtap: Not selected a device"; exit 1)
-  fi
-}
 
