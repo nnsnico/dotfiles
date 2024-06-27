@@ -62,6 +62,7 @@ end
 
 M.setup = function()
   vim.keymap.set('n', '<C-t>', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+  vim.keymap.set('n', '<C-i>', '<Cmd>NvimTreeFocus<CR>', { noremap = true, silent = true })
   vim.keymap.set('n', '<C-g>', '<Cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
 end
 
