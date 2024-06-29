@@ -52,6 +52,9 @@ nmap tt :<C-u>tabm+1<CR>
 " Move to Previous(Left) tab
 nmap tT :<C-u>tabm-1<CR>
 
+" Move current tab to other tab group
+nmap <C-w>N :<C-u>action MoveEditorToOppositeTabGroup<CR>
+
 " Toggle wrap lines
 nmap tw <Action>(EditorToggleUseSoftWraps)
 
