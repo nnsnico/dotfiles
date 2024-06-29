@@ -87,9 +87,17 @@ map <Space>m <Action>(MaximizeEditorInSplit)
 
 " -------------------------------- for Android --------------------------------
 
-map <Leader>S <Action>(Android.SyncProject)
-map <Leader>d <Action>(DeviceAndSnapshotComboBox)
-map <Space>v <Action>(ActivateBuildVariantsToolWindow)
+if &ide == 'Android Studio'
+    map <Leader>S <Action>(Android.SyncProject)
+    " TextEditorWithPreview.Layout.EditorOnly
+    map <C-p> <Action>(TextEditorWithPreview.Layout.EditorAndPreview)
+    map <C-S-e> <Action>(TextEditorWithPreview.Layout.EditorOnly)
+
+    " map <Space>v <Action>(ActivateBuildVariantsToolWindow)
+    map <Space>d <Action>(DeviceAndSnapshotComboBox)
+    map <Space>v <Action>(com.vel.selectbuildvariant)
+    map <Space>r <Action>(RunConfiguration)
+endif
 
 " ---------------------------------- Plugins -----------------------------------
 
