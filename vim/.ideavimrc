@@ -111,6 +111,7 @@ map <Leader>, <Action>(VimActions)
 
 " Apply `NERDTree`
 set NERDTree
+map <C-i> :<C-u>NERDTreeFocus<CR>
 map <C-t> :<C-u>NERDTreeToggle<CR>
 map <C-g> :<C-u>NERDTreeFind<CR>
 
