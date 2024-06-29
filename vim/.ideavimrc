@@ -99,6 +99,12 @@ if &ide == 'Android Studio'
     map <Space>r <Action>(RunConfiguration)
 endif
 
+" ------------------------------------ VCS -------------------------------------
+
+map [c <Action>(VcsShowPrevChangeMarker)
+map ]c <Action>(VcsShowNextChangeMarker)
+map <Space>hp <Action>(VcsShowCurrentChangeMarker)
+
 " ---------------------------------- Plugins -----------------------------------
 
 map <Leader>, <Action>(VimActions)
