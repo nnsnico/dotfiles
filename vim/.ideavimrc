@@ -4,6 +4,9 @@ source ~/dotfiles/vim/vimrcs/basic.vim
 source ~/dotfiles/vim/vimrcs/search.vim
 source ~/dotfiles/vim/vimrcs/visual.vim
 
+" search on selected word (override keymap in search.vim)
+vnoremap * y/\V<C-r>"<CR>
+
 " Change how to indent
 set cinoptions+=:0
 
