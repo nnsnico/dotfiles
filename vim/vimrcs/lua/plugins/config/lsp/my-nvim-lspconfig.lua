@@ -143,6 +143,20 @@ M.attach_lsp = function()
       M.on_attach(client, bufnr)
     end
   })
+
+  local lspconfig = require('lspconfig')
+
+  lspconfig.util.default_config = vim.tbl_extend(
+    'force',
+    lspconfig.util.default_config,
+    {
+      capabilities = vim.tbl_deep_extend(
+        'force',
+        vim.lsp.protocol.make_client_capabilities(),
+        require('lsp-file-operations').default_capabilities()
+      )
+    }
+  )
 end
 
 ---@param lsps LspConf.Configuration[]

@@ -84,6 +84,13 @@ require('lazy').setup({
       'SmiteshP/nvim-navic',
       'hrsh7th/cmp-nvim-lsp',
       {
+        'antosha417/nvim-lsp-file-operations',
+        config = function()
+          require('lsp-file-operations').setup()
+        end,
+        dependencies = { 'nvim-lua/plenary.nvim' },
+      },
+      {
         'nvimtools/none-ls.nvim',
         config = function()
           require('plugins.config.null-ls').config()
@@ -183,6 +190,13 @@ require('lazy').setup({
       })
     end,
     dependencies = {
+      {
+        'antosha417/nvim-lsp-file-operations',
+        config = function()
+          require('lsp-file-operations').setup()
+        end,
+        dependencies = { 'nvim-lua/plenary.nvim' },
+      },
       'nvim-lua/plenary.nvim',
       'hrsh7th/cmp-nvim-lsp',
     }
@@ -438,7 +452,16 @@ require('lazy').setup({
     config = function()
       require('plugins.config.nvim-tree').config()
     end,
-    dependencies = { 'kyazdani42/nvim-web-devicons' }
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+      {
+        'antosha417/nvim-lsp-file-operations',
+        config = function()
+          require('lsp-file-operations').setup()
+        end,
+        dependencies = { 'nvim-lua/plenary.nvim' },
+      }
+    },
   },
   ------------------------------------ VCS -------------------------------------
   {
