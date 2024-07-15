@@ -188,6 +188,8 @@ require('lazy').setup({
         end,
         group = nvim_metals_group
       })
+
+      vim.keymap.set('n', '<Space>i', '<Cmd>MetalsOrganizeImports<CR>')
     end,
     dependencies = {
       {
