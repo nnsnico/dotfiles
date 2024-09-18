@@ -144,7 +144,7 @@ require('lazy').setup({
     end
   },
   {
-    'akinsho/flutter-tools.nvim',
+    'nvim-flutter/flutter-tools.nvim',
     ft = 'dart',
     config = function()
       local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
