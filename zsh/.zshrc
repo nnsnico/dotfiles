@@ -54,7 +54,7 @@ fi
 # ------------------------------------ FZF -------------------------------------
 
 export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
-export FZF_DEFAULT_OPTS='--border --layout=reverse --preview="bat {}" --height=60%'
+export FZF_DEFAULT_OPTS='--border --layout=reverse --height=60%'
 
 # ---------------------------------- Prezto ------------------------------------
 

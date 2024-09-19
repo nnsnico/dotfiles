@@ -162,3 +162,4 @@ zinit wait lucid for \
 export GPG_TTY=$(tty)
 
 export _ZO_ECHO='1'
+export _ZO_FZF_OPTS="--border --layout=reverse --preview='exa -a {2}' --height=30% -1"
