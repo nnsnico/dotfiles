@@ -15,6 +15,7 @@
 [core]
 	editor = nvim
 	pager = delta
+	quotepath = false
 
 [interactive]
 	diffFilter = delta --color-only
