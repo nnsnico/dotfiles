@@ -59,7 +59,7 @@ nmap <C-w>N :<C-u>action MoveEditorToOppositeTabGroup<CR>
 nmap tw <Action>(EditorToggleUseSoftWraps)
 
 " Search Everywhere
-map zf <Action>(SearchEverywhere)
+map zf <Action>(GotoFile)
 
 " Move cursor to left or right by `ctrl + {hl}`
 imap <C-l> <Right>
