@@ -1,0 +1,10 @@
+# please make a symbolic link like:
+#   $ ln -s ~/dotfiles/git/ignore ~/.config/git/ignore
+
+# MacOS
+.DS_Store
+
+# Kotlin Language Server
+kls_database.db
+
+# vim: ft=gitignore :
