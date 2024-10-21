@@ -491,6 +491,8 @@ tyz	ちゃん
 tz	たん
 u	う
 va	ヴァ
+vn	ヴァン
+vz	ヴァン
 ve	ヴェ
 vh	←
 vi	ヴィ
