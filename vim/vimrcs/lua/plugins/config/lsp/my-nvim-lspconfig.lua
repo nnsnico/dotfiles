@@ -23,39 +23,6 @@ M.on_attach = function(client, bufnr)
     },
   })
 
-  -- Add border in hover
-
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-
-  -- Change default LSP handling to open split automatically
-
-  ---@param results Response
-  ---@param no_result_msg string
-  local function auto_split(results, no_result_msg)
-    if results == nil or vim.tbl_isempty(results) then
-      vim.notify(no_result_msg, vim.log.levels.INFO)
-      return
-    end
-
-    local qflist = lsputils.map_to_qflist_from_location(results)
-    lsputils.handle_qflist(qflist)
-  end
-
-  ---@param results Response
-  vim.lsp.handlers['textDocument/definition'] = function(_, results, _)
-    auto_split(results, 'No definitions')
-  end
-
-  ---@param results Response
-  vim.lsp.handlers['textDocument/typeDefinition'] = function(_, results, _)
-    auto_split(results, 'No type definitions')
-  end
-
-  ---@param results Response
-  vim.lsp.handlers['textDocument/references'] = function(_, results, _)
-    auto_split(results, 'No references')
-  end
-
   -- Keymaps
 
   local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -67,7 +34,7 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,          opts)
   vim.keymap.set('n', 'K',          function()
     is_hover = true
-    vim.lsp.buf.hover()
+    vim.lsp.buf.hover({border = 'rounded'})
   end, opts)
   vim.keymap.set('n', '<Space>f',   function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<Space>q',   vim.lsp.buf.code_action,                             opts)
@@ -136,10 +103,38 @@ M.on_attach = function(client, bufnr)
 end
 
 M.attach_lsp = function()
+  -- Change default LSP handling to open split automatically
+
+  ---@param results Response
+  ---@param no_result_msg string
+  local function auto_split(results, no_result_msg)
+    if results == nil or vim.tbl_isempty(results) then
+      vim.notify(no_result_msg, vim.log.levels.INFO)
+      return
+    end
+
+    local qflist = lsputils.map_to_qflist_from_location(results)
+    lsputils.handle_qflist(qflist)
+  end
+
+  -- overrided a handler to jump definition
+
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
       local bufnr = args.buf
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+      local request = client.request
+
+      client.request = function(method, params, handler, req_bufnr)
+        if method == 'textDocument/definition' then
+          return request(method, params, function(_, result, _, _)
+            auto_split(result, 'No definitions')
+          end, req_bufnr)
+        end
+
+        return request(method, params, handler, req_bufnr)
+      end
+
       M.on_attach(client, bufnr)
     end
   })
@@ -149,7 +144,18 @@ M.attach_lsp = function()
   lspconfig.util.default_config = vim.tbl_extend(
     'force',
     lspconfig.util.default_config,
+    ---@type vim.lsp.ClientConfig
     {
+      handlers = {
+        ---@param results Response
+        ['textDocument/typeDefinition'] = function(_, results, _)
+          auto_split(results, 'No type definitions')
+        end,
+        ---@param results Response
+        ['textDocument/references'] = function(_, results, _)
+          auto_split(results, 'No references')
+        end
+      },
       capabilities = vim.tbl_deep_extend(
         'force',
         vim.lsp.protocol.make_client_capabilities(),
