@@ -527,7 +527,15 @@ require('lazy').setup({
     keys = {
       { '<Leader>o', '<Plug>(openbrowser-open)', mode = 'v' }
     },
-    cmd = { 'OpenBrowser', 'OpenBrowserSearch' },
+    cmd = {
+      'OpenBrowser',
+      'OpenBrowserSearch',
+      'OpenGithubFile',
+      'OpenGithubProject',
+    },
+    dependencies = {
+      'tyru/open-browser-github.vim',
+    }
   },
   {
     'potamides/pantran.nvim',
