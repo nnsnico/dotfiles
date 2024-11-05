@@ -30,8 +30,19 @@ M.config = function()
     highlight
   )
 
-  vim.g.rainbow_delimiters = { highlight = highlightName }
-  require('ibl').setup({ scope = { highlight = highlightName } })
+  vim.g.rainbow_delimiters = {
+    highlight = highlightName
+  }
+  require('ibl').setup({
+    indent = {
+      char = '┆',
+      highlight = '@comment',
+    },
+    scope = {
+      char = '│',
+      highlight = highlightName
+    },
+  })
 
   hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
 end
