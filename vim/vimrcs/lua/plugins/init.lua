@@ -441,6 +441,31 @@ require('lazy').setup({
       })
     end
   },
+  {
+    'monaqa/dial.nvim',
+    keys = {
+      { '<C-a>',  '<Plug>(dial-increment)',  mode = { 'n', 'v' }, noremap = false },
+      { '<C-x>',  '<Plug>(dial-decrement)',  mode = { 'n', 'v' }, noremap = false },
+      { 'g<C-a>', 'g<Plug>(dial-increment)', mode = { 'n', 'v' }, noremap = false },
+      { 'g<C-x>', 'g<Plug>(dial-decrement)', mode = { 'n', 'v' }, noremap = false },
+    },
+    config = function()
+      local augend = require('dial.augend')
+      require('dial.config').augends:register_group({
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.constant.alias.bool,
+          augend.misc.alias.markdown_header,
+          augend.constant.new({
+            elements = { '[ ]', '[x]' },
+            word = false,
+            cyclic = true,
+          }),
+        }
+      })
+    end,
+  },
   ----------------------------------- filer ------------------------------------
   {
     'nvim-tree/nvim-tree.lua',
