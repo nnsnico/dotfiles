@@ -149,8 +149,6 @@ require('lazy').setup({
     config = function()
       local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
 
-      lspconfig.attach_lsp()
-
       vim.keymap.set('n', '<Space>o', '<cmd>FlutterOutlineToggle<CR>', { silent = true })
 
       require('flutter-tools').setup({

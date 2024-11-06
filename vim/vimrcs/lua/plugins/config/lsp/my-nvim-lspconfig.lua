@@ -4,6 +4,21 @@ local const = require('constants')
 
 local is_hover = false
 
+
+-- Change default LSP handling to open split automatically
+
+---@param results Response
+---@param no_result_msg string
+local function auto_split(results, no_result_msg)
+  if results == nil or vim.tbl_isempty(results) then
+    vim.notify(no_result_msg, vim.log.levels.INFO)
+    return
+  end
+
+  local qflist = lsputils.map_to_qflist_from_location(results)
+  lsputils.handle_qflist(qflist)
+end
+
 M.on_attach = function(client, bufnr)
 
   -- diagnostic config
@@ -22,6 +37,43 @@ M.on_attach = function(client, bufnr)
       }
     },
   })
+
+  -- overrided a handler to jump definition
+
+  local request = client.request
+  client.request = function(method, params, handler, req_bufnr)
+    if method == 'textDocument/definition' then
+      return request(method, params, function(_, result, _, _)
+        auto_split(result, 'No definitions')
+      end, req_bufnr)
+    end
+
+    return request(method, params, handler, req_bufnr)
+  end
+
+  local lspconfig = require('lspconfig')
+  lspconfig.util.default_config = vim.tbl_extend(
+    'force',
+    lspconfig.util.default_config,
+    ---@type vim.lsp.ClientConfig
+    {
+      handlers = {
+        ---@param results Response
+        ['textDocument/typeDefinition'] = function(_, results, _)
+          auto_split(results, 'No type definitions')
+        end,
+        ---@param results Response
+        ['textDocument/references'] = function(_, results, _)
+          auto_split(results, 'No references')
+        end
+      },
+      capabilities = vim.tbl_deep_extend(
+        'force',
+        vim.lsp.protocol.make_client_capabilities(),
+        require('lsp-file-operations').default_capabilities()
+      )
+    }
+  )
 
   -- Keymaps
 
@@ -103,66 +155,14 @@ M.on_attach = function(client, bufnr)
 end
 
 M.attach_lsp = function()
-  -- Change default LSP handling to open split automatically
-
-  ---@param results Response
-  ---@param no_result_msg string
-  local function auto_split(results, no_result_msg)
-    if results == nil or vim.tbl_isempty(results) then
-      vim.notify(no_result_msg, vim.log.levels.INFO)
-      return
-    end
-
-    local qflist = lsputils.map_to_qflist_from_location(results)
-    lsputils.handle_qflist(qflist)
-  end
-
-  -- overrided a handler to jump definition
-
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
       local bufnr = args.buf
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-      local request = client.request
-
-      client.request = function(method, params, handler, req_bufnr)
-        if method == 'textDocument/definition' then
-          return request(method, params, function(_, result, _, _)
-            auto_split(result, 'No definitions')
-          end, req_bufnr)
-        end
-
-        return request(method, params, handler, req_bufnr)
-      end
 
       M.on_attach(client, bufnr)
     end
   })
-
-  local lspconfig = require('lspconfig')
-
-  lspconfig.util.default_config = vim.tbl_extend(
-    'force',
-    lspconfig.util.default_config,
-    ---@type vim.lsp.ClientConfig
-    {
-      handlers = {
-        ---@param results Response
-        ['textDocument/typeDefinition'] = function(_, results, _)
-          auto_split(results, 'No type definitions')
-        end,
-        ---@param results Response
-        ['textDocument/references'] = function(_, results, _)
-          auto_split(results, 'No references')
-        end
-      },
-      capabilities = vim.tbl_deep_extend(
-        'force',
-        vim.lsp.protocol.make_client_capabilities(),
-        require('lsp-file-operations').default_capabilities()
-      )
-    }
-  )
 end
 
 ---@param lsps LspConf.Configuration[]
