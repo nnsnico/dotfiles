@@ -27,7 +27,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit light-mode for \
-  "zdharma-continuum/zinit-annex-bin-gem-node"
+  @zdharma-continuum/zinit-annex-{'bin-gem-node','binary-symlink'}
 
 zinit wait lucid for \
     from'gh-r' \
@@ -72,12 +72,30 @@ zinit wait lucid for \
     atclone"git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib && ln -s ~/dotfiles/zsh/.zinit/plugins/sorin-ionescu---prezto ~/.zprezto" \
   "sorin-ionescu/prezto"
 
+
 zinit wait lucid for \
-  "zdharma-continuum/fast-syntax-highlighting"
+  Aloxaf/fzf-tab
+
+zinit wait lucid for \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+  blockf \
+    zsh-users/zsh-completions \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 zinit wait lucid for \
     from"gh-r" \
-    sbin"fzf" \
+    as"program" \
+    sbin"**/zoxide -> zoxide" \
+    atload'eval "$(zoxide init zsh --cmd cd)"' \
+  @ajeetdsouza/zoxide
+
+zinit wait lucid for \
+    from"gh-r" \
+    lbin"!fzf" \
+    atclone'fzf --zsh > fzf.zsh' \
+    src'fzf.zsh' \
   "junegunn/fzf"
 
 zinit wait lucid for \
@@ -107,12 +125,6 @@ zinit wait lucid for \
     pick"**/complete/_rg" \
   "BurntSushi/ripgrep"
 
-zinit wait lucid for \
-    from"gh-r" \
-    as"program" \
-    sbin"**/zoxide -> zoxide" \
-    atload'eval "$(zoxide init zsh --cmd cd)"; zicompinit; zicdreplay' \
-  "ajeetdsouza/zoxide"
 
 zinit wait lucid for \
     from"gh-r" \
