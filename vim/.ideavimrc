@@ -45,6 +45,7 @@ map <C-S-v> "*P
 " Goto Implementation class
 nmap gi <Action>(GotoImplementation)
 nmap gr <Action>(GotoSuperMethod)
+nmap gy <Action>(GotoTypeDeclaration)
 
 " Move to Next(Right) tab
 nmap tt :<C-u>tabm+1<CR>
@@ -97,6 +98,8 @@ if &ide == 'Android Studio'
     map <Space>d <Action>(DeviceAndSnapshotComboBox)
     map <Space>v <Action>(com.vel.selectbuildvariant)
     map <Space>r <Action>(RunConfiguration)
+
+    map <Space>D <Action>(ActivateRunningDevicesToolWindow)
 endif
 
 " ------------------------------------ VCS -------------------------------------
