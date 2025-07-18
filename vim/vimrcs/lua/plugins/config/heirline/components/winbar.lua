@@ -15,6 +15,13 @@ local terminal = {
 
 return {
   fallthrough = false,
+  {
+    -- git mergetool
+    condition = function()
+      return vim.o.diff and vim.fn.winnr('$') == 3
+    end,
+    {}, -- empty winbar
+  },
   { -- A special winbar for terminals
     condition = function()
       return conditions.buffer_matches({ buftype = { "terminal" } })
