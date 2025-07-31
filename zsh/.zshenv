@@ -145,7 +145,7 @@ zinit wait lucid for \
 zinit wait lucid for \
     from"gh-r" \
     as"program" \
-    sbin"rogcat-* -> rogcat" \
+    sbin"**/rogcat -> rogcat" \
   "flxo/rogcat"
     # completion is not working
     # atclone'rogcat-* completions zsh > _rogcat; zicompinit; zicdreplay' \
