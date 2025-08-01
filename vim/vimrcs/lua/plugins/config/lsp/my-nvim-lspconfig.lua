@@ -169,7 +169,8 @@ end
 M.setup = function(lsps)
   for _, lsp in pairs(lsps) do
     local setting = lsp.setting or function() return {} end
-    require('lspconfig')[lsp.name].setup(setting())
+
+    vim.lsp.config(lsp.name, setting())
   end
 end
 
