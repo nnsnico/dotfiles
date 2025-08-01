@@ -185,6 +185,11 @@ M.config = function()
     }
   })
 
+  -- setup nvim-lspconfig
+  local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
+  lspconfig.setup(lsp_servers)
+  lspconfig.attach_lsp()
+
   -- for language server
   require('mason-lspconfig').setup({
     ensure_installed = server_name,
@@ -196,11 +201,6 @@ M.config = function()
   require('mason-tool-installer').setup({
     ensure_installed = tool_name,
   })
-
-  -- setup nvim-lspconfig
-  local lspconfig = require('plugins.config.lsp.my-nvim-lspconfig')
-  lspconfig.setup(lsp_servers)
-  lspconfig.attach_lsp()
 end
 
 return M
