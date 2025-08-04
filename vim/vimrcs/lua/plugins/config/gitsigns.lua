@@ -3,9 +3,16 @@ local M = {}
 M.config = function()
   require('gitsigns').setup({
     numhl = true,
+    preview_config = {
+      border = 'rounded',
+    },
     on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
+      local gs = require('gitsigns')
 
+      ---@param mode string|string[]
+      ---@param l string
+      ---@param r string|function
+      ---@param opts vim.keymap.set.Opts?
       local function map(mode, l, r, opts)
         opts = opts or {}
         opts.buffer = bufnr
@@ -13,16 +20,22 @@ M.config = function()
       end
 
       map('n', ']c', function()
-        if vim.wo.diff then return ']c' end
-        vim.schedule(function() gs.next_hunk() end)
-        return '<Ignore>'
-      end, { expr = true })
+        if vim.wo.diff then
+          vim.cmd.normal({ ']c', bang = true })
+        else
+          ---@diagnostic disable-next-line: param-type-mismatch
+          gs.nav_hunk('next')
+        end
+      end)
 
       map('n', '[c', function()
-        if vim.wo.diff then return '[c' end
-        vim.schedule(function() gs.prev_hunk() end)
-        return '<Ignore>'
-      end, { expr = true })
+        if vim.wo.diff then
+          vim.cmd.normal({ '[c', bang = true })
+        else
+          ---@diagnostic disable-next-line: param-type-mismatch
+          gs.nav_hunk('prev')
+        end
+      end)
 
       map({ 'n' }, '<Space>ha', gs.stage_hunk)
       map({ 'v' }, '<Space>ha', function()
@@ -52,7 +65,7 @@ M.config = function()
     end
   })
 
-  vim.api.nvim_set_hl(0, 'GitSignsAddPreview',    { link = 'diffAdded' })
+  vim.api.nvim_set_hl(0, 'GitSignsAddPreview', { link = 'diffAdded' })
   vim.api.nvim_set_hl(0, 'GitSignsDeletePreview', { link = 'diffRemoved' })
 end
 
