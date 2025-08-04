@@ -84,6 +84,15 @@ require('lazy').setup({
       'SmiteshP/nvim-navic',
       'hrsh7th/cmp-nvim-lsp',
       {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            { path = '${3rd}/luv/library', words = { 'vim%.uv' } }
+          }
+        }
+      },
+      {
         'antosha417/nvim-lsp-file-operations',
         config = function()
           require('lsp-file-operations').setup()

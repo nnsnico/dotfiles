@@ -10,46 +10,6 @@ local lsp_servers = {
   {
     name = "lua_ls",
     ft = 'lua',
-    setting = function()
-      local runtime_path = vim.split(package.path, ';')
-      table.insert(runtime_path, 'lua/?.lua')
-      table.insert(runtime_path, 'lua/?/init.lua')
-
-      local library = {}
-      local function add(lib)
-        for _, p in pairs(vim.fn.expand(lib, false, true)) do
-          p = vim.uv.fs_realpath(p)
-          library[p] = true
-        end
-      end
-
-      add("$VIMRUNTIME")
-      add("~/dotfiles/vim/vimrcs") -- specify dotfile path
-      add(vim.fn.stdpath('data') .. '/lazy/*') -- specify the package path
-
-      return {
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-              path = runtime_path,
-            },
-            completion = { callSnippet = "Both" },
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = {
-              library = library,
-              maxPreload = 2000,
-              preloadFileSize = 50000,
-            },
-            telemetry = {
-              enable = false,
-            }
-          },
-        },
-      }
-    end,
   },
   {
     name = "rust_analyzer",
