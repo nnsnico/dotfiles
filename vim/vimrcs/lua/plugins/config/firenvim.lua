@@ -27,11 +27,12 @@ M.init = function()
         takeover = 'never',
         priority = 1,
       },
-      ['https://github\\.com/.+/.+/(issues|pull|discussions|compare|wiki).*'] = {
+      -- new pull request review page
+      ['https://github\\.com/.+/.+/(releases|issues|pull|discussions|compare|wiki).*'] = {
         cmdline  = 'neovim',
         content  = 'text',
         priority = 1,
-        selector = 'textarea',
+        selector = 'textarea:not(div[class="ReviewMenuButton-module__AnchoredReviewBody--nirqE"] * textarea)',
         takeover = 'always',
         filename = '{hostname%32}_{pathname%32}_{selector%32}_{timestamp%32}.md',
       },
