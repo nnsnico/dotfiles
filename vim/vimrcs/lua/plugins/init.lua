@@ -149,17 +149,6 @@ require('lazy').setup({
     },
   },
   {
-    'stevearc/aerial.nvim',
-    cmd = 'AerialToggle',
-    init = function()
-      vim.keymap.set('n', '<Space>s', '<cmd>AerialToggle<CR>',  {})
-      vim.keymap.set('n', '<Space>S', '<cmd>AerialToggle!<CR>', {})
-    end,
-    config = function()
-      require('aerial').setup()
-    end
-  },
-  {
     'nvim-flutter/flutter-tools.nvim',
     ft = 'dart',
     config = function()
