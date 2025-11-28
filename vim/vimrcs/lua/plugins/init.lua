@@ -139,7 +139,14 @@ require('lazy').setup({
       { '<leader>o', '<cmd>Outline<CR>', desc = 'Toggle Outline' },
       { '<leader>h', '<cmd>OutlineFocus<CR>' },
     },
-    opts = {}
+    opts = {
+      providers = {
+        priority = { 'lsp', 'markdown', 'norg', 'treesitter' },
+      },
+    },
+    dependencies = {
+      'epheien/outline-treesitter-provider.nvim',
+    },
   },
   {
     'stevearc/aerial.nvim',
