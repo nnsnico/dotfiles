@@ -26,6 +26,7 @@ M.config = function()
     },
     window = {
       completion = cmp.config.window.bordered({
+        border = 'rounded',
         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
         col_offset = -3,
         side_padding = 0,
