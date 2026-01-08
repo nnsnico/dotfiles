@@ -20,6 +20,8 @@ skkeleton.setup = function()
     -- custom kana table
     vim.fn['skkeleton#register_kanatable']('azik', {
       ['z '] = { '\u{3000}', '' },
+      ['('] = { '（', '' },
+      [')'] = { '）', '' },
       ['?'] = { '？', '' },
       ['!'] = { '！', '' },
       [' '] = 'henkanFirst',
