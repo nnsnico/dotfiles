@@ -128,6 +128,9 @@ require('lazy').setup({
       { 'uga-rosa/cmp-skkeleton' },
       { 'onsails/lspkind.nvim' },
     },
+    init = function()
+      require('plugins.config.nvim-cmp').init()
+    end,
     config = function()
       require('plugins.config.nvim-cmp').config()
     end,

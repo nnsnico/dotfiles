@@ -70,7 +70,7 @@ M.config = function()
       keyword_length = 2,
     },
     formatting = {
-      fields = { 'kind', 'abbr', 'menu' },
+      fields = { 'icon', 'kind', 'abbr', 'menu' },
       ---@param item lsp.CompletionItem
       format = function(entry, item)
         -- item.menu = entry:get_completion_item().detail
@@ -80,8 +80,9 @@ M.config = function()
           ellipsis_char = '...',
         })(entry, item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        kind.kind = " " .. (strings[1] or "") .. " "
-        kind.menu = "    (" .. (strings[2] or "") .. ")"
+        kind.icon = " " .. (kind.icon or "") .. " "
+        kind.kind = strings[0] or ""
+        kind.menu = "(" .. (strings[1] or "") .. ")"
         return kind
       end
     },
@@ -131,7 +132,7 @@ M.config = function()
       }
     ),
     formatting = {
-      fields = { 'kind', 'abbr' },
+      fields = { 'icon', 'abbr' },
       ---@param item lsp.CompletionItem
       format = function(entry, item)
         local kind = lspkind.cmp_format({
@@ -140,10 +141,60 @@ M.config = function()
           ellipsis_char = '...',
         })(entry, item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
+        kind.icon = ' ' .. (kind.icon or '') .. ' '
         kind.kind = " " .. (strings[1] or "") .. " "
         return kind
       end
     },
+  })
+end
+
+M.init = function()
+  vim.api.nvim_create_autocmd('ColorScheme', {
+    pattern = '*',
+    callback = function()
+      -- Customization for Pmenu
+      vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
+      vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
+
+      vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
+      vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
+      vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
+      vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#C792EA", bg = "NONE", italic = true })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindFieldIcon", { fg = "#EED8DA", bg = "#B5585F" })
+      vim.api.nvim_set_hl(0, "CmpItemKindPropertyIcon", { fg = "#EED8DA", bg = "#B5585F" })
+      vim.api.nvim_set_hl(0, "CmpItemKindEventIcon", { fg = "#EED8DA", bg = "#B5585F" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindTextIcon", { fg = "#C3E88D", bg = "#9FBD73" })
+      vim.api.nvim_set_hl(0, "CmpItemKindEnumIcon", { fg = "#C3E88D", bg = "#9FBD73" })
+      vim.api.nvim_set_hl(0, "CmpItemKindKeywordIcon", { fg = "#C3E88D", bg = "#9FBD73" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindConstantIcon", { fg = "#FFE082", bg = "#D4BB6C" })
+      vim.api.nvim_set_hl(0, "CmpItemKindConstructorIcon", { fg = "#FFE082", bg = "#D4BB6C" })
+      vim.api.nvim_set_hl(0, "CmpItemKindReferenceIcon", { fg = "#FFE082", bg = "#D4BB6C" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindFunctionIcon", { fg = "#EADFF0", bg = "#A377BF" })
+      vim.api.nvim_set_hl(0, "CmpItemKindStructIcon", { fg = "#EADFF0", bg = "#A377BF" })
+      vim.api.nvim_set_hl(0, "CmpItemKindClassIcon", { fg = "#EADFF0", bg = "#A377BF" })
+      vim.api.nvim_set_hl(0, "CmpItemKindModuleIcon", { fg = "#EADFF0", bg = "#A377BF" })
+      vim.api.nvim_set_hl(0, "CmpItemKindOperatorIcon", { fg = "#EADFF0", bg = "#A377BF" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindVariableIcon", { fg = "#C5CDD9", bg = "#7E8294" })
+      vim.api.nvim_set_hl(0, "CmpItemKindFileIcon", { fg = "#C5CDD9", bg = "#7E8294" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindUnitIcon", { fg = "#F5EBD9", bg = "#D4A959" })
+      vim.api.nvim_set_hl(0, "CmpItemKindSnippetIcon", { fg = "#F5EBD9", bg = "#D4A959" })
+      vim.api.nvim_set_hl(0, "CmpItemKindFolderIcon", { fg = "#F5EBD9", bg = "#D4A959" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindMethodIcon", { fg = "#DDE5F5", bg = "#6C8ED4" })
+      vim.api.nvim_set_hl(0, "CmpItemKindValueIcon", { fg = "#DDE5F5", bg = "#6C8ED4" })
+      vim.api.nvim_set_hl(0, "CmpItemKindEnumMemberIcon", { fg = "#DDE5F5", bg = "#6C8ED4" })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindInterfaceIcon", { fg = "#D8EEEB", bg = "#58B5A8" })
+      vim.api.nvim_set_hl(0, "CmpItemKindColorIcon", { fg = "#D8EEEB", bg = "#58B5A8" })
+      vim.api.nvim_set_hl(0, "CmpItemKindTypeParameterIcon", { fg = "#D8EEEB", bg = "#58B5A8" })
+    end,
   })
 end
 
