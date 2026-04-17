@@ -31,7 +31,10 @@ M.config = function()
         col_offset = -3,
         side_padding = 0,
       }),
-      documentation = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered({
+        border = 'rounded',
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+      }),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
